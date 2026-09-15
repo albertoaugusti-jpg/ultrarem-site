@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UltraRem — Presentazione</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root {
+  --c:  #f4ecd8;
+  --c2: #e8dcc0;
+  --t:  #c4522a;
+  --v:  #2e6d5b;
+  --b:  #7a2831;
+  --g:  #e8b948;
+  --n:  #1a1209;
+  --gr: #8a7d6b;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: var(--n);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER FISSO ─────────────────────────── */
+.hdr {
+  position: fixed; top: 0; left: 0; right: 0; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 44px; z-index: 200;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  transition: background .4s, border-color .4s, color .4s;
+}
+.hdr.light { background: rgba(244,236,216,.97); border-color: rgba(26,18,9,.1); }
+.hdr.dark  { background: rgba(26,18,9,.95); }
+.hdr img.logo { height: 38px; width: auto; }
+.hdr.light img.logo { filter: none; }
+.hdr.dark  img.logo { filter: brightness(0) invert(1); }
+.hdr .sezione {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: .28em; text-transform: uppercase;
+}
+.hdr.light .sezione { color: var(--gr); }
+.hdr.dark  .sezione { color: rgba(244,236,216,.45); }
+.hdr .cont {
+  font-family: 'Space Mono', monospace; font-size: 11px;
+  border-radius: 20px; padding: 3px 12px; border: 1px solid currentColor;
+}
+.hdr.light .cont { color: var(--n); }
+.hdr.dark  .cont { color: rgba(244,236,216,.55); }
+
+/* ── STRISCIA BRAND ───────────────────────── */
+.strip {
+  position: fixed; top: 64px; left: 0; right: 0; height: 3px; z-index: 199;
+  background: linear-gradient(to right, var(--v) 0 25%, var(--t) 25% 50%, var(--b) 50% 75%, var(--g) 75%);
+}
+
+/* ── PROGRESS BAR ─────────────────────────── */
+.prog {
+  position: fixed; bottom: 0; left: 0; height: 2px;
+  background: var(--t); transition: width .45s ease; z-index: 300;
+}
+
+/* ── NAVIGAZIONE ──────────────────────────── */
+.nav {
+  position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 12px; z-index: 300;
+}
+.nav button {
+  width: 42px; height: 42px; border-radius: 50%; border: none; cursor: pointer;
+  font-size: 15px; font-family: 'Space Mono', monospace;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
+}
+.nav button:disabled { opacity: .2; cursor: default; pointer-events: none; }
+.nav button.dk { background: rgba(26,18,9,.85); color: var(--c); backdrop-filter: blur(6px); }
+.nav button.dk:hover:not(:disabled) { background: var(--t); }
+.nav button.lt { background: rgba(244,236,216,.9); color: var(--n); backdrop-filter: blur(6px); }
+.nav button.lt:hover:not(:disabled) { background: var(--t); color: var(--c); }
+
+.dots {
+  position: fixed; bottom: 38px; right: 44px;
+  display: flex; gap: 6px; z-index: 300;
+}
+.dot {
+  height: 6px; border-radius: 3px; cursor: pointer;
+  transition: all .3s; width: 6px;
+}
+.dot.ok { width: 22px; background: var(--t) !important; }
+
+/* ── PALCO ────────────────────────────────── */
+.palco { position: fixed; inset: 0; overflow: hidden; }
+.slide {
+  position: absolute; inset: 0; overflow: hidden;
+  opacity: 0; visibility: hidden;
+  transition: opacity .5s ease;
+}
+.slide.on { opacity: 1; visibility: visible; }
+
+/* Utility */
+.tag {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: .3em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px;
+}
+.tag::before { content: ""; display: block; width: 24px; height: 1px; background: currentColor; }
+
+
+/* ══════════════════════════════════════════════
+   S1 — COPERTINA
+══════════════════════════════════════════════ */
+.s1 { background: var(--n); color: var(--c); }
+.s1 .bg {
+  position: absolute; inset: 0;
+  background: url('/img/copertina80.png') center 20% / cover no-repeat;
+}
+.s1 .overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(26,18,9,.15) 0%,
+    rgba(26,18,9,.5) 100%);
+}
+.s1-center {
+  position: absolute; inset: 0; z-index: 10;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  padding-bottom: 8%;
+}
+.s1-brand-logo {
+  height: clamp(220px, 32vw, 480px); max-height: 52vh; width: auto;
+  filter: drop-shadow(0 4px 24px rgba(0,0,0,.65));
+}
+.s1-logo-costruito { display: none; }
+.s1-anno {
+  margin-top: 18px;
+  font-family: 'Space Mono', monospace; font-size: 11px;
+  letter-spacing: .45em; text-transform: uppercase;
+  color: rgba(244,236,216,.65);
+}
+
+
+/* ══════════════════════════════════════════════
+   S2 — IL PERCHÉ
+══════════════════════════════════════════════ */
+.s2 { background: var(--n); color: var(--c); }
+.s2 .bg {
+  position: absolute; inset: 0;
+  background: url('/img/album.png') center 40% / cover no-repeat;
+  opacity: .18;
+}
+.s2 .fade {
+  position: absolute; inset: 0;
+  background: linear-gradient(110deg, rgba(26,18,9,.97) 0%, rgba(26,18,9,.8) 55%, rgba(26,18,9,.6) 100%);
+}
+.s2 .content {
+  position: relative; z-index: 10; height: 100%;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 64px; max-width: 780px;
+}
+.s2 .tag { color: var(--t); }
+.s2 blockquote {
+  font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;
+  font-size: clamp(22px, 3.2vw, 46px); line-height: 1.15;
+  color: var(--c); margin-bottom: 30px;
+  border-left: 3px solid var(--t); padding-left: 22px;
+}
+.s2 p { font-size: clamp(15px, 1.5vw, 19px); line-height: 1.7; color: rgba(244,236,216,.78); margin-bottom: 14px; }
+.s2 p strong { color: var(--c); font-weight: 600; }
+
+
+/* ══════════════════════════════════════════════
+   S3 — IL CORPUS
+══════════════════════════════════════════════ */
+.s3 { background: var(--c); color: var(--n); }
+.s3 .watermark {
+  position: absolute; right: -40px; top: -20px;
+  font-family: 'Playfair Display', serif; font-weight: 900; font-style: italic;
+  font-size: 52vw; color: rgba(196,82,42,.055); line-height: .88;
+  pointer-events: none; user-select: none; letter-spacing: -.04em;
+}
+.s3 .content {
+  position: relative; z-index: 10; height: 100%;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 64px;
+}
+.s3 .tag { color: var(--t); }
+.s3 h2 {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-style: italic;
+  font-size: clamp(42px, 7vw, 104px); line-height: .92;
+  letter-spacing: -.02em; margin-bottom: 32px;
+}
+.s3 h2 span { color: var(--b); }
+.s3 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; max-width: 1100px; }
+.s3 p { font-size: clamp(15px, 1.4vw, 18px); line-height: 1.7; margin-bottom: 12px; }
+.s3 p em { font-style: italic; color: var(--b); font-weight: 600; }
+
+
+/* ══════════════════════════════════════════════
+   S4 — COME FUNZIONA
+══════════════════════════════════════════════ */
+.s4 { background: var(--v); color: var(--c); }
+.s4 .content {
+  height: 100%; display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 64px;
+}
+.s4 .tag { color: rgba(244,236,216,.55); }
+.s4 h2 {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-style: italic;
+  font-size: clamp(36px, 5.5vw, 78px); line-height: .95;
+  margin-bottom: 36px; color: var(--c);
+}
+.s4 h2 em { color: var(--g); font-style: normal; }
+.s4 .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.s4 .step {
+  background: rgba(244,236,216,.1); border: 1px solid rgba(244,236,216,.12);
+  padding: 28px 24px;
+}
+.s4 .step .cn {
+  font-family: 'Playfair Display', serif; font-size: 60px;
+  font-weight: 900; font-style: italic; color: var(--g);
+  opacity: .6; line-height: 1; margin-bottom: 10px;
+}
+.s4 .step h3 {
+  font-family: 'Playfair Display', serif; font-size: 19px;
+  font-style: italic; font-weight: 700; margin-bottom: 10px; line-height: 1.2;
+}
+.s4 .step p { font-size: 15px; line-height: 1.55; color: rgba(244,236,216,.78); }
+
+
+/* ══════════════════════════════════════════════
+   S5 — METODO 3P
+══════════════════════════════════════════════ */
+.s5 { background: var(--c); color: var(--n); }
+.s5 .content {
+  height: 100%; display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 64px;
+}
+.s5 .tag { color: var(--t); }
+.s5 h2 {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-style: italic;
+  font-size: clamp(34px, 4.8vw, 68px); line-height: .95;
+  margin-bottom: 28px;
+}
+.s5 h2 em { color: var(--t); font-style: normal; }
+.s5 .tre { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.s5 .pcard {
+  padding: 30px 24px; color: var(--c);
+  position: relative; overflow: hidden; min-height: 230px;
+  display: flex; flex-direction: column;
+}
+.s5 .pcard:nth-child(1) { background: var(--b); }
+.s5 .pcard:nth-child(2) { background: var(--v); }
+.s5 .pcard:nth-child(3) { background: var(--t); }
+.s5 .pcard .ghost {
+  position: absolute; top: -18px; right: -6px;
+  font-family: 'Playfair Display', serif;
+  font-size: 130px; font-weight: 900; font-style: italic;
+  color: rgba(244,236,216,.07); line-height: 1; pointer-events: none;
+}
+.s5 .pcard .lbl {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: .25em; opacity: .55; margin-bottom: 14px;
+}
+.s5 .pcard h3 {
+  font-family: 'Playfair Display', serif; font-size: 22px;
+  font-style: italic; font-weight: 700; margin-bottom: 12px; line-height: 1.15;
+}
+.s5 .pcard p { font-size: 15px; line-height: 1.5; opacity: .82; position: relative; z-index: 1; }
+
+
+/* ══════════════════════════════════════════════
+   S6 — UNIVERSITÀ
+══════════════════════════════════════════════ */
+.s6 { background: var(--n); color: var(--c); }
+.s6 .content {
+  height: 100%; display: grid; grid-template-columns: 1fr 1fr;
+  padding: 80px 64px 80px 64px; gap: 48px; align-items: stretch;
+}
+.s6 .sx { display: flex; flex-direction: column; justify-content: center; }
+.s6 .tag { color: var(--t); }
+.s6 h2 {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-style: italic;
+  font-size: clamp(28px, 4vw, 56px); line-height: 1.05; margin-bottom: 22px;
+}
+.s6 h2 em { color: var(--g); font-style: normal; }
+.s6 p { font-size: clamp(14px, 1.4vw, 17px); line-height: 1.7; color: rgba(244,236,216,.78); margin-bottom: 12px; }
+.s6 p strong { color: var(--g); font-weight: 600; }
+.s6 .cards { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+.s6 .ucard {
+  flex: 1; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 20px 22px;
+}
+.s6 .ucard .uphoto {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform .5s ease;
+}
+.s6 .ucard:hover .uphoto { transform: scale(1.04); }
+.s6 .ucard .uvelo {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,18,9,.88) 0%, rgba(26,18,9,.4) 55%, rgba(26,18,9,.15) 100%);
+}
+.s6 .ucard .ulogo {
+  position: absolute; top: 16px; left: 18px; height: 52px;
+  object-fit: contain; z-index: 3;
+  filter: brightness(0) invert(1) drop-shadow(0 1px 4px rgba(0,0,0,.5));
+  opacity: .95;
+}
+.s6 .ucard .utag {
+  position: relative; z-index: 2; color: var(--c);
+  font-family: 'Space Mono', monospace; font-size: 9px;
+  letter-spacing: .22em; opacity: .55; margin-bottom: 5px;
+}
+.s6 .ucard .utitle {
+  position: relative; z-index: 2; color: var(--c);
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 18px; font-weight: 700; line-height: 1.2;
+}
+
+
+/* ══════════════════════════════════════════════
+   S7 — LA PIATTAFORMA
+══════════════════════════════════════════════ */
+.s7 { background: var(--n); color: var(--c); }
+.s7 .bg {
+  position: absolute; inset: 0;
+  background: url('/img/milano.png') center 20% / cover no-repeat;
+  opacity: .12;
+}
+.s7 .content {
+  position: relative; z-index: 10; height: 100%;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 64px;
+}
+.s7 .tag { color: var(--t); }
+.s7 h2 {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-style: italic;
+  font-size: clamp(32px, 4.5vw, 64px); line-height: .95; margin-bottom: 32px;
+}
+.s7 .tre { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.s7 .card {
+  border: 1px solid rgba(244,236,216,.1); padding: 30px 24px;
+  transition: border-color .2s;
+}
+.s7 .card:hover { border-color: var(--t); }
+.s7 .card .cn {
+  font-family: 'Playfair Display', serif; font-size: 58px;
+  font-weight: 900; font-style: italic; color: var(--t);
+  opacity: .45; line-height: 1; margin-bottom: 14px;
+}
+.s7 .card h3 {
+  font-family: 'Playfair Display', serif; font-size: 21px;
+  font-style: italic; font-weight: 700; margin-bottom: 10px; line-height: 1.2;
+}
+.s7 .card p { font-size: 15px; line-height: 1.55; color: rgba(244,236,216,.65); }
+
+
+/* ══════════════════════════════════════════════
+   S8 — LE PERSONE
+══════════════════════════════════════════════ */
+.s8 { background: var(--c); color: var(--n); }
+.s8 .content {
+  height: 100%; display: grid; grid-template-columns: 1fr 1fr; padding: 0;
+}
+.s8 .sx {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 90px 48px;
+}
+.s8 .tag { color: var(--t); }
+.s8 h2 {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-style: italic;
+  font-size: clamp(38px, 5.5vw, 80px); line-height: .95;
+  margin-bottom: 24px;
+}
+.s8 h2 em { color: var(--t); font-style: normal; }
+.s8 p { font-size: clamp(15px, 1.5vw, 18px); line-height: 1.7; color: #3a3028; margin-bottom: 14px; }
+.s8 p em { color: var(--b); font-style: italic; font-weight: 600; }
+.s8 .firma {
+  margin-top: 24px;
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(18px, 2vw, 26px); color: var(--t);
+}
+.s8 .dx { display: grid; grid-template-rows: 1fr 1fr; overflow: hidden; }
+.s8 .tile { position: relative; overflow: hidden; }
+.s8 .tile .tbg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform .5s ease; }
+.s8 .tile:hover .tbg { transform: scale(1.05); }
+.s8 .tile .tvelo { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,18,9,.75) 0%, rgba(26,18,9,.1) 45%, transparent 65%); }
+.s8 .tile .tlbl {
+  position: absolute; bottom: 20px; left: 20px;
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 22px; font-weight: 700; color: var(--c);
+}
+
+
+/* ══════════════════════════════════════════════
+   S9 — CONTATTI
+══════════════════════════════════════════════ */
+.s9 { background: var(--n); }
+.s9 .bg {
+  position: absolute; inset: 0;
+  background: url('/img/luce_italiana.png') center center / cover no-repeat;
+  opacity: .35;
+}
+.s9 .overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(26,18,9,.55), rgba(26,18,9,.88));
+}
+.s9 .content {
+  position: relative; z-index: 10; height: 100%;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 80px 48px; color: var(--c);
+}
+.s9 img.logo { height: clamp(56px, 9vw, 100px); width: auto; filter: brightness(0) invert(1); margin-bottom: 16px; }
+.s9 .bande { display: flex; height: 6px; width: 280px; margin: 0 auto 16px; }
+.s9 .bande b { flex: 1; }
+.s9 .bande b:nth-child(1){background:var(--v)}
+.s9 .bande b:nth-child(2){background:var(--t)}
+.s9 .bande b:nth-child(3){background:var(--b)}
+.s9 .bande b:nth-child(4){background:var(--g)}
+.s9 .claim {
+  font-family: 'Space Mono', monospace; font-size: 12px;
+  letter-spacing: .35em; text-transform: uppercase;
+  color: rgba(244,236,216,.4); margin-bottom: 36px;
+}
+.s9 .chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 28px; }
+.s9 .chip {
+  padding: 10px 22px; border: 1px solid rgba(244,236,216,.2); border-radius: 30px;
+  font-family: 'Space Mono', monospace; font-size: 12px; color: var(--c);
+}
+.s9 .chip a { color: inherit; text-decoration: none; }
+.s9 .chip.hi { background: var(--t); border-color: var(--t); }
+.s9 .tagline {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(20px, 2.8vw, 34px); color: rgba(244,236,216,.5);
+}
+
+/* ── PRINT ────────────────────────────────── */
+@media print {
+  @page { size: 297mm 167mm landscape; margin: 0; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+  html, body { overflow: visible !important; height: auto !important; }
+  .hdr, .strip, .nav, .dots, .prog { display: none !important; }
+  .palco { position: static !important; overflow: visible !important; }
+  .slide {
+    position: static !important; opacity: 1 !important; visibility: visible !important;
+    page-break-after: always; break-after: page;
+    height: 167mm; width: 297mm; overflow: hidden;
+    display: flex !important;
+  }
+  .tbg, .bg, .uphoto { background-attachment: initial !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER FISSO -->
+<header class="hdr dark" id="hdr">
+  <img class="logo" src="/img/logo.png" alt="UltraRem" />
+  <div class="sezione" id="sezNome">Presentazione</div>
+  <div class="cont" id="sezCont">01 / 09</div>
+</header>
+<div class="strip"></div>
+
+<!-- SLIDES -->
+<div class="palco">
+
+  <!-- S1 COPERTINA -->
+  <section class="slide s1 on" data-theme="dark" data-nome="Presentazione" data-nohdr="true">
+    <div class="bg"></div>
+    <div class="overlay"></div>
+    <div class="s1-center">
+      <img class="s1-brand-logo" src="/img/logo-white.png" alt="UltraRem" />
+      <div class="s1-logo-costruito">
+        <div class="s1-lc-ultra">Ultra</div>
+        <div class="s1-lc-mid">
+          <div class="s1-lc-stripes">
+            <b style="background:#3d7a6b"></b>
+            <b style="background:#8b2e2e"></b>
+            <b style="background:#c4522a"></b>
+            <b style="background:#e8a820"></b>
+          </div>
+          <div class="s1-lc-rem">Rem</div>
+        </div>
+        <div class="s1-lc-claim">Your Memory Is You</div>
+      </div>
+      <div class="s1-anno">2026</div>
+    </div>
+  </section>
+
+  <!-- S2 IL PERCHÉ -->
+  <section class="slide s2" data-theme="dark" data-nome="La premessa">
+    <div class="bg"></div>
+    <div class="fade"></div>
+    <div class="content">
+      <div class="tag" style="color:var(--t)">La premessa</div>
+      <blockquote>«Molte sono le persone che amiamo alle quali, un giorno, non potremo più fare domande.»</blockquote>
+      <p>La perdita non è solo il passato che finisce: è il <strong>presente che diventa silenzioso</strong>.</p>
+      <p>UltraRem nasce per evitare che quel dialogo si perda. Parte da ciò che una persona ha espresso in vita — valori, linguaggio, modo di ragionare — e lo restituisce fedelmente. <strong>Non inventa. Non simula.</strong></p>
+    </div>
+  </section>
+
+  <!-- S3 IL CORPUS -->
+  <section class="slide s3" data-theme="light" data-nome="Il corpus">
+    <div class="watermark">C</div>
+    <div class="content">
+      <div class="tag">Il fondamento</div>
+      <h2>Il <span>corpus</span><br/>ci definisce.</h2>
+      <div class="cols">
+        <div>
+          <p>Quando parole e scritti diventano un <em>corpus</em> digitale, non restano semplici tracce del passato. Diventano una presenza capace di esistere in altri luoghi e per altre persone, creando relazioni indirette.</p>
+          <p>Un professore può insegnare a distanza, un allenatore può guidare una squadra, un genitore può orientare un figlio anche nell'assenza.</p>
+        </div>
+        <div>
+          <p>Un'intelligenza artificiale rende possibile tutto questo: parte dal <em>corpus</em>, un insieme strutturato dei nostri pensieri, del nostro modo di parlare, di interpretare il mondo.</p>
+          <p>Un sapere che include ciò che è pubblico e ciò che è intimo, ciò che è condiviso con tutti e ciò che è destinato solo a poche persone fidate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 COME FUNZIONA -->
+  <section class="slide s4" data-theme="dark" data-nome="Come funziona">
+    <div class="content">
+      <div class="tag">Il metodo</div>
+      <h2>Come<br/><em>funziona</em></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="cn">01</div>
+          <h3>L'intervista strutturata</h3>
+          <p>Un dialogo guidato da professionisti mentre la persona è viva e consapevole. Non una registrazione estemporanea — un'opera di costruzione consapevole.</p>
+        </div>
+        <div class="step">
+          <div class="cn">02</div>
+          <h3>La costruzione del corpus</h3>
+          <p>Pensiero, linguaggio, valori e modo di interpretare il mondo vengono strutturati in un modello identitario unico e irripetibile.</p>
+        </div>
+        <div class="step">
+          <div class="cn">03</div>
+          <h3>La restituzione fedele</h3>
+          <p>L'IA restituisce una voce autentica. Senza inventare, senza interpretare arbitrariamente. Fedele all'originale per definizione.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 METODO 3P -->
+  <section class="slide s5" data-theme="light" data-nome="Il metodo 3P">
+    <div class="content">
+      <div class="tag">L'architettura scientifica</div>
+      <h2>Il metodo delle <em>tre P</em></h2>
+      <div class="tre">
+        <div class="pcard">
+          <div class="ghost">P</div>
+          <div class="lbl">01 — Fondamento</div>
+          <h3>Profilazione psicologica</h3>
+          <p>Identità stabile, costruita e validata prima ancora di qualsiasi interazione. Non generata al volo. La base di tutto.</p>
+        </div>
+        <div class="pcard">
+          <div class="ghost">P</div>
+          <div class="lbl">02 — Linguaggio</div>
+          <h3>Protocollo linguistico</h3>
+          <p>Voce, stile e valori coerenti con la persona reale. Personale e riconoscibile. Mai generico, mai standardizzato.</p>
+        </div>
+        <div class="pcard">
+          <div class="ghost">P</div>
+          <div class="lbl">03 — Tutela</div>
+          <h3>Protezione etica</h3>
+          <p>Sicurezza, filtri, tutela dei terzi. Il sistema conosce i propri limiti e li rispetta. Sempre, senza eccezioni.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 UNIVERSITÀ -->
+  <section class="slide s6" data-theme="dark" data-nome="La validazione scientifica">
+    <div class="content">
+      <div class="sx">
+        <div class="tag">La validazione scientifica</div>
+        <h2>Il perimetro<br/><em>scientifico</em></h2>
+        <p>La collaborazione con le università non serve a ottenere una certificazione, ma a definire il perimetro corretto: i confini etici, cognitivi e relazionali del sistema.</p>
+        <p><strong>Cambridge</strong> distingue tra simulazione e restituzione fedele del pensiero, tra imitazione e identità.</p>
+        <p><strong>Padova</strong> garantisce che l'interazione resti rispettosa, non invasiva, e sempre governata da criteri psicologici robusti.</p>
+      </div>
+      <div class="dx">
+        <div class="cards">
+          <div class="ucard">
+            <div class="uphoto" style="background-image:url('/img/cambridge_foto.png'); background-position:center 22%;"></div>
+            <div class="uvelo"></div>
+            <img class="ulogo" src="/img/cambridge.png" alt="Cambridge" />
+            <div class="utag">CAMBRIDGE, UK · PIANO ETICO</div>
+            <div class="utitle">University of Cambridge</div>
+          </div>
+          <div class="ucard">
+            <div class="uphoto" style="background-image:url('/img/padova_foto.png'); background-position:center 38%;"></div>
+            <div class="uvelo"></div>
+            <img class="ulogo" src="/img/padova.png" alt="Padova" />
+            <div class="utag">PADOVA, ITALIA · PSICOLOGIA</div>
+            <div class="utitle">Università degli Studi di Padova</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7 LA PIATTAFORMA -->
+  <section class="slide s7" data-theme="dark" data-nome="La piattaforma">
+    <div class="bg"></div>
+    <div class="content">
+      <div class="tag">La piattaforma</div>
+      <h2>Cosa fa la piattaforma</h2>
+      <div class="tre">
+        <div class="card">
+          <div class="cn">01</div>
+          <h3>Raccoglie le identità digitali</h3>
+          <p>Un archivio sicuro, strutturato e accessibile. Ogni identità è custodita con cura, rispetto e piena riservatezza.</p>
+        </div>
+        <div class="card">
+          <div class="cn">02</div>
+          <h3>Le rende interattive e certificate</h3>
+          <p>Dialogo autentico e voce fedele. Ogni interazione è governata, tracciabile e verificabile nel tempo.</p>
+        </div>
+        <div class="card">
+          <div class="cn">03</div>
+          <h3>Protegge da interazioni pericolose</h3>
+          <p>Filtri etici, limiti chiari e intrasgressibili. Il sistema conosce i propri confini. E li rispetta sempre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S8 LE PERSONE -->
+  <section class="slide s8" data-theme="light" data-nome="Dal corpus alle persone">
+    <div class="content">
+      <div class="sx">
+        <div class="tag">Dal corpus alle persone</div>
+        <h2>Per chi<br/><em>resta</em></h2>
+        <p>Il corpus non serve ai morti. Serve ai <em>vivi</em>. A chi ha perso il dialogo con qualcuno che amava, o teme di perderlo.</p>
+        <p>Serve anche a chi è ancora qui e vuole lasciare qualcosa di sé — non oggetti, non soldi: <em>pensieri</em>, risposte, presenza.</p>
+        <div class="firma">«Fatto da vivi, per i vivi.»</div>
+      </div>
+      <div class="dx">
+        <div class="tile">
+          <div class="tbg" style="background-image:url('/img/anni80.png'); background-position:center top;"></div>
+          <div class="tvelo"></div>
+          <div class="tlbl">Chi rimane</div>
+        </div>
+        <div class="tile">
+          <div class="tbg" style="background-image:url('/img/cortina.png'); background-position:center 15%;"></div>
+          <div class="tvelo"></div>
+          <div class="tlbl">Chi sceglie di restare</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S9 CONTATTI -->
+  <section class="slide s9" data-theme="dark" data-nome="Contatti">
+    <div class="bg"></div>
+    <div class="overlay"></div>
+    <div class="content">
+      <img class="logo" src="/img/logo.png" alt="UltraRem" />
+      <div class="bande"><b></b><b></b><b></b><b></b></div>
+      <div class="claim">Your Memory Is You</div>
+      <div class="chips">
+        <div class="chip hi"><a href="https://ultrarem.it">ultrarem.it</a></div>
+        <div class="chip"><a href="mailto:info@ultrarem.it">info@ultrarem.it</a></div>
+        <div class="chip">+39 010 807 8800</div>
+        <div class="chip">Viale Cassala 30 · Milano</div>
+      </div>
+      <div class="tagline">«Fatto da vivi, per i vivi.»</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- NAVIGAZIONE -->
+<nav class="nav" id="nav">
+  <button class="dk" id="btnP" disabled>←</button>
+  <button class="dk" id="btnN">→</button>
+  <button class="dk" id="btnPdf" title="Stampa / PDF" style="font-size:14px;">⬇</button>
+</nav>
+<div class="dots" id="dots"></div>
+<div class="prog" id="prog" style="width:11.1%"></div>
+
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const N = slides.length;
+  const hdr = document.getElementById('hdr');
+  const sezNome = document.getElementById('sezNome');
+  const sezCont = document.getElementById('sezCont');
+  const btnP = document.getElementById('btnP');
+  const btnN = document.getElementById('btnN');
+  const btnPdf = document.getElementById('btnPdf');
+  const dotsEl = document.getElementById('dots');
+  const prog = document.getElementById('prog');
+  const strip = document.querySelector('.strip');
+  let idx = 0;
+
+  function setHdr(slideEl){
+    const hide = slideEl.dataset.nohdr === 'true';
+    hdr.style.display = hide ? 'none' : '';
+    strip.style.display = hide ? 'none' : '';
+  }
+  setHdr(slides[0]); // hide on first slide at load
+
+  // Build dots
+  slides.forEach((_,i)=>{
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===0?' ok':'');
+    d.style.background = i===0 ? 'var(--t)' : 'rgba(255,255,255,.3)';
+    d.addEventListener('click', ()=>go(i));
+    dotsEl.appendChild(d);
+  });
+
+  function go(i){
+    if(i<0||i>=N) return;
+    slides[idx].classList.remove('on');
+    idx = i;
+    slides[idx].classList.add('on');
+
+    const theme = slides[idx].dataset.theme || 'dark';
+    const nome  = slides[idx].dataset.nome  || '';
+    const isLight = theme === 'light';
+
+    setHdr(slides[idx]);
+    hdr.className = 'hdr ' + theme;
+    sezNome.textContent = nome;
+    sezCont.textContent = String(idx+1).padStart(2,'0') + ' / ' + String(N).padStart(2,'0');
+
+    // Nav buttons
+    [btnP, btnN, btnPdf].forEach(b=>{
+      b.className = isLight ? 'lt' : 'dk';
+      if(b===btnPdf) b.style.fontSize='14px';
+    });
+
+    // Dots
+    Array.from(dotsEl.children).forEach((d,j)=>{
+      d.classList.toggle('ok', j===idx);
+      d.style.background = j===idx ? 'var(--t)' : (isLight ? 'rgba(26,18,9,.2)' : 'rgba(255,255,255,.28)');
+    });
+
+    btnP.disabled = idx===0;
+    btnN.disabled = idx===N-1;
+    prog.style.width = ((idx+1)/N*100)+'%';
+  }
+
+  btnP.addEventListener('click', ()=>go(idx-1));
+  btnN.addEventListener('click', ()=>go(idx+1));
+  btnPdf.addEventListener('click', async () => {
+    if (!window.jspdf || !window.html2canvas) { window.print(); return; }
+    btnPdf.disabled = true;
+    const orig = btnPdf.innerHTML;
+    btnPdf.innerHTML = '⏳';
+    try {
+      const { jsPDF } = window.jspdf;
+      const palcoEl = document.querySelector('.palco');
+      const navEl   = document.getElementById('nav');
+      const dotsEl2 = document.getElementById('dots');
+      const progEl  = document.getElementById('prog');
+      const savedIdx = idx;
+      // Nascondi chrome UI durante la cattura
+      [navEl, dotsEl2, progEl, strip].forEach(e => e && (e.style.display = 'none'));
+      // Determina dimensioni reali delle slide
+      const PW = window.innerWidth, PH = window.innerHeight;
+      const doc = new jsPDF({ orientation: 'l', unit: 'px', format: [PW, PH], hotfixes: ['px_scaling'] });
+      for (let i = 0; i < N; i++) {
+        // Mostra slide i
+        slides.forEach((s, j) => {
+          s.style.opacity      = j === i ? '1' : '0';
+          s.style.visibility   = j === i ? 'visible' : 'hidden';
+        });
+        const noH = slides[i].dataset.nohdr === 'true';
+        hdr.style.display = noH ? 'none' : '';
+        // Rendi palco non-fixed per html2canvas
+        const oldStyle = palcoEl.style.cssText;
+        palcoEl.style.cssText = `position:relative;width:${PW}px;height:${PH}px;overflow:hidden;`;
+        document.body.style.cssText = 'margin:0;padding:0;overflow:hidden;background:#1a1209;';
+        await new Promise(r => setTimeout(r, 250));
+        const canvas = await html2canvas(palcoEl, {
+          scale: 2, useCORS: true, allowTaint: true,
+          logging: false, width: PW, height: PH,
+          backgroundColor: '#1a1209',
+        });
+        palcoEl.style.cssText = oldStyle;
+        document.body.style.cssText = '';
+        if (i > 0) doc.addPage([PW, PH], 'l');
+        doc.addImage(canvas.toDataURL('image/jpeg', 0.93), 'JPEG', 0, 0, PW, PH);
+      }
+      // Ripristina
+      [navEl, dotsEl2, progEl, strip].forEach(e => e && (e.style.display = ''));
+      slides.forEach(s => { s.style.opacity = ''; s.style.visibility = ''; });
+      go(savedIdx);
+      doc.save('UltraRem-Presentazione-2026.pdf');
+    } catch(err) {
+      console.error('PDF error:', err);
+      window.print();
+    }
+    btnPdf.disabled = false;
+    btnPdf.innerHTML = orig;
+  });
+
+  document.addEventListener('keydown', e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(idx+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(idx-1);}
+    else if(e.key==='Home') go(0);
+    else if(e.key==='End')  go(N-1);
+  });
+
+  let tx=null;
+  document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+  document.addEventListener('touchend',e=>{
+    if(tx===null) return;
+    const dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>50) go(idx+(dx<0?1:-1));
+    tx=null;
+  },{passive:true});
+
+  go(0);
+
+  // Auto-genera PDF se ?print=1
+  if(new URLSearchParams(location.search).get('print')==='1'){
+    (async()=>{
+      let n=0;
+      while((!window.jspdf||!window.html2canvas)&&n++<30) await new Promise(r=>setTimeout(r,300));
+      btnPdf.click();
+    })();
+  }
+})();
+</script>
+</body>
+</html>
