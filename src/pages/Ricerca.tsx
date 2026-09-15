@@ -4,8 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { useLang } from "@/lib/i18n";
 import cambridgeImg from "@assets/King's_College_al_tramonto_1775509591809.png";
-import padovaImg from "@assets/Aula_Magna_dell'Università_di_Padova_1775509591808.png";
-
+import padovaImg from "@assets/Aula_Magna_Universita_di_Padova_1775509591808.png";
 const V = "#3d7a6b", BX = "#8b2e2e", TC = "#c4522a", GI = "#e8a820", NE = "#1a1209", CR = "#f5f0e8", CS = "#ede5d4", GC = "#8a7d6b";
 
 export default function Ricerca() {
