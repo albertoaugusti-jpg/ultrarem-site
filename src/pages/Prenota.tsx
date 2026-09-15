@@ -6,8 +6,7 @@ import { useLang } from "@/lib/i18n";
 
 const V = "#3d7a6b", BX = "#8b2e2e", TC = "#c4522a", GI = "#e8a820", NE = "#1a1209", CR = "#f5f0e8", CS = "#ede5d4", GC = "#8a7d6b";
 
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/INCOLLA_QUI_IL_TUO_URL/exec";
-
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbynuX40ML4k3Wt4DGDw4oTpk7qFyKfZXg-iJUo0aYx7LBJHTOvmCvYUDGamYu0emBffOA/exec";
 const fieldStyle: React.CSSProperties = {
   background: CS, border: `1px solid rgba(26,18,9,0.2)`, borderBottom: `2px solid ${NE}`,
   padding: "1rem 1.2rem", fontFamily: "'Cormorant Garamond', serif", fontSize: "1.1rem",
