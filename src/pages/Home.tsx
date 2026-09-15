@@ -12,8 +12,8 @@ import manifestoImgUomo from "@assets/Uomo_elegante_tra_luci_e_ombreggiature_177
 import caterinaImg from "@assets/Album_fotografico_vintage_su_legno_rustico_1775474333993.png";
 
 import statuaCaterinaImg from "@assets/Statua_di_donna_anziana_in_cimitero_1775510016767.png";
-import padovaImg from "@assets/Aula_Magna_dell'Università_di_Padova_1775509591808.png";
-import cambridgeImg from "@assets/King's_College_al_tramonto_1775509591809.png";
+import padovaImg from "@assets/Aula_Magna_Universita_di_Padova_1775509591808.png";
+  import cambridgeImg from "@assets/King's_College_al_tramonto_1775509591809.png";
 
 export default function Home() {
   const { lang } = useLang();
