@@ -158,24 +158,11 @@ export default function Prenota() {
           {/* Prezzi mini */}
           <div>
             <div style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", color: TC, marginBottom: "0.5rem" }}>
-              {lang === "en" ? "Thematic minipacks" : "Minipack tematici"}
+              {lang === "en" ? "The three levels · one-off journey" : "I tre livelli · percorso una tantum"}
             </div>
             {[
-              { nome: lang === "en" ? "A Memory" : "Un Ricordo", prezzo: "€1.200" },
-              { nome: lang === "en" ? "Important Stories" : "Storie Importanti", prezzo: "€2.000" },
-              { nome: lang === "en" ? "Great Events to Pass On" : "Grandi Eventi da Tramandare", prezzo: "€2.500" },
-            ].map((p, i) => (
-              <div key={i} className="flex justify-between items-center" style={{ padding: "0.8rem 1rem", border: `1px solid rgba(26,18,9,0.15)`, marginBottom: "0.5rem" }}>
-                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.08em", textTransform: "uppercase" }}>{p.nome}</span>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: TC }}>{p.prezzo}</span>
-              </div>
-            ))}
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", color: TC, margin: "1.2rem 0 0.5rem" }}>
-              {lang === "en" ? "Full packages" : "Pacchetti completi"}
-            </div>
-            {[
-              { nome: "Essential", prezzo: "€5.000" },
-              { nome: "Heritage", prezzo: "€10.000" },
+              { nome: "Base", prezzo: "€5.000" },
+              { nome: "Presence", prezzo: "€10.000" },
               { nome: "Legacy", prezzo: "€20.000" },
             ].map((p, i) => (
               <div key={i} className="flex justify-between items-center" style={{ padding: "0.8rem 1rem", border: `1px solid rgba(26,18,9,0.15)`, marginBottom: "0.5rem" }}>
@@ -254,14 +241,9 @@ export default function Prenota() {
               <label style={labelStyle}>{lang === "en" ? "Package of interest" : "Pacchetto di interesse"}</label>
               <select name="pacchetto" style={selectExtra} onFocus={e => (e.target.style.borderColor = TC)} onBlur={e => (e.target.style.borderColor = NE)}>
                 <option value="">{lang === "en" ? "Not sure yet..." : "Non so ancora..."}</option>
-                <optgroup label={lang === "en" ? "Thematic minipacks" : "Minipack tematici"}>
-                  <option value="Un Ricordo">{lang === "en" ? "A Memory" : "Un Ricordo"} — €1.200</option>
-                  <option value="Storie Importanti">{lang === "en" ? "Important Stories" : "Storie Importanti"} — €2.000</option>
-                  <option value="Grandi Eventi da Tramandare">{lang === "en" ? "Great Events to Pass On" : "Grandi Eventi da Tramandare"} — €2.500</option>
-                </optgroup>
-                <optgroup label={lang === "en" ? "Full packages" : "Pacchetti completi"}>
-                  <option value="Essential">Essential — €5.000</option>
-                  <option value="Heritage">Heritage — €10.000</option>
+                <optgroup label={lang === "en" ? "The three levels" : "I tre livelli"}>
+                  <option value="Base">Base — €5.000</option>
+                  <option value="Presence">Presence — €10.000</option>
                   <option value="Legacy">Legacy — €20.000</option>
                 </optgroup>
               </select>
