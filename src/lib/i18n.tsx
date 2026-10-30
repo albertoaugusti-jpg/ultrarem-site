@@ -1,6 +1,13 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { it, type Dict } from "./locales/it";
+import { en } from "./locales/en";
+import { fr } from "./locales/fr";
+import { de } from "./locales/de";
 
-export type Lang = "it" | "en";
+export type Lang = "it" | "en" | "fr" | "de";
+export const LANGS: Lang[] = ["it", "en", "fr", "de"];
+
+const dicts: Record<Lang, Dict> = { it, en, fr, de };
 
 interface LangCtx {
   lang: Lang;
@@ -12,11 +19,16 @@ const LangContext = createContext<LangCtx>({ lang: "it", setLang: () => {} });
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>(() => {
     try {
-      return (localStorage.getItem("ultrarem-lang") as Lang) || "it";
+      const stored = localStorage.getItem("ultrarem-lang") as Lang | null;
+      return stored && LANGS.includes(stored) ? stored : "it";
     } catch {
       return "it";
     }
   });
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const handleSet = (l: Lang) => {
     try {
@@ -30,4 +42,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
 export function useLang() {
   return useContext(LangContext);
+}
+
+// Dizionario della lingua corrente: d.nav.project, d.footer.tagline, ...
+export function useDict(): Dict {
+  const { lang } = useLang();
+  return dicts[lang];
 }
