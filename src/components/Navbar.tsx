@@ -1,32 +1,23 @@
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
 import logoPath from "@assets/Logo_UltraRem-removebg-preview_1775473927277.png";
-import { useLang } from "@/lib/i18n";
+import { useLang, useDict, LANGS } from "@/lib/i18n";
 
 export function Navbar() {
   const [location] = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const { lang, setLang } = useLang();
+  const d = useDict();
 
-  const navLinks = lang === "en"
-    ? [
-        { href: "/", label: "Home" },
-        { href: "/il-progetto", label: "The Project" },
-        { href: "/per-chi", label: "Who It's For" },
-        { href: "/come-funziona", label: "How It Works" },
-        { href: "/ricerca", label: "Research" },
-        { href: "/demo", label: "Demo" },
-        { href: "/contatti", label: "Contact" },
-      ]
-    : [
-        { href: "/", label: "Home" },
-        { href: "/il-progetto", label: "Il Progetto" },
-        { href: "/per-chi", label: "Per Chi" },
-        { href: "/come-funziona", label: "Come Funziona" },
-        { href: "/ricerca", label: "Ricerca" },
-        { href: "/demo", label: "Demo" },
-        { href: "/contatti", label: "Contatti" },
-      ];
+  const navLinks = [
+    { href: "/", label: d.nav.home },
+    { href: "/il-progetto", label: d.nav.project },
+    { href: "/per-chi", label: d.nav.forWho },
+    { href: "/come-funziona", label: d.nav.how },
+    { href: "/ricerca", label: d.nav.research },
+    { href: "/demo", label: d.nav.demo },
+    { href: "/contatti", label: d.nav.contact },
+  ];
 
   const LangToggle = ({ mobile = false }: { mobile?: boolean }) => (
     <div style={{
@@ -35,7 +26,7 @@ export function Navbar() {
       overflow: "hidden",
       ...(mobile ? { margin: "0.5rem 2rem" } : {}),
     }}>
-      {(["it", "en"] as const).map(l => (
+      {LANGS.map(l => (
         <button
           key={l}
           onClick={() => setLang(l)}
@@ -102,7 +93,7 @@ export function Navbar() {
         }}
           onMouseOver={e => { e.currentTarget.style.color = "#c4522a"; e.currentTarget.style.borderColor = "#c4522a"; }}
           onMouseOut={e => { e.currentTarget.style.color = "#8a7d6b"; e.currentTarget.style.borderColor = "#8a7d6b"; }}>
-          {lang === "en" ? "Slides ↗" : "Presentazione ↗"}
+          {d.nav.slides}
         </a>
         <Link href="/prenota">
           <span className="cursor-pointer transition-colors" style={{
@@ -116,7 +107,7 @@ export function Navbar() {
           }}
             onMouseOver={e => (e.currentTarget.style.background = "#c4522a")}
             onMouseOut={e => (e.currentTarget.style.background = "#1a1209")}>
-            {lang === "en" ? "Book a Demo" : "Prenota Demo"}
+            {d.nav.book}
           </span>
         </Link>
       </div>
@@ -141,7 +132,7 @@ export function Navbar() {
           </div>
           <Link href="/prenota">
             <div className="px-8 py-4 cursor-pointer" style={{ background: "#1a1209", fontFamily: "'Space Mono', monospace", fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#f5f0e8" }} onClick={() => setMenuOpen(false)}>
-              {lang === "en" ? "Book a Demo →" : "Prenota Demo →"}
+              {d.nav.bookArrow}
             </div>
           </Link>
         </div>
