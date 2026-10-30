@@ -266,11 +266,6 @@ export default function Ricerca() {
             onMouseOut={e => { e.currentTarget.style.background = CR; e.currentTarget.style.borderColor = CR; e.currentTarget.style.color = NE; }}>
             {lang === "en" ? "Book your demo →" : "Prenota la tua demo →"}
           </span></Link>
-          <Link href="/demo"><span className="cursor-pointer inline-block" style={{ background: "transparent", color: CR, padding: "1.1rem 2.2rem", fontFamily: "'Space Mono', monospace", fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase", border: `2px solid rgba(245,240,232,0.4)` }}
-            onMouseOver={e => (e.currentTarget.style.background = "rgba(245,240,232,0.1)")}
-            onMouseOut={e => (e.currentTarget.style.background = "transparent")}>
-            {lang === "en" ? "See demos" : "Vedi le demo"}
-          </span></Link>
         </div>
       </div>
 
