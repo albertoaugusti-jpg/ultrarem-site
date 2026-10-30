@@ -15,7 +15,7 @@ export function Navbar() {
     { href: "/per-chi", label: d.nav.forWho },
     { href: "/come-funziona", label: d.nav.how },
     { href: "/ricerca", label: d.nav.research },
-    { href: "/demo", label: d.nav.demo },
+    { href: "/incontra", label: d.nav.meet },
     { href: "/contatti", label: d.nav.contact },
   ];
 
