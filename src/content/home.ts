@@ -11,12 +11,12 @@ export const cover = {
 };
 
 export const index = [
-  { k: "Storie", t: "Chi si racconta, e chi ascolta" },
-  { k: "Dibattiti", t: "La memoria è un diritto?" },
-  { k: "Ricerca", t: "Il sé digitale postumo" },
-  { k: "Cultura", t: "La vita, la morte, il ricordo" },
-  { k: "I percorsi", t: "Dal Diario di bordo ai Capitani" },
-  { k: "La Carta", t: "27 articoli, in chiaro" },
+  { k: "Storie", t: "Chi si racconta, e chi ascolta", href: "/storie" },
+  { k: "Dibattiti", t: "La memoria è un diritto?", href: "/storie" },
+  { k: "Ricerca", t: "Il sé digitale postumo", href: "/ricerca" },
+  { k: "Cultura", t: "La vita, la morte, il ricordo", href: "/storie" },
+  { k: "I percorsi", t: "Dal Diario di bordo ai Capitani", href: "/come-funziona" },
+  { k: "La Carta", t: "Ciò che promettiamo, in chiaro", href: "/il-progetto" },
 ];
 
 export const reads = [
@@ -68,7 +68,7 @@ export const who = {
   title: "Non siamo quattro che ci provano.",
   intro: "Un servizio che custodisce la memoria di una persona si giudica anche da chi lo costruisce. Alberto Augusti e Bruno Legger lavorano alla società. Gli altri tre soci non hanno un ruolo operativo, e proprio per questo la loro scelta di esserci pesa: vengono da energia, pagamenti e grandi sistemi informativi, hanno visto molti progetti e hanno deciso di credere in questo.",
   founders: [
-    { ini: "AA", name: "Alberto Augusti", role: "Amministratore unico · operativo a tempo pieno", text: "Imprenditore genovese, laureato in Scienze internazionali e diplomatiche. Guida la società a tempo pieno.", col: "#c8102e" },
+    { ini: "AA", name: "Alberto Augusti", role: "Amministratore unico · operativo", text: "Imprenditore genovese, laureato in Scienze internazionali e diplomatiche. Guida la società.", col: "#c8102e" },
     { ini: "BL", name: "Bruno Massimo Legger", role: "Responsabile amministrativo · operativo", text: "Trent'anni di gestione d'impresa tra cosmetica, moda e utilities, da Shiseido ad AEM.", col: "#3d7a6b" },
     { ini: "MD", name: "Massimo Del Vecchio", role: "Socio", text: "Executive Director in Engineering Ingegneria Informatica; in precedenza CIO e direttore digitale in Ericsson, Ooredoo e Poste Italiane.", col: "#8b2e2e" },
     { ini: "GT", name: "Giuseppe Teatino", role: "Socio", text: "Product designer. Ha guidato la user experience in Nexi e PostePay ed è cofondatore di NeN.it e TaDa.", col: "#c4522a" },
