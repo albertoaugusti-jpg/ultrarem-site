@@ -7,6 +7,8 @@ import PerChi from "@/pages/PerChi";
 import ComeFunziona from "@/pages/ComeFunziona";
 import Ricerca from "@/pages/Ricerca";
 import Incontra from "@/pages/Incontra";
+import Storie from "@/pages/Storie";
+import Fondatori from "@/pages/Fondatori";
 import Contatti from "@/pages/Contatti";
 import Prenota from "@/pages/Prenota";
 
@@ -18,6 +20,8 @@ function Router() {
       <Route path="/per-chi" component={PerChi} />
       <Route path="/come-funziona" component={ComeFunziona} />
       <Route path="/ricerca" component={Ricerca} />
+      <Route path="/storie" component={Storie} />
+      <Route path="/fondatori" component={Fondatori} />
       <Route path="/incontra" component={Incontra} />
       <Route path="/contatti" component={Contatti} />
       <Route path="/prenota" component={Prenota} />
