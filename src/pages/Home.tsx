@@ -1,443 +1,252 @@
+import { useEffect } from "react";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { useLang } from "@/lib/i18n";
+import { useLang, LANGS } from "@/lib/i18n";
+import { cover, index, reads, ladder, story, research, who, charter } from "@/content/home";
 
-import logoPath from "@assets/Logo_UltraRem-removebg-preview_1775473927277.png";
-import heroImg from "@assets/Eleganza_milanese_al_tramonto_1775476267981.png";
-import manifestoImgHands from "@assets/Festa_di_compleanno_di_Antonio_1775587556936.png";
-import manifestoImgUomo from "@assets/Uomo_elegante_tra_luci_e_ombreggiature_1775476267982.png";
-import caterinaImg from "@assets/Album_fotografico_vintage_su_legno_rustico_1775474333993.png";
+const RED = "#c8102e", INK = "#111", GREY = "#6b6b6b", PALE = "#f2f2f2";
+const NARROW = "'Archivo Narrow', sans-serif";
+const BLACK = "'Archivo Black', sans-serif";
+const BODONI = "'Bodoni Moda', serif";
+const SERIF = "'Source Serif 4', serif";
+const STRIPES = ["#3d7a6b", "#c8102e", "#c4522a", "#e8a820"];
 
-import statuaCaterinaImg from "@assets/Statua_di_donna_anziana_in_cimitero_1775510016767.png";
-import padovaImg from "@assets/Aula_Magna_Universita_di_Padova_1775509591808.png";
-  import cambridgeImg from "@assets/King's_College_al_tramonto_1775509591809.png";
+const kicker = (color = RED): React.CSSProperties => ({ fontFamily: NARROW, fontWeight: 700, fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color });
+const h2: React.CSSProperties = { margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(30px,4.5vw,44px)", lineHeight: 1.05 };
+
+function Stripes({ h = 6 }: { h?: number }) {
+  return <div style={{ display: "flex", height: h }}>{STRIPES.map(c => <div key={c} style={{ flex: 1, background: c }} />)}</div>;
+}
+
+function Photo({ name, ar, pos = "center", bottom = false }: { name: string; ar: string; pos?: string; bottom?: boolean }) {
+  return (
+    <div style={{ aspectRatio: ar, overflow: "hidden", border: `1px solid ${INK}`, borderWidth: bottom ? "0 0 2px 0" : 1, boxSizing: "border-box" }}>
+      <img src={`/img/rivista/${name}.jpg`} alt="Immagine illustrativa" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: pos, display: "block" }} />
+    </div>
+  );
+}
+
+// Segnaposto elegante in attesa della foto vera (TBP)
+function Tbp({ ini, ar, col }: { ini: string; ar: string; col: string }) {
+  return (
+    <div style={{ aspectRatio: ar, position: "relative", overflow: "hidden", border: `1px solid ${INK}`, boxSizing: "border-box", background: col, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 30% 20%,rgba(255,255,255,0.28),rgba(0,0,0,0.35))" }} />
+      <div style={{ position: "relative", fontFamily: BLACK, fontSize: 72, letterSpacing: -3, color: "#fff", textShadow: "3px 3px 0 rgba(0,0,0,0.35)" }}>{ini}</div>
+      <div style={{ position: "absolute", left: 0, right: 0, bottom: 0 }}>
+        <div style={{ textAlign: "center", fontFamily: NARROW, fontWeight: 700, fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "#fff", padding: "4px 0", background: "rgba(0,0,0,0.45)" }}>Foto TBP</div>
+        <Stripes />
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
-  const { lang } = useLang();
+  const { lang, setLang } = useLang();
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-  };
+  useEffect(() => {
+    const id = "rivista-fonts";
+    if (document.getElementById(id)) return;
+    const l = document.createElement("link");
+    l.id = id; l.rel = "stylesheet";
+    l.href = "https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo+Narrow:wght@500;700&family=Bodoni+Moda:ital,opsz,wght@0,6..96,700;0,6..96,900;1,6..96,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap";
+    document.head.appendChild(l);
+  }, []);
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
-  };
-
-  const StripeBar = ({ reverse = false }) => {
-    const colors = ["#3d7a6b", "#8b2e2e", "#c4522a", "#e8a820"];
-    const displayColors = reverse ? [...colors].reverse() : colors;
-    return (
-      <div className="flex h-[5px] w-full" data-testid={`stripe-bar${reverse ? '-reverse' : ''}`}>
-        {displayColors.map((c, i) => (
-          <div key={i} className="flex-1" style={{ backgroundColor: c }} />
-        ))}
-      </div>
-    );
-  };
-
-  const stats = lang === "en"
-    ? [
-        { num: "30h", label: "of structured psychological sessions" },
-        { num: "2", label: "university partners — Cambridge and Padova" },
-        { num: "1M+", label: "Italians with Alzheimer's — time is now" },
-        { num: "∞", label: "stories that deserve to be told" },
-      ]
-    : [
-        { num: "30h", label: "di sessioni psicologiche strutturate" },
-        { num: "2", label: "università partner — Cambridge e Padova" },
-        { num: "1M+", label: "italiani con Alzheimer — il tempo è adesso" },
-        { num: "∞", label: "storie che meritano di essere raccontate" },
-      ];
-
-  const perChiItems = lang === "en"
-    ? [
-        "Those diagnosed with Alzheimer's or dementia",
-        "The parent who wants to be there forever",
-        "Those who never had a voice",
-        "The founder who wants to pass on their vision",
-        "The professional who wants to protect their identity",
-        "Anyone who simply wants to tell their story",
-      ]
-    : [
-        "Chi ha una diagnosi di Alzheimer o demenza",
-        "Il genitore che vuole esserci per sempre",
-        "Chi non ha mai avuto una voce",
-        "Il fondatore che vuole trasmettere la visione",
-        "Il professionista che vuole proteggere la propria identità",
-        "Chi semplicemente vuole raccontarsi",
-      ];
-
-  const steps = lang === "en"
-    ? [
-        { phase: "01", title: "Sessions with the psychologist", desc: "Dedicated meetings to surface your deepest memories and build the structure of your story." },
-        { phase: "02", title: "Building the corpus", desc: "Recording of texts, collection of diaries, letters and documents that define your identity." },
-        { phase: "03", title: "Voice and likeness", desc: "Creation of your digital twin through cutting-edge technologies to capture timbre and expressions." },
-        { phase: "04", title: "Preservation over time", desc: "Secure, decentralised archiving to ensure your legacy is accessible only to those you choose." },
-      ]
-    : [
-        { phase: "01", title: "Le sessioni con lo psicologo", desc: "Incontri dedicati per far emergere i ricordi più profondi e costruire la struttura del tuo racconto." },
-        { phase: "02", title: "La costruzione del corpus", desc: "Registrazione dei testi, raccolta di diari, lettere e documenti che definiscono la tua identità." },
-        { phase: "03", title: "La voce e il volto", desc: "Creazione del tuo gemello digitale attraverso tecnologie all'avanguardia per catturare timbro ed espressioni." },
-        { phase: "04", title: "La custodia nel tempo", desc: "Archiviazione sicura e decentralizzata per garantire che il tuo lascito sia accessibile solo a chi decidi tu." },
-      ];
-
-  const stepIcons = [
-    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="2" y="4" width="36" height="22" fill="#c4522a" stroke="#1a1209" strokeWidth="2.5"/>
-      <polygon points="8,26 8,34 18,26" fill="#c4522a" stroke="#1a1209" strokeWidth="2"/>
-      <line x1="8" y1="12" x2="30" y2="12" stroke="#f5f0e8" strokeWidth="2"/>
-      <line x1="8" y1="18" x2="24" y2="18" stroke="#f5f0e8" strokeWidth="2"/>
-      <rect x="18" y="30" width="36" height="20" fill="#3d7a6b" stroke="#1a1209" strokeWidth="2.5"/>
-      <polygon points="48,50 48,56 40,50" fill="#3d7a6b" stroke="#1a1209" strokeWidth="2"/>
-      <line x1="24" y1="38" x2="46" y2="38" stroke="#e8a820" strokeWidth="2"/>
-      <line x1="24" y1="44" x2="38" y2="44" stroke="#e8a820" strokeWidth="2"/>
-    </svg>,
-    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="8" y="14" width="34" height="6" fill="#e8a820" stroke="#1a1209" strokeWidth="2"/>
-      <rect x="8" y="24" width="34" height="6" fill="#f5f0e8" stroke="#1a1209" strokeWidth="2"/>
-      <rect x="8" y="34" width="34" height="6" fill="#c4522a" stroke="#1a1209" strokeWidth="2"/>
-      <line x1="14" y1="17" x2="36" y2="17" stroke="#1a1209" strokeWidth="1.5"/>
-      <line x1="14" y1="27" x2="36" y2="27" stroke="#1a1209" strokeWidth="1.5"/>
-      <line x1="14" y1="37" x2="36" y2="37" stroke="#1a1209" strokeWidth="1.5"/>
-      <rect x="4" y="10" width="48" height="36" stroke="#1a1209" strokeWidth="3"/>
-    </svg>,
-    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="4" width="16" height="28" rx="0" fill="#3d7a6b" stroke="#1a1209" strokeWidth="3"/>
-      <path d="M10 28 Q10 44 28 44 Q46 44 46 28" stroke="#1a1209" strokeWidth="3" fill="none"/>
-      <line x1="28" y1="44" x2="28" y2="52" stroke="#1a1209" strokeWidth="3"/>
-      <line x1="18" y1="52" x2="38" y2="52" stroke="#1a1209" strokeWidth="3"/>
-      <line x1="24" y1="14" x2="32" y2="14" stroke="#e8a820" strokeWidth="2.5"/>
-      <line x1="24" y1="20" x2="32" y2="20" stroke="#e8a820" strokeWidth="2.5"/>
-    </svg>,
-    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="2" y="18" width="52" height="34" fill="#f5f0e8" stroke="#1a1209" strokeWidth="3"/>
-      <path d="M18 18 L18 10 L38 10 L38 18" fill="none" stroke="#1a1209" strokeWidth="3"/>
-      <rect x="2" y="31" width="52" height="8" fill="#e8a820" stroke="#1a1209" strokeWidth="1.5"/>
-      <rect x="22" y="27" width="12" height="16" fill="#3d7a6b" stroke="#1a1209" strokeWidth="2"/>
-      <rect x="25" y="33" width="6" height="4" fill="#f5f0e8" stroke="#1a1209" strokeWidth="1.5"/>
-      <rect x="2" y="18" width="7" height="7" fill="#c4522a"/>
-      <rect x="47" y="18" width="7" height="7" fill="#c4522a"/>
-      <rect x="2" y="45" width="7" height="7" fill="#c4522a"/>
-      <rect x="47" y="45" width="7" height="7" fill="#c4522a"/>
-    </svg>,
+  const navLinks = [
+    { href: "/il-progetto", label: "Il Progetto" }, { href: "/per-chi", label: "Per Chi" },
+    { href: "/come-funziona", label: "Come Funziona" }, { href: "/ricerca", label: "Ricerca" },
+    { href: "/incontra", label: "Conosci UltraRem" }, { href: "/contatti", label: "Contatti" },
   ];
+  const linkStyle: React.CSSProperties = { fontFamily: NARROW, fontWeight: 700, fontSize: 13, letterSpacing: "0.14em", textTransform: "uppercase", textDecoration: "none", color: INK };
+  const btn = (bg: string, fg: string, border?: string): React.CSSProperties => ({ fontFamily: NARROW, fontWeight: 700, fontSize: 13, letterSpacing: "0.14em", textTransform: "uppercase", textDecoration: "none", background: bg, color: fg, border: border ?? "none", padding: "12px 22px", minHeight: 44, boxSizing: "border-box", display: "inline-flex", alignItems: "center", cursor: "pointer" });
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-primary/20 selection:text-primary">
-      <StripeBar />
-      <Navbar />
+    <div style={{ background: "#fff", color: INK, fontFamily: SERIF, fontSize: 18, lineHeight: 1.6, overflowX: "hidden" }}>
+      <Stripes h={5} />
 
-      {/* Logo Banner */}
-      <div
-        className="w-full flex justify-center items-center border-b-2 border-foreground bg-background overflow-hidden"
-        style={{ height: 90 }}
-        data-testid="logo-banner"
-      >
-        <Link href="/">
-          <motion.img
-            src={logoPath}
-            alt="UltraRem Logo"
-            className="cursor-pointer"
-            style={{ height: 320, width: "auto", display: "block", marginTop: 0 }}
-            initial={{ opacity: 0, scale: 0.88 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ scale: 1.06, transition: { duration: 0.35, ease: "easeOut" } }}
-            whileTap={{ scale: 0.97 }}
-            data-testid="img-logo"
-          />
-        </Link>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "22px 16px 14px", borderBottom: `2px solid ${INK}` }}>
+        <Link href="/"><img src="/img/rivista/logo.png" alt="UltraRem, Your memory is you" style={{ height: 150, width: "auto", maxWidth: "100%", display: "block", cursor: "pointer" }} /></Link>
       </div>
 
-      {/* Hero Section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh] border-b-2 border-foreground" data-testid="section-hero">
-        <motion.div
-          className="p-8 md:p-16 xl:p-24 flex flex-col justify-center"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <motion.div variants={fadeInUp} className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-8">
-            Milano - Genova - Cambridge - Padova
-          </motion.div>
-          <motion.h1 variants={fadeInUp} className="font-serif text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight mb-6">
-            {lang === "en"
-              ? <>Who I was, who I am <span className="text-[#c4522a] italic font-medium">and who I'll be.</span></>
-              : <>Chi ero, chi sono <span className="text-[#c4522a] italic font-medium">e chi sarò.</span></>}
-          </motion.h1>
-          <motion.p variants={fadeInUp} className="font-sans text-xl md:text-2xl text-muted-foreground italic mb-10 max-w-lg">
-            {lang === "en"
-              ? "Preserve your digital identity. An act of will for those who remain."
-              : "Preserva la tua identità digitale. Un atto di volontà per chi resta."}
-          </motion.p>
-          <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-            <Link href="/prenota">
-              <Button size="lg" className="rounded-none font-mono uppercase bg-foreground text-background hover:bg-primary transition-colors border-2 border-foreground" data-testid="button-hero-cta1">
-                {lang === "en" ? "Build your legacy" : "Costruisci la tua eredità"}
-              </Button>
-            </Link>
-            <Link href="/il-progetto">
-              <Button size="lg" variant="outline" className="rounded-none font-mono uppercase border-2 border-foreground hover:bg-foreground hover:text-background transition-colors" data-testid="button-hero-cta2">
-                {lang === "en" ? "Learn more" : "Scopri di più"}
-              </Button>
-            </Link>
-          </motion.div>
-        </motion.div>
-        <div className="relative min-h-[40vh] md:min-h-full border-l-2 border-foreground overflow-hidden">
-          <motion.img
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            src={heroImg} alt="Eleganza milanese al tramonto" className="absolute inset-0 w-full h-full object-cover object-top" data-testid="img-hero" />
+      <nav style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "12px 24px", padding: "14px 40px", borderBottom: `2px solid ${INK}` }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 20px" }}>
+          <span style={{ ...linkStyle, color: RED }}>Home</span>
+          {navLinks.map(l => <Link key={l.href} href={l.href}><span style={{ ...linkStyle, cursor: "pointer" }}>{l.label}</span></Link>)}
         </div>
-      </section>
-
-      {/* Stats Bar */}
-      <motion.section
-        className="grid grid-cols-2 md:grid-cols-4 border-b-2 border-foreground divide-x-2 divide-foreground border-t-0"
-        data-testid="section-stats"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-        variants={staggerContainer}
-      >
-        {stats.map((stat, i) => (
-          <motion.div variants={fadeInUp} key={i} className="p-8 text-center bg-background hover:bg-muted/50 transition-colors border-b-2 md:border-b-0 border-foreground last:border-b-0">
-            <div className="font-serif text-4xl md:text-6xl text-[#c4522a] mb-2">{stat.num}</div>
-            <div className="font-mono text-xs uppercase tracking-widest">{stat.label}</div>
-          </motion.div>
-        ))}
-      </motion.section>
-
-      {/* Manifesto */}
-      <section id="progetto" className="grid grid-cols-1 md:grid-cols-3 border-b-2 border-foreground min-h-[600px]" data-testid="section-manifesto">
-        <motion.div
-          className="bg-[#1a1209] text-white p-8 md:p-12 flex flex-col justify-between border-r-2 border-foreground/30 relative overflow-hidden"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.div variants={fadeInUp} className="font-mono text-xs uppercase tracking-widest text-[#e8a820] mb-6">
-            {lang === "en" ? "Our manifesto" : "Il nostro manifesto"}
-          </motion.div>
-          <motion.h2 variants={fadeInUp} className="font-serif text-3xl md:text-4xl xl:text-5xl font-black leading-tight">
-            {lang === "en"
-              ? <>Made by <span className="text-[#c4522a] italic">the living,</span><br />for <span className="text-[#e8a820] italic">the living.</span></>
-              : <>Fatto da <span className="text-[#c4522a] italic">vivi,</span><br />per i <span className="text-[#e8a820] italic">vivi.</span></>}
-          </motion.h2>
-          <motion.div variants={fadeInUp} className="mt-8 flex justify-center items-end flex-1">
-            <img
-              src={manifestoImgHands}
-              alt="Antonio 7 anni 1989 — festa di compleanno in famiglia"
-              style={{ width: "85%", maxWidth: 320, display: "block", transform: "rotate(-3deg)", filter: "drop-shadow(4px 6px 18px rgba(0,0,0,0.55))" }}
-              data-testid="img-manifesto-hands"
-            />
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          className="relative overflow-hidden min-h-[400px] md:min-h-full border-r-2 border-foreground/30"
-          initial={{ opacity: 0, scale: 1.05 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1.0, ease: "easeOut" }}
-        >
-          <img src={manifestoImgUomo} alt="Uomo elegante italiano" className="absolute inset-0 w-full h-full object-cover object-top" data-testid="img-manifesto-uomo" />
-        </motion.div>
-
-        <motion.div
-          className="p-8 md:p-12 flex flex-col justify-center bg-background"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.div variants={fadeInUp} className="space-y-6 font-sans text-base md:text-lg text-foreground/80 leading-relaxed">
-            {lang === "en" ? (
-              <>
-                <p>UltraRem was born from a deeply human need: the right to tell your own story, in your own words, with your own voice, while you still can.</p>
-                <p><strong className="text-[#c4522a]">It is an act of will, not surrender.</strong> You do it while you can speak, while you can choose, while you can decide what is worth passing on — and to whom.</p>
-                <p>With the supervision of qualified clinical psychologists and the validation of Cambridge and Padova, we build together an authentic identity corpus: your words, your way of thinking, your values. <strong className="text-[#c4522a]">A presence that continues to be useful over time.</strong></p>
-              </>
-            ) : (
-              <>
-                <p>UltraRem nasce da un'esigenza profondamente umana: il diritto di raccontarsi, con le proprie parole, con la propria voce, mentre si può ancora farlo.</p>
-                <p><strong className="text-[#c4522a]">È un atto di volontà, non di resa.</strong> Lo fai mentre puoi parlare, mentre puoi scegliere, mentre puoi decidere cosa di te vale la pena trasmettere — e a chi.</p>
-                <p>Con la supervisione di psicologi clinici qualificati e la validazione di Cambridge e Padova, costruiamo insieme a te un corpus identitario autentico: le tue parole, il tuo modo di pensare, i tuoi valori. <strong className="text-[#c4522a]">Una presenza che continua a essere utile nel tempo.</strong></p>
-              </>
-            )}
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Per Chi */}
-      <section id="per-chi" className="py-24 px-6 md:px-12 bg-background border-b-2 border-foreground" data-testid="section-per-chi">
-        <motion.div
-          className="max-w-7xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.h2 variants={fadeInUp} className="font-serif text-4xl md:text-5xl font-black mb-16 text-center">
-            {lang === "en" ? "Who UltraRem is for" : "Per chi è UltraRem"}
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-0 border-2 border-foreground bg-foreground">
-            {perChiItems.map((text, i) => (
-              <motion.div variants={fadeInUp} key={i} className="group bg-background p-10 border-[1px] border-foreground hover:bg-[#3d7a6b] hover:text-white transition-all duration-300 flex flex-col justify-between min-h-[200px] cursor-pointer">
-                <div className="font-mono text-sm mb-4 opacity-50 group-hover:opacity-80 group-hover:text-white">0{i + 1}</div>
-                <div className="font-serif text-2xl font-bold leading-tight">{text}</div>
-              </motion.div>
-            ))}
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", border: `1px solid ${INK}`, fontFamily: NARROW, fontWeight: 700, fontSize: 12 }}>
+            {LANGS.map(l => <button key={l} onClick={() => setLang(l)} style={{ padding: "6px 9px", border: "none", cursor: "pointer", background: lang === l ? INK : "transparent", color: lang === l ? "#fff" : INK, fontFamily: "inherit", fontWeight: "inherit", fontSize: "inherit" }}>{l.toUpperCase()}</button>)}
           </div>
-        </motion.div>
-      </section>
-
-      {/* Come Funziona */}
-      <section id="come-funziona" className="py-24 px-6 md:px-12 bg-[#ede5d4] border-b-2 border-foreground" data-testid="section-come-funziona">
-        <motion.div
-          className="max-w-4xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.div variants={fadeInUp} className="font-mono text-xs uppercase tracking-widest text-center mb-4 text-[#8b2e2e]">
-            {lang === "en" ? "The Process" : "Il Processo"}
-          </motion.div>
-          <motion.h2 variants={fadeInUp} className="font-serif text-4xl md:text-5xl font-black mb-16 text-center">
-            {lang === "en" ? "How it works" : "Come funziona"}
-          </motion.h2>
-
-          <div className="space-y-0 border-2 border-foreground divide-y-2 divide-foreground bg-background">
-            {steps.map((step, i) => (
-              <motion.div variants={fadeInUp} key={i} className="p-8 md:p-12 flex flex-col md:flex-row gap-6 md:gap-10 items-start md:items-center hover:bg-muted/30 transition-colors">
-                <div className="flex items-center gap-5 shrink-0">
-                  <div className="font-mono text-3xl md:text-5xl text-[#e8a820] font-bold leading-none">
-                    {lang === "en" ? `Phase ${step.phase}` : `Fase ${step.phase}`}
-                  </div>
-                  <div className="shrink-0">{stepIcons[i]}</div>
-                </div>
-                <div>
-                  <h3 className="font-serif text-2xl font-bold mb-2">{step.title}</h3>
-                  <p className="font-sans text-lg text-muted-foreground">{step.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Partner Accademici */}
-      <section id="ricerca" className="bg-background border-b-2 border-foreground" data-testid="section-partner">
-        <div className="text-center py-12 border-b-2 border-foreground">
-          <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            {lang === "en" ? "Academic Partners & Research" : "Partner accademici & Ricerca"}
-          </span>
+          <Link href="/prenota"><span style={btn(INK, "#fff")}>Prenota Demo</span></Link>
         </div>
+      </nav>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 divide-y-2 md:divide-y-0 md:divide-x-2 divide-foreground">
-          <motion.div className="flex flex-col" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={staggerContainer}>
-            <div className="relative overflow-hidden border-b-2 border-foreground" style={{ height: 340 }}>
-              <motion.img src={cambridgeImg} alt="King's College Cambridge al tramonto" className="absolute inset-0 w-full h-full object-cover object-center" initial={{ scale: 1.06 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, ease: "easeOut" }} data-testid="img-cambridge" />
-            </div>
-            <motion.div variants={fadeInUp} className="p-8 md:p-12">
-              <div className="font-mono text-xs uppercase tracking-widest text-[#3d7a6b] mb-3">Cambridge, UK</div>
-              <h3 className="font-serif text-3xl font-black mb-4">University of Cambridge</h3>
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed">Dr. Tomasz Hollanek<br />Dr. Katarzyna Nowaczyk-Basinska</p>
-            </motion.div>
-          </motion.div>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 8, padding: "10px 40px", borderBottom: `2px solid ${INK}`, fontFamily: NARROW, fontWeight: 700, fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+        <span>Rivista di memoria e vita</span><span style={{ color: GREY }}>Milano · Genova · Padova</span><span style={{ color: RED }}>Numero 1 · Autunno 2026</span>
+      </div>
 
-          <motion.div className="flex flex-col" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={staggerContainer}>
-            <div className="relative overflow-hidden border-b-2 border-foreground" style={{ height: 340 }}>
-              <motion.img src={padovaImg} alt="Aula Magna dell'Università di Padova" className="absolute inset-0 w-full h-full object-cover object-center" initial={{ scale: 1.06 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, ease: "easeOut" }} data-testid="img-padova" />
-            </div>
-            <motion.div variants={fadeInUp} className="p-8 md:p-12">
-              <div className="font-mono text-xs uppercase tracking-widest text-[#8b2e2e] mb-3">
-                {lang === "en" ? "Padova, Italy" : "Padova, Italia"}
+      {/* COPERTINA */}
+      <section style={{ display: "flex", flexWrap: "wrap", borderBottom: `3px solid ${INK}` }}>
+        <div style={{ flex: "2 1 620px", padding: "56px 48px", borderRight: `1px solid ${INK}`, display: "flex", flexDirection: "column", gap: 18 }}>
+          <div style={kicker()}>{cover.kicker}</div>
+          <h1 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(40px,6.2vw,76px)", lineHeight: 1, letterSpacing: -2 }}>{cover.title}</h1>
+          <p style={{ margin: 0, fontStyle: "italic", fontSize: 22, maxWidth: 640 }}>{cover.lead}</p>
+          <p style={{ margin: 0, maxWidth: 640 }}>{cover.body}</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 6 }}>
+            <a href="#scala" style={btn(RED, "#fff")}>{cover.cta1}</a>
+            <a href="#chi" style={btn("transparent", INK, `2px solid ${INK}`)}>{cover.cta2}</a>
+          </div>
+        </div>
+        <aside style={{ flex: "1 1 320px", padding: "40px 32px", background: PALE, display: "flex", flexDirection: "column", gap: 14 }}>
+          <Photo name="cover" ar="4 / 5" pos="center top" />
+          <div style={{ fontFamily: BLACK, fontSize: 20, letterSpacing: -0.5 }}>In questo numero</div>
+          <div style={{ display: "flex", flexDirection: "column", fontSize: 17 }}>
+            {index.map((x, i) => (
+              <div key={x.k} style={{ padding: "10px 0", borderTop: `${i === 0 ? 2 : 1}px solid ${INK}`, borderBottom: i === index.length - 1 ? `2px solid ${INK}` : undefined }}>
+                <span style={{ ...kicker(), letterSpacing: "0.14em" }}>{x.k}</span><br />{x.t}
               </div>
-              <h3 className="font-serif text-3xl font-black mb-4">
-                {lang === "en" ? "University of Padova" : "Università degli Studi di Padova"}
-              </h3>
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed">Prof.ssa Ines Testoni</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Storia di Caterina */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 border-b-2 border-foreground" data-testid="section-caterina">
-        <div className="relative overflow-hidden border-b-2 lg:border-b-0 lg:border-r-2 border-foreground/30">
-          <img src={statuaCaterinaImg} alt="Statua di Caterina Campodonico a Staglieno" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.55 }} data-testid="img-statua-caterina" />
-          <div className="absolute inset-0 bg-[#1a1209]" style={{ opacity: 0.45 }} />
-          <motion.div
-            className="relative z-10 p-8 md:p-16 xl:p-24 flex flex-col justify-center text-[#f5f0e8] min-h-[500px]"
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp} className="font-mono text-xs uppercase tracking-widest text-[#e8a820] mb-6">
-              {lang === "en" ? "Genoa, 1892" : "Genova, 1892"}
-            </motion.div>
-            <motion.h2 variants={fadeInUp} className="font-serif text-4xl md:text-5xl font-black mb-8 text-[#f5f0e8]">
-              {lang === "en" ? "The memory of Caterina" : "La memoria di Caterina"}
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="font-sans text-lg md:text-xl mb-8 text-[#c9bfaf]">
-              {lang === "en"
-                ? "Caterina Campodonico, the peanut seller of Genoa, spent her life savings to commission a statue of herself in the Staglieno cemetery, so as not to be forgotten. Today, technology allows us to do this in a living way."
-                : "Caterina Campodonico, la venditrice di noccioline di Genova, spese i risparmi di una vita per commissionare una statua di sé stessa al cimitero di Staglieno, per non essere dimenticata. Oggi, la tecnologia ci permette di farlo in modo vivo."}
-            </motion.p>
-            <motion.blockquote variants={fadeInUp} className="border-l-4 border-[#e8a820] pl-6 py-2 italic font-serif text-2xl text-[#e8a820]">
-              "A furia di vender collane e ciambelle, mi sono fatta questa statua per l'eternità."
-            </motion.blockquote>
-          </motion.div>
-        </div>
-        <div className="p-8 md:p-16 bg-[#2a1f14] flex flex-col gap-8 justify-center items-center">
-          <div className="relative w-full max-w-sm aspect-[9/16] border-4 border-[#e8a820] p-2 bg-[#1a1209]">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/tQ7UJ96ipXE"
-              title="Caterina Campodonico Story"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+            ))}
           </div>
-          <img src={caterinaImg} alt="Album vintage" className="w-full max-w-xs border-2 border-foreground/30 opacity-70" data-testid="img-caterina" />
+        </aside>
+      </section>
+
+      {/* DA LEGGERE */}
+      <section style={{ padding: "48px 40px", borderBottom: `3px solid ${INK}` }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 8, borderBottom: `2px solid ${INK}`, paddingBottom: 8, marginBottom: 24 }}>
+          <h2 style={{ margin: 0, fontFamily: BLACK, fontSize: 32, letterSpacing: -1 }}>Da leggere</h2>
+          <span style={{ ...kicker(GREY), letterSpacing: "0.16em" }}>Esempi con testi segnaposto</span>
+        </div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 0 }}>
+          {reads.map((r, i) => (
+            <article key={r.k} style={{ flex: "1 1 260px", padding: i === 0 ? "0 24px 0 0" : i === reads.length - 1 ? "0 0 0 24px" : "0 24px", borderRight: i < reads.length - 1 ? `1px solid ${INK}` : undefined, display: "flex", flexDirection: "column", gap: 10 }}>
+              {r.img ? <Photo name={r.img} ar="3 / 2" /> : <Tbp ini="?" ar="3 / 2" col={GREY} />}
+              <div style={kicker()}>{r.k}</div>
+              <h3 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1 }}>{r.t}</h3>
+              <p style={{ margin: 0, fontSize: 16 }}>{r.p}</p>
+              <span style={{ fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>{r.m}</span>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* CTA Finale */}
-      <section className="py-32 px-6 bg-[#3d7a6b] text-white text-center border-b-2 border-foreground" data-testid="section-cta">
-        <motion.div
-          className="max-w-4xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.h2 variants={fadeInUp} className="font-serif text-5xl md:text-7xl font-black mb-12 leading-tight">
-            {lang === "en"
-              ? "Your story deserves to outlive you."
-              : "La tua storia merita di sopravviverti."}
-          </motion.h2>
-          <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row justify-center gap-6">
-            <Button size="lg" className="rounded-none font-mono uppercase bg-white text-[#3d7a6b] hover:bg-[#ede5d4] border-2 border-transparent text-lg h-16 px-10" asChild data-testid="button-final-scrivici">
-              <Link href="/prenota">{lang === "en" ? "Book now" : "Prenota ora"}</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="rounded-none font-mono uppercase border-2 border-white text-white hover:bg-white hover:text-[#3d7a6b] text-lg h-16 px-10" asChild data-testid="button-final-funziona">
-              <Link href="/come-funziona">{lang === "en" ? "How it works" : "Come funziona"}</Link>
-            </Button>
-          </motion.div>
-        </motion.div>
+      {/* SCALA */}
+      <section id="scala" style={{ padding: "56px 40px", background: PALE, borderBottom: `3px solid ${INK}` }}>
+        <div style={{ ...kicker(), marginBottom: 8 }}>{ladder.kicker}</div>
+        <h2 style={{ ...h2, fontSize: "clamp(32px,5vw,52px)", letterSpacing: -1, margin: "0 0 10px" }}>{ladder.title}</h2>
+        <p style={{ margin: "0 0 32px", maxWidth: 760 }}>{ladder.intro}</p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 20, alignItems: "stretch" }}>
+          {ladder.steps.map(s => {
+            const red = s.tone === "red", dark = s.tone === "dark";
+            return (
+              <div key={s.name} style={{ flex: "1 1 300px", background: "#fff", border: `2px solid ${red ? RED : INK}`, display: "flex", flexDirection: "column" }}>
+                <Photo name={s.img} ar="16 / 9" bottom />
+                <div style={{ padding: "18px 24px", borderBottom: `2px solid ${red ? RED : INK}`, background: red ? RED : dark ? INK : "#fff", color: red || dark ? "#fff" : INK }}>
+                  <div style={{ ...kicker(red ? "#fff" : dark ? "#ff3b52" : GREY) }}>{s.tag}</div>
+                  <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 34, lineHeight: 1.1, marginTop: 4 }}>{s.name}</div>
+                </div>
+                <div style={{ padding: "20px 24px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+                  <div style={{ fontFamily: BLACK, fontSize: 40, letterSpacing: -1, color: RED, lineHeight: 1 }}>{s.price}</div>
+                  <div style={{ fontSize: 15, color: GREY }}>{s.sub}</div>
+                  <ul style={{ margin: 0, paddingLeft: 20, fontSize: 16 }}>{s.items.map(it => <li key={it}>{it}</li>)}</ul>
+                  <p style={{ margin: 0, fontSize: 14, fontStyle: "italic" }}>{s.note}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <p style={{ margin: "24px 0 0", fontSize: 15, maxWidth: 900 }}>{ladder.fee}</p>
       </section>
 
-      <Footer />
+      {/* STORIA INTERATTIVA */}
+      <section style={{ display: "flex", flexWrap: "wrap", borderBottom: `3px solid ${INK}` }}>
+        <div style={{ flex: "1 1 520px", padding: "48px 40px", borderRight: `1px solid ${INK}`, display: "flex", flexDirection: "column", gap: 14 }}>
+          <div style={kicker()}>{story.kicker}</div>
+          <h2 style={h2}>{story.title}</h2>
+          <p style={{ margin: 0 }}>{story.text}</p>
+          <div style={{ borderLeft: `6px solid ${RED}`, padding: "6px 18px", fontSize: 16 }}>
+            <b>Sempre dichiarato.</b> {story.box}
+          </div>
+        </div>
+        <div style={{ flex: "1 1 420px", padding: 40, background: INK, color: "#fff", display: "flex", flexDirection: "column", gap: 12, justifyContent: "center" }}>
+          <div style={{ aspectRatio: "4 / 3", border: "1px solid rgba(255,255,255,0.4)", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: 20, fontFamily: NARROW, fontSize: 13, letterSpacing: "0.16em", textTransform: "uppercase", color: "#aaa", background: "#1c1c1c" }}>{story.slot}</div>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", fontFamily: NARROW, fontWeight: 700, fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase" }}>
+            <span style={{ border: "1px solid #ff3b52", color: "#ff3b52", padding: "4px 10px" }}>Testimonianza</span>
+            <span style={{ border: "1px solid #aaa", color: "#aaa", padding: "4px 10px" }}>Elaborazione</span>
+            <span style={{ padding: "4px 0", color: "#aaa" }}>Stai parlando con un'IA</span>
+          </div>
+        </div>
+      </section>
+
+      {/* RICERCA */}
+      <section style={{ padding: "56px 40px", borderBottom: `3px solid ${INK}` }}>
+        <div style={{ ...kicker(), marginBottom: 8 }}>{research.kicker}</div>
+        <h2 style={{ ...h2, marginBottom: 24 }}>{research.title}</h2>
+        <div style={{ display: "flex", flexWrap: "wrap", border: `2px solid ${INK}` }}>
+          {research.cells.map((c, i) => (
+            <div key={c.k} style={{ flex: "1 1 300px", padding: 24, borderRight: i < research.cells.length - 1 ? `1px solid ${INK}` : undefined }}>
+              <div style={{ ...kicker(), marginBottom: 6 }}>{c.k}</div>
+              <p style={{ margin: 0, fontSize: 16 }}>{c.v}</p>
+            </div>
+          ))}
+        </div>
+        <p style={{ margin: "14px 0 0", fontSize: 15, color: GREY, maxWidth: 820 }}>{research.note}</p>
+      </section>
+
+      {/* CHI C'E DIETRO */}
+      <section id="chi" style={{ padding: "56px 40px", borderBottom: `3px solid ${INK}` }}>
+        <div style={{ ...kicker(), marginBottom: 8 }}>{who.kicker}</div>
+        <h2 style={{ ...h2, marginBottom: 14, maxWidth: 900 }}>{who.title}</h2>
+        <p style={{ margin: "0 0 28px", maxWidth: 820 }}>{who.intro}</p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 24, marginBottom: 44 }}>
+          {who.founders.map(f => (
+            <div key={f.name} style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 8 }}>
+              <Tbp ini={f.ini} ar="4 / 5" col={f.col} />
+              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 22, lineHeight: 1.1 }}>{f.name}</div>
+              <div style={{ ...kicker(), letterSpacing: "0.14em" }}>{f.role}</div>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.5 }}>{f.text}</p>
+            </div>
+          ))}
+        </div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 28 }}>
+          {who.science.map(f => (
+            <div key={f.name} style={{ flex: "1 1 320px", display: "flex", flexDirection: "column", gap: 10 }}>
+              <Tbp ini={f.ini} ar="3 / 2" col={f.col} />
+              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 26, lineHeight: 1.1 }}>{f.name}</div>
+              <div style={{ ...kicker(), letterSpacing: "0.14em" }}>{f.role}</div>
+              <p style={{ margin: 0, fontSize: 16 }}>{f.text}</p>
+            </div>
+          ))}
+          <div style={{ flex: "1 1 320px", display: "flex", flexDirection: "column", gap: 10, background: INK, color: "#fff", padding: 24 }}>
+            <div style={kicker("#ff3b52")}>{who.method.k}</div>
+            <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 26, lineHeight: 1.1 }}>{who.method.t}</div>
+            <p style={{ margin: 0, fontSize: 16 }}>{who.method.p1}</p>
+            <p style={{ margin: 0, fontSize: 14, color: "rgba(255,255,255,0.7)" }}>{who.method.p2}</p>
+          </div>
+        </div>
+        <div style={{ marginTop: 32, padding: "16px 20px", border: `1px dashed ${GREY}`, fontSize: 15, maxWidth: 900 }}>{who.socrem}</div>
+      </section>
+
+      {/* CARTA */}
+      <section style={{ padding: "56px 40px", background: INK, color: "#fff" }}>
+        <div style={{ ...kicker("#ff3b52"), marginBottom: 8 }}>{charter.kicker}</div>
+        <h2 style={{ ...h2, marginBottom: 28, maxWidth: 820 }}>{charter.title}</h2>
+        <div style={{ display: "flex", flexWrap: "wrap", borderTop: "1px solid rgba(255,255,255,0.3)" }}>
+          {charter.arts.map((a, i) => (
+            <div key={a.a} style={{ flex: "1 1 240px", padding: i === 0 ? "20px 22px 20px 0" : "20px 22px", borderRight: i < charter.arts.length - 1 ? "1px solid rgba(255,255,255,0.3)" : undefined }}>
+              <div style={{ fontFamily: BLACK, fontSize: 14, color: "#ff3b52" }}>{a.a}</div>
+              <b>{a.t}</b>
+              <div style={{ fontSize: 15, color: "rgba(255,255,255,0.75)" }}>{a.d}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PARTNER E PIEDE */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 32, padding: "28px 40px", borderBottom: `1px solid ${INK}`, fontSize: 16, alignItems: "flex-end" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}><span style={{ ...kicker(), letterSpacing: "0.16em" }}>Ricerca</span><img src="/img/rivista/unipd.png" alt="Università di Padova" onError={e => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} style={{ height: 56 }} /><span>Università di Padova</span></div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}><span style={{ ...kicker(), letterSpacing: "0.16em" }}>Fornitore tecnologico</span><img src="/img/rivista/qbt.png" alt="QBT Sagl" style={{ height: 56, width: "auto" }} /></div>
+        <div><span style={{ ...kicker(), letterSpacing: "0.16em" }}>Redazione</span><br />Viale Cassala 30, 20143 Milano<br /><a href="mailto:info@ultrarem.it" style={{ color: INK }}>info@ultrarem.it</a></div>
+      </div>
+      <div style={{ padding: "18px 40px 28px", fontFamily: NARROW, fontWeight: 500, fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: GREY }}>© 2026 UltraRem Srl · P.IVA 14404030968 · REA MI-2780427 · Start-Up Innovativa</div>
     </div>
   );
 }
