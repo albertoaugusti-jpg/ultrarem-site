@@ -1,269 +1,92 @@
-import { Link } from "wouter";
-import { StripeBar } from "@/components/StripeBar";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { useLang } from "@/lib/i18n";
-import uomoImg from "@assets/Uomo_elegante_tra_luci_e_ombreggiature_1775476267982.png";
+import { Page, Hero, Sec, Prose, Cols, Card, Quote, CtaBand, Photo, kicker, RED, INK, GREY, PALE, BODONI, BLACK, NARROW } from "@/components/Mag";
 
-const V = "#3d7a6b", TC = "#c4522a", GI = "#e8a820", NE = "#1a1209", CR = "#f5f0e8", CS = "#ede5d4", GC = "#8a7d6b";
+const carta = [
+  { a: "Art. 2", t: "Nessuna pubblicità", d: "Né negli archivi né nel dialogo con l'avatar. La tua memoria non è uno spazio da vendere." },
+  { a: "Art. 3", t: "Fedeltà alla persona", d: "Decidi tu come essere ricordato, anche nei lati meno levigati. Nessuno ti abbellisce a tua insaputa." },
+  { a: "Art. 4", t: "Neutralità", d: "Operiamo senza prendere posizione su credi e orientamenti: la tua visione della vita e della morte è la tua." },
+  { a: "Art. 7", t: "Il verbale firmato", d: "La sintesi del tuo progetto la firma lo psicologo che ti ha ascoltato: una persona con un nome, che risponde di ciò che scrive." },
+  { a: "Art. 14", t: "Trasparenza sull'IA", d: "Chi parla con un avatar sa sempre che sta parlando con un sistema di intelligenza artificiale." },
+  { a: "Art. 15", t: "Testimonianza o elaborazione", d: "Ogni risposta è etichettata: Testimonianza se riporta ciò che la persona ha detto, Elaborazione se nasce dal sistema." },
+  { a: "Art. 17", t: "Libertà di non dialogare", d: "Nessun familiare è obbligato a parlare con l'avatar, e nessuno riceve inviti o messaggi non richiesti." },
+  { a: "Art. 18", t: "Memoria condivisa", d: "Quando un ricordo riguarda altre persone, serve il loro consenso specifico." },
+  { a: "Art. 20", t: "Novanta giorni di silenzio", d: "Dopo la morte l'avatar non parla ai familiari prima di novanta giorni, per lasciare spazio al dolore." },
+  { a: "Art. 25", t: "La ricerca resta separata", d: "Partecipare a uno studio richiede un consenso a parte ed è sempre facoltativo." },
+  { a: "Art. 26", t: "Percorsi per chi non può permetterseli", d: "Ogni anno, con criteri trasparenti, offriamo percorsi a chi non potrebbe permetterseli." },
+];
 
 export default function IlProgetto() {
-  const { lang } = useLang();
-
-  const pillars = lang === "en"
-    ? [
-        { num: "01", title: "Psychological authenticity", text: "Every session is guided by qualified clinical psychologists. We don't collect data: we build a narrative. The difference is enormous." },
-        { num: "02", title: "Academic validation", text: "Cambridge and Padova ensure the scientific rigour of every methodology. Your corpus is grounded in peer-reviewed research." },
-        { num: "03", title: "Ethical custody", text: "You decide who has access, when and how. Your data is never sold, analysed for commercial purposes, or shared with third parties." },
-      ]
-    : [
-        { num: "01", title: "Autenticità psicologica", text: "Ogni sessione è guidata da psicologi clinici qualificati. Non raccogliamo dati: costruiamo un racconto. La differenza è enorme." },
-        { num: "02", title: "Validazione accademica", text: "Cambridge e Padova garantiscono il rigore scientifico di ogni metodologia. Il tuo corpus è fondato su ricerca peer-reviewed." },
-        { num: "03", title: "Custodia etica", text: "Tu decidi chi accede, quando e come. I tuoi dati non vengono mai venduti, analizzati per scopi commerciali o ceduti a terzi." },
-      ];
-
-  const corpusTags = lang === "en"
-    ? ["Structured psychological sessions", "Authentic voice recordings", "Digitised diaries and letters", "Verified textual corpus", "Validated identity model"]
-    : ["Sessioni psicologiche strutturate", "Registrazioni vocali autentiche", "Diari e lettere digitalizzate", "Corpus testuale verificato", "Modello identitario validato"];
-
   return (
-    <div style={{ background: CR, color: NE, fontFamily: "'Cormorant Garamond', serif", fontSize: 18, lineHeight: 1.7, overflowX: "hidden" }}>
-      <StripeBar />
-      <Navbar />
+    <Page>
+      <Hero k="Il Progetto" title={<>Chi ero, chi sono <em style={{ color: RED }}>e chi sarò.</em></>} lead="UltraRem non è un archivio e non è un gioco con l'intelligenza artificiale. È un modo serio, accompagnato da professionisti, di decidere mentre sei vivo e lucido che cosa di te debba restare, e a chi." />
 
-      {/* HERO */}
-      <div className="grid grid-cols-1 md:grid-cols-2" style={{ borderBottom: `2px solid ${NE}`, minHeight: "55vh" }}>
-        <div className="flex flex-col justify-center" style={{ padding: "6rem 4rem", borderRight: `2px solid ${NE}` }}>
-          <p className="mb-8" style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase", color: TC }}>
-            {lang === "en" ? "The Project · Our story" : "Il Progetto · La nostra storia"}
-          </p>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(3rem, 5vw, 5.5rem)", fontWeight: 900, lineHeight: 1.0, letterSpacing: "-2px", marginBottom: "2rem" }}>
-            {lang === "en"
-              ? <><em style={{ fontStyle: "italic", color: TC }}>An idea born</em><br />from life.</>
-              : <>Un'idea <em style={{ fontStyle: "italic", color: TC }}>che nasce</em><br />dalla vita.</>}
-          </h1>
-          <p style={{ fontSize: "1.3rem", color: GC, maxWidth: 480, fontStyle: "italic", lineHeight: 1.6 }}>
-            {lang === "en"
-              ? "UltraRem is not a technology startup. It is a human response to a profound question: what remains of us, after?"
-              : "UltraRem non è una startup tecnologica. È una risposta umana a una domanda profondissima: cosa rimane di noi, dopo?"}
-          </p>
-        </div>
-        <div style={{ background: NE, display: "flex", flexDirection: "column", justifyContent: "center", padding: "5rem 4rem" }}>
-          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.2em", textTransform: "uppercase", color: GI, marginBottom: "1.5rem" }}>
-            {lang === "en" ? "Our manifesto" : "Il nostro manifesto"}
+      <Sec k="Perché esiste" title="La tua dimensione digitale esisterà comunque.">
+        <Cols gap={40}>
+          <Prose>
+            <p>Ogni traccia che lasciamo online, ogni messaggio, ogni fotografia, ogni registrazione, concorre a formare una versione di noi. Nessuno la sta costruendo con cura. Viene composta da sistemi che deducono, non da persone che ascoltano, e il risultato somiglia a chi eravamo come una fotografia sfocata somiglia a un volto.</p>
+            <p>Se quella versione esisterà comunque, ci sembra giusto che a costruirla sia chi ne ha il diritto (la persona stessa), con il tempo e con l'aiuto di chi sa fare le domande. È da qui che parte UltraRem, e da questa premessa discendono tutte le scelte che trovi in queste pagine: i professionisti, i tempi lunghi, il verbale firmato, il consenso, la Carta.</p>
+            <p>Non promettiamo di far tornare nessuno. Promettiamo di custodire ciò che una persona ha scelto di lasciare, nel modo in cui l'ha scelto, e di non aggiungere niente che lei non abbia detto.</p>
+          </Prose>
+          <div style={{ flex: "1 1 320px", maxWidth: 440 }}><Photo name="cover" ar="4 / 5" pos="center top" /></div>
+        </Cols>
+      </Sec>
+
+      <Sec k="Il metodo" title="Una macchina che raccoglie, una persona che dà senso." bg={PALE}>
+        <Cols gap={20}>
+          <Card k="1" t="Raccogliere">
+            <p style={{ margin: 0 }}>Un companion digitale ti ascolta ogni volta che vuoi, di giorno o di notte, e raccoglie molto più di quanto un ciclo di interviste potrebbe mai fare: i dettagli, i ritorni, le cose che dici di sfuggita.</p>
+          </Card>
+          <Card k="2" t="Dare senso">
+            <p style={{ margin: 0 }}>Uno psicologo iscritto all'Albo ti intervista, legge ciò che è emerso, distingue ciò che è identità da ciò che è rumore e ti restituisce il quadro. La macchina non sa farlo, e per questo non la lasciamo sola.</p>
+          </Card>
+          <Card k="3" t="Convalidare" dark>
+            <p style={{ margin: 0 }}>Lo psicologo firma un verbale che dice che cosa è stato raccolto e come va letto (art. 7). Solo ciò che passa da quella firma entra nel tuo archivio come tuo.</p>
+          </Card>
+        </Cols>
+        <p style={{ margin: "22px 0 0", maxWidth: 760 }}>Nessuno dei due, da solo, produce un'identità autentica. La tecnologia è di QBT, nostro fornitore tecnologico; il valore sta nella qualità del dato e nella responsabilità della custodia, che sono nostre.</p>
+      </Sec>
+
+      <Sec k="Il corpus" title="Che cosa mettiamo, davvero, in un'identità.">
+        <Prose>
+          <p>Il nucleo di ogni progetto è un corpus, cioè un insieme ordinato di racconti, registrazioni della voce, lettere, riflessioni e risposte a domande che di solito nessuno fa. Non è una biografia: una biografia ordina i fatti, un corpus conserva il modo. Il modo in cui ragioni, quello che ti fa ridere, i valori che non hai mai scritto e che governano ogni tua scelta, le esitazioni, le cose che dici sempre.</p>
+          <p>Per questo la raccolta richiede tempo (decine di ore, nei percorsi più completi) e per questo non si improvvisa. Un avatar costruito in un pomeriggio dice quello che hai detto in un pomeriggio.</p>
+        </Prose>
+        <Quote by="Dal saggio «Il corpus siamo noi»">Prima di essere memoria è corpo, prima di essere racconto è vita che respira.</Quote>
+      </Sec>
+
+      <Sec k="Onestà" title="Testimonianza oppure elaborazione." dark>
+        <Cols gap={40}>
+          <Prose>
+            <p>Un avatar fa due cose molto diverse, e chi lo ascolta ha diritto di sapere quale delle due sta facendo in ogni momento. Può riportare ciò che la persona ha effettivamente detto, e allora la risposta porta l'etichetta <b>Testimonianza</b>. Può invece rielaborare, collegare, rispondere a una domanda che la persona non ha mai ricevuto, e allora porta l'etichetta <b>Elaborazione</b> (art. 15).</p>
+            <p>È una distinzione scomoda, perché toglie al sistema la possibilità di sembrare più fedele di quanto sia. Ma è il motivo per cui ti puoi fidare della prima e valutare con la giusta distanza la seconda.</p>
+          </Prose>
+          <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 12, justifyContent: "center" }}>
+            <div style={{ border: "2px solid #ff3b52", padding: 16 }}><div style={kicker("#ff3b52")}>Testimonianza</div><div style={{ fontSize: 16, marginTop: 4 }}>Ciò che la persona ha detto, con le sue parole.</div></div>
+            <div style={{ border: "2px solid #aaa", padding: 16 }}><div style={kicker("#aaa")}>Elaborazione</div><div style={{ fontSize: 16, marginTop: 4 }}>Ciò che il sistema ricostruisce o collega.</div></div>
           </div>
-          <blockquote style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", fontStyle: "italic", color: CR, lineHeight: 1.4, marginBottom: "2rem" }}>
-            {lang === "en"
-              ? <>"Memory is not the past.<br />It is the way you <em style={{ color: GI }}>keep existing</em>."</>
-              : <>"La memoria non è il passato.<br />È il modo in cui <em style={{ color: GI }}>continui ad esistere</em>."</>}
-          </blockquote>
-          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(245,240,232,0.4)" }}>— Manifesto UltraRem, 2024</span>
-        </div>
-      </div>
+        </Cols>
+      </Sec>
 
-      {/* PROBLEMA */}
-      <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderBottom: `2px solid ${NE}` }}>
-        <div className="flex flex-col justify-center" style={{ background: TC, padding: "5rem 3rem", borderRight: `2px solid ${NE}` }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "3.5rem", fontWeight: 900, color: CR, lineHeight: 1.1, letterSpacing: "-2px" }}>
-            {lang === "en" ? <>The<br />problem</> : <>Il<br />problema</>}
-          </h2>
-          <p style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(245,240,232,0.6)", marginTop: "2rem" }}>
-            {lang === "en" ? "Why we exist" : "Perché esistiamo"}
-          </p>
-        </div>
-        <div className="md:col-span-2 flex flex-col justify-center gap-6" style={{ padding: "5rem 4rem" }}>
-          {lang === "en" ? (
-            <>
-              <p style={{ fontSize: "1.2rem", lineHeight: 1.85 }}>
-                Every year, over <strong style={{ color: TC }}>1 million Italians</strong> lose their memory due to Alzheimer's and dementia. But it is not just a medical issue: it is a collective identity crisis.
-              </p>
-              <p style={{ fontSize: "1.2rem", lineHeight: 1.85 }}>
-                The most precious stories — of grandparents, parents, founders, artists — disappear in silence. Not because they are not worth telling, but because <strong style={{ color: TC }}>no one had the right tools to do it in time.</strong>
-              </p>
-              <p style={{ fontSize: "1.2rem", lineHeight: 1.85 }}>
-                UltraRem was created to fill this void. Not as a digital archive, but as a living, authentic presence.
-              </p>
-            </>
-          ) : (
-            <>
-              <p style={{ fontSize: "1.2rem", lineHeight: 1.85 }}>
-                Ogni anno, oltre <strong style={{ color: TC }}>1 milione di italiani</strong> perdono la memoria a causa di Alzheimer e demenze. Ma non è solo una questione medica: è una crisi di identità collettiva.
-              </p>
-              <p style={{ fontSize: "1.2rem", lineHeight: 1.85 }}>
-                Le storie più preziose — quelle dei nonni, dei genitori, dei fondatori, degli artisti — svaniscono in silenzio. Non perché non valga la pena raccontarle, ma perché <strong style={{ color: TC }}>nessuno aveva gli strumenti giusti per farlo in tempo.</strong>
-              </p>
-              <p style={{ fontSize: "1.2rem", lineHeight: 1.85 }}>
-                UltraRem nasce per colmare questo vuoto. Non come archivio digitale, ma come presenza viva e autentica.
-              </p>
-            </>
-          )}
-        </div>
-      </div>
-
-      {/* TRE PILASTRI */}
-      <div style={{ borderBottom: `2px solid ${NE}` }}>
-        <div className="flex flex-col md:flex-row items-baseline gap-8" style={{ padding: "4rem", borderBottom: `2px solid ${NE}` }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "3rem", fontWeight: 900 }}>
-            {lang === "en" ? "Three pillars" : "Tre pilastri"}
-          </h2>
-          <p style={{ fontStyle: "italic", color: GC }}>
-            {lang === "en" ? "On which we build every project" : "Su cui costruiamo ogni progetto"}
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3">
-          {pillars.map((p, i) => (
-            <div key={i} style={{ padding: "4rem 3rem", borderRight: i < 2 ? `2px solid ${NE}` : "none" }}>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "5rem", fontWeight: 900, color: CS, lineHeight: 1, marginBottom: "1.5rem" }}>{p.num}</div>
-              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", fontWeight: 700, marginBottom: "1rem" }}>{p.title}</h3>
-              <p style={{ fontSize: "1.05rem", color: GC, lineHeight: 1.7 }}>{p.text}</p>
+      <Sec k="La Carta dei Valori" title="Ciò che promettiamo, e che puoi pretendere." bg={PALE}>
+        <p style={{ margin: "0 0 24px", maxWidth: 760 }}>La Carta (versione 2, 30 ottobre 2026) è il documento a cui ci obblighiamo. Qui trovi gli articoli che incidono di più sul tuo rapporto con noi, in parole semplici.</p>
+        <Cols gap={0}>
+          {carta.map((c, i) => (
+            <div key={c.a} style={{ flex: "1 1 320px", padding: "18px 22px", borderTop: `1px solid ${INK}`, borderLeft: i % 2 ? `1px solid ${INK}` : "none", display: "flex", flexDirection: "column", gap: 4, background: "#fff" }}>
+              <div style={{ fontFamily: BLACK, fontSize: 14, color: RED }}>{c.a}</div>
+              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 22, lineHeight: 1.1 }}>{c.t}</div>
+              <div style={{ fontSize: 16 }}>{c.d}</div>
             </div>
           ))}
-        </div>
-      </div>
+        </Cols>
+      </Sec>
 
-      {/* IMMAGINE EDITORIALE */}
-      <div className="grid grid-cols-1 md:grid-cols-2" style={{ borderBottom: `2px solid ${NE}`, minHeight: 480 }}>
-        <div className="relative overflow-hidden" style={{ minHeight: 380 }}>
-          <img src={uomoImg} alt="Uomo elegante italiano anni 80" className="absolute inset-0 w-full h-full object-cover object-top" />
-        </div>
-        <div className="flex flex-col justify-center" style={{ padding: "5rem 4rem", borderLeft: `2px solid ${NE}` }}>
-          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.2em", textTransform: "uppercase", color: TC, marginBottom: "1.5rem" }}>
-            {lang === "en" ? "The solution" : "La soluzione"}
-          </div>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.8rem", fontWeight: 900, marginBottom: "2rem" }}>
-            {lang === "en"
-              ? <>Not an archive.<br />A <em style={{ color: TC, fontStyle: "italic" }}>presence.</em></>
-              : <>Non un archivio.<br />Una <em style={{ color: TC, fontStyle: "italic" }}>presenza.</em></>}
-          </h2>
-          {lang === "en" ? (
-            <>
-              <p style={{ fontSize: "1.15rem", color: GC, lineHeight: 1.85, marginBottom: "1.5rem" }}>
-                Through structured sessions with psychologists, we collect your voice, your values, your way of thinking. We build an identity corpus that allows those you love to keep feeling close to you.
-              </p>
-              <p style={{ fontSize: "1.15rem", color: GC, lineHeight: 1.85 }}>
-                <strong style={{ color: NE }}>This is not generic artificial intelligence.</strong> It is your specificity, shaped by you, preserved forever.
-              </p>
-            </>
-          ) : (
-            <>
-              <p style={{ fontSize: "1.15rem", color: GC, lineHeight: 1.85, marginBottom: "1.5rem" }}>
-                Attraverso sessioni strutturate con psicologi, raccogliamo la tua voce, i tuoi valori, il tuo modo di pensare. Costruiamo un corpus identitario che permette a chi ami di continuare a sentirti vicino.
-              </p>
-              <p style={{ fontSize: "1.15rem", color: GC, lineHeight: 1.85 }}>
-                <strong style={{ color: NE }}>Non è intelligenza artificiale generica.</strong> È la tua specificità, modellata da te, preservata per sempre.
-              </p>
-            </>
-          )}
-        </div>
-      </div>
+      <Sec k="Che cosa non siamo" title="Un confine che teniamo con cura.">
+        <Prose>
+          <p>Non siamo una banca di dati e non vendiamo profili. Non siamo una terapia, anche se lavoriamo con psicologi: l'intervista serve a costruire un progetto, non a curare. Non siamo una promessa di immortalità. E non siamo un sistema che parla ai tuoi cari senza che tu l'abbia deciso.</p>
+          <p>Sappiamo che chi si occupa di morte e di memoria ha il dovere di dire con chiarezza dove finisce. Per questo preferiamo scrivere ciò che non faremo, piuttosto che ciò che sapremmo fare.</p>
+        </Prose>
+      </Sec>
 
-      {/* CORPUS */}
-      <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderBottom: `2px solid ${NE}` }}>
-        <div className="md:col-span-2" style={{ padding: "5rem 4rem", borderRight: `2px solid ${NE}` }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.8rem", fontWeight: 900, marginBottom: "3rem" }}>
-            {lang === "en"
-              ? <>The <em style={{ color: TC, fontStyle: "italic" }}>identity corpus</em></>
-              : <>Il corpus <em style={{ color: TC, fontStyle: "italic" }}>identitario</em></>}
-          </h2>
-          {lang === "en" ? (
-            <>
-              <p style={{ fontSize: "1.2rem", lineHeight: 1.85, marginBottom: "1.5rem" }}>
-                The core of every UltraRem project is the <strong style={{ color: TC }}>identity corpus</strong>: a structured set of texts, voice recordings, diaries, letters and reflections that define who you truly are.
-              </p>
-              <p style={{ fontSize: "1.2rem", lineHeight: 1.85 }}>
-                This is not a biography. It is something more alive: the way you reason, the things that make you laugh, the values you never wrote down but that guide every choice you make.
-              </p>
-            </>
-          ) : (
-            <>
-              <p style={{ fontSize: "1.2rem", lineHeight: 1.85, marginBottom: "1.5rem" }}>
-                Il nucleo di ogni progetto UltraRem è il <strong style={{ color: TC }}>corpus identitario</strong>: un insieme strutturato di testi, registrazioni vocali, diari, lettere e riflessioni che definiscono chi sei davvero.
-              </p>
-              <p style={{ fontSize: "1.2rem", lineHeight: 1.85 }}>
-                Non si tratta di una biografia. È qualcosa di più vivo: il modo in cui ragioni, le cose che ti fanno ridere, i valori che non hai mai messo per scritto ma che guidano ogni tua scelta.
-              </p>
-            </>
-          )}
-        </div>
-        <div className="flex flex-col justify-center gap-4" style={{ background: V, padding: "5rem 3rem" }}>
-          {corpusTags.map((tag, i) => (
-            <div key={i} style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(245,240,232,0.9)", padding: "0.8rem 1.2rem", border: "1px solid rgba(245,240,232,0.3)" }}>
-              {tag}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ORIGINE */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-0" style={{ background: NE, color: CR, padding: 0, borderBottom: `2px solid ${NE}` }}>
-        <div style={{ padding: "6rem 4rem", borderRight: `2px solid rgba(245,240,232,0.1)` }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.8rem", fontWeight: 900, lineHeight: 1.1, marginBottom: "2rem" }}>
-            {lang === "en"
-              ? <>The origin of <em style={{ color: GI, fontStyle: "italic" }}>an idea</em></>
-              : <>L'origine di <em style={{ color: GI, fontStyle: "italic" }}>un'idea</em></>}
-          </h2>
-          {lang === "en" ? (
-            <>
-              <p style={{ fontSize: "1.15rem", lineHeight: 1.85, color: "rgba(245,240,232,0.85)", marginBottom: "1.5rem" }}>
-                UltraRem was born from a personal experience of the founder: the loss of a grandfather before he could tell his story. That absence opened a question that could not go unanswered.
-              </p>
-              <p style={{ fontSize: "1.15rem", lineHeight: 1.85, color: "rgba(245,240,232,0.85)" }}>
-                After three years of research with Cambridge and Padova, psychologists consulted, families listened to, UltraRem became what you see today.
-              </p>
-            </>
-          ) : (
-            <>
-              <p style={{ fontSize: "1.15rem", lineHeight: 1.85, color: "rgba(245,240,232,0.85)", marginBottom: "1.5rem" }}>
-                UltraRem nasce da un'esperienza personale del fondatore: la perdita di un nonno prima che potesse raccontare la sua storia. Quell'assenza ha aperto una domanda che non poteva restare senza risposta.
-              </p>
-              <p style={{ fontSize: "1.15rem", lineHeight: 1.85, color: "rgba(245,240,232,0.85)" }}>
-                Dopo tre anni di ricerca con Cambridge e Padova, di psicologi interpellati, di famiglie ascoltate, UltraRem è diventato ciò che vedi oggi.
-              </p>
-            </>
-          )}
-        </div>
-        <div className="flex items-center" style={{ padding: "6rem 4rem" }}>
-          <div style={{ background: "rgba(245,240,232,0.05)", borderLeft: `4px solid ${GI}`, padding: "2.5rem 3rem" }}>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.4rem", fontStyle: "italic", lineHeight: 1.6, color: CR, margin: 0 }}>
-              {lang === "en"
-                ? '"I realised the problem was not death. It was the silence that comes before, when you could still speak but didn\'t know how to begin."'
-                : '"Ho capito che il problema non era la morte. Era il silenzio che arriva prima, quando ancora si potrebbe parlare e invece non si sa come iniziare."'}
-            </p>
-            <span style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(245,240,232,0.4)", marginTop: "1.5rem", display: "block" }}>
-              {lang === "en" ? "— The founder, Milan 2022" : "— Il fondatore, Milano 2022"}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA */}
-      <div className="text-center" style={{ padding: "8rem 4rem", background: CS, borderBottom: `2px solid ${NE}` }}>
-        <p style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase", color: TC, marginBottom: "2rem" }}>
-          {lang === "en" ? "Start your project" : "Inizia il tuo progetto"}
-        </p>
-        <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 4vw, 4rem)", fontWeight: 900, lineHeight: 1.1, marginBottom: "2rem" }}>
-          {lang === "en"
-            ? <>Your story <em style={{ fontStyle: "italic", color: TC }}>deserves</em><br />to be told.</>
-            : <>La tua storia <em style={{ fontStyle: "italic", color: TC }}>merita</em><br />di essere raccontata.</>}
-        </h2>
-        <p style={{ fontSize: "1.2rem", color: GC, maxWidth: 520, margin: "0 auto 3rem", fontStyle: "italic" }}>
-          {lang === "en" ? "Start with a discovery call. No commitment, no rush." : "Inizia con una chiamata conoscitiva. Senza impegno, senza fretta."}
-        </p>
-        <div className="flex gap-4 justify-center flex-wrap">
-          <Link href="/prenota"><span className="cursor-pointer inline-block" style={{ background: NE, color: CR, padding: "1.1rem 2.2rem", fontFamily: "'Space Mono', monospace", fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none", border: `2px solid ${NE}` }}
-            onMouseOver={e => (e.currentTarget.style.background = TC)}
-            onMouseOut={e => (e.currentTarget.style.background = NE)}>
-            {lang === "en" ? "Book your demo →" : "Prenota la tua demo →"}
-          </span></Link>
-          <Link href="/come-funziona"><span className="cursor-pointer inline-block" style={{ background: "transparent", color: NE, padding: "1.1rem 2.2rem", fontFamily: "'Space Mono', monospace", fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase", border: `2px solid ${NE}` }}
-            onMouseOver={e => { e.currentTarget.style.background = NE; e.currentTarget.style.color = CR; }}
-            onMouseOut={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = NE; }}>
-            {lang === "en" ? "How it works" : "Come funziona"}
-          </span></Link>
-        </div>
-      </div>
-
-      <Footer />
-    </div>
+      <CtaBand title="Vuoi vedere come si traduce in un percorso?" text="Tre gradini, ciascuno con i suoi tempi e il suo prezzo, e ognuno che conduce al successivo." a={{ href: "/come-funziona", label: "Come funziona" }} b={{ href: "/fondatori", label: "Chi c'è dietro" }} />
+    </Page>
   );
 }
