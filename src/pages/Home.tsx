@@ -43,7 +43,7 @@ export default function Home() {
           </div>
         </div>
         <aside style={{ flex: "1 1 320px", padding: "32px 28px", background: PALE, display: "flex", flexDirection: "column", gap: 14 }}>
-          <Photo name="cover" ar="4 / 5" pos="center top" />
+          <Photo name="copertina" ar="4 / 5" pos="center top" />
           <div style={{ fontFamily: BLACK, fontSize: 20, letterSpacing: -0.5 }}>In questo numero</div>
           <div style={{ display: "flex", flexDirection: "column", fontSize: 17 }}>
             {index.map((x, i) => (
@@ -69,7 +69,7 @@ export default function Home() {
           {reads.map(r => (
             <Link key={r.k} href="/storie">
               <article style={{ flex: "1 1 240px", cursor: "pointer", display: "flex", flexDirection: "column", gap: 8 }}>
-                {r.img ? <Photo name={r.img} ar="3 / 2" /> : <Tbp ini="?" ar="3 / 2" col={GREY} />}
+                <Photo name={r.img || "riempitivo"} ar="3 / 2" />
                 <div style={kicker()}>{r.k}</div>
                 <h3 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: 24, lineHeight: 1.1 }}>{r.t}</h3>
                 <span style={{ fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>{r.m}</span>
