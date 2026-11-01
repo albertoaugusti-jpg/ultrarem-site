@@ -28,11 +28,11 @@ export function Stripes({ h = 6 }: { h?: number }) {
   return <div style={{ display: "flex", height: h }}>{STRIPES.map(c => <div key={c} style={{ flex: 1, background: c }} />)}</div>;
 }
 
-const NAV_EXTRA: Record<string, { stories: string; founders: string }> = {
-  it: { stories: "Storie", founders: "Fondatori" },
-  en: { stories: "Stories", founders: "Founders" },
-  fr: { stories: "Histoires", founders: "Fondateurs" },
-  de: { stories: "Geschichten", founders: "Gründer" },
+const NAV_EXTRA: Record<string, { stories: string; founders: string; start: string }> = {
+  it: { stories: "Storie", founders: "Fondatori", start: "Inizia dal Diario" },
+  en: { stories: "Stories", founders: "Founders", start: "Start with the Diary" },
+  fr: { stories: "Histoires", founders: "Fondateurs", start: "Commencer par le Journal" },
+  de: { stories: "Geschichten", founders: "Gründer", start: "Mit dem Tagebuch beginnen" },
 };
 
 export function Navbar() {
@@ -70,7 +70,7 @@ export function Navbar() {
           <div style={{ display: "flex", border: `1px solid ${INK}`, fontFamily: NARROW, fontWeight: 700, fontSize: 12 }}>
             {LANGS.map(l => <button key={l} onClick={() => setLang(l)} style={{ padding: "6px 9px", border: "none", cursor: "pointer", background: lang === l ? INK : "transparent", color: lang === l ? "#fff" : INK, fontFamily: "inherit", fontWeight: "inherit", fontSize: "inherit" }}>{l.toUpperCase()}</button>)}
           </div>
-          <Link href="/prenota"><span style={{ ...btn(INK, "#fff"), padding: "8px 16px", minHeight: 38 }}>{d.nav.book}</span></Link>
+          <Link href="/come-funziona"><span style={{ ...btn(INK, "#fff"), padding: "8px 16px", minHeight: 38 }}>{x.start}</span></Link>
         </div>
       </nav>
     </header>
@@ -97,7 +97,7 @@ export function Footer() {
         <div style={col}>
           <div style={kicker("#ff3b52")}>{d.footer.contact}</div>
           <Link href="/contatti"><span style={fl}>{d.footer.getInTouch}</span></Link>
-          <Link href="/prenota"><span style={fl}>{d.footer.bookDemo}</span></Link>
+          <Link href="/come-funziona"><span style={fl}>Inizia dal Diario di bordo</span></Link>
           <a href="mailto:info@ultrarem.it" style={fl}>info@ultrarem.it</a>
           <span style={{ fontSize: 15, color: "rgba(255,255,255,0.65)" }}>Viale Cassala 30, 20143 Milano</span>
         </div>
