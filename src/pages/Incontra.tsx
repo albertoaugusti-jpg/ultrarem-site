@@ -77,7 +77,7 @@ export default function Incontra() {
         </Cols>
       </Sec>
 
-      <CtaBand title="Preferisci una persona a uno schermo?" text="Una chiamata conoscitiva gratuita, senza impegno. Ti ascoltiamo e ti diciamo con franchezza se UltraRem fa per te." a={{ href: "/prenota", label: "Prenota una demo" }} b={{ href: "/contatti", label: "Scrivici" }} />
+      <CtaBand title="Preferisci una persona a uno schermo?" text="Scrivici, senza impegno. Ti ascoltiamo e ti diciamo con franchezza se UltraRem fa per te." a={{ href: "/contatti", label: "Scrivici" }} b={{ href: "/come-funziona", label: "Inizia dal Diario di bordo" }} />
     </Page>
   );
 }

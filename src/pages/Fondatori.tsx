@@ -66,7 +66,7 @@ export default function Fondatori() {
         </Cols>
       </Sec>
 
-      <CtaBand title="Vuoi conoscerci di persona?" text="Una chiamata, o un incontro a Milano o a Genova. Ti raccontiamo tutto quello che vuoi sapere." a={{ href: "/prenota", label: "Prenota una demo" }} b={{ href: "/contatti", label: "Scrivici" }} />
+      <CtaBand title="Vuoi conoscerci di persona?" text="Scrivici: ti rispondiamo noi, e se vuoi ci vediamo a Milano o a Genova. Ti raccontiamo tutto quello che vuoi sapere." a={{ href: "/contatti", label: "Scrivici" }} b={{ href: "/come-funziona", label: "Inizia dal Diario di bordo" }} />
     </Page>
   );
 }

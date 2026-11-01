@@ -63,7 +63,7 @@ export default function PerChi() {
         </Prose>
       </Sec>
 
-      <CtaBand title="Parti dal gradino che senti più tuo." text="Il Diario di bordo costa 290 € e serve proprio a capire se vuoi andare avanti. Se vuoi una persona accanto fin dall'inizio, comincia dai Marinai del tempo." a={{ href: "/come-funziona", label: "Vedi i percorsi" }} b={{ href: "/prenota", label: "Prenota una demo" }} />
+      <CtaBand title="Parti dal gradino che senti più tuo." text="Il Diario di bordo costa 290 € e serve proprio a capire se vuoi andare avanti. Se vuoi una persona accanto fin dall'inizio, comincia dai Marinai del tempo." a={{ href: "/come-funziona", label: "Vedi i percorsi" }} b={{ href: "/contatti", label: "Scrivici" }} />
     </Page>
   );
 }

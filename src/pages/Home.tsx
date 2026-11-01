@@ -189,7 +189,7 @@ export default function Home() {
         <div style={{ marginTop: 24 }}><Link href="/il-progetto"><span style={btn("#fff", INK)}>Leggi la Carta</span></Link></div>
       </Sec>
 
-      <CtaBand title="Preferisci parlarne con una persona?" text="Una chiamata conoscitiva, senza impegno e senza fretta." a={{ href: "/prenota", label: "Prenota una demo" }} b={{ href: "/contatti", label: "Scrivici" }} />
+      <CtaBand title="Comincia dal Diario di bordo." text="290 € per raccontarti con il companion e capire se vuoi andare avanti. Senza intervista e senza fretta." a={{ href: "/come-funziona", label: "Scopri il Diario di bordo" }} b={{ href: "/contatti", label: "Scrivici" }} />
     </Page>
   );
 }

@@ -80,7 +80,7 @@ export default function ComeFunziona() {
         </Cols>
       </Sec>
 
-      <CtaBand title="Non sei sicuro di quale gradino?" text="Ne parliamo in una chiamata gratuita. Se il Diario di bordo basta, te lo diciamo." a={{ href: "/prenota", label: "Prenota una demo" }} b={{ href: "/contatti", label: "Scrivici" }} />
+      <CtaBand title="Non sei sicuro di quale gradino?" text="Parti dal Diario di bordo: se basta, te lo diciamo noi. Per qualsiasi dubbio, scrivici." a={{ href: "/contatti", label: "Scrivici" }} />
     </Page>
   );
 }
