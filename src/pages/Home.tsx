@@ -1,6 +1,10 @@
+import type { CSSProperties } from "react";
 import { Link } from "wouter";
-import { Page, Photo, Tbp, Cols, Sec, CtaBand, kicker, btn, RED, INK, GREY, PALE, BODONI, BLACK, NARROW, PAD } from "@/components/Mag";
-import { cover, index, reads, ladder, who, research } from "@/content/home";
+import { Page, Photo, Tbp, Sec, Wrap, CtaBand, kicker, btn, RED, INK, GREY, PALE, BODONI, BLACK, NARROW } from "@/components/Mag";
+import { cover, index, reads, ladder, who, research, story, charter, editorial } from "@/content/home";
+
+const grid = (min: number, gap = 24): CSSProperties => ({ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(min(${min}px, 100%), 1fr))`, gap });
+const block: CSSProperties = { display: "block", color: "inherit", textDecoration: "none" };
 
 function Play() {
   return <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: 76, height: 76, borderRadius: "50%", background: RED, border: "3px solid #fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -10,15 +14,13 @@ function Play() {
 
 function Entry({ href, k, t, p, img, cta }: { href: string; k: string; t: string; p: string; img: string; cta: string }) {
   return (
-    <Link href={href}>
-      <div style={{ flex: "1 1 340px", border: `2px solid ${INK}`, background: "#fff", cursor: "pointer", display: "flex", flexDirection: "column" }}>
-        <div style={{ position: "relative" }}><Photo name={img} ar="16 / 9" /><Play /></div>
-        <div style={{ padding: 22, display: "flex", flexDirection: "column", gap: 8 }}>
-          <div style={kicker()}>{k}</div>
-          <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 30, lineHeight: 1.08 }}>{t}</div>
-          <p style={{ margin: 0, fontSize: 16 }}>{p}</p>
-          <span style={{ ...btn(INK, "#fff"), alignSelf: "flex-start", marginTop: 6 }}>{cta}</span>
-        </div>
+    <Link href={href} style={{ ...block, border: `2px solid ${INK}`, background: "#fff" }}>
+      <div style={{ position: "relative" }}><Photo name={img} ar="16 / 9" /><Play /></div>
+      <div style={{ padding: 22, display: "flex", flexDirection: "column", gap: 8 }}>
+        <div style={kicker()}>{k}</div>
+        <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 30, lineHeight: 1.08 }}>{t}</div>
+        <p style={{ margin: 0, fontSize: 16 }}>{p}</p>
+        <span style={{ ...btn(INK, "#fff"), alignSelf: "flex-start", marginTop: 6 }}>{cta}</span>
       </div>
     </Link>
   );
@@ -27,91 +29,158 @@ function Entry({ href, k, t, p, img, cta }: { href: string; k: string; t: string
 export default function Home() {
   return (
     <Page>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 8, padding: `10px ${PAD}`, borderBottom: `2px solid ${INK}`, fontFamily: NARROW, fontWeight: 700, fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-        <span>Rivista di memoria e vita</span><span style={{ color: GREY }}>Milano · Genova · Padova</span><span style={{ color: RED }}>Numero 1 · Autunno 2026</span>
+      <div style={{ borderBottom: `2px solid ${INK}` }}>
+        <Wrap>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 8, padding: "10px 0", fontFamily: NARROW, fontWeight: 700, fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+            <span>Rivista di memoria e vita</span><span style={{ color: GREY }}>Milano · Genova · Padova</span><span style={{ color: RED }}>Numero 1 · Autunno 2026</span>
+          </div>
+        </Wrap>
       </div>
 
-      <section style={{ display: "flex", flexWrap: "wrap", borderBottom: `3px solid ${INK}` }}>
-        <div style={{ flex: "2 1 560px", padding: `clamp(36px,6vw,64px) ${PAD}`, display: "flex", flexDirection: "column", gap: 18 }}>
-          <div style={kicker()}>{cover.kicker}</div>
-          <h1 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(40px,6.2vw,76px)", lineHeight: 1, letterSpacing: -2 }}>{cover.title}</h1>
-          <p style={{ margin: 0, fontStyle: "italic", fontSize: 22, maxWidth: 640 }}>{cover.lead}</p>
-          <p style={{ margin: 0, maxWidth: 640 }}>{cover.body}</p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 6 }}>
-            <Link href="/incontra#avatar"><span style={btn(RED, "#fff")}>Parla con l'avatar</span></Link>
-            <Link href="/incontra#video"><span style={btn("transparent", INK, `2px solid ${INK}`)}>Guarda il video</span></Link>
+      <section style={{ borderBottom: `3px solid ${INK}`, padding: "clamp(32px,5vw,56px) 0" }}>
+        <Wrap>
+          <div style={{ ...grid(420, 40), gridTemplateColumns: "repeat(auto-fit, minmax(min(420px, 100%), 1fr))", alignItems: "start" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              <div style={kicker()}>{cover.kicker}</div>
+              <h1 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(40px,5.6vw,72px)", lineHeight: 1, letterSpacing: -2 }}>{cover.title}</h1>
+              <p style={{ margin: 0, fontStyle: "italic", fontSize: 22 }}>{cover.lead}</p>
+              <div style={{ columnWidth: 280, columnGap: 32, columnRule: `1px solid ${INK}`, fontSize: 16.5, lineHeight: 1.6 }}>
+                <p style={{ margin: "0 0 12px" }}>{cover.body}</p>
+                <p style={{ margin: "0 0 12px" }}>{cover.body2}</p>
+                <p style={{ margin: 0 }}>{cover.body3}</p>
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 4 }}>
+                <Link href="/incontra#avatar"><span style={btn(RED, "#fff")}>Parla con l'avatar</span></Link>
+                <Link href="/incontra#video"><span style={btn("transparent", INK, `2px solid ${INK}`)}>Guarda il video</span></Link>
+              </div>
+            </div>
+            <figure style={{ margin: 0, maxWidth: 440, width: "100%", justifySelf: "center" }}>
+              <Photo name="cover" ar="4 / 5" pos="center top" />
+              <figcaption style={{ marginTop: 8, fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>Milano, una sera d'autunno. Immagine illustrativa.</figcaption>
+            </figure>
           </div>
-        </div>
-        <aside style={{ flex: "1 1 320px", padding: "32px 28px", background: PALE, display: "flex", flexDirection: "column", gap: 14 }}>
-          <Photo name="cover" ar="4 / 5" pos="center top" />
-          <div style={{ fontFamily: BLACK, fontSize: 20, letterSpacing: -0.5 }}>In questo numero</div>
-          <div style={{ display: "flex", flexDirection: "column", fontSize: 17 }}>
+        </Wrap>
+      </section>
+
+      <section style={{ background: PALE, borderBottom: `3px solid ${INK}`, padding: "22px 0" }}>
+        <Wrap>
+          <div style={{ fontFamily: BLACK, fontSize: 20, letterSpacing: -0.5, marginBottom: 10 }}>In questo numero</div>
+          <div style={grid(220, 0)}>
             {index.map((x, i) => (
-              <Link key={x.k} href={x.href}>
-                <div style={{ padding: "9px 0", cursor: "pointer", borderTop: `${i === 0 ? 2 : 1}px solid ${INK}`, borderBottom: i === index.length - 1 ? `2px solid ${INK}` : undefined }}>
-                  <span style={{ ...kicker(), letterSpacing: "0.14em" }}>{x.k}</span><br />{x.t}
-                </div>
+              <Link key={x.k} href={x.href} style={{ ...block, padding: "10px 16px", borderLeft: i ? `1px solid ${INK}` : "none", borderTop: `2px solid ${INK}` }}>
+                <span style={{ ...kicker(), letterSpacing: "0.14em" }}>{x.k}</span><br /><span style={{ fontSize: 17 }}>{x.t}</span>
               </Link>
             ))}
           </div>
-        </aside>
+        </Wrap>
       </section>
 
-      <Sec k="Per cominciare" title="Due modi per conoscerci, in pochi minuti.">
-        <Cols gap={24}>
-          <Entry href="/incontra#avatar" k="1 · Conversazione" t="Parla con l'avatar di Alberto" p="Ti spiega che cos'è UltraRem e risponde alle tue domande. Ti dice subito che è un'intelligenza artificiale, e puoi smettere quando vuoi." img="storie" cta="Parla con l'avatar" />
-          <Entry href="/incontra#video" k="2 · Racconto" t="Il video: perché lo facciamo" p="Un filmato breve, senza spiegazioni tecniche, su quello che resta di noi e su chi lo racconta." img="cultura" cta="Guarda il video" />
-        </Cols>
+      <Sec k={editorial.kicker} title={editorial.title}>
+        <div style={{ columnWidth: 300, columnGap: 40, columnRule: `1px solid ${INK}`, fontSize: 17, lineHeight: 1.65 }}>
+          {editorial.paras.map((p, i) => <p key={i} style={{ margin: "0 0 14px" }}>{p}</p>)}
+        </div>
+        <p style={{ margin: "10px 0 0", fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>{editorial.by}</p>
       </Sec>
 
-      <Sec k="Da leggere" title="Storie, dibattiti, cultura." bg={PALE}>
-        <Cols gap={24}>
+      <Sec k="Per cominciare" title="Due modi per conoscerci, in pochi minuti." bg={PALE}>
+        <div style={grid(340)}>
+          <Entry href="/incontra#avatar" k="1 · Conversazione" t="Parla con l'avatar di Alberto" p="Ti spiega che cos'è UltraRem e risponde alle tue domande. Ti dice subito che è un'intelligenza artificiale, e puoi smettere quando vuoi." img="storie" cta="Parla con l'avatar" />
+          <Entry href="/incontra#video" k="2 · Racconto" t="Il video: perché lo facciamo" p="Un filmato breve, senza spiegazioni tecniche, su quello che resta di noi e su chi lo racconta." img="cultura" cta="Guarda il video" />
+        </div>
+      </Sec>
+
+      <Sec k="Da leggere" title="Storie, dibattiti, cultura.">
+        <div style={grid(240)}>
           {reads.map(r => (
-            <Link key={r.k} href="/storie">
-              <article style={{ flex: "1 1 240px", cursor: "pointer", display: "flex", flexDirection: "column", gap: 8 }}>
+            <Link key={r.k} href="/storie" style={{ ...block }}>
+              <article style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 <Photo name={r.img || "riempitivo"} ar="3 / 2" />
                 <div style={kicker()}>{r.k}</div>
                 <h3 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: 24, lineHeight: 1.1 }}>{r.t}</h3>
+                <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.55 }}>{r.p}</p>
                 <span style={{ fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>{r.m}</span>
               </article>
             </Link>
           ))}
-        </Cols>
-        <div style={{ marginTop: 22 }}><Link href="/storie"><span style={btn(INK, "#fff")}>Tutte le storie</span></Link></div>
+        </div>
+        <div style={{ marginTop: 24 }}><Link href="/storie"><span style={btn(INK, "#fff")}>Tutte le storie</span></Link></div>
+      </Sec>
+
+      <Sec k={story.kicker} title={story.title} bg={PALE}>
+        <div style={{ ...grid(320, 40), alignItems: "start" }}>
+          <p style={{ margin: 0, fontSize: 18, lineHeight: 1.65 }}>{story.text}</p>
+          <div style={{ border: `2px solid ${INK}`, background: "#fff", padding: 22, fontSize: 16, lineHeight: 1.6 }}>{story.box}</div>
+        </div>
       </Sec>
 
       <Sec k={ladder.kicker} title="Tre gradini, un solo percorso.">
-        <Cols gap={20}>
+        <p style={{ margin: "0 0 24px", maxWidth: 780, fontSize: 17, lineHeight: 1.6 }}>{ladder.intro}</p>
+        <div style={grid(280, 20)}>
           {ladder.steps.map(s => (
-            <Link key={s.name} href="/come-funziona">
-              <div style={{ flex: "1 1 260px", cursor: "pointer", border: `2px solid ${s.tone === "red" ? RED : INK}`, background: s.tone === "red" ? RED : s.tone === "dark" ? INK : "#fff", color: s.tone === "light" ? INK : "#fff", padding: 22, display: "flex", flexDirection: "column", gap: 6 }}>
-                <div style={kicker(s.tone === "light" ? GREY : "#fff")}>{s.tag}</div>
-                <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1 }}>{s.name}</div>
-                <div style={{ fontFamily: BLACK, fontSize: 36, letterSpacing: -1, color: s.tone === "light" ? RED : "#fff" }}>{s.price}</div>
-                <div style={{ fontSize: 14, opacity: 0.85 }}>{s.sub}</div>
-              </div>
+            <Link key={s.name} href="/come-funziona" style={{ ...block, border: `2px solid ${s.tone === "red" ? RED : INK}`, background: s.tone === "red" ? RED : s.tone === "dark" ? INK : "#fff", color: s.tone === "light" ? INK : "#fff", padding: 24 }}>
+              <div style={kicker(s.tone === "light" ? GREY : "#fff")}>{s.tag}</div>
+              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1, margin: "6px 0" }}>{s.name}</div>
+              <div style={{ fontFamily: BLACK, fontSize: 36, letterSpacing: -1, color: s.tone === "light" ? RED : "#fff" }}>{s.price}</div>
+              <div style={{ fontSize: 14, opacity: 0.85, margin: "2px 0 12px" }}>{s.sub}</div>
+              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 15, lineHeight: 1.5 }}>{s.items.slice(0, 3).map(it => <li key={it}>{it}</li>)}</ul>
             </Link>
           ))}
-        </Cols>
-        <div style={{ marginTop: 22 }}><Link href="/come-funziona"><span style={btn(RED, "#fff")}>Che cosa include ogni gradino</span></Link></div>
+        </div>
+        <p style={{ margin: "20px 0 0", maxWidth: 820, fontSize: 14.5, color: GREY }}>{ladder.fee}</p>
+        <div style={{ marginTop: 20 }}><Link href="/come-funziona"><span style={btn(RED, "#fff")}>Che cosa include ogni gradino</span></Link></div>
       </Sec>
 
       <Sec k={who.kicker} title={who.title} bg={PALE}>
-        <p style={{ margin: "0 0 22px", maxWidth: 760 }}>{who.intro}</p>
-        <Cols gap={14}>
-          {[...who.founders, ...who.science].map(f => (
-            <div key={f.name} style={{ flex: "1 1 120px", maxWidth: 170 }}>
+        <p style={{ margin: "0 0 26px", maxWidth: 820, fontSize: 17, lineHeight: 1.6 }}>{who.intro}</p>
+        <div style={grid(200, 22)}>
+          {who.founders.map(f => (
+            <div key={f.name}>
               <Tbp ini={f.ini} ar="1 / 1" col={f.col} />
-              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 16, lineHeight: 1.1, marginTop: 6 }}>{f.name}</div>
+              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 19, lineHeight: 1.1, marginTop: 8 }}>{f.name}</div>
+              <div style={{ ...kicker(), margin: "4px 0 6px" }}>{f.role}</div>
+              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.5 }}>{f.text}</p>
             </div>
           ))}
-        </Cols>
-        <div style={{ marginTop: 22 }}><Link href="/fondatori"><span style={btn(INK, "#fff")}>Conosci i fondatori</span></Link></div>
+        </div>
+        <div style={{ ...grid(300, 22), marginTop: 30, borderTop: `2px solid ${INK}`, paddingTop: 22 }}>
+          {who.science.map(f => (
+            <div key={f.name} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+              <div style={{ width: 96, flex: "0 0 96px" }}><Tbp ini={f.ini} ar="1 / 1" col={f.col} /></div>
+              <div>
+                <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 19, lineHeight: 1.1 }}>{f.name}</div>
+                <div style={{ ...kicker(), margin: "4px 0 6px" }}>{f.role}</div>
+                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.5 }}>{f.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: 24 }}><Link href="/fondatori"><span style={btn(INK, "#fff")}>Conosci i fondatori</span></Link></div>
       </Sec>
 
       <Sec k={research.kicker} title={research.title}>
-        <p style={{ margin: "0 0 18px", maxWidth: 760 }}>{research.cells[0].v}</p>
+        <div style={{ ...grid(280, 32) }}>
+          {research.cells.map(c => (
+            <div key={c.k} style={{ borderTop: `3px solid ${INK}`, paddingTop: 12 }}>
+              <div style={kicker()}>{c.k}</div>
+              <p style={{ margin: "6px 0 0", fontSize: 16, lineHeight: 1.6 }}>{c.v}</p>
+            </div>
+          ))}
+        </div>
+        <p style={{ margin: "22px 0", maxWidth: 820, fontSize: 15, color: GREY }}>{research.note}</p>
         <Link href="/ricerca"><span style={btn("transparent", INK, `2px solid ${INK}`)}>La ricerca a Padova</span></Link>
+      </Sec>
+
+      <Sec k={charter.kicker} title={charter.title} dark>
+        <div style={grid(240, 0)}>
+          {charter.arts.map((a, i) => (
+            <div key={a.a} style={{ padding: "18px 22px", borderTop: "1px solid rgba(255,255,255,0.4)", borderLeft: i ? "1px solid rgba(255,255,255,0.4)" : "none" }}>
+              <div style={kicker("#ff3b52")}>{a.a}</div>
+              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 24, lineHeight: 1.1, margin: "6px 0" }}>{a.t}</div>
+              <p style={{ margin: 0, fontSize: 15.5, opacity: 0.85 }}>{a.d}</p>
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: 24 }}><Link href="/il-progetto"><span style={btn("#fff", INK)}>Leggi la Carta</span></Link></div>
       </Sec>
 
       <CtaBand title="Preferisci parlarne con una persona?" text="Una chiamata conoscitiva, senza impegno e senza fretta." a={{ href: "/prenota", label: "Prenota una demo" }} b={{ href: "/contatti", label: "Scrivici" }} />
