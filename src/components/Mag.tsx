@@ -129,7 +129,7 @@ export function Page({ children }: { children: ReactNode }) {
 }
 
 export function Wrap({ children }: { children: ReactNode }) {
-  return <div style={{ maxWidth: 1280, margin: "0 auto", padding: `0 ${PAD}` }}>{children}</div>;
+  return <div style={{ maxWidth: 1600, margin: "0 auto", padding: `0 ${PAD}` }}>{children}</div>;
 }
 
 export function Hero({ k, title, lead, dark = false, children }: { k: string; title: ReactNode; lead?: string; dark?: boolean; children?: ReactNode }) {
@@ -207,13 +207,15 @@ export function Tbp({ ini, ar, col, label = "Foto TBP" }: { ini: string; ar: str
 
 export function CtaBand({ title, text, a, b }: { title: string; text?: string; a: { href: string; label: string }; b?: { href: string; label: string } }) {
   return (
-    <section style={{ padding: `clamp(36px,6vw,64px) ${PAD}`, background: PALE, borderBottom: `3px solid ${INK}` }}>
+    <section style={{ padding: `clamp(36px,6vw,64px) 0`, background: PALE, borderBottom: `3px solid ${INK}` }}>
+      <Wrap>
       <h2 style={{ margin: "0 0 10px", fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(28px,4vw,42px)", lineHeight: 1.08, maxWidth: 800 }}>{title}</h2>
       {text && <p style={{ margin: "0 0 20px", maxWidth: 680 }}>{text}</p>}
       <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
         <Link href={a.href}><span style={btn(RED, "#fff")}>{a.label}</span></Link>
         {b && <Link href={b.href}><span style={btn("transparent", INK, `2px solid ${INK}`)}>{b.label}</span></Link>}
       </div>
+      </Wrap>
     </section>
   );
 }
