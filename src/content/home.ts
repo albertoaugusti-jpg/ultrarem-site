@@ -6,6 +6,8 @@ export const cover = {
   title: "Chi ero, chi sono e chi sarò.",
   lead: "La dimensione digitale di ciascuno esisterà comunque. La domanda è chi la costruisce, e se ha il diritto di farlo la persona stessa.",
   body: "Ogni traccia lasciata online, ogni messaggio e ogni immagine concorrono a formare una versione di noi. Nella maggior parte dei casi viene costruita male, da sistemi che deducono invece di ascoltare. UltraRem parte da una premessa diversa: se esiste comunque, merita di essere costruita con serietà dalla persona stessa, mentre è viva e consapevole.",
+  body2: "Questo giornale nasce per tenere insieme due cose che di solito stanno lontane: il racconto di una vita e il modo in cui scegliamo di lasciarlo. Qui trovi storie di persone vere, dibattiti sul fine vita, saggi sulla cultura della memoria e i profili di chi la studia. In fondo, se lo desideri, trovi anche i percorsi con cui UltraRem ti aiuta a costruire la tua.",
+  body3: "Non ti chiediamo di credere a una promessa. Ti chiediamo di leggere, di ascoltare e di farti la tua idea, con i tempi che servono. Nessuna storia viene pubblicata senza il consenso scritto di chi la racconta, e nessun avatar parla senza dirti prima che è un'intelligenza artificiale.",
   cta1: "Vai ai percorsi",
   cta2: "Chi c'è dietro",
 };
@@ -96,4 +98,16 @@ export const charter = {
     { a: "Art. 20", t: "Novanta giorni di silenzio.", d: "L'avatar non parla ai familiari prima, per lasciare spazio al dolore." },
     { a: "Art. 26", t: "Percorsi per chi non può permetterseli.", d: "Ogni anno, con criteri trasparenti." },
   ],
+};
+
+export const editorial = {
+  kicker: "Editoriale",
+  title: "Perché una rivista, e non un sito di servizi.",
+  paras: [
+    "Di solito chi si occupa di memoria digitale comincia dal prodotto: un'applicazione, un prezzo, un pulsante. Noi abbiamo preferito cominciare da una domanda che precede tutte le altre, ossia che cosa resti di una persona quando smette di raccontarsi, e chi abbia il diritto di raccontarla al suo posto.",
+    "Una domanda del genere non si risolve in una pagina commerciale. Chiede tempo, richiede voci diverse (psicologi, studiosi, famiglie, persone che stanno ancora vivendo la propria storia) e accetta di lasciare aperte alcune questioni. Per questo abbiamo scelto la forma di un giornale, con le sue rubriche, i suoi numeri e le sue firme.",
+    "Il progetto UltraRem, con i suoi percorsi, sta in fondo e non in cima: lo trovi nelle pagine dedicate, con i prezzi scritti per intero, e puoi ignorarlo del tutto. Se invece ti incuriosisce, la Carta dei Valori ti dice con precisione che cosa promettiamo e che cosa puoi pretendere da noi.",
+    "La riga che teniamo ferma è semplice: la memoria appartiene a chi la vive. Tutto il resto, la tecnologia compresa, è uno strumento al servizio di questa frase.",
+  ],
+  by: "La redazione",
 };
