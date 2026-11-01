@@ -26,7 +26,7 @@ export default function IlProgetto() {
             <p>Se quella versione esisterà comunque, ci sembra giusto che a costruirla sia chi ne ha il diritto (la persona stessa), con il tempo e con l'aiuto di chi sa fare le domande. È da qui che parte UltraRem, e da questa premessa discendono tutte le scelte che trovi in queste pagine: i professionisti, i tempi lunghi, il verbale firmato, il consenso, la Carta.</p>
             <p>Non promettiamo di far tornare nessuno. Promettiamo di custodire ciò che una persona ha scelto di lasciare, nel modo in cui l'ha scelto, e di non aggiungere niente che lei non abbia detto.</p>
           </Prose>
-          <div style={{ flex: "1 1 320px", maxWidth: 440 }}><Photo name="copertina" ar="4 / 5" pos="center top" /></div>
+          <div style={{ flex: "1 1 320px", maxWidth: 440 }}><Photo name="riempitivo" ar="4 / 5" pos="center" /></div>
         </Cols>
       </Sec>
 

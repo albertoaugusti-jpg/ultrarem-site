@@ -43,7 +43,7 @@ export default function Home() {
           </div>
         </div>
         <aside style={{ flex: "1 1 320px", padding: "32px 28px", background: PALE, display: "flex", flexDirection: "column", gap: 14 }}>
-          <Photo name="copertina" ar="4 / 5" pos="center top" />
+          <Photo name="cover" ar="4 / 5" pos="center top" />
           <div style={{ fontFamily: BLACK, fontSize: 20, letterSpacing: -0.5 }}>In questo numero</div>
           <div style={{ display: "flex", flexDirection: "column", fontSize: 17 }}>
             {index.map((x, i) => (
