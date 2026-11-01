@@ -65,7 +65,7 @@ export default function Home() {
       <section style={{ background: PALE, borderBottom: `3px solid ${INK}`, padding: "22px 0" }}>
         <Wrap>
           <div style={{ fontFamily: BLACK, fontSize: 20, letterSpacing: -0.5, marginBottom: 10 }}>In questo numero</div>
-          <div style={grid(220, 0)}>
+          <div style={grid(170, 0)}>
             {index.map((x, i) => (
               <Link key={x.k} href={x.href} style={{ ...block, padding: "10px 16px", borderLeft: i ? `1px solid ${INK}` : "none", borderTop: `2px solid ${INK}` }}>
                 <span style={{ ...kicker(), letterSpacing: "0.14em" }}>{x.k}</span><br /><span style={{ fontSize: 17 }}>{x.t}</span>
@@ -84,7 +84,7 @@ export default function Home() {
 
       <Sec k="Per cominciare" title="Due modi per conoscerci, in pochi minuti." bg={PALE}>
         <div style={grid(340)}>
-          <Entry href="/incontra#avatar" k="1 · Conversazione" t="Parla con l'avatar di Alberto" p="Ti spiega che cos'è UltraRem e risponde alle tue domande. Ti dice subito che è un'intelligenza artificiale, e puoi smettere quando vuoi." img="storie" cta="Parla con l'avatar" />
+          <Entry href="/incontra#avatar" k="1 · Conversazione" t="Parla con l'avatar di Alberto" p="Ti spiega che cos'è UltraRem e risponde alle tue domande. Ti dice subito che è un'intelligenza artificiale, e puoi smettere quando vuoi." img="riempitivo2" cta="Parla con l'avatar" />
           <Entry href="/incontra#video" k="2 · Racconto" t="Il video: perché lo facciamo" p="Un filmato breve, senza spiegazioni tecniche, su quello che resta di noi e su chi lo racconta." img="cultura" cta="Guarda il video" />
         </div>
       </Sec>

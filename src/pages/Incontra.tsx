@@ -43,7 +43,7 @@ export default function Incontra() {
         <div style={{ margin: "26px 0" }}>
           {AVATAR_URL
             ? <iframe src={AVATAR_URL} title="Avatar UltraRem" allow="microphone; camera; autoplay" style={{ width: "100%", maxWidth: 960, minHeight: 560, border: `2px solid ${INK}`, background: INK }} />
-            : <Slot img="storie" text="L'avatar sarà disponibile a breve" />}
+            : <Slot img="riempitivo2" text="L'avatar sarà disponibile a breve" />}
         </div>
         <div style={{ ...kicker(), marginBottom: 10 }}>Che cosa puoi chiedergli</div>
         <Cols gap={0}>
