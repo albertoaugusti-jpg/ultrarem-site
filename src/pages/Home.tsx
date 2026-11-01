@@ -18,7 +18,7 @@ export default function Home() {
       <div style={{ borderBottom: `2px solid ${INK}` }}>
         <Wrap>
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 8, padding: "10px 0", fontFamily: NARROW, fontWeight: 700, fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-            <span>UltraRem · identità digitale e memoria</span><span style={{ color: GREY }}>Milano · Genova · Padova</span><span style={{ color: RED }}>Your memory is you</span>
+            <span>UltraRem · identità digitale e memoria</span><span style={{ color: GREY }}>Milano · Genova</span><span style={{ color: RED }}>Your memory is you</span>
           </div>
         </Wrap>
       </div>
