@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { Link } from "wouter";
-import { Page, Photo, Tbp, Sec, Wrap, CtaBand, kicker, btn, RED, INK, GREY, PALE, BODONI, BLACK, NARROW } from "@/components/Mag";
+import { Page, Photo, Sec, Wrap, CtaBand, kicker, btn, RED, INK, GREY, PALE, BODONI, BLACK, NARROW } from "@/components/Mag";
 import { cover, index, reads, ladder, who, research, story, charter, editorial } from "@/content/home";
 
 const grid = (min: number, gap = 24): CSSProperties => ({ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(min(${min}px, 100%), 1fr))`, gap });
@@ -71,6 +71,23 @@ export default function Home() {
         </Wrap>
       </section>
 
+      <Sec k={ladder.kicker} title="Costruisci la tua identità digitale prima che lo faccia qualcun altro.">
+        <p style={{ margin: "0 0 24px", maxWidth: 780, fontSize: 17, lineHeight: 1.6 }}>{ladder.intro}</p>
+        <div style={grid(280, 20)}>
+          {ladder.steps.map(s => (
+            <Link key={s.name} href="/come-funziona" style={{ ...block, border: `2px solid ${s.tone === "red" ? RED : INK}`, background: s.tone === "red" ? RED : s.tone === "dark" ? INK : "#fff", color: s.tone === "light" ? INK : "#fff", padding: 24 }}>
+              <div style={kicker(s.tone === "light" ? GREY : "#fff")}>{s.tag}</div>
+              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1, margin: "6px 0" }}>{s.name}</div>
+              <div style={{ fontFamily: BLACK, fontSize: 36, letterSpacing: -1, color: s.tone === "light" ? RED : "#fff" }}>{s.price}</div>
+              <div style={{ fontSize: 14, opacity: 0.85, margin: "2px 0 12px" }}>{s.sub}</div>
+              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 15, lineHeight: 1.5 }}>{s.items.slice(0, 3).map(it => <li key={it}>{it}</li>)}</ul>
+            </Link>
+          ))}
+        </div>
+        <p style={{ margin: "20px 0 0", maxWidth: 820, fontSize: 14.5, color: GREY }}>{ladder.fee}</p>
+        <div style={{ marginTop: 20 }}><Link href="/come-funziona"><span style={btn(RED, "#fff")}>Che cosa include ogni gradino</span></Link></div>
+      </Sec>
+
       <section style={{ background: PALE, borderBottom: `3px solid ${INK}`, padding: "22px 0" }}>
         <Wrap>
           <div style={{ fontFamily: BLACK, fontSize: 20, letterSpacing: -0.5, marginBottom: 10 }}>Cosa trovi qui</div>
@@ -95,7 +112,7 @@ export default function Home() {
         </div>
       </Sec>
 
-      <Sec k="Approfondimenti" title="Storie, dibattiti, cultura.">
+      <Sec k="Approfondimenti" title="Storie, dibattiti, cultura." bg={PALE}>
         <div style={grid(240)}>
           {reads.map(r => (
             <Link key={r.k} href="/storie" style={{ ...block }}>
@@ -112,55 +129,21 @@ export default function Home() {
         <div style={{ marginTop: 24 }}><Link href="/storie"><span style={btn(INK, "#fff")}>Tutte le storie</span></Link></div>
       </Sec>
 
-      <Sec k={story.kicker} title={story.title} bg={PALE}>
+      <Sec k={story.kicker} title={story.title}>
         <div style={{ ...grid(320, 40), alignItems: "start" }}>
           <p style={{ margin: 0, fontSize: 18, lineHeight: 1.65 }}>{story.text}</p>
           <div style={{ border: `2px solid ${INK}`, background: "#fff", padding: 22, fontSize: 16, lineHeight: 1.6 }}>{story.box}</div>
         </div>
       </Sec>
 
-      <Sec k={ladder.kicker} title="Costruisci la tua identità digitale prima che lo faccia qualcun altro.">
-        <p style={{ margin: "0 0 24px", maxWidth: 780, fontSize: 17, lineHeight: 1.6 }}>{ladder.intro}</p>
-        <div style={grid(280, 20)}>
-          {ladder.steps.map(s => (
-            <Link key={s.name} href="/come-funziona" style={{ ...block, border: `2px solid ${s.tone === "red" ? RED : INK}`, background: s.tone === "red" ? RED : s.tone === "dark" ? INK : "#fff", color: s.tone === "light" ? INK : "#fff", padding: 24 }}>
-              <div style={kicker(s.tone === "light" ? GREY : "#fff")}>{s.tag}</div>
-              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1, margin: "6px 0" }}>{s.name}</div>
-              <div style={{ fontFamily: BLACK, fontSize: 36, letterSpacing: -1, color: s.tone === "light" ? RED : "#fff" }}>{s.price}</div>
-              <div style={{ fontSize: 14, opacity: 0.85, margin: "2px 0 12px" }}>{s.sub}</div>
-              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 15, lineHeight: 1.5 }}>{s.items.slice(0, 3).map(it => <li key={it}>{it}</li>)}</ul>
-            </Link>
-          ))}
-        </div>
-        <p style={{ margin: "20px 0 0", maxWidth: 820, fontSize: 14.5, color: GREY }}>{ladder.fee}</p>
-        <div style={{ marginTop: 20 }}><Link href="/come-funziona"><span style={btn(RED, "#fff")}>Che cosa include ogni gradino</span></Link></div>
-      </Sec>
-
       <Sec k={who.kicker} title={who.title} bg={PALE}>
-        <p style={{ margin: "0 0 26px", maxWidth: 820, fontSize: 17, lineHeight: 1.6 }}>{who.intro}</p>
-        <div style={grid(200, 22)}>
-          {who.founders.map(f => (
-            <div key={f.name}>
-              <Tbp ini={f.ini} ar="1 / 1" col={f.col} />
-              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 19, lineHeight: 1.1, marginTop: 8 }}>{f.name}</div>
-              <div style={{ ...kicker(), margin: "4px 0 6px" }}>{f.role}</div>
-              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.5 }}>{f.text}</p>
-            </div>
+        <p style={{ margin: "0 0 22px", maxWidth: 820, fontSize: 17, lineHeight: 1.6 }}>Cinque soci, due operativi, e una squadra scientifica con l'Università di Padova e una rete di psicologi. Ognuno viene da un altro mestiere, e tutti hanno scelto di credere in questo.</p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
+          {[...who.founders, ...who.science].map(f => (
+            <div key={f.name} title={f.name} style={{ width: 54, height: 54, borderRadius: "50%", background: f.col, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: BLACK, fontSize: 17, border: `2px solid ${INK}` }}>{f.ini}</div>
           ))}
         </div>
-        <div style={{ ...grid(300, 22), marginTop: 30, borderTop: `2px solid ${INK}`, paddingTop: 22 }}>
-          {who.science.map(f => (
-            <div key={f.name} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-              <div style={{ width: 96, flex: "0 0 96px" }}><Tbp ini={f.ini} ar="1 / 1" col={f.col} /></div>
-              <div>
-                <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 19, lineHeight: 1.1 }}>{f.name}</div>
-                <div style={{ ...kicker(), margin: "4px 0 6px" }}>{f.role}</div>
-                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.5 }}>{f.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div style={{ marginTop: 24 }}><Link href="/fondatori"><span style={btn(INK, "#fff")}>Conosci i fondatori</span></Link></div>
+        <div style={{ marginTop: 24 }}><Link href="/fondatori"><span style={btn(INK, "#fff")}>Conosci i Founder</span></Link></div>
       </Sec>
 
       <Sec k={research.kicker} title={research.title}>

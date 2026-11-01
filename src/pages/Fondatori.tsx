@@ -13,7 +13,7 @@ const dettagli: Record<string, string> = {
 export default function Fondatori() {
   return (
     <Page>
-      <Hero dark k="Fondatori" title={<>Non siamo <em style={{ color: "#ff3b52" }}>quattro che ci provano.</em></>} lead="Un servizio che custodisce la memoria di una persona si giudica anche da chi lo costruisce. Qui trovi tutti i nomi, che cosa fa ciascuno e che cosa no." />
+      <Hero dark k="Founder" title={<>Dietro UltraRem ci sono <em style={{ color: "#ff3b52" }}>persone che hanno già costruito altro.</em></>} lead="Un servizio che custodisce la memoria di una persona si giudica anche da chi lo costruisce. Qui trovi tutti i nomi, che cosa fa ciascuno e che cosa no." />
 
       <Sec k="Chi lavora e chi crede" title="Due soci lavorano alla società. Gli altri tre ci credono.">
         <Prose>

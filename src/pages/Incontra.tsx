@@ -72,7 +72,7 @@ export default function Incontra() {
             <p style={{ margin: 0 }}>I tre percorsi, dal Diario di bordo ai Capitani di lungo corso, con tutto quello che include ciascuno e quanto costa.</p>
           </Card>
           <Card k="Verificare" t="Chi c'è dietro" dark>
-            <p style={{ margin: 0 }}>I fondatori, l'Università di Padova, la rete di psicologi: perché puoi affidarci una cosa così delicata.</p>
+            <p style={{ margin: 0 }}>I Founder, l'Università di Padova, la rete di psicologi: perché puoi affidarci una cosa così delicata.</p>
           </Card>
         </Cols>
       </Sec>
