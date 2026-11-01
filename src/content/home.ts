@@ -23,10 +23,10 @@ export const index = [
 ];
 
 export const reads = [
-  { k: "Storie", t: "Una vita, raccontata da chi l'ha vissuta", p: "Lo spazio per un racconto di vita, scelto e autorizzato dalla persona (art. 18 della Carta). In fondo alla pagina, se la persona lo ha deciso, la storia diventa interattiva.", m: "8 min di lettura", img: "riempitivo3" },
-  { k: "Dibattiti", t: "Che cosa vogliamo che resti di noi?", p: "Più voci sullo stesso tema, con posizioni anche opposte. UltraRem opera in neutralità rispetto a credi e orientamenti (art. 4).", m: "4 interventi", img: "dibattiti" },
+  { k: "Storie", t: "Una vita, raccontata da chi l'ha vissuta", p: "Lo spazio per un racconto di vita, scelto e autorizzato dalla persona (art. 18 della Carta). In fondo alla pagina, se la persona lo ha deciso, la storia diventa interattiva.", m: "8 min di lettura", img: "quaderno" },
+  { k: "Dibattiti", t: "Che cosa vogliamo che resti di noi?", p: "Più voci sullo stesso tema, con posizioni anche opposte. UltraRem opera in neutralità rispetto a credi e orientamenti (art. 4).", m: "4 interventi", img: "bussola" },
   { k: "Cultura", t: "Il corpus siamo noi", p: "Prima di essere memoria è corpo, prima di essere racconto è vita che respira. Un testo breve sull'idea da cui nasce il nome: andare oltre, Ultra-Rem.", m: "5 min di lettura", img: "cultura" },
-  { k: "Profili", t: "Chi studia la memoria e il lutto", p: "Scheda di uno studioso di lutto, memoria o etica dell'IA, con le opere e le fonti. Nessun avatar o intervista a suo nome senza il suo consenso scritto.", m: "Scheda", img: "" },
+  { k: "Profili", t: "Chi studia la memoria e il lutto", p: "Scheda di uno studioso di lutto, memoria o etica dell'IA, con le opere e le fonti. Nessun avatar o intervista a suo nome senza il suo consenso scritto.", m: "Scheda", img: "faro" },
 ];
 
 export const ladder = {
@@ -34,13 +34,13 @@ export const ladder = {
   title: "Una scala di tre gradini, con i nomi della navigazione.",
   intro: "La tradizione marinara genovese da cui il progetto proviene ha dato i nomi. Ogni gradino conduce al successivo: quanto hai già pagato viene scalato dal prezzo di quello dopo.",
   steps: [
-    { tag: "Gradino 1 · aperto a tutti", name: "Diario di bordo", price: "290 €", sub: "pacchetto di partenza", img: "diario", tone: "light",
+    { tag: "Gradino 1 · aperto a tutti", name: "Diario di bordo", price: "290 €", sub: "pacchetto di partenza", img: "nave-diario", tone: "light",
       items: ["10 ore di racconto con il companion", "un quaderno della tua narrazione in PDF", "un clone vocale che risponde solo con ciò che il diario contiene, finché sei in vita", "12 mesi di conservazione, poi si rinnova (49 € l'anno)"],
       note: "Senza intervista e senza psicologo. È un prodotto distinto da UltraRem, e serve a capire se vuoi andare avanti." },
-    { tag: "Gradino 2 · percorso certificato", name: "I marinai del tempo", price: "3.800 €", sub: "la partenza del Diario viene scalata", img: "riempitivo2", tone: "dark",
+    { tag: "Gradino 2 · percorso certificato", name: "I marinai del tempo", price: "3.800 €", sub: "la partenza del Diario viene scalata", img: "nave-marinai", tone: "dark",
       items: ["10 ore di intervista con lo psicologo", "10 ore di raccolta con il companion", "la sintesi del tuo progetto, firmata dallo psicologo", "la tua voce clonata e un avatar semplice"],
       note: "Il primo anno di custodia è compreso." },
-    { tag: "Gradino 3 · percorso completo", name: "I Capitani di lungo corso", price: "9.800 €", sub: "quanto hai pagato per i Marinai viene scalato", img: "riempitivo3", tone: "red",
+    { tag: "Gradino 3 · percorso completo", name: "I Capitani di lungo corso", price: "9.800 €", sub: "quanto hai pagato per i Marinai viene scalato", img: "nave-capitani", tone: "red",
       items: ["30 ore di intervista con lo psicologo", "30 ore di raccolta con il companion", "la sintesi e la voce clonata", "un avatar realizzato con riprese in studio", "elaborazione tridimensionale su richiesta"],
       note: "Il primo anno di custodia è compreso." },
   ],
