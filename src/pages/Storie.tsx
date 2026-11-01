@@ -31,7 +31,7 @@ export default function Storie() {
         <Cols gap={20}>
           {["A", "B", "C"].map((l, i) => (
             <div key={l} style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 8 }}>
-              <Photo name="riempitivo" ar="3 / 2" pos={["center", "left", "right"][i]} />
+              <Photo name={["quaderno", "faro", "bussola"][i]} ar="3 / 2" />
               <div style={kicker()}>Storia · {["8", "6", "10"][i]} min di lettura</div>
               <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 24, lineHeight: 1.1 }}>[ Titolo di una storia vera ]</div>
               <p style={{ margin: 0, fontSize: 16 }}>Uno spazio per un racconto di vita, scelto e autorizzato dalla persona. {i === 0 ? "Questa è la prima che pubblicheremo, con il testo e, se lei lo vorrà, il dialogo." : ""}</p>
