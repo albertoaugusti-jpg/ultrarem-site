@@ -128,23 +128,31 @@ export function Page({ children }: { children: ReactNode }) {
   return <div style={{ background: "#fff", color: INK, fontFamily: SERIF, fontSize: 18, lineHeight: 1.65, overflowX: "hidden" }}><Stripes h={5} /><Navbar />{children}<Footer /></div>;
 }
 
+export function Wrap({ children }: { children: ReactNode }) {
+  return <div style={{ maxWidth: 1280, margin: "0 auto", padding: `0 ${PAD}` }}>{children}</div>;
+}
+
 export function Hero({ k, title, lead, dark = false, children }: { k: string; title: ReactNode; lead?: string; dark?: boolean; children?: ReactNode }) {
   return (
-    <section style={{ padding: `clamp(40px,7vw,80px) ${PAD}`, background: dark ? INK : "#fff", color: dark ? "#fff" : INK, borderBottom: `3px solid ${INK}` }}>
+    <section style={{ padding: `clamp(40px,7vw,80px) 0`, background: dark ? INK : "#fff", color: dark ? "#fff" : INK, borderBottom: `3px solid ${INK}` }}>
+      <Wrap>
       <div style={{ ...kicker(dark ? "#ff3b52" : RED), marginBottom: 14 }}>{k}</div>
       <h1 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(38px,6vw,72px)", lineHeight: 1.02, letterSpacing: -2, maxWidth: 1000 }}>{title}</h1>
       {lead && <p style={{ margin: "20px 0 0", fontStyle: "italic", fontSize: "clamp(19px,2.2vw,24px)", maxWidth: 760, color: dark ? "rgba(255,255,255,0.8)" : INK }}>{lead}</p>}
       {children}
+      </Wrap>
     </section>
   );
 }
 
 export function Sec({ k, title, bg = "#fff", dark = false, id, children }: { k?: string; title?: ReactNode; bg?: string; dark?: boolean; id?: string; children: ReactNode }) {
   return (
-    <section id={id} style={{ padding: `clamp(36px,6vw,64px) ${PAD}`, background: dark ? INK : bg, color: dark ? "#fff" : INK, borderBottom: `3px solid ${INK}` }}>
+    <section id={id} style={{ padding: `clamp(36px,6vw,64px) 0`, background: dark ? INK : bg, color: dark ? "#fff" : INK, borderBottom: `3px solid ${INK}` }}>
+      <Wrap>
       {k && <div style={{ ...kicker(dark ? "#ff3b52" : RED), marginBottom: 8 }}>{k}</div>}
       {title && <h2 style={{ margin: "0 0 22px", fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(28px,4.2vw,46px)", lineHeight: 1.06, letterSpacing: -1, maxWidth: 900 }}>{title}</h2>}
       {children}
+      </Wrap>
     </section>
   );
 }
