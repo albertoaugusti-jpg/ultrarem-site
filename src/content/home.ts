@@ -7,7 +7,7 @@ export const cover = {
   title: "Chi ero, chi sono e chi sarò.",
   lead: "La dimensione digitale di ciascuno esisterà comunque. La domanda è chi la costruisce, e se ha il diritto di farlo la persona stessa.",
   body: "Ogni traccia lasciata online, ogni messaggio e ogni immagine concorrono a formare una versione di noi. Nella maggior parte dei casi viene costruita male, da sistemi che deducono invece di ascoltare. UltraRem parte da una premessa diversa: se esiste comunque, merita di essere costruita con serietà dalla persona stessa, mentre è viva e consapevole.",
-  body2: "Questo giornale nasce per tenere insieme due cose che di solito stanno lontane: il racconto di una vita e il modo in cui scegliamo di lasciarlo. Qui trovi storie di persone vere, dibattiti sul fine vita, saggi sulla cultura della memoria e i profili di chi la studia. In fondo, se lo desideri, trovi anche i percorsi con cui UltraRem ti aiuta a costruire la tua.",
+  body2: "Questo sito nasce per tenere insieme due cose che di solito stanno lontane: il racconto di una vita e il modo in cui scegliamo di lasciarlo. Qui trovi storie di persone vere, dibattiti sul fine vita, saggi sulla cultura della memoria e i profili di chi la studia. In fondo, se lo desideri, trovi anche i percorsi con cui UltraRem ti aiuta a costruire la tua.",
   body3: "Non ti chiediamo di credere a una promessa. Ti chiediamo di leggere, di ascoltare e di farti la tua idea, con i tempi che servono. Nessuna storia viene pubblicata senza il consenso scritto di chi la racconta, e nessun avatar parla senza dirti prima che è un'intelligenza artificiale.",
   cta1: "Vai ai percorsi",
   cta2: "Chi c'è dietro",
