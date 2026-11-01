@@ -50,7 +50,7 @@ export default function IlProgetto() {
           <p>Il nucleo di ogni progetto è un corpus, cioè un insieme ordinato di racconti, registrazioni della voce, lettere, riflessioni e risposte a domande che di solito nessuno fa. Non è una biografia: una biografia ordina i fatti, un corpus conserva il modo. Il modo in cui ragioni, quello che ti fa ridere, i valori che non hai mai scritto e che governano ogni tua scelta, le esitazioni, le cose che dici sempre.</p>
           <p>Per questo la raccolta richiede tempo (decine di ore, nei percorsi più completi) e per questo non si improvvisa. Un avatar costruito in un pomeriggio dice quello che hai detto in un pomeriggio.</p>
         </Prose>
-        <Quote by="Dal saggio «Il corpus siamo noi»">Prima di essere memoria è corpo, prima di essere racconto è vita che respira.</Quote>
+        <Quote by="Dall'approfondimento «Il corpus siamo noi»">Prima di essere memoria è corpo, prima di essere racconto è vita che respira.</Quote>
       </Sec>
 
       <Sec k="Onestà" title="Testimonianza oppure elaborazione." dark>

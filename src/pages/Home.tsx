@@ -12,27 +12,13 @@ function Play() {
   </div>;
 }
 
-function Entry({ href, k, t, p, img, cta }: { href: string; k: string; t: string; p: string; img: string; cta: string }) {
-  return (
-    <Link href={href} style={{ ...block, border: `2px solid ${INK}`, background: "#fff" }}>
-      <div style={{ position: "relative" }}><Photo name={img} ar="16 / 9" /><Play /></div>
-      <div style={{ padding: 22, display: "flex", flexDirection: "column", gap: 8 }}>
-        <div style={kicker()}>{k}</div>
-        <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 30, lineHeight: 1.08 }}>{t}</div>
-        <p style={{ margin: 0, fontSize: 16 }}>{p}</p>
-        <span style={{ ...btn(INK, "#fff"), alignSelf: "flex-start", marginTop: 6 }}>{cta}</span>
-      </div>
-    </Link>
-  );
-}
-
 export default function Home() {
   return (
     <Page>
       <div style={{ borderBottom: `2px solid ${INK}` }}>
         <Wrap>
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 8, padding: "10px 0", fontFamily: NARROW, fontWeight: 700, fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-            <span>Rivista di memoria e vita</span><span style={{ color: GREY }}>Milano · Genova · Padova</span><span style={{ color: RED }}>Numero 1 · Autunno 2026</span>
+            <span>UltraRem · identità digitale e memoria</span><span style={{ color: GREY }}>Milano · Genova · Padova</span><span style={{ color: RED }}>Your memory is you</span>
           </div>
         </Wrap>
       </div>
@@ -44,6 +30,7 @@ export default function Home() {
               <div style={kicker()}>{cover.kicker}</div>
               <h1 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(40px,5.6vw,72px)", lineHeight: 1, letterSpacing: -2 }}>{cover.title}</h1>
               <p style={{ margin: 0, fontStyle: "italic", fontSize: 22 }}>{cover.lead}</p>
+              <p style={{ margin: 0, fontFamily: NARROW, fontWeight: 700, fontSize: 17, letterSpacing: "0.04em", borderLeft: `4px solid ${RED}`, paddingLeft: 14 }}>{cover.what}</p>
               <div style={{ columnWidth: 280, columnGap: 32, columnRule: `1px solid ${INK}`, fontSize: 16.5, lineHeight: 1.6 }}>
                 <p style={{ margin: "0 0 12px" }}>{cover.body}</p>
                 <p style={{ margin: "0 0 12px" }}>{cover.body2}</p>
@@ -56,15 +43,37 @@ export default function Home() {
             </div>
             <figure style={{ margin: 0, maxWidth: 440, width: "100%", justifySelf: "center" }}>
               <Photo name="cover" ar="4 / 5" pos="center top" />
-              <figcaption style={{ marginTop: 8, fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>Milano, una sera d'autunno. Immagine illustrativa.</figcaption>
+              <figcaption style={{ marginTop: 8, fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>Immagine illustrativa.</figcaption>
             </figure>
+          </div>
+        </Wrap>
+      </section>
+
+      <section style={{ background: INK, color: "#fff", borderBottom: `3px solid ${INK}`, padding: "clamp(32px,5vw,56px) 0" }}>
+        <Wrap>
+          <div style={{ ...grid(360, 40), alignItems: "center" }}>
+            <Link href="/incontra#avatar" style={{ ...block, position: "relative" }}><Photo name="riempitivo2" ar="16 / 10" /><Play /></Link>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <div style={kicker("#ff3b52")}>Parla con l'avatar</div>
+              <h2 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(32px,4.4vw,54px)", lineHeight: 1.04, letterSpacing: -1 }}>Chiedimi che cos'è UltraRem.</h2>
+              <p style={{ margin: 0, fontSize: 18, lineHeight: 1.6, opacity: 0.9 }}>Ti spiego in due minuti che cos'è UltraRem e rispondo alle tue domande. Ti dico subito che sono un'intelligenza artificiale, e puoi smettere quando vuoi.</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                {["Che cos'è UltraRem?", "Quanto costa?", "Chi c'è dietro?", "Che fine fanno i miei dati?"].map(q => (
+                  <Link key={q} href="/incontra#avatar"><span style={{ fontFamily: NARROW, fontWeight: 700, fontSize: 13, letterSpacing: "0.06em", border: "1px solid rgba(255,255,255,0.6)", padding: "8px 14px", display: "inline-block", cursor: "pointer" }}>{q}</span></Link>
+                ))}
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 4 }}>
+                <Link href="/incontra#avatar"><span style={btn(RED, "#fff")}>Parla con l'avatar</span></Link>
+                <Link href="/incontra#video"><span style={btn("transparent", "#fff", "2px solid #fff")}>Guarda il video</span></Link>
+              </div>
+            </div>
           </div>
         </Wrap>
       </section>
 
       <section style={{ background: PALE, borderBottom: `3px solid ${INK}`, padding: "22px 0" }}>
         <Wrap>
-          <div style={{ fontFamily: BLACK, fontSize: 20, letterSpacing: -0.5, marginBottom: 10 }}>In questo numero</div>
+          <div style={{ fontFamily: BLACK, fontSize: 20, letterSpacing: -0.5, marginBottom: 10 }}>Cosa trovi qui</div>
           <div style={grid(170, 0)}>
             {index.map((x, i) => (
               <Link key={x.k} href={x.href} style={{ ...block, padding: "10px 16px", borderLeft: i ? `1px solid ${INK}` : "none", borderTop: `2px solid ${INK}` }}>
@@ -80,16 +89,13 @@ export default function Home() {
           {editorial.paras.map((p, i) => <p key={i} style={{ margin: "0 0 14px" }}>{p}</p>)}
         </div>
         <p style={{ margin: "10px 0 0", fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>{editorial.by}</p>
-      </Sec>
-
-      <Sec k="Per cominciare" title="Due modi per conoscerci, in pochi minuti." bg={PALE}>
-        <div style={grid(340)}>
-          <Entry href="/incontra#avatar" k="1 · Conversazione" t="Parla con l'avatar di Alberto" p="Ti spiega che cos'è UltraRem e risponde alle tue domande. Ti dice subito che è un'intelligenza artificiale, e puoi smettere quando vuoi." img="riempitivo2" cta="Parla con l'avatar" />
-          <Entry href="/incontra#video" k="2 · Racconto" t="Il video: perché lo facciamo" p="Un filmato breve, senza spiegazioni tecniche, su quello che resta di noi e su chi lo racconta." img="cultura" cta="Guarda il video" />
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 22 }}>
+          <Link href="/incontra#avatar"><span style={btn(RED, "#fff")}>Parla con l'avatar</span></Link>
+          <Link href="/come-funziona"><span style={btn(INK, "#fff")}>Scopri i percorsi</span></Link>
         </div>
       </Sec>
 
-      <Sec k="Da leggere" title="Storie, dibattiti, cultura.">
+      <Sec k="Approfondimenti" title="Storie, dibattiti, cultura.">
         <div style={grid(240)}>
           {reads.map(r => (
             <Link key={r.k} href="/storie" style={{ ...block }}>
@@ -113,7 +119,7 @@ export default function Home() {
         </div>
       </Sec>
 
-      <Sec k={ladder.kicker} title="Tre gradini, un solo percorso.">
+      <Sec k={ladder.kicker} title="Costruisci la tua identità digitale prima che lo faccia qualcun altro.">
         <p style={{ margin: "0 0 24px", maxWidth: 780, fontSize: 17, lineHeight: 1.6 }}>{ladder.intro}</p>
         <div style={grid(280, 20)}>
           {ladder.steps.map(s => (

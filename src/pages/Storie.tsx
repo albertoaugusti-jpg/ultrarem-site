@@ -8,7 +8,7 @@ const dibattiti = [
 ];
 
 const lettere = [
-  { t: "Il corpus siamo noi", k: "Saggio · Cultura", p: "Prima di essere memoria è corpo, prima di essere racconto è vita che respira." },
+  { t: "Il corpus siamo noi", k: "Approfondimento · Cultura", p: "Prima di essere memoria è corpo, prima di essere racconto è vita che respira." },
 ];
 
 export default function Storie() {
@@ -43,14 +43,14 @@ export default function Storie() {
         </div>
       </Sec>
 
-      <Sec k="Cultura · saggio" title="Il corpus siamo noi.">
+      <Sec k="Cultura · approfondimento" title="Il corpus siamo noi.">
         <Prose max={720}>
           <p>Il nome di questo progetto viene da una parola latina, <i>ultra</i>, e da un'altra che sta in fondo a ogni notte, <i>rem</i>: andare oltre il sonno, oltre il riposo, oltre quello che il corpo dà per scontato. Prima di essere memoria, ciò che di noi resta è corpo, fatto di gesti, di voce, di respiro, di un certo modo di inclinare la testa quando qualcuno dice una cosa che non ci convince.</p>
           <p>La cultura occidentale ha provato a staccare l'anima dal corpo per trovare una forma di immortalità che non dipendesse dalla materia. Oggi la tecnologia ci offre l'inverso: tenere il corpo, o meglio le sue tracce, e farne un modo di restare. È una promessa antica con un vestito nuovo, e come tutte le promesse antiche va maneggiata con rispetto.</p>
           <p>Il corpus, in questo senso, è ciò che di noi può essere raccolto senza tradirci: le parole, le pause, i silenzi, le cose che non diciamo mai. Un corpus è fedele quando lascia dentro anche ciò che non è presentabile, e per questo non può essere composto di tracce raccolte per caso.</p>
           <p>Chi ci lascia un corpus vero ci lascia qualcosa di più di un ricordo: ci lascia la possibilità di continuare a conversare con lui, nel modo in cui lui ha scelto, e sapendo sempre quando stiamo ascoltando lui e quando stiamo ascoltando una macchina.</p>
         </Prose>
-        <p style={{ marginTop: 18, fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>Redazione UltraRem · 5 min di lettura</p>
+        <p style={{ marginTop: 18, fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>UltraRem · 5 min di lettura</p>
       </Sec>
 
       <Sec k="Dibattiti" title="Domande aperte, più voci." dark>
