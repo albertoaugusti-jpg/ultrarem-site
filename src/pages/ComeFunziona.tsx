@@ -34,7 +34,7 @@ export default function ComeFunziona() {
             return (
               <div key={s.name} style={{ flex: "1 1 300px", background: "#fff", border: `2px solid ${red ? RED : INK}`, display: "flex", flexDirection: "column" }}>
                 <Photo name={s.img} ar="16 / 9" />
-                <div style={{ padding: "18px 24px", borderTop: `2px solid ${red ? RED : INK}`, borderBottom: `2px solid ${red ? RED : INK}`, background: red ? RED : dark ? INK : "#fff", color: red || dark ? "#fff" : INK }}>
+                <div style={{ padding: "18px 24px", minHeight: 136, boxSizing: "border-box", borderTop: `2px solid ${red ? RED : INK}`, borderBottom: `2px solid ${red ? RED : INK}`, background: red ? RED : dark ? INK : "#fff", color: red || dark ? "#fff" : INK }}>
                   <div style={kicker(red ? "#fff" : dark ? "#ff3b52" : GREY)}>{s.tag}</div>
                   <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 34, lineHeight: 1.1, marginTop: 4 }}>{s.name}</div>
                 </div>

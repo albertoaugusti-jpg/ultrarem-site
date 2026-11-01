@@ -77,7 +77,7 @@ export default function Home() {
           {ladder.steps.map(s => (
             <Link key={s.name} href="/come-funziona" style={{ ...block, border: `2px solid ${s.tone === "red" ? RED : INK}`, background: s.tone === "red" ? RED : s.tone === "dark" ? INK : "#fff", color: s.tone === "light" ? INK : "#fff", padding: 24 }}>
               <div style={kicker(s.tone === "light" ? GREY : "#fff")}>{s.tag}</div>
-              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1, margin: "6px 0" }}>{s.name}</div>
+              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1, margin: "6px 0", minHeight: 62 }}>{s.name}</div>
               <div style={{ fontFamily: BLACK, fontSize: 36, letterSpacing: -1, color: s.tone === "light" ? RED : "#fff" }}>{s.price}</div>
               <div style={{ fontSize: 14, opacity: 0.85, margin: "2px 0 12px" }}>{s.sub}</div>
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 15, lineHeight: 1.5 }}>{s.items.slice(0, 3).map(it => <li key={it}>{it}</li>)}</ul>
