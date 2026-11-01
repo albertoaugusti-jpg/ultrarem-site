@@ -1,8 +1,9 @@
-// Contenuti della Home a rivista (italiano). Per aggiungere una storia o una scheda
+// Contenuti della Home (italiano). Per aggiungere una storia o una scheda
 // basta modificare questo file: la pagina li mostra da sola.
 
 export const cover = {
-  kicker: "L'apertura",
+  kicker: "Identità digitale e memoria",
+  what: "UltraRem costruisce con te la tua identità digitale: la tua storia raccolta con la guida di uno psicologo, il consenso scritto a ogni passo e una custodia dichiarata.",
   title: "Chi ero, chi sono e chi sarò.",
   lead: "La dimensione digitale di ciascuno esisterà comunque. La domanda è chi la costruisce, e se ha il diritto di farlo la persona stessa.",
   body: "Ogni traccia lasciata online, ogni messaggio e ogni immagine concorrono a formare una versione di noi. Nella maggior parte dei casi viene costruita male, da sistemi che deducono invece di ascoltare. UltraRem parte da una premessa diversa: se esiste comunque, merita di essere costruita con serietà dalla persona stessa, mentre è viva e consapevole.",
@@ -22,10 +23,10 @@ export const index = [
 ];
 
 export const reads = [
-  { k: "Storie", t: "[ Titolo di una storia vera ]", p: "Lo spazio per un racconto di vita, scelto e autorizzato dalla persona (art. 18 della Carta). In fondo alla pagina, se la persona lo ha deciso, la storia diventa interattiva.", m: "8 min di lettura", img: "riempitivo3" },
-  { k: "Dibattiti", t: "[ Una domanda aperta sul fine vita ]", p: "Più voci sullo stesso tema, con posizioni anche opposte. UltraRem opera in neutralità rispetto a credi e orientamenti (art. 4).", m: "4 interventi", img: "dibattiti" },
-  { k: "Cultura", t: "Il corpus siamo noi", p: "Prima di essere memoria è corpo, prima di essere racconto è vita che respira. Un saggio breve sull'idea da cui nasce il nome: andare oltre, Ultra-Rem.", m: "5 min di lettura", img: "cultura" },
-  { k: "Profili", t: "[ Nome di un ricercatore ]", p: "Scheda di uno studioso di lutto, memoria o etica dell'IA, con le opere e le fonti. Nessun avatar o intervista a suo nome senza il suo consenso scritto.", m: "Scheda", img: "" },
+  { k: "Storie", t: "Una vita, raccontata da chi l'ha vissuta", p: "Lo spazio per un racconto di vita, scelto e autorizzato dalla persona (art. 18 della Carta). In fondo alla pagina, se la persona lo ha deciso, la storia diventa interattiva.", m: "8 min di lettura", img: "riempitivo3" },
+  { k: "Dibattiti", t: "Che cosa vogliamo che resti di noi?", p: "Più voci sullo stesso tema, con posizioni anche opposte. UltraRem opera in neutralità rispetto a credi e orientamenti (art. 4).", m: "4 interventi", img: "dibattiti" },
+  { k: "Cultura", t: "Il corpus siamo noi", p: "Prima di essere memoria è corpo, prima di essere racconto è vita che respira. Un testo breve sull'idea da cui nasce il nome: andare oltre, Ultra-Rem.", m: "5 min di lettura", img: "cultura" },
+  { k: "Profili", t: "Chi studia la memoria e il lutto", p: "Scheda di uno studioso di lutto, memoria o etica dell'IA, con le opere e le fonti. Nessun avatar o intervista a suo nome senza il suo consenso scritto.", m: "Scheda", img: "" },
 ];
 
 export const ladder = {
@@ -67,7 +68,7 @@ export const research = {
 
 export const who = {
   kicker: "Chi c'è dietro",
-  title: "Non siamo quattro che ci provano.",
+  title: "Dietro UltraRem ci sono persone che hanno già costruito altro.",
   intro: "Un servizio che custodisce la memoria di una persona si giudica anche da chi lo costruisce. Alberto Augusti e Bruno Legger lavorano alla società. Gli altri tre soci non hanno un ruolo operativo, e proprio per questo la loro scelta di esserci pesa: vengono da energia, pagamenti e grandi sistemi informativi, hanno visto molti progetti e hanno deciso di credere in questo.",
   founders: [
     { ini: "AA", name: "Alberto Augusti", role: "Amministratore unico · operativo", text: "Imprenditore genovese, laureato in Scienze internazionali e diplomatiche. Guida la società.", col: "#c8102e" },
@@ -101,13 +102,13 @@ export const charter = {
 };
 
 export const editorial = {
-  kicker: "Editoriale",
-  title: "Perché una rivista, e non un sito di servizi.",
+  kicker: "La nostra idea",
+  title: "Una vita non finisce quando smetti di raccontarla.",
   paras: [
     "Di solito chi si occupa di memoria digitale comincia dal prodotto: un'applicazione, un prezzo, un pulsante. Noi abbiamo preferito cominciare da una domanda che precede tutte le altre, ossia che cosa resti di una persona quando smette di raccontarsi, e chi abbia il diritto di raccontarla al suo posto.",
-    "Una domanda del genere non si risolve in una pagina commerciale. Chiede tempo, richiede voci diverse (psicologi, studiosi, famiglie, persone che stanno ancora vivendo la propria storia) e accetta di lasciare aperte alcune questioni. Per questo abbiamo scelto la forma di un giornale, con le sue rubriche, i suoi numeri e le sue firme.",
-    "Il progetto UltraRem, con i suoi percorsi, sta in fondo e non in cima: lo trovi nelle pagine dedicate, con i prezzi scritti per intero, e puoi ignorarlo del tutto. Se invece ti incuriosisce, la Carta dei Valori ti dice con precisione che cosa promettiamo e che cosa puoi pretendere da noi.",
+    "Una domanda del genere non si risolve in una pagina commerciale. Chiede tempo, richiede voci diverse (psicologi, studiosi, famiglie, persone che stanno ancora vivendo la propria storia) e accetta di lasciare aperte alcune questioni. Per questo raccontiamo prima di vendere: storie, dibattiti e ricerche stanno accanto ai percorsi.",
+    "I percorsi di UltraRem partono dal Diario di bordo a 290 € e arrivano ai Capitani di lungo corso a 9.800 €, con i prezzi scritti per intero. Se ti incuriosisce, comincia dall'avatar e fatti spiegare tutto; la Carta dei Valori dice con precisione che cosa promettiamo e che cosa puoi pretendere da noi.",
     "La riga che teniamo ferma è semplice: la memoria appartiene a chi la vive. Tutto il resto, la tecnologia compresa, è uno strumento al servizio di questa frase.",
   ],
-  by: "La redazione",
+  by: "UltraRem",
 };
