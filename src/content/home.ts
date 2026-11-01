@@ -112,3 +112,33 @@ export const editorial = {
   ],
   by: "UltraRem",
 };
+
+// Etichette e frasi che stanno direttamente nella pagina (non nelle schede sopra).
+export const ui = {
+  strip: "UltraRem · identità digitale e memoria",
+  cities: "Milano · Genova",
+  talk: "Parla con l'avatar",
+  video: "Guarda il video",
+  caption: "Immagine illustrativa.",
+  avatarTitle: "Chiedimi che cos'è UltraRem.",
+  avatarText: "Ti spiego in due minuti che cos'è UltraRem e rispondo alle tue domande. Ti dico subito che sono un'intelligenza artificiale, e puoi smettere quando vuoi.",
+  chips: ["Che cos'è UltraRem?", "Quanto costa?", "Chi c'è dietro?", "Che fine fanno i miei dati?"],
+  ladderTitle: "Costruisci la tua identità digitale prima che lo faccia qualcun altro.",
+  ladderBtn: "Che cosa include ogni gradino",
+  indexTitle: "Cosa trovi qui",
+  discover: "Scopri i percorsi",
+  readsKicker: "Approfondimenti",
+  readsTitle: "Storie, dibattiti, cultura.",
+  allStories: "Tutte le storie",
+  whoText: "Cinque soci, due operativi, e una squadra scientifica con l'Università di Padova e una rete di psicologi. Ognuno viene da un altro mestiere, e tutti hanno scelto di credere in questo.",
+  whoBtn: "Conosci i Founder",
+  researchBtn: "La ricerca a Padova",
+  charterBtn: "Leggi la Carta",
+  ctaTitle: "Comincia dal Diario di bordo.",
+  ctaText: "290 € per raccontarti con il companion e capire se vuoi andare avanti. Senza intervista e senza fretta.",
+  ctaA: "Scopri il Diario di bordo",
+  ctaB: "Scrivici",
+};
+
+export const it = { cover, index, reads, ladder, who, research, story, charter, editorial, ui };
+export type HomeContent = typeof it;
