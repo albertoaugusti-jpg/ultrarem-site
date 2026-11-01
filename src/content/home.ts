@@ -22,7 +22,7 @@ export const index = [
 ];
 
 export const reads = [
-  { k: "Storie", t: "[ Titolo di una storia vera ]", p: "Lo spazio per un racconto di vita, scelto e autorizzato dalla persona (art. 18 della Carta). In fondo alla pagina, se la persona lo ha deciso, la storia diventa interattiva.", m: "8 min di lettura", img: "storie" },
+  { k: "Storie", t: "[ Titolo di una storia vera ]", p: "Lo spazio per un racconto di vita, scelto e autorizzato dalla persona (art. 18 della Carta). In fondo alla pagina, se la persona lo ha deciso, la storia diventa interattiva.", m: "8 min di lettura", img: "riempitivo3" },
   { k: "Dibattiti", t: "[ Una domanda aperta sul fine vita ]", p: "Più voci sullo stesso tema, con posizioni anche opposte. UltraRem opera in neutralità rispetto a credi e orientamenti (art. 4).", m: "4 interventi", img: "dibattiti" },
   { k: "Cultura", t: "Il corpus siamo noi", p: "Prima di essere memoria è corpo, prima di essere racconto è vita che respira. Un saggio breve sull'idea da cui nasce il nome: andare oltre, Ultra-Rem.", m: "5 min di lettura", img: "cultura" },
   { k: "Profili", t: "[ Nome di un ricercatore ]", p: "Scheda di uno studioso di lutto, memoria o etica dell'IA, con le opere e le fonti. Nessun avatar o intervista a suo nome senza il suo consenso scritto.", m: "Scheda", img: "" },
