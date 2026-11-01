@@ -29,7 +29,7 @@ export function Stripes({ h = 6 }: { h?: number }) {
 }
 
 const NAV_EXTRA: Record<string, { stories: string; founders: string; start: string }> = {
-  it: { stories: "Storie", founders: "Fondatori", start: "Inizia dal Diario" },
+  it: { stories: "Storie", founders: "Founder", start: "Inizia dal Diario" },
   en: { stories: "Stories", founders: "Founders", start: "Start with the Diary" },
   fr: { stories: "Histoires", founders: "Fondateurs", start: "Commencer par le Journal" },
   de: { stories: "Geschichten", founders: "Gründer", start: "Mit dem Tagebuch beginnen" },
@@ -92,7 +92,7 @@ export function Footer() {
         </div>
         <div style={col}>
           <div style={kicker("#ff3b52")}>{d.footer.navigate}</div>
-          {[["/il-progetto", d.nav.project], ["/per-chi", d.nav.forWho], ["/come-funziona", d.nav.how], ["/ricerca", d.nav.research], ["/storie", "Storie"], ["/fondatori", "Fondatori"], ["/incontra", d.nav.meet]].map(([h, l]) => <Link key={h} href={h}><span style={fl}>{l}</span></Link>)}
+          {[["/il-progetto", d.nav.project], ["/per-chi", d.nav.forWho], ["/come-funziona", d.nav.how], ["/ricerca", d.nav.research], ["/storie", "Storie"], ["/fondatori", "Founder"], ["/incontra", d.nav.meet]].map(([h, l]) => <Link key={h} href={h}><span style={fl}>{l}</span></Link>)}
         </div>
         <div style={col}>
           <div style={kicker("#ff3b52")}>{d.footer.contact}</div>
