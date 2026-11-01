@@ -119,7 +119,7 @@ export const ui = {
   cities: "Milano · Genova",
   talk: "Parla con l'avatar",
   video: "Guarda il video",
-  caption: "Immagine illustrativa.",
+  caption: "Milano, 1983.",
   avatarTitle: "Chiedimi che cos'è UltraRem.",
   avatarText: "Ti spiego in due minuti che cos'è UltraRem e rispondo alle tue domande. Ti dico subito che sono un'intelligenza artificiale, e puoi smettere quando vuoi.",
   chips: ["Che cos'è UltraRem?", "Quanto costa?", "Chi c'è dietro?", "Che fine fanno i miei dati?"],

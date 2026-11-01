@@ -109,7 +109,7 @@ export const de: HomeContent = {
     cities: "Mailand · Genua",
     talk: "Mit dem Avatar sprechen",
     video: "Video ansehen",
-    caption: "Illustratives Bild.",
+    caption: "Mailand, 1983.",
     avatarTitle: "Frag mich, was UltraRem ist.",
     avatarText: "In zwei Minuten erkläre ich dir, was UltraRem ist, und beantworte deine Fragen. Ich sage dir gleich, dass ich eine künstliche Intelligenz bin, und du kannst jederzeit aufhören.",
     chips: ["Was ist UltraRem?", "Was kostet es?", "Wer steht dahinter?", "Was geschieht mit meinen Daten?"],

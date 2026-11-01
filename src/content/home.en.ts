@@ -109,7 +109,7 @@ export const en: HomeContent = {
     cities: "Milan · Genoa",
     talk: "Talk to the avatar",
     video: "Watch the video",
-    caption: "Illustrative image.",
+    caption: "Milan, 1983.",
     avatarTitle: "Ask me what UltraRem is.",
     avatarText: "In two minutes I will explain what UltraRem is and answer your questions. I tell you right away that I am an artificial intelligence, and you can stop whenever you like.",
     chips: ["What is UltraRem?", "How much does it cost?", "Who is behind it?", "What happens to my data?"],
