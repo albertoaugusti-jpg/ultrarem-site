@@ -25,7 +25,7 @@ function Zone({ k, title, sub, text, a, b, bg, children }: { k: string; title: s
 }
 
 export default function Home() {
-  const { cover, ladder, who, research, ui } = useHome();
+  const { cover, ladder, who, ui } = useHome();
   return (
     <Page>
       <section style={{ borderBottom: `3px solid ${INK}`, padding: "clamp(32px,5vw,56px) 0" }}>
@@ -49,10 +49,6 @@ export default function Home() {
         </Wrap>
       </section>
 
-      <Zone k={ui.projK} title={ui.projT} sub={ui.projS} text={ui.projX} a={{ href: "/il-progetto#video", label: ui.video }} b={{ href: "/il-progetto", label: ui.projBtn2 }} />
-
-      <Zone k={ui.perK} title={ui.perT} sub={ui.perS} text={ui.perX} a={{ href: "/per-chi", label: ui.perBtn }} bg={PALE} />
-
       <Sec k={ladder.kicker} title={ui.ladderTitle}>
         <p style={{ margin: "0 0 24px", maxWidth: 780, fontSize: 17, lineHeight: 1.6 }}>{ladder.intro}</p>
         <div style={grid(280, 20)}>
@@ -70,11 +66,7 @@ export default function Home() {
         <div style={{ marginTop: 24 }}><Link href="/come-funziona"><span style={btn(INK, "#fff")}>{ui.ladderBtn}</span></Link></div>
       </Sec>
 
-      <Zone k={research.kicker} title={research.title} sub={ui.ricS} text={ui.ricX} a={{ href: "/ricerca", label: ui.ricBtn }} bg={PALE} />
-
-      <Zone k={ui.storK} title={ui.storT} sub={ui.storS} a={{ href: "/storie", label: ui.storBtn }} />
-
-      <Zone k={who.kicker} title={who.title} sub={ui.whoText} a={{ href: "/fondatori", label: ui.whoBtn }} bg={PALE}>
+      <Zone k={who.kicker} title={who.title} sub={ui.whoText} a={{ href: "/fondatori", label: ui.whoBtn }} b={{ href: "/ricerca", label: ui.ricBtn }} bg={PALE}>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
           {[...who.founders, ...who.science].map(f => (
             <div key={f.name} title={f.name} style={{ width: 54, height: 54, borderRadius: "50%", background: f.col, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: BLACK, fontSize: 17, border: `2px solid ${INK}` }}>{f.ini}</div>

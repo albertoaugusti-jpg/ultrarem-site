@@ -56,8 +56,8 @@ export default function Fondatori() {
 
       <Sec k={c.partnersK} title={c.partnersT} bg={PALE}>
         <Cols gap={20}>
-          <Card k={c.qbtK} t="QBT Sagl"><p style={{ margin: 0 }}>{c.qbtP}</p></Card>
-          <Card k={c.socK} t="So.Crem Genova"><p style={{ margin: 0 }}>{who.socrem}</p></Card>
+          <Card k={c.qbtK} t="QBT Sagl"><img src="/img/rivista/qbt.png" alt="QBT Sagl" style={{ height: 56, width: "auto", alignSelf: "flex-start" }} /><p style={{ margin: 0 }}>{c.qbtP}</p></Card>
+          <Card k={c.socK} t="So.Crem Genova"><img src="/img/rivista/socrem.png" alt="So.Crem, Società Genovese di Cremazione" style={{ height: 56, width: "auto", alignSelf: "flex-start" }} /><p style={{ margin: 0 }}>{who.socrem}</p></Card>
         </Cols>
       </Sec>
 

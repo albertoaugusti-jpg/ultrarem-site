@@ -19,7 +19,7 @@ const quando = [
 export default function PerChi() {
   return (
     <Page>
-      <Hero k="Per chi" title={<>Non serve una malattia. <em style={{ color: RED }}>Basta voler esserci.</em></>} lead="UltraRem è per chiunque abbia qualcosa da dire e voglia che resti autentico nel tempo. Qui trovi sei situazioni in cui ci si può riconoscere, e il punto da cui partire in ciascuna." />
+      <Hero k="Per chi" title={<>Ognuno ha una storia <em style={{ color: RED }}>che merita di durare.</em></>} lead="UltraRem è per chiunque abbia qualcosa da dire e voglia che resti autentico nel tempo. Qui trovi sei situazioni in cui ci si può riconoscere, e il punto da cui partire in ciascuna." />
 
       <Sec k="Sei situazioni" title="Forse ti riconosci in una di queste.">
         <p style={{ margin: "0 0 26px", maxWidth: 760 }}>Sono scenari, non casi di clienti: ci servono per ragionare insieme su che cosa ti serve davvero e da dove ti conviene cominciare.</p>
