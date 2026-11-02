@@ -50,7 +50,9 @@ export default function Percorso() {
         </Sec>
       )}
 
-      <CtaBand title={t.ctaT} text={t.ctaX} a={{ href: "/contatti", label: t.ctaL }} b={{ href: "/incontra#avatar", label: t.ctaL2 }} />
+      {i === 0
+        ? <CtaBand title={t.startT} text={t.startX} a={{ href: `mailto:info@ultrarem.it?subject=${encodeURIComponent(t.mailSub)}`, label: t.startL }} b={{ href: "/il-progetto#avatar", label: t.ctaL2 }} />
+        : <CtaBand title={t.ctaT} text={t.ctaX} a={{ href: "/contatti", label: t.ctaL }} b={{ href: "/il-progetto#avatar", label: t.ctaL2 }} />}
     </Page>
   );
 }

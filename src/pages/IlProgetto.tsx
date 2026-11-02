@@ -1,4 +1,35 @@
 import { Page, Hero, Sec, Prose, Cols, Card, Quote, CtaBand, Photo, kicker, RED, INK, GREY, PALE, BODONI, BLACK, NARROW } from "@/components/Mag";
+import { AVATAR_URL, VIDEO_URL } from "@/lib/config";
+
+function Slot({ text, img }: { text: string; img: string }) {
+  return (
+    <div style={{ position: "relative", maxWidth: 960 }}>
+      <Photo name={img} ar="16 / 9" />
+      <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.55)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 14, padding: 24, textAlign: "center", color: "#fff" }}>
+        <div style={{ width: 76, height: 76, borderRadius: "50%", background: RED, border: "3px solid #fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ marginLeft: 6, borderStyle: "solid", borderWidth: "13px 0 13px 22px", borderColor: "transparent transparent transparent #fff" }} />
+        </div>
+        <div style={{ ...kicker("#fff") }}>{text}</div>
+      </div>
+    </div>
+  );
+}
+
+function Video({ src }: { src: string }) {
+  return src.includes("drive.google.com")
+    ? <iframe src={src} title="UltraRem" allow="autoplay; fullscreen" allowFullScreen style={{ width: "100%", maxWidth: 960, aspectRatio: "16 / 9", border: `2px solid ${INK}` }} />
+    : <video src={src} controls playsInline preload="metadata" style={{ width: "100%", maxWidth: 960, aspectRatio: "16 / 9", background: INK, border: `2px solid ${INK}` }} />;
+}
+
+const questions = [
+  "Che cos'è UltraRem, in parole semplici?",
+  "Chi è lo psicologo che mi ascolta, e che cosa fa esattamente?",
+  "Che cosa succede ai miei racconti quando non ci sono più?",
+  "Chi potrà parlare con il mio avatar, e chi no?",
+  "Quanto costa, e che cosa ottengo in ciascun percorso?",
+  "Che differenza c'è tra ciò che ho detto io e ciò che il sistema elabora?",
+];
+
 
 const carta = [
   { a: "Art. 2", t: "Nessuna pubblicità", d: "Né negli archivi né nel dialogo con l'avatar. La tua memoria non è uno spazio da vendere." },
@@ -18,6 +49,34 @@ export default function IlProgetto() {
   return (
     <Page>
       <Hero k="Il Progetto" title={<>Chi ero, chi sono <em style={{ color: RED }}>e chi sarò.</em></>} lead="UltraRem non è un archivio e non è un gioco con l'intelligenza artificiale. È un modo serio, accompagnato da professionisti, di decidere mentre sei vivo e lucido che cosa di te debba restare, e a chi." />
+
+      <Sec id="avatar" k="Conversazione" title="Parla con l'avatar di Alberto.">
+        <Prose>
+          <p>Alberto Augusti, fondatore di UltraRem, ha un avatar che ti accompagna dentro il progetto: ti spiega come funziona, che cosa facciamo e che cosa non faremo mai, e risponde a quello che gli chiedi, nell'ordine e con il ritmo che preferisci.</p>
+          <p>Prima di parlare ti diciamo che stai interagendo con un sistema di intelligenza artificiale (art. 14 della Carta dei Valori). Se in qualunque momento non vuoi più dialogare, ti basta smettere: nessuno ti scriverà per riprendere la conversazione e nessuno ti chiederà perché (art. 17).</p>
+        </Prose>
+        <div style={{ margin: "26px 0" }}>
+          {AVATAR_URL
+            ? <iframe src={AVATAR_URL} title="Avatar UltraRem" allow="microphone; camera; autoplay" style={{ width: "100%", maxWidth: 960, minHeight: 560, border: `2px solid ${INK}`, background: INK }} />
+            : <Slot img="riempitivo2" text="L'avatar sarà disponibile a breve" />}
+        </div>
+        <div style={{ ...kicker(), marginBottom: 10 }}>Che cosa puoi chiedergli</div>
+        <Cols gap={0}>
+          {questions.map((q, i) => (
+            <div key={q} style={{ flex: "1 1 320px", padding: "14px 18px", borderTop: `1px solid ${INK}`, fontFamily: BODONI, fontStyle: "italic", fontSize: 20, background: i % 2 ? PALE : "#fff" }}>{q}</div>
+          ))}
+        </Cols>
+        <p style={{ marginTop: 18, maxWidth: 760, fontSize: 15, color: GREY }}>L'avatar parla della società e del progetto con le risposte che Alberto ha approvato. Quando una domanda esce da quel perimetro te lo dice, invece di inventare.</p>
+      </Sec>
+
+      <Sec id="video" k="Racconto" title="Il video." bg={PALE}>
+        <Prose>
+          <p>Un filmato breve, pensato per chi ha qualche minuto e nessuna voglia di leggere. Non spiega la tecnologia. Racconta quello che resta di noi quando smettiamo di parlare, e perché secondo noi merita di essere detto bene, mentre siamo ancora in tempo.</p>
+        </Prose>
+        <div style={{ margin: "26px 0 0" }}>
+          {VIDEO_URL ? <Video src={VIDEO_URL} /> : <Slot img="cultura" text="Il video sarà online a breve" />}
+        </div>
+      </Sec>
 
       <Sec k="Perché esiste" title="La tua dimensione digitale esisterà comunque.">
         <Cols gap={40}>

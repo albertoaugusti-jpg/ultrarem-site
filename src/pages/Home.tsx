@@ -1,45 +1,44 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { Link } from "wouter";
-import { Page, Photo, Sec, Wrap, CtaBand, kicker, btn, RED, INK, GREY, PALE, BODONI, BLACK, NARROW } from "@/components/Mag";
+import { Page, Photo, Sec, Wrap, CtaBand, kicker, btn, INK, GREY, PALE, BODONI, BLACK, NARROW } from "@/components/Mag";
 import { useHome, SLUGS } from "@/content/useHome";
 
 const grid = (min: number, gap = 24): CSSProperties => ({ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(min(${min}px, 100%), 1fr))`, gap });
 const block: CSSProperties = { display: "block", color: "inherit", textDecoration: "none" };
+const RED = "#c8102e";
 
-function Play() {
-  return <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: 76, height: 76, borderRadius: "50%", background: RED, border: "3px solid #fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-    <div style={{ marginLeft: 6, borderStyle: "solid", borderWidth: "13px 0 13px 22px", borderColor: "transparent transparent transparent #fff" }} />
-  </div>;
+// Ogni zona: titolo, sottotitolo, al massimo 2-3 righe di testo, una o due call to action.
+function Zone({ k, title, sub, text, a, b, bg, children }: { k: string; title: string; sub?: string; text?: string; a?: { href: string; label: string }; b?: { href: string; label: string }; bg?: string; children?: ReactNode }) {
+  return (
+    <Sec k={k} title={title} bg={bg}>
+      {sub && <p style={{ margin: "0 0 12px", maxWidth: 760, fontStyle: "italic", fontSize: 21, lineHeight: 1.45 }}>{sub}</p>}
+      {text && <p style={{ margin: "0 0 20px", maxWidth: 720, fontSize: 17, lineHeight: 1.6 }}>{text}</p>}
+      {children}
+      {(a || b) && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 20 }}>
+          {a && <Link href={a.href}><span style={btn(INK, "#fff")}>{a.label}</span></Link>}
+          {b && <Link href={b.href}><span style={btn("transparent", INK, `2px solid ${INK}`)}>{b.label}</span></Link>}
+        </div>
+      )}
+    </Sec>
+  );
 }
 
 export default function Home() {
-  const { cover, reads, ladder, who, charter, editorial, ui } = useHome();
+  const { cover, ladder, who, research, ui } = useHome();
   return (
     <Page>
-      <div style={{ borderBottom: `2px solid ${INK}` }}>
-        <Wrap>
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 8, padding: "10px 0", fontFamily: NARROW, fontWeight: 700, fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-            <span>{ui.strip}</span><span style={{ color: GREY }}>{ui.cities}</span><span style={{ color: RED }}>Your memory is you</span>
-          </div>
-        </Wrap>
-      </div>
-
       <section style={{ borderBottom: `3px solid ${INK}`, padding: "clamp(32px,5vw,56px) 0" }}>
         <Wrap>
-          <div style={{ ...grid(420, 40), gridTemplateColumns: "repeat(auto-fit, minmax(min(420px, 100%), 1fr))", alignItems: "start" }}>
+          <div style={{ ...grid(420, 40), alignItems: "start" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
               <div style={kicker()}>{cover.kicker}</div>
               <h1 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(40px,5.6vw,72px)", lineHeight: 1, letterSpacing: -2 }}>{cover.title}</h1>
               <p style={{ margin: 0, fontStyle: "italic", fontSize: 22 }}>{cover.lead}</p>
               <p style={{ margin: 0, fontFamily: NARROW, fontWeight: 700, fontSize: 17, letterSpacing: "0.04em", borderLeft: `4px solid ${RED}`, paddingLeft: 14 }}>{cover.what}</p>
-              <div style={{ columnWidth: 280, columnGap: 32, columnRule: `1px solid ${INK}`, fontSize: 16.5, lineHeight: 1.6 }}>
-                <p style={{ margin: "0 0 12px" }}>{cover.body}</p>
-                <p style={{ margin: "0 0 12px" }}>{cover.body2}</p>
-                <p style={{ margin: 0 }}>{cover.body3}</p>
-              </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 4 }}>
-                <Link href="/incontra#avatar"><span style={btn(RED, "#fff")}>{ui.talk}</span></Link>
-                <Link href="/incontra#video"><span style={btn("transparent", INK, `2px solid ${INK}`)}>{ui.video}</span></Link>
+                <Link href="/il-progetto"><span style={btn(INK, "#fff")}>{ui.ctaProject}</span></Link>
+                <Link href="/il-progetto#avatar"><span style={btn("transparent", INK, `2px solid ${INK}`)}>{ui.talk}</span></Link>
               </div>
             </div>
             <figure style={{ margin: 0, maxWidth: 440, width: "100%", justifySelf: "center" }}>
@@ -50,27 +49,9 @@ export default function Home() {
         </Wrap>
       </section>
 
-      <section style={{ background: INK, color: "#fff", borderBottom: `3px solid ${INK}`, padding: "clamp(32px,5vw,56px) 0" }}>
-        <Wrap>
-          <div style={{ ...grid(360, 40), alignItems: "center" }}>
-            <Link href="/incontra#avatar" style={{ ...block, position: "relative" }}><Photo name="riempitivo2" ar="16 / 10" /><Play /></Link>
-            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <div style={kicker("#ff3b52")}>{ui.talk}</div>
-              <h2 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(32px,4.4vw,54px)", lineHeight: 1.04, letterSpacing: -1 }}>{ui.avatarTitle}</h2>
-              <p style={{ margin: 0, fontSize: 18, lineHeight: 1.6, opacity: 0.9 }}>{ui.avatarText}</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {ui.chips.map(q => (
-                  <Link key={q} href="/incontra#avatar"><span style={{ fontFamily: NARROW, fontWeight: 700, fontSize: 13, letterSpacing: "0.06em", border: "1px solid rgba(255,255,255,0.6)", padding: "8px 14px", display: "inline-block", cursor: "pointer" }}>{q}</span></Link>
-                ))}
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 4 }}>
-                <Link href="/incontra#avatar"><span style={btn(RED, "#fff")}>{ui.talk}</span></Link>
-                <Link href="/incontra#video"><span style={btn("transparent", "#fff", "2px solid #fff")}>{ui.video}</span></Link>
-              </div>
-            </div>
-          </div>
-        </Wrap>
-      </section>
+      <Zone k={ui.projK} title={ui.projT} sub={ui.projS} text={ui.projX} a={{ href: "/il-progetto#video", label: ui.video }} b={{ href: "/il-progetto", label: ui.projBtn2 }} />
+
+      <Zone k={ui.perK} title={ui.perT} sub={ui.perS} text={ui.perX} a={{ href: "/per-chi", label: ui.perBtn }} bg={PALE} />
 
       <Sec k={ladder.kicker} title={ui.ladderTitle}>
         <p style={{ margin: "0 0 24px", maxWidth: 780, fontSize: 17, lineHeight: 1.6 }}>{ladder.intro}</p>
@@ -86,61 +67,22 @@ export default function Home() {
             </Link>
           ))}
         </div>
-        <div style={{ marginTop: 24 }}><Link href="/percorsi"><span style={btn(RED, "#fff")}>{ui.ladderBtn}</span></Link></div>
+        <div style={{ marginTop: 24 }}><Link href="/come-funziona"><span style={btn(INK, "#fff")}>{ui.ladderBtn}</span></Link></div>
       </Sec>
 
-      <Sec k={editorial.kicker} title={editorial.title}>
-        <div style={{ columnWidth: 300, columnGap: 40, columnRule: `1px solid ${INK}`, fontSize: 17, lineHeight: 1.65 }}>
-          {editorial.paras.map((p, i) => <p key={i} style={{ margin: "0 0 14px" }}>{p}</p>)}
-        </div>
-        <p style={{ margin: "10px 0 0", fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>{editorial.by}</p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 22 }}>
-          <Link href="/incontra#avatar"><span style={btn(RED, "#fff")}>{ui.talk}</span></Link>
-          <Link href="/come-funziona"><span style={btn(INK, "#fff")}>{ui.discover}</span></Link>
-        </div>
-      </Sec>
+      <Zone k={research.kicker} title={research.title} sub={ui.ricS} text={ui.ricX} a={{ href: "/ricerca", label: ui.ricBtn }} bg={PALE} />
 
-      <Sec k={ui.readsKicker} title={ui.readsTitle} bg={PALE}>
-        <div style={grid(240)}>
-          {reads.map(r => (
-            <Link key={r.k} href="/storie" style={{ ...block }}>
-              <article style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                <Photo name={r.img || "riempitivo"} ar="3 / 2" />
-                <div style={kicker()}>{r.k}</div>
-                <h3 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: 24, lineHeight: 1.1 }}>{r.t}</h3>
-                <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.55 }}>{r.p}</p>
-                <span style={{ fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>{r.m}</span>
-              </article>
-            </Link>
-          ))}
-        </div>
-        <div style={{ marginTop: 24 }}><Link href="/storie"><span style={btn(INK, "#fff")}>{ui.allStories}</span></Link></div>
-      </Sec>
+      <Zone k={ui.storK} title={ui.storT} sub={ui.storS} a={{ href: "/storie", label: ui.storBtn }} />
 
-      <Sec k={who.kicker} title={who.title} bg={PALE}>
-        <p style={{ margin: "0 0 22px", maxWidth: 820, fontSize: 17, lineHeight: 1.6 }}>{ui.whoText}</p>
+      <Zone k={who.kicker} title={who.title} sub={ui.whoText} a={{ href: "/fondatori", label: ui.whoBtn }} bg={PALE}>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
           {[...who.founders, ...who.science].map(f => (
             <div key={f.name} title={f.name} style={{ width: 54, height: 54, borderRadius: "50%", background: f.col, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: BLACK, fontSize: 17, border: `2px solid ${INK}` }}>{f.ini}</div>
           ))}
         </div>
-        <div style={{ marginTop: 24 }}><Link href="/fondatori"><span style={btn(INK, "#fff")}>{ui.whoBtn}</span></Link></div>
-      </Sec>
+      </Zone>
 
-      <Sec k={charter.kicker} title={charter.title} dark>
-        <div style={grid(240, 0)}>
-          {charter.arts.map((a, i) => (
-            <div key={a.a} style={{ padding: "18px 22px", borderTop: "1px solid rgba(255,255,255,0.4)", borderLeft: i ? "1px solid rgba(255,255,255,0.4)" : "none" }}>
-              <div style={kicker("#ff3b52")}>{a.a}</div>
-              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 24, lineHeight: 1.1, margin: "6px 0" }}>{a.t}</div>
-              <p style={{ margin: 0, fontSize: 15.5, opacity: 0.85 }}>{a.d}</p>
-            </div>
-          ))}
-        </div>
-        <div style={{ marginTop: 24 }}><Link href="/il-progetto"><span style={btn("#fff", INK)}>{ui.charterBtn}</span></Link></div>
-      </Sec>
-
-      <CtaBand title={ui.ctaTitle} text={ui.ctaText} a={{ href: "/come-funziona", label: ui.ctaA }} b={{ href: "/contatti", label: ui.ctaB }} />
+      <CtaBand title={ui.ctaTitle} text={ui.ctaText} a={{ href: "/percorsi/diario-di-bordo", label: ui.ctaA }} b={{ href: "/contatti", label: ui.ctaB }} />
     </Page>
   );
 }
