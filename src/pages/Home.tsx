@@ -43,7 +43,7 @@ export default function Home() {
               </div>
             </div>
             <figure style={{ margin: 0, maxWidth: 440, width: "100%", justifySelf: "center" }}>
-              <Photo name="cover" ar="1199 / 1312" pos="center top" />
+              <Photo name="cover" ar="1035 / 1312" pos="center top" />
               <figcaption style={{ marginTop: 8, fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>{ui.caption}</figcaption>
             </figure>
           </div>
