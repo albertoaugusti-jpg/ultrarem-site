@@ -48,7 +48,7 @@ export const de: HomeContent = {
   who: {
     kicker: "Wer dahintersteht",
     title: "Hinter UltraRem stehen Menschen, die schon etwas anderes aufgebaut haben.",
-    intro: "Ein Dienst, der die Erinnerung eines Menschen aufbewahrt, wird auch an denen gemessen, die ihn bauen. Alberto Augusti, Geschäftsführer, und Bruno Legger, Leiter Verwaltung, arbeiten täglich für die Gesellschaft. Massimo Del Vecchio, Giuseppe Teatino und Stefano Fumi sind Founder ohne operative Rolle: Sie kommen aus Energie, Zahlungsverkehr und großen Informationssystemen, haben viele Projekte gesehen und beschlossen, an dieses zu glauben.",
+    intro: "Ein Dienst, der die Erinnerung eines Menschen aufbewahrt, wird auch an denen gemessen, die ihn bauen. Alberto Augusti, Geschäftsführer, und Bruno Legger, Leiter Verwaltung, arbeiten täglich für die Gesellschaft. Massimo Del Vecchio, Giuseppe Teatino und Stefano Fumi sind Founder ohne operative Rolle und kommen aus Energie, Zahlungsverkehr und großen Informationssystemen.",
     founders: [
       { ini: "AA", name: "Alberto Augusti", role: "Alleinvertretungsberechtigter Geschäftsführer · operativ", text: "Unternehmer aus Genua, Abschluss in Internationalen und Diplomatischen Wissenschaften. Er leitet die Gesellschaft.", col: "#c8102e" },
       { ini: "BL", name: "Bruno Massimo Legger", role: "Leiter Verwaltung · operativ", text: "Dreißig Jahre Unternehmensführung in Kosmetik, Mode und Versorgungsunternehmen, von Shiseido bis AEM.", col: "#3d7a6b" },

@@ -52,7 +52,7 @@ export const research = {
 export const who = {
   kicker: "Chi c'è dietro",
   title: "Dietro UltraRem ci sono persone che hanno già costruito altro.",
-  intro: "Un servizio che custodisce la memoria di una persona si giudica anche da chi lo costruisce. Alberto Augusti, Amministratore unico, e Bruno Legger, responsabile amministrativo, lavorano ogni giorno alla società. Massimo Del Vecchio, Giuseppe Teatino e Stefano Fumi sono Founder senza un ruolo operativo: vengono da energia, pagamenti e grandi sistemi informativi, hanno visto molti progetti e hanno deciso di credere in questo.",
+  intro: "Un servizio che custodisce la memoria di una persona si giudica anche da chi lo costruisce. Alberto Augusti, Amministratore unico, e Bruno Legger, responsabile amministrativo, lavorano ogni giorno alla società. Massimo Del Vecchio, Giuseppe Teatino e Stefano Fumi sono Founder senza un ruolo operativo e vengono da energia, pagamenti e grandi sistemi informativi.",
   founders: [
     { ini: "AA", name: "Alberto Augusti", role: "Amministratore unico · operativo", text: "Imprenditore genovese, laureato in Scienze internazionali e diplomatiche. Guida la società.", col: "#c8102e" },
     { ini: "BL", name: "Bruno Massimo Legger", role: "Responsabile amministrativo · operativo", text: "Trent'anni di gestione d'impresa tra cosmetica, moda e utilities, da Shiseido ad AEM.", col: "#3d7a6b" },

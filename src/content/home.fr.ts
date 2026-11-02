@@ -48,7 +48,7 @@ export const fr: HomeContent = {
   who: {
     kicker: "Qui est derrière",
     title: "Derrière UltraRem, des personnes qui ont déjà construit autre chose.",
-    intro: "Un service qui conserve la mémoire d'une personne se juge aussi à ceux qui le construisent. Alberto Augusti, administrateur unique, et Bruno Legger, responsable administratif, travaillent chaque jour à la société. Massimo Del Vecchio, Giuseppe Teatino et Stefano Fumi sont Founders sans rôle opérationnel : ils viennent de l'énergie, des paiements et des grands systèmes d'information, ont vu beaucoup de projets et ont décidé de croire à celui-ci.",
+    intro: "Un service qui conserve la mémoire d'une personne se juge aussi à ceux qui le construisent. Alberto Augusti, administrateur unique, et Bruno Legger, responsable administratif, travaillent chaque jour à la société. Massimo Del Vecchio, Giuseppe Teatino et Stefano Fumi sont Founders sans rôle opérationnel et viennent de l'énergie, des paiements et des grands systèmes d'information.",
     founders: [
       { ini: "AA", name: "Alberto Augusti", role: "Administrateur unique · opérationnel", text: "Entrepreneur génois, diplômé en sciences internationales et diplomatiques. Il dirige la société.", col: "#c8102e" },
       { ini: "BL", name: "Bruno Massimo Legger", role: "Responsable administratif · opérationnel", text: "Trente ans de gestion d'entreprise entre cosmétique, mode et services publics, de Shiseido à AEM.", col: "#3d7a6b" },
