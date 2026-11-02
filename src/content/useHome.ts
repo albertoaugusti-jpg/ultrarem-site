@@ -11,3 +11,6 @@ export function useHome() {
   const { lang } = useLang();
   return all[lang] ?? it;
 }
+
+// Indirizzi delle pagine dei tre percorsi, nello stesso ordine di ladder.steps.
+export const SLUGS = ["diario-di-bordo", "i-marinai-del-tempo", "i-capitani-di-lungo-corso"];

@@ -13,15 +13,6 @@ export const cover = {
   cta2: "Chi c'è dietro",
 };
 
-export const index = [
-  { k: "Storie", t: "Chi si racconta, e chi ascolta", href: "/storie" },
-  { k: "Dibattiti", t: "La memoria è un diritto?", href: "/storie" },
-  { k: "Ricerca", t: "Il sé digitale postumo", href: "/ricerca" },
-  { k: "Cultura", t: "La vita, la morte, il ricordo", href: "/storie" },
-  { k: "I percorsi", t: "Dal Diario di bordo ai Capitani", href: "/come-funziona" },
-  { k: "La Carta", t: "Ciò che promettiamo, in chiaro", href: "/il-progetto" },
-];
-
 export const reads = [
   { k: "Storie", t: "Una vita, raccontata da chi l'ha vissuta", p: "Lo spazio per un racconto di vita, scelto e autorizzato dalla persona (art. 18 della Carta). In fondo alla pagina, se la persona lo ha deciso, la storia diventa interattiva.", m: "8 min di lettura", img: "quaderno" },
   { k: "Dibattiti", t: "Che cosa vogliamo che resti di noi?", p: "Più voci sullo stesso tema, con posizioni anche opposte. UltraRem opera in neutralità rispetto a credi e orientamenti (art. 4).", m: "4 interventi", img: "bussola" },
@@ -34,25 +25,17 @@ export const ladder = {
   title: "Una scala di tre gradini, con i nomi della navigazione.",
   intro: "La tradizione marinara genovese da cui il progetto proviene ha dato i nomi. Ogni gradino conduce al successivo: quanto hai già pagato viene scalato dal prezzo di quello dopo.",
   steps: [
-    { tag: "Gradino 1 · aperto a tutti", name: "Diario di bordo", price: "290 €", sub: "pacchetto di partenza", img: "nave-diario", tone: "light",
+    { tag: "Gradino 1 · aperto a tutti", name: "Diario di bordo", price: "290 €", sub: "pacchetto di partenza", img: "nave-diario", lead: "Comincia a raccontarti con il companion, quando vuoi e senza psicologo. Alla fine hai un quaderno della tua narrazione e puoi decidere se andare avanti.", tone: "light",
       items: ["10 ore di racconto con il companion", "un quaderno della tua narrazione in PDF", "un clone vocale che risponde solo con ciò che il diario contiene, finché sei in vita", "12 mesi di conservazione, poi si rinnova (49 € l'anno)"],
       note: "Senza intervista e senza psicologo. È un prodotto distinto da UltraRem, e serve a capire se vuoi andare avanti." },
-    { tag: "Gradino 2 · percorso certificato", name: "I marinai del tempo", price: "3.800 €", sub: "la partenza del Diario viene scalata", img: "nave-marinai", tone: "dark",
+    { tag: "Gradino 2 · percorso certificato", name: "I marinai del tempo", price: "3.800 €", sub: "la partenza del Diario viene scalata", img: "nave-marinai", lead: "Uno psicologo ti ascolta e firma la sintesi del tuo progetto; hai la tua voce clonata e un primo avatar.", tone: "dark",
       items: ["10 ore di intervista con lo psicologo", "10 ore di raccolta con il companion", "la sintesi del tuo progetto, firmata dallo psicologo", "la tua voce clonata e un avatar semplice"],
       note: "Il primo anno di custodia è compreso." },
-    { tag: "Gradino 3 · percorso completo", name: "I Capitani di lungo corso", price: "9.800 €", sub: "quanto hai pagato per i Marinai viene scalato", img: "nave-capitani", tone: "red",
+    { tag: "Gradino 3 · percorso completo", name: "I Capitani di lungo corso", price: "9.800 €", sub: "quanto hai pagato per i Marinai viene scalato", img: "nave-capitani", lead: "Il percorso più lungo: trenta ore con lo psicologo, un avatar con riprese in studio e, se vuoi, la forma tridimensionale.", tone: "red",
       items: ["30 ore di intervista con lo psicologo", "30 ore di raccolta con il companion", "la sintesi e la voce clonata", "un avatar realizzato con riprese in studio", "elaborazione tridimensionale su richiesta"],
       note: "Il primo anno di custodia è compreso." },
   ],
   fee: "Dal secondo anno, nei due percorsi certificati, c'è un canone di custodia (circa 150 € per i Marinai, circa 300 € per i Capitani, circa 550 € con l'elaborazione tridimensionale). Include conservazione sicura, governance degli accessi e un uso interattivo ragionevole; oltre, l'avatar video si paga a consumo. Importi indicativi.",
-};
-
-export const story = {
-  kicker: "Una storia, due modi di viverla",
-  title: "Leggerla. Oppure parlarci.",
-  text: "Ogni storia si legge come un articolo. Quando la persona l'ha scelto, sotto il testo si apre uno spazio di dialogo con la sua testimonianza, solo per chi decide di entrare (art. 17). Nessuno riceve inviti o messaggi non richiesti.",
-  box: "Prima di parlare ti diciamo che stai interagendo con un sistema di intelligenza artificiale (art. 14). Ogni risposta porta un'etichetta: Testimonianza se riporta ciò che la persona ha detto, Elaborazione se nasce dal sistema (art. 15).",
-  slot: "[ L'avatar della storia ]",
 };
 
 export const research = {
@@ -69,13 +52,13 @@ export const research = {
 export const who = {
   kicker: "Chi c'è dietro",
   title: "Dietro UltraRem ci sono persone che hanno già costruito altro.",
-  intro: "Un servizio che custodisce la memoria di una persona si giudica anche da chi lo costruisce. Alberto Augusti e Bruno Legger lavorano alla società. Gli altri tre soci non hanno un ruolo operativo, e proprio per questo la loro scelta di esserci pesa: vengono da energia, pagamenti e grandi sistemi informativi, hanno visto molti progetti e hanno deciso di credere in questo.",
+  intro: "Un servizio che custodisce la memoria di una persona si giudica anche da chi lo costruisce. Alberto Augusti, Amministratore unico, e Bruno Legger, responsabile amministrativo, lavorano ogni giorno alla società. Massimo Del Vecchio, Giuseppe Teatino e Stefano Fumi sono Founder senza un ruolo operativo: vengono da energia, pagamenti e grandi sistemi informativi, hanno visto molti progetti e hanno deciso di credere in questo.",
   founders: [
     { ini: "AA", name: "Alberto Augusti", role: "Amministratore unico · operativo", text: "Imprenditore genovese, laureato in Scienze internazionali e diplomatiche. Guida la società.", col: "#c8102e" },
     { ini: "BL", name: "Bruno Massimo Legger", role: "Responsabile amministrativo · operativo", text: "Trent'anni di gestione d'impresa tra cosmetica, moda e utilities, da Shiseido ad AEM.", col: "#3d7a6b" },
-    { ini: "MD", name: "Massimo Del Vecchio", role: "Socio", text: "Executive Director in Engineering Ingegneria Informatica; in precedenza CIO e direttore digitale in Ericsson, Ooredoo e Poste Italiane.", col: "#8b2e2e" },
-    { ini: "GT", name: "Giuseppe Teatino", role: "Socio", text: "Product designer. Ha guidato la user experience in Nexi e PostePay ed è cofondatore di NeN.it e TaDa.", col: "#c4522a" },
-    { ini: "SF", name: "Stefano Fumi", role: "Socio", text: "Vent'anni nel mercato dell'energia: Enel (la fatturazione di 30 milioni di clienti), NeN.it, PostePay.", col: "#e8a820" },
+    { ini: "MD", name: "Massimo Del Vecchio", role: "Founder", text: "Executive Director in Engineering Ingegneria Informatica; in precedenza CIO e direttore digitale in Ericsson, Ooredoo e Poste Italiane.", col: "#8b2e2e" },
+    { ini: "GT", name: "Giuseppe Teatino", role: "Founder", text: "Product designer. Ha guidato la user experience in Nexi e PostePay ed è cofondatore di NeN.it e TaDa.", col: "#c4522a" },
+    { ini: "SF", name: "Stefano Fumi", role: "Founder", text: "Vent'anni nel mercato dell'energia: Enel (la fatturazione di 30 milioni di clienti), NeN.it, PostePay.", col: "#e8a820" },
   ],
   science: [
     { ini: "IT", name: "Prof.ssa Ines Testoni", role: "Università di Padova · la ricerca", text: "Dirige il master in Death Studies & The End of Life, il primo master universitario italiano dedicato al fine vita. UltraRem ha formalizzato l'impegno a finanziare un dottorato triennale sul sé digitale postumo (inizio novembre 2027), di cui è la docente di riferimento.", col: "#111111" },
@@ -124,15 +107,13 @@ export const ui = {
   avatarText: "Ti spiego in due minuti che cos'è UltraRem e rispondo alle tue domande. Ti dico subito che sono un'intelligenza artificiale, e puoi smettere quando vuoi.",
   chips: ["Che cos'è UltraRem?", "Quanto costa?", "Chi c'è dietro?", "Che fine fanno i miei dati?"],
   ladderTitle: "Costruisci la tua identità digitale prima che lo faccia qualcun altro.",
-  ladderBtn: "Che cosa include ogni gradino",
-  indexTitle: "Cosa trovi qui",
+  ladderBtn: "Tutti i percorsi", learn: "Scopri",
   discover: "Scopri i percorsi",
   readsKicker: "Approfondimenti",
   readsTitle: "Storie, dibattiti, cultura.",
   allStories: "Tutte le storie",
-  whoText: "Cinque soci, due operativi, e una squadra scientifica con l'Università di Padova e una rete di psicologi. Ognuno viene da un altro mestiere, e tutti hanno scelto di credere in questo.",
+  whoText: "Cinque Founder, due dei quali lavorano alla società ogni giorno, e una squadra scientifica con l'Università di Padova e una rete di psicologi. Chi sono e che cosa fa ciascuno lo trovi nella pagina dei Founder.",
   whoBtn: "Conosci i Founder",
-  researchBtn: "La ricerca a Padova",
   charterBtn: "Leggi la Carta",
   ctaTitle: "Comincia dal Diario di bordo.",
   ctaText: "290 € per raccontarti con il companion e capire se vuoi andare avanti. Senza intervista e senza fretta.",
@@ -140,5 +121,5 @@ export const ui = {
   ctaB: "Scrivici",
 };
 
-export const it = { cover, index, reads, ladder, who, research, story, charter, editorial, ui };
+export const it = { cover, reads, ladder, who, research, charter, editorial, ui };
 export type HomeContent = typeof it;
