@@ -62,7 +62,6 @@ export const who = {
 // Etichette e frasi che stanno direttamente nella pagina (non nelle schede sopra).
 export const ui = {
   talk: "Parla con l'avatar",
-  video: "Guarda il video",
   caption: "Milano, 1983.",
   ladderTitle: "Costruisci la tua identità digitale prima che lo faccia qualcun altro.",
   ladderBtn: "Tutti i percorsi",
@@ -73,23 +72,7 @@ export const ui = {
   ctaA: "Scopri il Diario di bordo",
   ctaB: "Scrivici",
   ctaProject: "Scopri il progetto",
-  projK: "Il progetto",
-  projT: "Una vita non finisce quando smetti di raccontarla.",
-  projS: "Un modo serio, accompagnato da professionisti, di decidere che cosa di te debba restare.",
-  projX: "La memoria appartiene a chi la vive. Tutto il resto, tecnologia compresa, è uno strumento al servizio di questa idea.",
-  projBtn2: "Leggi la Carta dei Valori",
-  perK: "Per chi",
-  perT: "Non serve una malattia. Basta voler esserci.",
-  perS: "UltraRem è per chiunque abbia qualcosa da dire e voglia che resti autentico nel tempo.",
-  perX: "Sei situazioni in cui ci si può riconoscere, e il punto da cui partire in ciascuna.",
-  perBtn: "Scopri per chi è",
-  ricS: "Prima di costruire qualcosa di così delicato abbiamo voluto che un'università lo studiasse, con il rigore del metodo scientifico.",
-  ricX: "Dottorato triennale con l'Università di Padova, dal novembre 2027.",
   ricBtn: "Università e ricerca",
-  storK: "Storie",
-  storT: "Da leggere, da discutere, da ricordare.",
-  storS: "UltraRem è anche un luogo dove si racconta: storie di persone, dibattiti sul fine vita, saggi sulla cultura della memoria.",
-  storBtn: "Vai alle storie",
   whoText: "Chi guida la società, i Founder e la squadra scientifica con l'Università di Padova.",
 };
 
