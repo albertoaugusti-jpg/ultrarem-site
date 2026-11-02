@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { Link } from "wouter";
 import { Page, Photo, Sec, Wrap, CtaBand, kicker, btn, RED, INK, GREY, PALE, BODONI, BLACK, NARROW } from "@/components/Mag";
-import { useHome } from "@/content/useHome";
+import { useHome, SLUGS } from "@/content/useHome";
 
 const grid = (min: number, gap = 24): CSSProperties => ({ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(min(${min}px, 100%), 1fr))`, gap });
 const block: CSSProperties = { display: "block", color: "inherit", textDecoration: "none" };
@@ -13,7 +13,7 @@ function Play() {
 }
 
 export default function Home() {
-  const { cover, index, reads, ladder, who, research, story, charter, editorial, ui } = useHome();
+  const { cover, reads, ladder, who, charter, editorial, ui } = useHome();
   return (
     <Page>
       <div style={{ borderBottom: `2px solid ${INK}` }}>
@@ -75,32 +75,19 @@ export default function Home() {
       <Sec k={ladder.kicker} title={ui.ladderTitle}>
         <p style={{ margin: "0 0 24px", maxWidth: 780, fontSize: 17, lineHeight: 1.6 }}>{ladder.intro}</p>
         <div style={grid(280, 20)}>
-          {ladder.steps.map(s => (
-            <Link key={s.name} href="/come-funziona" style={{ ...block, border: `2px solid ${s.tone === "red" ? RED : INK}`, background: s.tone === "red" ? RED : s.tone === "dark" ? INK : "#fff", color: s.tone === "light" ? INK : "#fff", padding: 24 }}>
+          {ladder.steps.map((s, i) => (
+            <Link key={s.name} href={`/percorsi/${SLUGS[i]}`} style={{ ...block, border: `2px solid ${s.tone === "red" ? RED : INK}`, background: s.tone === "red" ? RED : s.tone === "dark" ? INK : "#fff", color: s.tone === "light" ? INK : "#fff", padding: 24, display: "flex", flexDirection: "column", gap: 10 }}>
+              <Photo name={s.img} ar="3 / 2" />
               <div style={kicker(s.tone === "light" ? GREY : "#fff")}>{s.tag}</div>
-              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1, margin: "6px 0", minHeight: 62 }}>{s.name}</div>
-              <div style={{ fontFamily: BLACK, fontSize: 36, letterSpacing: -1, color: s.tone === "light" ? RED : "#fff" }}>{s.price}</div>
-              <div style={{ fontSize: 14, opacity: 0.85, margin: "2px 0 12px" }}>{s.sub}</div>
-              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 15, lineHeight: 1.5 }}>{s.items.slice(0, 3).map(it => <li key={it}>{it}</li>)}</ul>
+              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1, minHeight: 62 }}>{s.name}</div>
+              <div style={{ fontFamily: NARROW, fontWeight: 700, fontSize: 15, letterSpacing: "0.04em", color: s.tone === "light" ? RED : "#fff" }}>{s.price}</div>
+              <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.55, flexGrow: 1 }}>{s.lead}</p>
+              <span style={{ fontFamily: NARROW, fontWeight: 700, fontSize: 13, letterSpacing: "0.14em", textTransform: "uppercase" }}>{ui.learn} →</span>
             </Link>
           ))}
         </div>
-        <p style={{ margin: "20px 0 0", maxWidth: 820, fontSize: 14.5, color: GREY }}>{ladder.fee}</p>
-        <div style={{ marginTop: 20 }}><Link href="/come-funziona"><span style={btn(RED, "#fff")}>{ui.ladderBtn}</span></Link></div>
+        <div style={{ marginTop: 24 }}><Link href="/percorsi"><span style={btn(RED, "#fff")}>{ui.ladderBtn}</span></Link></div>
       </Sec>
-
-      <section style={{ background: PALE, borderBottom: `3px solid ${INK}`, padding: "22px 0" }}>
-        <Wrap>
-          <div style={{ fontFamily: BLACK, fontSize: 20, letterSpacing: -0.5, marginBottom: 10 }}>{ui.indexTitle}</div>
-          <div style={grid(170, 0)}>
-            {index.map((x, i) => (
-              <Link key={x.k} href={x.href} style={{ ...block, padding: "10px 16px", borderLeft: i ? `1px solid ${INK}` : "none", borderTop: `2px solid ${INK}` }}>
-                <span style={{ ...kicker(), letterSpacing: "0.14em" }}>{x.k}</span><br /><span style={{ fontSize: 17 }}>{x.t}</span>
-              </Link>
-            ))}
-          </div>
-        </Wrap>
-      </section>
 
       <Sec k={editorial.kicker} title={editorial.title}>
         <div style={{ columnWidth: 300, columnGap: 40, columnRule: `1px solid ${INK}`, fontSize: 17, lineHeight: 1.65 }}>
@@ -130,13 +117,6 @@ export default function Home() {
         <div style={{ marginTop: 24 }}><Link href="/storie"><span style={btn(INK, "#fff")}>{ui.allStories}</span></Link></div>
       </Sec>
 
-      <Sec k={story.kicker} title={story.title}>
-        <div style={{ ...grid(320, 40), alignItems: "start" }}>
-          <p style={{ margin: 0, fontSize: 18, lineHeight: 1.65 }}>{story.text}</p>
-          <div style={{ border: `2px solid ${INK}`, background: "#fff", padding: 22, fontSize: 16, lineHeight: 1.6 }}>{story.box}</div>
-        </div>
-      </Sec>
-
       <Sec k={who.kicker} title={who.title} bg={PALE}>
         <p style={{ margin: "0 0 22px", maxWidth: 820, fontSize: 17, lineHeight: 1.6 }}>{ui.whoText}</p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
@@ -145,19 +125,6 @@ export default function Home() {
           ))}
         </div>
         <div style={{ marginTop: 24 }}><Link href="/fondatori"><span style={btn(INK, "#fff")}>{ui.whoBtn}</span></Link></div>
-      </Sec>
-
-      <Sec k={research.kicker} title={research.title}>
-        <div style={{ ...grid(280, 32) }}>
-          {research.cells.map(c => (
-            <div key={c.k} style={{ borderTop: `3px solid ${INK}`, paddingTop: 12 }}>
-              <div style={kicker()}>{c.k}</div>
-              <p style={{ margin: "6px 0 0", fontSize: 16, lineHeight: 1.6 }}>{c.v}</p>
-            </div>
-          ))}
-        </div>
-        <p style={{ margin: "22px 0", maxWidth: 820, fontSize: 15, color: GREY }}>{research.note}</p>
-        <Link href="/ricerca"><span style={btn("transparent", INK, `2px solid ${INK}`)}>{ui.researchBtn}</span></Link>
       </Sec>
 
       <Sec k={charter.kicker} title={charter.title} dark>
