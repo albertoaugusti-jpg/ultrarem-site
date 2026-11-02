@@ -6,19 +6,7 @@ export const cover = {
   what: "UltraRem costruisce con te la tua identità digitale: la tua storia raccolta con la guida di uno psicologo, il consenso scritto a ogni passo e una custodia dichiarata.",
   title: "Chi ero, chi sono e chi sarò.",
   lead: "La dimensione digitale di ciascuno esisterà comunque. La domanda è chi la costruisce, e se ha il diritto di farlo la persona stessa.",
-  body: "Ogni traccia lasciata online, ogni messaggio e ogni immagine concorrono a formare una versione di noi. Nella maggior parte dei casi viene costruita male, da sistemi che deducono invece di ascoltare. UltraRem parte da una premessa diversa: se esiste comunque, merita di essere costruita con serietà dalla persona stessa, mentre è viva e consapevole.",
-  body2: "Questo sito nasce per tenere insieme due cose che di solito stanno lontane: il racconto di una vita e il modo in cui scegliamo di lasciarlo. Qui trovi storie di persone vere, dibattiti sul fine vita, saggi sulla cultura della memoria e i profili di chi la studia. In fondo, se lo desideri, trovi anche i percorsi con cui UltraRem ti aiuta a costruire la tua.",
-  body3: "Non ti chiediamo di credere a una promessa. Ti chiediamo di leggere, di ascoltare e di farti la tua idea, con i tempi che servono. Nessuna storia viene pubblicata senza il consenso scritto di chi la racconta, e nessun avatar parla senza dirti prima che è un'intelligenza artificiale.",
-  cta1: "Vai ai percorsi",
-  cta2: "Chi c'è dietro",
 };
-
-export const reads = [
-  { k: "Storie", t: "Una vita, raccontata da chi l'ha vissuta", p: "Lo spazio per un racconto di vita, scelto e autorizzato dalla persona (art. 18 della Carta). In fondo alla pagina, se la persona lo ha deciso, la storia diventa interattiva.", m: "8 min di lettura", img: "quaderno" },
-  { k: "Dibattiti", t: "Che cosa vogliamo che resti di noi?", p: "Più voci sullo stesso tema, con posizioni anche opposte. UltraRem opera in neutralità rispetto a credi e orientamenti (art. 4).", m: "4 interventi", img: "bussola" },
-  { k: "Cultura", t: "Il corpus siamo noi", p: "Prima di essere memoria è corpo, prima di essere racconto è vita che respira. Un testo breve sull'idea da cui nasce il nome: andare oltre, Ultra-Rem.", m: "5 min di lettura", img: "cultura" },
-  { k: "Profili", t: "Chi studia la memoria e il lutto", p: "Scheda di uno studioso di lutto, memoria o etica dell'IA, con le opere e le fonti. Nessun avatar o intervista a suo nome senza il suo consenso scritto.", m: "Scheda", img: "faro" },
-];
 
 export const ladder = {
   kicker: "I percorsi",
@@ -52,13 +40,11 @@ export const research = {
 export const who = {
   kicker: "Chi c'è dietro",
   title: "Dietro UltraRem ci sono persone che hanno già costruito altro.",
-  intro: "Un servizio che custodisce la memoria di una persona si giudica anche da chi lo costruisce. Alberto Augusti, Amministratore unico, e Bruno Legger, responsabile amministrativo, lavorano ogni giorno alla società. Massimo Del Vecchio, Giuseppe Teatino e Stefano Fumi sono Founder senza un ruolo operativo e vengono da energia, pagamenti e grandi sistemi informativi.",
+  intro: "Un servizio che custodisce la memoria di una persona si giudica anche da chi lo costruisce. Alberto Augusti, Amministratore unico, e Bruno Legger, responsabile amministrativo, lavorano ogni giorno alla società. Massimo Del Vecchio è Founder senza un ruolo operativo e viene dai grandi sistemi informativi.",
   founders: [
     { ini: "AA", name: "Alberto Augusti", role: "Amministratore unico · operativo", text: "Imprenditore genovese, laureato in Scienze internazionali e diplomatiche. Guida la società.", col: "#c8102e" },
     { ini: "BL", name: "Bruno Massimo Legger", role: "Responsabile amministrativo · operativo", text: "Trent'anni di gestione d'impresa tra cosmetica, moda e utilities, da Shiseido ad AEM.", col: "#3d7a6b" },
     { ini: "MD", name: "Massimo Del Vecchio", role: "Founder", text: "Executive Director in Engineering Ingegneria Informatica; in precedenza CIO e direttore digitale in Ericsson, Ooredoo e Poste Italiane.", col: "#8b2e2e" },
-    { ini: "GT", name: "Giuseppe Teatino", role: "Founder", text: "Product designer. Ha guidato la user experience in Nexi e PostePay ed è cofondatore di NeN.it e TaDa.", col: "#c4522a" },
-    { ini: "SF", name: "Stefano Fumi", role: "Founder", text: "Vent'anni nel mercato dell'energia: Enel (la fatturazione di 30 milioni di clienti), NeN.it, PostePay.", col: "#e8a820" },
   ],
   science: [
     { ini: "IT", name: "Prof.ssa Ines Testoni", role: "Università di Padova · la ricerca", text: "Dirige il master in Death Studies & The End of Life, il primo master universitario italiano dedicato al fine vita. UltraRem ha formalizzato l'impegno a finanziare un dottorato triennale sul sé digitale postumo (inizio novembre 2027), di cui è la docente di riferimento.", col: "#111111" },
@@ -73,53 +59,39 @@ export const who = {
   socrem: "Con So.Crem Genova (Società Genovese di Cremazione) è in definizione una lettera d'intenti per un convegno sulla continuità digitale dopo la morte, la formazione degli operatori, il sostegno ai corsi per la doula di fine vita e un master universitario sul lutto.",
 };
 
-export const charter = {
-  kicker: "La Carta dei Valori · versione 2, 30 ottobre 2026",
-  title: "Ciò che promettiamo, e che puoi pretendere.",
-  arts: [
-    { a: "Art. 2", t: "Nessuna pubblicità.", d: "Né negli archivi, né nel dialogo con l'avatar." },
-    { a: "Art. 3", t: "Fedeltà alla persona.", d: "Decide lei come essere ricordata, anche nei lati meno levigati." },
-    { a: "Art. 20", t: "Novanta giorni di silenzio.", d: "L'avatar non parla ai familiari prima, per lasciare spazio al dolore." },
-    { a: "Art. 26", t: "Percorsi per chi non può permetterseli.", d: "Ogni anno, con criteri trasparenti." },
-  ],
-};
-
-export const editorial = {
-  kicker: "La nostra idea",
-  title: "Una vita non finisce quando smetti di raccontarla.",
-  paras: [
-    "Di solito chi si occupa di memoria digitale comincia dal prodotto: un'applicazione, un prezzo, un pulsante. Noi abbiamo preferito cominciare da una domanda che precede tutte le altre, ossia che cosa resti di una persona quando smette di raccontarsi, e chi abbia il diritto di raccontarla al suo posto.",
-    "Una domanda del genere non si risolve in una pagina commerciale. Chiede tempo, richiede voci diverse (psicologi, studiosi, famiglie, persone che stanno ancora vivendo la propria storia) e accetta di lasciare aperte alcune questioni. Per questo raccontiamo prima di vendere: storie, dibattiti e ricerche stanno accanto ai percorsi.",
-    "I percorsi di UltraRem partono dal Diario di bordo a 290 € e arrivano ai Capitani di lungo corso a 9.800 €, con i prezzi scritti per intero. Se ti incuriosisce, comincia dall'avatar e fatti spiegare tutto; la Carta dei Valori dice con precisione che cosa promettiamo e che cosa puoi pretendere da noi.",
-    "La riga che teniamo ferma è semplice: la memoria appartiene a chi la vive. Tutto il resto, la tecnologia compresa, è uno strumento al servizio di questa frase.",
-  ],
-  by: "UltraRem",
-};
-
 // Etichette e frasi che stanno direttamente nella pagina (non nelle schede sopra).
 export const ui = {
-  strip: "UltraRem · identità digitale e memoria",
-  cities: "Milano · Genova",
   talk: "Parla con l'avatar",
   video: "Guarda il video",
   caption: "Milano, 1983.",
-  avatarTitle: "Chiedimi che cos'è UltraRem.",
-  avatarText: "Ti spiego in due minuti che cos'è UltraRem e rispondo alle tue domande. Ti dico subito che sono un'intelligenza artificiale, e puoi smettere quando vuoi.",
-  chips: ["Che cos'è UltraRem?", "Quanto costa?", "Chi c'è dietro?", "Che fine fanno i miei dati?"],
   ladderTitle: "Costruisci la tua identità digitale prima che lo faccia qualcun altro.",
-  ladderBtn: "Tutti i percorsi", learn: "Scopri",
-  discover: "Scopri i percorsi",
-  readsKicker: "Approfondimenti",
-  readsTitle: "Storie, dibattiti, cultura.",
-  allStories: "Tutte le storie",
-  whoText: "Cinque Founder, due dei quali lavorano alla società ogni giorno, e una squadra scientifica con l'Università di Padova e una rete di psicologi. Chi sono e che cosa fa ciascuno lo trovi nella pagina dei Founder.",
+  ladderBtn: "Tutti i percorsi",
+  learn: "Scopri",
   whoBtn: "Conosci i Founder",
-  charterBtn: "Leggi la Carta",
   ctaTitle: "Comincia dal Diario di bordo.",
   ctaText: "290 € per raccontarti con il companion e capire se vuoi andare avanti. Senza intervista e senza fretta.",
   ctaA: "Scopri il Diario di bordo",
   ctaB: "Scrivici",
+  ctaProject: "Scopri il progetto",
+  projK: "Il progetto",
+  projT: "Una vita non finisce quando smetti di raccontarla.",
+  projS: "Un modo serio, accompagnato da professionisti, di decidere che cosa di te debba restare.",
+  projX: "La memoria appartiene a chi la vive. Tutto il resto, tecnologia compresa, è uno strumento al servizio di questa idea.",
+  projBtn2: "Leggi la Carta dei Valori",
+  perK: "Per chi",
+  perT: "Non serve una malattia. Basta voler esserci.",
+  perS: "UltraRem è per chiunque abbia qualcosa da dire e voglia che resti autentico nel tempo.",
+  perX: "Sei situazioni in cui ci si può riconoscere, e il punto da cui partire in ciascuna.",
+  perBtn: "Scopri per chi è",
+  ricS: "Prima di costruire qualcosa di così delicato abbiamo voluto che un'università lo studiasse, con il rigore del metodo scientifico.",
+  ricX: "Dottorato triennale con l'Università di Padova, dal novembre 2027.",
+  ricBtn: "Università e ricerca",
+  storK: "Storie",
+  storT: "Da leggere, da discutere, da ricordare.",
+  storS: "UltraRem è anche un luogo dove si racconta: storie di persone, dibattiti sul fine vita, saggi sulla cultura della memoria.",
+  storBtn: "Vai alle storie",
+  whoText: "Chi guida la società, i Founder e la squadra scientifica con l'Università di Padova.",
 };
 
-export const it = { cover, reads, ladder, who, research, charter, editorial, ui };
+export const it = { cover, ladder, who, research, ui };
 export type HomeContent = typeof it;
