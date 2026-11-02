@@ -123,6 +123,7 @@ export function Footer() {
           <div style={kicker("#ff3b52")}>Partner</div>
           <img src="/img/rivista/universita.jpg" alt="Emblema universitario (illustrazione)" style={{ width: 84, height: 84, borderRadius: "50%", objectFit: "cover", border: "2px solid rgba(255,255,255,0.6)" }} />
           <span style={{ fontSize: 15, color: "rgba(255,255,255,0.75)" }}>Ricerca: Università di Padova</span>
+          <div style={{ background: "#fff", padding: "8px 12px", display: "inline-block", alignSelf: "flex-start" }}><img src="/img/rivista/qbt.png" alt="QBT Sagl" style={{ height: 30, width: "auto", display: "block" }} /></div>
           <span style={{ fontSize: 15, color: "rgba(255,255,255,0.75)" }}>Tecnologia: QBT Sagl (fornitore)</span>
         </div>
       </div>
