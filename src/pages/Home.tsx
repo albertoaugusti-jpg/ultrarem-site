@@ -24,6 +24,24 @@ function Zone({ k, title, sub, text, a, b, bg, children }: { k: string; title: s
   );
 }
 
+function Play() {
+  return <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: 76, height: 76, borderRadius: "50%", background: RED, border: "3px solid #fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ marginLeft: 6, borderStyle: "solid", borderWidth: "13px 0 13px 22px", borderColor: "transparent transparent transparent #fff" }} />
+  </div>;
+}
+
+function Tile({ href, img, k, title, text, label, solid }: { href: string; img: string; k: string; title: string; text: string; label: string; solid?: boolean }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+      <Link href={href} style={{ ...block, position: "relative" }}><Photo name={img} ar="16 / 10" /><Play /></Link>
+      <div style={kicker("#ff3b52")}>{k}</div>
+      <h2 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(28px,3.6vw,42px)", lineHeight: 1.05, letterSpacing: -1 }}>{title}</h2>
+      <p style={{ margin: 0, fontSize: 17, lineHeight: 1.55, opacity: 0.9, flexGrow: 1 }}>{text}</p>
+      <div><Link href={href}><span style={solid ? btn("#fff", INK) : btn("transparent", "#fff", "2px solid #fff")}>{label}</span></Link></div>
+    </div>
+  );
+}
+
 export default function Home() {
   const { cover, ladder, who, ui } = useHome();
   return (
@@ -45,6 +63,15 @@ export default function Home() {
               <Photo name="cover" ar="1035 / 1312" pos="center top" />
               <figcaption style={{ marginTop: 8, fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>{ui.caption}</figcaption>
             </figure>
+          </div>
+        </Wrap>
+      </section>
+
+      <section style={{ background: INK, color: "#fff", padding: "clamp(32px,5vw,56px) 0" }}>
+        <Wrap>
+          <div style={{ ...grid(340, 40), alignItems: "stretch" }}>
+            <Tile href="/il-progetto#avatar" img="riempitivo2" k={ui.talk} title={ui.avatarTitle} text={ui.avatarText} label={ui.talk} solid />
+            <Tile href="/il-progetto#video" img="cultura" k={ui.video} title={ui.videoTitle} text={ui.videoText} label={ui.video} />
           </div>
         </Wrap>
       </section>
