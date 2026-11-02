@@ -28,11 +28,11 @@ export function Stripes({ h = 6 }: { h?: number }) {
   return <div style={{ display: "flex", height: h }}>{STRIPES.map(c => <div key={c} style={{ flex: 1, background: c }} />)}</div>;
 }
 
-const NAV_EXTRA: Record<string, { stories: string; founders: string; start: string }> = {
-  it: { stories: "Storie", founders: "Founder", start: "Inizia dal Diario" },
-  en: { stories: "Stories", founders: "Founders", start: "Start with the Diary" },
-  fr: { stories: "Histoires", founders: "Fondateurs", start: "Commencer par le Journal" },
-  de: { stories: "Geschichten", founders: "Gründer", start: "Mit dem Tagebuch beginnen" },
+const NAV_EXTRA: Record<string, { stories: string; founders: string; start: string; paths: string }> = {
+  it: { stories: "Storie", founders: "Founder", start: "Inizia dal Diario", paths: "Percorsi" },
+  en: { stories: "Stories", founders: "Founders", start: "Start with the Diary", paths: "Paths" },
+  fr: { stories: "Histoires", founders: "Fondateurs", start: "Commencer par le Journal", paths: "Parcours" },
+  de: { stories: "Geschichten", founders: "Gründer", start: "Mit dem Tagebuch beginnen", paths: "Wege" },
 };
 
 export function Navbar() {
@@ -42,13 +42,10 @@ export function Navbar() {
   const d = useDict();
   const x = NAV_EXTRA[lang] ?? NAV_EXTRA.it;
   const links = [
-    { href: "/", label: d.nav.home },
     { href: "/il-progetto", label: d.nav.project },
-    { href: "/per-chi", label: d.nav.forWho },
-    { href: "/come-funziona", label: d.nav.how },
-    { href: "/ricerca", label: d.nav.research },
+    { href: "/percorsi", label: x.paths },
     { href: "/storie", label: x.stories },
-    { href: "/incontra", label: d.nav.meet },
+    { href: "/ricerca", label: d.nav.research },
     { href: "/contatti", label: d.nav.contact },
   ];
   const ls: CSSProperties = { fontFamily: NARROW, fontWeight: 700, fontSize: 12.5, letterSpacing: "0.13em", textTransform: "uppercase", textDecoration: "none", color: INK, cursor: "pointer", paddingBottom: 2 };
@@ -70,7 +67,7 @@ export function Navbar() {
           <div style={{ display: "flex", border: `1px solid ${INK}`, fontFamily: NARROW, fontWeight: 700, fontSize: 12 }}>
             {LANGS.map(l => <button key={l} onClick={() => setLang(l)} style={{ padding: "6px 9px", border: "none", cursor: "pointer", background: lang === l ? INK : "transparent", color: lang === l ? "#fff" : INK, fontFamily: "inherit", fontWeight: "inherit", fontSize: "inherit" }}>{l.toUpperCase()}</button>)}
           </div>
-          <Link href="/come-funziona"><span style={{ ...btn(INK, "#fff"), padding: "8px 16px", minHeight: 38 }}>{x.start}</span></Link>
+          <Link href="/percorsi/diario-di-bordo"><span style={{ ...btn(INK, "#fff"), padding: "8px 16px", minHeight: 38 }}>{x.start}</span></Link>
         </div>
       </nav>
     </header>
@@ -79,6 +76,8 @@ export function Navbar() {
 
 export function Footer() {
   const d = useDict();
+  const { lang } = useLang();
+  const x = NAV_EXTRA[lang] ?? NAV_EXTRA.it;
   const fl: CSSProperties = { color: "rgba(255,255,255,0.75)", textDecoration: "none", fontSize: 15, cursor: "pointer" };
   const col: CSSProperties = { flex: "1 1 220px", display: "flex", flexDirection: "column", gap: 8 };
   return (
@@ -92,12 +91,12 @@ export function Footer() {
         </div>
         <div style={col}>
           <div style={kicker("#ff3b52")}>{d.footer.navigate}</div>
-          {[["/il-progetto", d.nav.project], ["/per-chi", d.nav.forWho], ["/come-funziona", d.nav.how], ["/ricerca", d.nav.research], ["/storie", "Storie"], ["/fondatori", "Founder"], ["/incontra", d.nav.meet]].map(([h, l]) => <Link key={h} href={h}><span style={fl}>{l}</span></Link>)}
+          {[["/il-progetto", d.nav.project], ["/per-chi", d.nav.forWho], ["/percorsi", x.paths], ["/come-funziona", d.nav.how], ["/ricerca", d.nav.research], ["/storie", "Storie"], ["/fondatori", "Founder"], ["/incontra", d.nav.meet]].map(([h, l]) => <Link key={h} href={h}><span style={fl}>{l}</span></Link>)}
         </div>
         <div style={col}>
           <div style={kicker("#ff3b52")}>{d.footer.contact}</div>
           <Link href="/contatti"><span style={fl}>{d.footer.getInTouch}</span></Link>
-          <Link href="/come-funziona"><span style={fl}>Inizia dal Diario di bordo</span></Link>
+          <Link href="/percorsi/diario-di-bordo"><span style={fl}>Inizia dal Diario di bordo</span></Link>
           <a href="mailto:info@ultrarem.it" style={fl}>info@ultrarem.it</a>
           <span style={{ fontSize: 15, color: "rgba(255,255,255,0.65)" }}>Viale Cassala 30, 20143 Milano</span>
         </div>
