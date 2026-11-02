@@ -1,4 +1,4 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { Switch, Route, Redirect, Router as WouterRouter } from "wouter";
 import { LanguageProvider } from "@/lib/i18n";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
@@ -6,7 +6,6 @@ import IlProgetto from "@/pages/IlProgetto";
 import PerChi from "@/pages/PerChi";
 import ComeFunziona from "@/pages/ComeFunziona";
 import Ricerca from "@/pages/Ricerca";
-import Incontra from "@/pages/Incontra";
 import Storie from "@/pages/Storie";
 import Fondatori from "@/pages/Fondatori";
 import Contatti from "@/pages/Contatti";
@@ -24,7 +23,7 @@ function Router() {
       <Route path="/ricerca" component={Ricerca} />
       <Route path="/storie" component={Storie} />
       <Route path="/fondatori" component={Fondatori} />
-      <Route path="/incontra" component={Incontra} />
+      <Route path="/incontra">{() => <Redirect to="/il-progetto" />}</Route>
       <Route path="/contatti" component={Contatti} />
       <Route component={NotFound} />
     </Switch>
