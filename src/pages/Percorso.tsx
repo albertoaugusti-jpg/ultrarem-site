@@ -1,5 +1,5 @@
 import { Link, useRoute } from "wouter";
-import { Page, Hero, Sec, Cols, Photo, CtaBand, btn, RED, INK, GREY, PALE } from "@/components/Mag";
+import { Page, Hero, Sec, Prose, Cols, Photo, CtaBand, btn, RED, INK, GREY, PALE } from "@/components/Mag";
 import { useHome, SLUGS } from "@/content/useHome";
 import { useLang } from "@/lib/i18n";
 import { percorso } from "@/content/percorso";
@@ -20,7 +20,13 @@ export default function Percorso() {
     <Page>
       <Hero k={s.tag} title={s.name} lead={s.lead} />
 
-      <Sec k={t.includes} title={s.price}>
+      {t.body[i]?.length > 0 && (
+        <Sec k={t.whyK} title={t.whyT}>
+          <Prose>{t.body[i].map((x, n) => <p key={n}>{x}</p>)}</Prose>
+        </Sec>
+      )}
+
+      <Sec k={t.includes} title={s.price} bg={t.body[i]?.length > 0 ? PALE : "#fff"}>
         <Cols gap={40}>
           <div style={{ flex: "1 1 320px" }}>
             <div style={{ fontSize: 15, color: GREY, marginBottom: 12 }}>{s.sub}</div>
