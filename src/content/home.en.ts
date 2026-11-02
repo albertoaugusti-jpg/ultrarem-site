@@ -57,6 +57,11 @@ export const en: HomeContent = {
   },
   ui: {
     talk: "Talk to the avatar",
+    avatarTitle: "Ask me what UltraRem is.",
+    avatarText: "In two minutes I explain what UltraRem is and answer your questions. I tell you straight away that I am an artificial intelligence, and you can stop me whenever you like.",
+    video: "Watch the video",
+    videoTitle: "Why we started.",
+    videoText: "A short film, for those who have a few minutes and no wish to read.",
     caption: "Milan, 1983.",
     ladderTitle: "Build your digital identity before someone else does.",
     ladderBtn: "All the paths",

@@ -62,6 +62,11 @@ export const who = {
 // Etichette e frasi che stanno direttamente nella pagina (non nelle schede sopra).
 export const ui = {
   talk: "Parla con l'avatar",
+  avatarTitle: "Chiedimi che cos'è UltraRem.",
+  avatarText: "In due minuti ti spiego che cos'è UltraRem e rispondo alle tue domande. Ti dico subito che sono un'intelligenza artificiale e puoi fermarmi quando vuoi.",
+  video: "Guarda il video",
+  videoTitle: "Perché abbiamo cominciato.",
+  videoText: "Un filmato breve, per chi ha qualche minuto e nessuna voglia di leggere.",
   caption: "Milano, 1983.",
   ladderTitle: "Costruisci la tua identità digitale prima che lo faccia qualcun altro.",
   ladderBtn: "Tutti i percorsi",
