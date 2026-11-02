@@ -10,7 +10,7 @@ import Incontra from "@/pages/Incontra";
 import Storie from "@/pages/Storie";
 import Fondatori from "@/pages/Fondatori";
 import Contatti from "@/pages/Contatti";
-import Prenota from "@/pages/Prenota";
+import Percorso from "@/pages/Percorso";
 
 function Router() {
   return (
@@ -19,12 +19,13 @@ function Router() {
       <Route path="/il-progetto" component={IlProgetto} />
       <Route path="/per-chi" component={PerChi} />
       <Route path="/come-funziona" component={ComeFunziona} />
+      <Route path="/percorsi" component={ComeFunziona} />
+      <Route path="/percorsi/:slug" component={Percorso} />
       <Route path="/ricerca" component={Ricerca} />
       <Route path="/storie" component={Storie} />
       <Route path="/fondatori" component={Fondatori} />
       <Route path="/incontra" component={Incontra} />
       <Route path="/contatti" component={Contatti} />
-      <Route path="/prenota" component={Prenota} />
       <Route component={NotFound} />
     </Switch>
   );
