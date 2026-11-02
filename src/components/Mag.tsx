@@ -1,4 +1,4 @@
-import { useEffect, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { useLang, useDict, LANGS } from "@/lib/i18n";
 
@@ -28,12 +28,15 @@ export function Stripes({ h = 6 }: { h?: number }) {
   return <div style={{ display: "flex", height: h }}>{STRIPES.map(c => <div key={c} style={{ flex: 1, background: c }} />)}</div>;
 }
 
-const NAV_EXTRA: Record<string, { stories: string; founders: string; start: string; paths: string }> = {
-  it: { stories: "Storie", founders: "Founder", start: "Inizia dal Diario", paths: "Percorsi" },
-  en: { stories: "Stories", founders: "Founders", start: "Start with the Diary", paths: "Paths" },
-  fr: { stories: "Histoires", founders: "Fondateurs", start: "Commencer par le Journal", paths: "Parcours" },
-  de: { stories: "Geschichten", founders: "Gründer", start: "Mit dem Tagebuch beginnen", paths: "Wege" },
+const NAV_EXTRA: Record<string, { stories: string; founders: string; start: string; research: string; cities: string }> = {
+  it: { stories: "Storie", founders: "Founder", start: "Inizia", research: "Università e ricerca", cities: "Milano · Genova" },
+  en: { stories: "Stories", founders: "Founders", start: "Start", research: "University and research", cities: "Milan · Genoa" },
+  fr: { stories: "Histoires", founders: "Founders", start: "Commencer", research: "Université et recherche", cities: "Milan · Gênes" },
+  de: { stories: "Geschichten", founders: "Founder", start: "Beginnen", research: "Universität und Forschung", cities: "Mailand · Genua" },
 };
+
+// Sotto i 1240 px il menu diventa un hamburger.
+const NAV_CSS = ".nv-wide{display:flex}.nv-narrow{display:none}@media (max-width:1240px){.nv-wide{display:none}.nv-narrow{display:flex}}";
 
 export function Navbar() {
   useMagFonts();
@@ -41,35 +44,50 @@ export function Navbar() {
   const { lang, setLang } = useLang();
   const d = useDict();
   const x = NAV_EXTRA[lang] ?? NAV_EXTRA.it;
+  const [open, setOpen] = useState(false);
+  useEffect(() => { setOpen(false); }, [loc]);
   const links = [
+    { href: "/", label: d.nav.home },
     { href: "/il-progetto", label: d.nav.project },
-    { href: "/percorsi", label: x.paths },
+    { href: "/per-chi", label: d.nav.forWho },
+    { href: "/come-funziona", label: d.nav.how },
+    { href: "/ricerca", label: x.research },
     { href: "/storie", label: x.stories },
-    { href: "/ricerca", label: d.nav.research },
+    { href: "/fondatori", label: x.founders },
     { href: "/contatti", label: d.nav.contact },
   ];
   const ls: CSSProperties = { fontFamily: NARROW, fontWeight: 700, fontSize: 12.5, letterSpacing: "0.13em", textTransform: "uppercase", textDecoration: "none", color: INK, cursor: "pointer", paddingBottom: 2 };
+  const sel = (
+    <select value={lang} onChange={e => setLang(e.target.value as typeof lang)} aria-label="Language" style={{ fontFamily: NARROW, fontWeight: 700, fontSize: 13, border: `1px solid ${INK}`, background: "#fff", color: INK, padding: "7px 8px", cursor: "pointer" }}>
+      {LANGS.map(l => <option key={l} value={l}>{l.toUpperCase()}</option>)}
+    </select>
+  );
+  const start = <Link href="/percorsi/diario-di-bordo"><span style={{ ...btn(RED, "#fff"), padding: "8px 18px", minHeight: 38 }}>{x.start}</span></Link>;
+  const logo = <Link href="/"><img src="/img/rivista/logo.png" alt="UltraRem, Your memory is you" style={{ height: 54, width: "auto", cursor: "pointer", display: "block" }} /></Link>;
+  const item = (l: { href: string; label: string }) => (
+    <Link key={l.href} href={l.href}>
+      <span style={{ ...ls, color: loc === l.href ? RED : INK, borderBottom: loc === l.href ? `2px solid ${RED}` : "2px solid transparent" }}>{l.label}</span>
+    </Link>
+  );
   return (
-    <header style={{ background: "#fff", color: INK }}>
-      <div style={{ display: "flex", justifyContent: "center", padding: "16px 16px 10px", borderBottom: `2px solid ${INK}` }}>
-        <Link href="/"><img src="/img/rivista/logo.png" alt="UltraRem, Your memory is you" style={{ height: 96, width: "auto", maxWidth: "100%", cursor: "pointer", display: "block" }} /></Link>
+    <header style={{ position: "sticky", top: 0, zIndex: 50, background: "#fff", color: INK, borderBottom: `2px solid ${INK}` }}>
+      <style>{NAV_CSS}</style>
+      <div className="nv-wide" style={{ alignItems: "center", gap: 24, padding: `8px ${PAD}` }}>
+        {logo}
+        <nav style={{ display: "flex", flexWrap: "wrap", gap: "6px 18px", flex: 1 }}>{links.map(item)}</nav>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>{sel}{start}</div>
       </div>
-      <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "#fff", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "10px 22px", padding: `10px ${PAD}`, borderBottom: `2px solid ${INK}` }}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 18px" }}>
-          {links.map(l => (
-            <Link key={l.href} href={l.href}>
-              <span style={{ ...ls, color: loc === l.href ? RED : INK, borderBottom: loc === l.href ? `2px solid ${RED}` : "2px solid transparent" }}>{l.label}</span>
-            </Link>
-          ))}
+      <div className="nv-narrow" style={{ alignItems: "center", justifyContent: "space-between", padding: "8px 16px" }}>
+        <button onClick={() => setOpen(!open)} aria-label="Menu" aria-expanded={open} style={{ width: 44, height: 44, border: `1px solid ${INK}`, background: "#fff", color: INK, fontSize: 22, cursor: "pointer", lineHeight: 1 }}>{open ? "✕" : "☰"}</button>
+        {logo}
+        {start}
+      </div>
+      {open && (
+        <div className="nv-narrow" style={{ flexDirection: "column", alignItems: "flex-start", gap: 14, padding: "14px 20px 20px", borderTop: `1px solid ${INK}` }}>
+          {links.map(item)}
+          {sel}
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-          <Link href="/fondatori"><span style={{ ...btn(loc === "/fondatori" ? RED : "#fff", loc === "/fondatori" ? "#fff" : RED, `2px solid ${RED}`), padding: "8px 16px", minHeight: 38 }}>{x.founders}</span></Link>
-          <div style={{ display: "flex", border: `1px solid ${INK}`, fontFamily: NARROW, fontWeight: 700, fontSize: 12 }}>
-            {LANGS.map(l => <button key={l} onClick={() => setLang(l)} style={{ padding: "6px 9px", border: "none", cursor: "pointer", background: lang === l ? INK : "transparent", color: lang === l ? "#fff" : INK, fontFamily: "inherit", fontWeight: "inherit", fontSize: "inherit" }}>{l.toUpperCase()}</button>)}
-          </div>
-          <Link href="/percorsi/diario-di-bordo"><span style={{ ...btn(INK, "#fff"), padding: "8px 16px", minHeight: 38 }}>{x.start}</span></Link>
-        </div>
-      </nav>
+      )}
     </header>
   );
 }
@@ -91,7 +109,7 @@ export function Footer() {
         </div>
         <div style={col}>
           <div style={kicker("#ff3b52")}>{d.footer.navigate}</div>
-          {[["/il-progetto", d.nav.project], ["/per-chi", d.nav.forWho], ["/percorsi", x.paths], ["/come-funziona", d.nav.how], ["/ricerca", d.nav.research], ["/storie", "Storie"], ["/fondatori", "Founder"], ["/incontra", d.nav.meet]].map(([h, l]) => <Link key={h} href={h}><span style={fl}>{l}</span></Link>)}
+          {[["/il-progetto", d.nav.project], ["/per-chi", d.nav.forWho], ["/come-funziona", d.nav.how], ["/ricerca", x.research], ["/storie", x.stories], ["/fondatori", x.founders]].map(([h, l]) => <Link key={h} href={h}><span style={fl}>{l}</span></Link>)}
         </div>
         <div style={col}>
           <div style={kicker("#ff3b52")}>{d.footer.contact}</div>
@@ -99,6 +117,7 @@ export function Footer() {
           <Link href="/percorsi/diario-di-bordo"><span style={fl}>Inizia dal Diario di bordo</span></Link>
           <a href="mailto:info@ultrarem.it" style={fl}>info@ultrarem.it</a>
           <span style={{ fontSize: 15, color: "rgba(255,255,255,0.65)" }}>Viale Cassala 30, 20143 Milano</span>
+          <span style={{ fontSize: 15, color: "rgba(255,255,255,0.65)" }}>{x.cities}</span>
         </div>
         <div style={col}>
           <div style={kicker("#ff3b52")}>Partner</div>
@@ -124,7 +143,7 @@ export function Page({ children }: { children: ReactNode }) {
     const t = setTimeout(go, 60);
     return () => clearTimeout(t);
   }, [loc]);
-  return <div style={{ background: "#fff", color: INK, fontFamily: SERIF, fontSize: 18, lineHeight: 1.65, overflowX: "hidden" }}><Stripes h={5} /><Navbar />{children}<Footer /></div>;
+  return <div style={{ background: "#fff", color: INK, fontFamily: SERIF, fontSize: 18, lineHeight: 1.65, overflowX: "clip" }}><Stripes h={5} /><Navbar />{children}<Footer /></div>;
 }
 
 export function Wrap({ children }: { children: ReactNode }) {
@@ -204,6 +223,10 @@ export function Tbp({ ini, ar, col, label = "Foto TBP" }: { ini: string; ar: str
   );
 }
 
+function CtaLink({ href, children }: { href: string; children: ReactNode }) {
+  return href.startsWith("mailto:") ? <a href={href} style={{ textDecoration: "none" }}>{children}</a> : <Link href={href}>{children}</Link>;
+}
+
 export function CtaBand({ title, text, a, b }: { title: string; text?: string; a: { href: string; label: string }; b?: { href: string; label: string } }) {
   return (
     <section style={{ padding: `clamp(36px,6vw,64px) 0`, background: PALE, borderBottom: `3px solid ${INK}` }}>
@@ -211,8 +234,8 @@ export function CtaBand({ title, text, a, b }: { title: string; text?: string; a
       <h2 style={{ margin: "0 0 10px", fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(28px,4vw,42px)", lineHeight: 1.08, maxWidth: 800 }}>{title}</h2>
       {text && <p style={{ margin: "0 0 20px", maxWidth: 680 }}>{text}</p>}
       <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-        <Link href={a.href}><span style={btn(RED, "#fff")}>{a.label}</span></Link>
-        {b && <Link href={b.href}><span style={btn("transparent", INK, `2px solid ${INK}`)}>{b.label}</span></Link>}
+        <CtaLink href={a.href}><span style={btn(INK, "#fff")}>{a.label}</span></CtaLink>
+        {b && <CtaLink href={b.href}><span style={btn("transparent", INK, `2px solid ${INK}`)}>{b.label}</span></CtaLink>}
       </div>
       </Wrap>
     </section>
