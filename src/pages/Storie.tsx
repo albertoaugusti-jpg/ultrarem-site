@@ -23,7 +23,7 @@ export default function Storie() {
             <p>Se la persona lo ha deciso, in fondo alla pagina si apre uno spazio di dialogo con la sua testimonianza, dove puoi farle domande. Prima di parlare ti diciamo che stai interagendo con un'intelligenza artificiale (art. 14), e ogni risposta porta l'etichetta Testimonianza o Elaborazione (art. 15). Se non vuoi entrare, non entri: nessuno ti invita a farlo (art. 17).</p>
             <p>Le storie che trovi in questa pagina, per ora, sono segnaposto: stiamo raccogliendo i consensi delle persone che le racconteranno, e non pubblichiamo nulla senza.</p>
           </Prose>
-          <div style={{ flex: "1 1 300px", maxWidth: 420 }}><Photo name="riempitivo2" ar="4 / 5" /></div>
+          <div style={{ flex: "1 1 300px", maxWidth: 420 }}><Photo name="storie-nonno" ar="4 / 3" pos="62% center" /></div>
         </Cols>
       </Sec>
 
