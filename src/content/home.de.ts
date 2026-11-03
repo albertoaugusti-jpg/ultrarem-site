@@ -37,11 +37,10 @@ export const de: HomeContent = {
   who: {
     kicker: "Wer dahintersteht",
     title: "Hinter UltraRem stehen Menschen, die schon etwas anderes aufgebaut haben.",
-    intro: "Ein Dienst, der die Erinnerung eines Menschen aufbewahrt, wird auch an denen gemessen, die ihn bauen. Alberto Augusti, Geschäftsführer, und Bruno Legger, Leiter Verwaltung, arbeiten täglich für die Gesellschaft. Massimo Del Vecchio ist Founder ohne operative Rolle und kommt aus großen Informationssystemen.",
+    intro: "Ein Dienst, der die Erinnerung eines Menschen aufbewahrt, wird auch an denen gemessen, die ihn bauen. Alberto Augusti, Geschäftsführer, und Bruno Legger, Leiter Verwaltung, arbeiten täglich für die Gesellschaft. Weitere Founder ohne operative Rolle bringen die Erfahrung großer Informationssysteme mit.",
     founders: [
       { ini: "AA", name: "Alberto Augusti", role: "Alleinvertretungsberechtigter Geschäftsführer · operativ", text: "Unternehmer aus Genua, Abschluss in Internationalen und Diplomatischen Wissenschaften. Er leitet die Gesellschaft.", col: "#c8102e" },
       { ini: "BL", name: "Bruno Massimo Legger", role: "Leiter Verwaltung · operativ", text: "Dreißig Jahre Unternehmensführung in Kosmetik, Mode und Versorgungsunternehmen, von Shiseido bis AEM.", col: "#3d7a6b" },
-      { ini: "MD", name: "Massimo Del Vecchio", role: "Founder", text: "Executive Director bei Engineering Ingegneria Informatica; zuvor CIO und Digitaldirektor bei Ericsson, Ooredoo und Poste Italiane.", col: "#8b2e2e" },
     ],
     science: [
       { ini: "IT", name: "Prof. Ines Testoni", role: "Universität Padua · die Forschung", text: "Sie leitet den Master in Death Studies & The End of Life, den ersten italienischen Universitätsmaster zum Lebensende. UltraRem hat sich förmlich verpflichtet, eine dreijährige Promotion zum postmortalen digitalen Selbst zu finanzieren (Beginn November 2027), für die sie die Bezugsprofessorin ist.", col: "#111111" },
