@@ -42,8 +42,8 @@ export const who = {
   title: "Dietro UltraRem ci sono persone che hanno già costruito altro.",
   intro: "Un servizio che custodisce la memoria di una persona si giudica anche da chi lo costruisce. Alberto Augusti, Amministratore unico, e Bruno Legger, responsabile amministrativo, lavorano ogni giorno alla società. Altri Founder, senza un ruolo operativo, portano l'esperienza dei grandi sistemi informativi.",
   founders: [
-    { ini: "AA", name: "Alberto Augusti", role: "Amministratore unico · operativo", text: "Imprenditore genovese, laureato in Scienze internazionali e diplomatiche. Guida la società.", col: "#c8102e" },
-    { ini: "BL", name: "Bruno Massimo Legger", role: "Responsabile amministrativo · operativo", text: "Trent'anni di gestione d'impresa tra cosmetica, moda e utilities, da Shiseido ad AEM.", col: "#3d7a6b" },
+    { ini: "AA", name: "Alberto Augusti", role: "Amministratore unico · operativo", text: "Imprenditore genovese, laureato in Scienze internazionali e diplomatiche, con anni di imprese alle spalle. L'idea di UltraRem è sua e oggi guida la società come Amministratore unico, seguendone la direzione e le scelte di fondo.", col: "#c8102e" },
+    { ini: "BL", name: "Bruno Massimo Legger", role: "Responsabile amministrativo · operativo", text: "Trent'anni di gestione d'impresa tra cosmetica, moda e servizi di pubblica utilità (da Shiseido ad AEM). In UltraRem cura l'amministrazione e, insieme ad Alberto, tiene in piedi la società giorno per giorno.", col: "#3d7a6b" },
   ],
   science: [
     { ini: "IT", name: "Prof.ssa Ines Testoni", role: "Università di Padova · la ricerca", text: "Dirige il master in Death Studies & The End of Life, il primo master universitario italiano dedicato al fine vita. UltraRem ha formalizzato l'impegno a finanziare un dottorato triennale sul sé digitale postumo (inizio novembre 2027), di cui è la docente di riferimento.", col: "#111111" },

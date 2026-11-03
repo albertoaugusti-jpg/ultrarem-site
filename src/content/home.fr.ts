@@ -39,8 +39,8 @@ export const fr: HomeContent = {
     title: "Derrière UltraRem, des personnes qui ont déjà construit autre chose.",
     intro: "Un service qui conserve la mémoire d'une personne se juge aussi à ceux qui le construisent. Alberto Augusti, administrateur unique, et Bruno Legger, responsable administratif, travaillent chaque jour à la société. D'autres Founders, sans rôle opérationnel, apportent l'expérience des grands systèmes d'information.",
     founders: [
-      { ini: "AA", name: "Alberto Augusti", role: "Administrateur unique · opérationnel", text: "Entrepreneur génois, diplômé en sciences internationales et diplomatiques. Il dirige la société.", col: "#c8102e" },
-      { ini: "BL", name: "Bruno Massimo Legger", role: "Responsable administratif · opérationnel", text: "Trente ans de gestion d'entreprise entre cosmétique, mode et services publics, de Shiseido à AEM.", col: "#3d7a6b" },
+      { ini: "AA", name: "Alberto Augusti", role: "Administrateur unique · opérationnel", text: "Entrepreneur génois, diplômé en sciences internationales et diplomatiques, avec des années d'entreprises derrière lui. L'idée d'UltraRem est la sienne et il dirige aujourd'hui la société en tant qu'Administrateur unique, en fixant l'orientation et les choix de fond.", col: "#c8102e" },
+      { ini: "BL", name: "Bruno Massimo Legger", role: "Responsable administratif · opérationnel", text: "Trente ans de gestion d'entreprise entre cosmétique, mode et services publics (de Shiseido à AEM). Chez UltraRem il s'occupe de l'administration et, avec Alberto, fait tenir la société au jour le jour.", col: "#3d7a6b" },
     ],
     science: [
       { ini: "IT", name: "Prof. Ines Testoni", role: "Université de Padoue · la recherche", text: "Elle dirige le master Death Studies & The End of Life, le premier master universitaire italien consacré à la fin de vie. UltraRem a formalisé son engagement à financer un doctorat de trois ans sur le soi numérique posthume (début en novembre 2027), dont elle est l'enseignante de référence.", col: "#111111" },

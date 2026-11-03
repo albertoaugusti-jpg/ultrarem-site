@@ -39,8 +39,8 @@ export const en: HomeContent = {
     title: "Behind UltraRem are people who have already built other things.",
     intro: "A service that keeps a person's memory is also judged by those who build it. Alberto Augusti, Sole Director, and Bruno Legger, Head of Administration, work at the company every day. Other Founders, without an operational role, bring the experience of large information systems.",
     founders: [
-      { ini: "AA", name: "Alberto Augusti", role: "Sole Director · operational", text: "Entrepreneur from Genoa, with a degree in International and Diplomatic Sciences. He leads the company.", col: "#c8102e" },
-      { ini: "BL", name: "Bruno Massimo Legger", role: "Head of Administration · operational", text: "Thirty years of business management across cosmetics, fashion and utilities, from Shiseido to AEM.", col: "#3d7a6b" },
+      { ini: "AA", name: "Alberto Augusti", role: "Sole Director · operational", text: "Entrepreneur from Genoa, with a degree in International and Diplomatic Sciences and years of running businesses behind him. UltraRem is his idea, and he now leads the company as Sole Director, setting its direction and key choices.", col: "#c8102e" },
+      { ini: "BL", name: "Bruno Massimo Legger", role: "Head of Administration · operational", text: "Thirty years of business management across cosmetics, fashion and utilities (from Shiseido to AEM). At UltraRem he looks after administration and, together with Alberto, keeps the company going day by day.", col: "#3d7a6b" },
     ],
     science: [
       { ini: "IT", name: "Prof. Ines Testoni", role: "University of Padua · the research", text: "She directs the master's in Death Studies & The End of Life, the first Italian university master's dedicated to the end of life. UltraRem has formalised its commitment to fund a three-year PhD on the posthumous digital self (starting November 2027), for which she is the reference professor.", col: "#111111" },

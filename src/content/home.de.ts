@@ -39,8 +39,8 @@ export const de: HomeContent = {
     title: "Hinter UltraRem stehen Menschen, die schon etwas anderes aufgebaut haben.",
     intro: "Ein Dienst, der die Erinnerung eines Menschen aufbewahrt, wird auch an denen gemessen, die ihn bauen. Alberto Augusti, Geschäftsführer, und Bruno Legger, Leiter Verwaltung, arbeiten täglich für die Gesellschaft. Weitere Founder ohne operative Rolle bringen die Erfahrung großer Informationssysteme mit.",
     founders: [
-      { ini: "AA", name: "Alberto Augusti", role: "Alleinvertretungsberechtigter Geschäftsführer · operativ", text: "Unternehmer aus Genua, Abschluss in Internationalen und Diplomatischen Wissenschaften. Er leitet die Gesellschaft.", col: "#c8102e" },
-      { ini: "BL", name: "Bruno Massimo Legger", role: "Leiter Verwaltung · operativ", text: "Dreißig Jahre Unternehmensführung in Kosmetik, Mode und Versorgungsunternehmen, von Shiseido bis AEM.", col: "#3d7a6b" },
+      { ini: "AA", name: "Alberto Augusti", role: "Alleinvertretungsberechtigter Geschäftsführer · operativ", text: "Unternehmer aus Genua, Abschluss in Internationalen und Diplomatischen Wissenschaften, mit langjähriger Unternehmenserfahrung. Die Idee zu UltraRem stammt von ihm; heute führt er die Gesellschaft als Alleinvertretungsberechtigter Geschäftsführer und legt Richtung und Grundentscheidungen fest.", col: "#c8102e" },
+      { ini: "BL", name: "Bruno Massimo Legger", role: "Leiter Verwaltung · operativ", text: "Dreißig Jahre Unternehmensführung in Kosmetik, Mode und Versorgungsunternehmen (von Shiseido bis AEM). Bei UltraRem kümmert er sich um die Verwaltung und hält die Gesellschaft gemeinsam mit Alberto Tag für Tag am Laufen.", col: "#3d7a6b" },
     ],
     science: [
       { ini: "IT", name: "Prof. Ines Testoni", role: "Universität Padua · die Forschung", text: "Sie leitet den Master in Death Studies & The End of Life, den ersten italienischen Universitätsmaster zum Lebensende. UltraRem hat sich förmlich verpflichtet, eine dreijährige Promotion zum postmortalen digitalen Selbst zu finanzieren (Beginn November 2027), für die sie die Bezugsprofessorin ist.", col: "#111111" },
