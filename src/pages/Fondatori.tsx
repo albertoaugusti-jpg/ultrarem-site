@@ -22,28 +22,16 @@ export default function Fondatori() {
       </Sec>
 
       <Sec k={c.peopleK} title={c.peopleT} bg={PALE}>
-        <Cols gap={20}>
-          {who.founders.map((f, i) => (
-            <div key={f.name} style={{ flex: "1 1 170px", maxWidth: 220, display: "flex", flexDirection: "column", gap: 8 }}>
-              <Tbp ini={f.ini} ar="4 / 5" col={f.col} />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: 24, alignItems: "start" }}>
+          {[...who.founders, ...who.science].map((f, i) => (
+            <div key={f.name} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <Tbp ini={f.ini} ar="1 / 1" col={f.col} />
               <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 22, lineHeight: 1.1 }}>{f.name}</div>
               <div style={kicker(i < 2 ? RED : GREY)}>{f.role}</div>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55 }}>{f.text}</p>
             </div>
           ))}
-        </Cols>
-      </Sec>
-
-      <Sec k={c.sciK} title={c.sciT}>
-        <Cols gap={28}>
-          {who.science.map(f => (
-            <div key={f.name} style={{ flex: "1 1 360px", display: "flex", flexDirection: "column", gap: 10 }}>
-              <Tbp ini={f.ini} ar="3 / 2" col={f.col} />
-              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 30, lineHeight: 1.1 }}>{f.name}</div>
-              <div style={kicker()}>{f.role}</div>
-              <p style={{ margin: 0 }}>{f.text}</p>
-            </div>
-          ))}
-        </Cols>
+        </div>
         <p style={{ margin: "26px 0 0", maxWidth: 760 }}>{c.sciLink}<Link href="/ricerca"><span style={{ color: RED, fontWeight: 700, cursor: "pointer" }}>{c.sciLinkT}</span></Link>.</p>
       </Sec>
 
