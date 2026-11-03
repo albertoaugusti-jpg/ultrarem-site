@@ -97,7 +97,7 @@ export default function Home() {
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
           {[...who.founders, ...who.science].map(f => (
             <div key={f.name} title={f.name} style={{ width: 72, height: 72, borderRadius: "50%", overflow: "hidden", position: "relative", background: "#fff" }}>
-              <img src={personaSrc(f.ini)} alt={f.name} style={{ position: "absolute", width: 90, height: 90, left: -9, top: -3.5, maxWidth: "none" }} />
+              <img src={personaSrc(f.ini)} alt={f.name} style={{ position: "absolute", width: 104, height: 104, left: -16, top: -2, maxWidth: "none" }} />
             </div>
           ))}
         </div>
