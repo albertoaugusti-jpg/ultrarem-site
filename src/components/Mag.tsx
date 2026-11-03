@@ -211,13 +211,24 @@ export function Photo({ name, ar, pos = "center" }: { name: string; ar: string; 
   );
 }
 
-export function Tbp({ ini, ar, col, label = "Foto TBP" }: { ini: string; ar: string; col: string; label?: string }) {
+const PERSONE = ["AA", "BL", "IT", "MG"];
+export const personaSrc = (ini: string) => PERSONE.includes(ini) ? `/img/rivista/persona-${ini.toLowerCase()}.png` : "";
+
+export function Tbp({ ini, ar, col, label = "" }: { ini: string; ar: string; col: string; label?: string }) {
+  const src = personaSrc(ini);
+  if (src) {
+    return (
+      <div style={{ aspectRatio: ar, overflow: "hidden", border: `1px solid ${INK}`, boxSizing: "border-box", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <img src={src} alt="Icona" loading="lazy" style={{ height: "100%", width: "100%", objectFit: "contain", display: "block" }} />
+      </div>
+    );
+  }
   return (
     <div style={{ aspectRatio: ar, position: "relative", overflow: "hidden", border: `1px solid ${INK}`, boxSizing: "border-box", background: col, display: "flex", alignItems: "center", justifyContent: "center" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 30% 20%,rgba(255,255,255,0.28),rgba(0,0,0,0.35))" }} />
       <div style={{ position: "relative", fontFamily: BLACK, fontSize: 72, letterSpacing: -3, color: "#fff", textShadow: "3px 3px 0 rgba(0,0,0,0.35)" }}>{ini}</div>
       <div style={{ position: "absolute", left: 0, right: 0, bottom: 0 }}>
-        <div style={{ textAlign: "center", fontFamily: NARROW, fontWeight: 700, fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "#fff", padding: "4px 0", background: "rgba(0,0,0,0.45)" }}>{label}</div>
+        {label ? <div style={{ textAlign: "center", fontFamily: NARROW, fontWeight: 700, fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "#fff", padding: "4px 0", background: "rgba(0,0,0,0.45)" }}>{label}</div> : null}
         <Stripes />
       </div>
     </div>
