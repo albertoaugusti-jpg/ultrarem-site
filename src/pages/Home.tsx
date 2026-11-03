@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { Link } from "wouter";
-import { Page, Photo, Sec, Wrap, CtaBand, kicker, btn, INK, GREY, PALE, BODONI, BLACK, NARROW } from "@/components/Mag";
+import { Page, Photo, Sec, Wrap, CtaBand, personaSrc, kicker, btn, INK, GREY, PALE, BODONI, BLACK, NARROW } from "@/components/Mag";
 import { useHome, SLUGS } from "@/content/useHome";
 
 const grid = (min: number, gap = 24): CSSProperties => ({ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(min(${min}px, 100%), 1fr))`, gap });
@@ -96,7 +96,9 @@ export default function Home() {
       <Zone k={who.kicker} title={who.title} sub={ui.whoText} a={{ href: "/fondatori", label: ui.whoBtn }} b={{ href: "/ricerca", label: ui.ricBtn }} bg={PALE}>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
           {[...who.founders, ...who.science].map(f => (
-            <div key={f.name} title={f.name} style={{ width: 54, height: 54, borderRadius: "50%", background: f.col, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: BLACK, fontSize: 17, border: `2px solid ${INK}` }}>{f.ini}</div>
+            <div key={f.name} title={f.name} style={{ width: 72, height: 72, borderRadius: "50%", overflow: "hidden", position: "relative", background: "#fff" }}>
+              <img src={personaSrc(f.ini)} alt={f.name} style={{ position: "absolute", width: 90, height: 90, left: -9, top: -3.5, maxWidth: "none" }} />
+            </div>
           ))}
         </div>
       </Zone>
