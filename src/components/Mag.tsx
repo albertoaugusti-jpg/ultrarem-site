@@ -115,9 +115,10 @@ export function Footer() {
           <div style={kicker("#ff3b52")}>{d.footer.contact}</div>
           <Link href="/contatti"><span style={fl}>{d.footer.getInTouch}</span></Link>
           <Link href="/percorsi/diario-di-bordo"><span style={fl}>Inizia dal Diario di bordo</span></Link>
-          <a href="mailto:info@ultrarem.it" style={fl}>info@ultrarem.it</a>
+          <a href="mailto:contatti@ultrarem.eu" style={fl}>contatti@ultrarem.eu</a>
+          <a href="tel:+390107776530" style={fl}>010 7776530</a>
           <span style={{ fontSize: 15, color: "rgba(255,255,255,0.65)" }}>Viale Cassala 30, 20143 Milano</span>
-          <span style={{ fontSize: 15, color: "rgba(255,255,255,0.65)" }}>{x.cities}</span>
+          <span style={{ fontSize: 15, color: "rgba(255,255,255,0.65)" }}>Via G. D'Annunzio 2 int. 26C, 16121 Genova</span>
         </div>
         <div style={col}>
           <div style={kicker("#ff3b52")}>Partner</div>
