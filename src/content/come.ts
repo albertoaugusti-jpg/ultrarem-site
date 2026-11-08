@@ -5,7 +5,7 @@ export interface ComeContent {
   k: string; titleA: string; titleB: string;
   stepsK: string; stepsT: string;
   tripK: string; tripT: string;
-  tappe: { n: string; t: string; p: string }[];
+  flows: { tag: string; name: string; lead: string; steps: { t: string; p: string }[] }[];
   whyK: string; whyT: string; why1: string; why2: string;
   faqK: string; faqT: string;
   faq: { q: string; a: string }[];
@@ -15,14 +15,28 @@ export interface ComeContent {
 const it: ComeContent = {
   k: "Come funziona", titleA: "Una scala di tre gradini, ", titleB: "con i nomi della navigazione.",
   stepsK: "I tre gradini", stepsT: "Che cosa ottieni, e a che prezzo.",
-  tripK: "Il viaggio", tripT: "Dall'ora zero all'archivio, in sei tappe.",
-  tappe: [
-    { n: "1", t: "Cominci dal Diario", p: "Parli con il companion quando vuoi. Nessuna intervista, nessuno psicologo, nessun impegno oltre il primo pacchetto. Alla fine hai un quaderno in PDF della tua narrazione e, se vuoi, una voce che risponde solo con ciò che il diario contiene." },
-    { n: "2", t: "Incontri lo psicologo", p: "Se decidi di proseguire, entri nel percorso certificato: 10 ore di intervista con uno psicologo iscritto all'Albo, formato sul protocollo di UltraRem, e 10 ore di raccolta con il companion tra un incontro e l'altro." },
-    { n: "3", t: "Firmi il tuo progetto", p: "Lo psicologo redige la sintesi di ciò che è emerso e la firma (art. 7). Tu la leggi, la correggi, la approvi. Solo a quel punto è la tua identità, e non l'interpretazione di qualcuno." },
-    { n: "4", t: "Scegli la tua forma", p: "La voce viene clonata (con tecnologia ElevenLabs, integrata da QBT) e puoi avere un avatar semplice. Nel percorso completo l'avatar è realizzato con riprese in studio, e su richiesta si può aggiungere l'elaborazione tridimensionale." },
-    { n: "5", t: "Decidi chi può parlarti", p: "Stabilisci tu chi potrà dialogare con il tuo avatar e a quali condizioni. Quello che non decidi non accade (art. 3). In ogni caso, nei primi novanta giorni dopo la tua morte l'avatar non parla ai familiari (art. 20)." },
-    { n: "6", t: "Custodiamo", p: "Il primo anno è compreso nei percorsi certificati. Dal secondo anno c'è un canone di custodia, che copre la conservazione sicura, la governance degli accessi e un uso interattivo ragionevole." },
+  tripK: "Il percorso", tripT: "Come funziona, passo per passo.",
+  flows: [
+    { tag: "Online, da solo", name: "Diario di bordo", lead: "Fai tutto dal sito, dal primo contatto al pagamento, senza bisogno di nessuno.", steps: [
+      { t: "Parli con l'avatar", p: "Arrivi sul sito e parli con l'avatar, che ti spiega come funziona il Diario di bordo." },
+      { t: "Ti registri", p: "Crei il tuo spazio personale dalla pagina dedicata." },
+      { t: "Paghi online", p: "Il pagamento si fa online, in pochi passaggi." },
+      { t: "Parli con il tuo companion", p: "Il companion si attiva e parli quando vuoi, al tuo ritmo." },
+      { t: "Hai il tuo quaderno", p: "Alla fine ricevi il tuo quaderno. Puoi fermarti qui, continuare con una ricarica o passare ai percorsi con lo psicologo." },
+    ] },
+    { tag: "Con lo psicologo", name: "I marinai del tempo", lead: "Un percorso seguito da una persona, dal primo contatto al deposito del tuo archivio.", steps: [
+      { t: "Ci contatti", p: "Ci scrivi o ci telefoni e ti rispondiamo noi." },
+      { t: "Ti proponiamo uno psicologo", p: "Ti presentiamo lo psicologo che ti seguirà." },
+      { t: "Prima intervista", p: "Incontri lo psicologo. Nello stesso incontro si fanno le riprese video." },
+      { t: "Configuriamo il tuo companion", p: "Prepariamo il tuo companion dedicato." },
+      { t: "Le interviste proseguono", p: "Gli incontri continuano e, tra uno e l'altro, parli con il tuo companion." },
+      { t: "Chiusura del corpus", p: "Lo psicologo scrive la sintesi di ciò che è emerso e tu la rivedi." },
+      { t: "Firma", p: "Quando la sintesi ti convince, la firmi." },
+      { t: "Deposito e copia cartacea", p: "Il corpus viene depositato sul server e ne conserviamo anche una copia cartacea." },
+    ] },
+    { tag: "Il percorso più ampio", name: "I Capitani di lungo corso", lead: "Gli stessi passi dei marinai del tempo, con più ore di lavoro.", steps: [
+      { t: "Più materiale, conservato con cura", p: "Oltre al racconto, possiamo conservare il materiale multimediale più complesso: registrazioni, pellicole, fotografie." },
+    ] },
   ],
   whyK: "Perché dura tanto", whyT: "Il tempo non è un costo, è il metodo.",
   why1: "Trenta ore di intervista e trenta di raccolta possono sembrare tante. Sono quelle che ci servono per sapere come rispondi quando qualcuno ti interrompe, che cosa non dici mai, che cosa ripeti. Nessuna sintesi di un'ora riesce a restituire un carattere, e un avatar che non ha il carattere è un doppiatore, non una presenza.",
@@ -44,14 +58,28 @@ const it: ComeContent = {
 const en: ComeContent = {
   k: "How it works", titleA: "A ladder of three steps, ", titleB: "named after seafaring.",
   stepsK: "The three steps", stepsT: "What you get, and at what price.",
-  tripK: "The journey", tripT: "From hour zero to the archive, in six stages.",
-  tappe: [
-    { n: "1", t: "You start with the Diario", p: "You talk to the companion whenever you like. No interview, no psychologist, no commitment beyond the first package. At the end you have a PDF notebook of your narrative and, if you wish, a voice that answers only with what the diary contains." },
-    { n: "2", t: "You meet the psychologist", p: "If you decide to continue, you enter the certified path: 10 hours of interviews with a psychologist registered with the professional Order, trained on UltraRem's protocol, and 10 hours of gathering with the companion between one meeting and the next." },
-    { n: "3", t: "You sign your project", p: "The psychologist writes the summary of what has emerged and signs it (art. 7). You read it, correct it, approve it. Only then is it your identity, and not someone's interpretation." },
-    { n: "4", t: "You choose your form", p: "Your voice is cloned (with ElevenLabs technology, integrated by QBT) and you can have a simple avatar. In the complete path the avatar is made with studio filming, and three-dimensional rendering can be added on request." },
-    { n: "5", t: "You decide who can talk to you", p: "You establish who may talk with your avatar and under what conditions. What you do not decide does not happen (art. 3). In any case, in the first ninety days after your death the avatar does not speak to family members (art. 20)." },
-    { n: "6", t: "We keep it safe", p: "The first year is included in the certified paths. From the second year there is a custody fee, which covers secure preservation, access governance and reasonable interactive use." },
+  tripK: "The journey", tripT: "How it works, step by step.",
+  flows: [
+    { tag: "Online, on your own", name: "Diario di bordo", lead: "You do everything on the site, from first contact to payment, without needing anyone.", steps: [
+      { t: "You talk to the avatar", p: "You arrive on the site and talk to the avatar, who explains how the Diario di bordo works." },
+      { t: "You register", p: "You create your personal space from the dedicated page." },
+      { t: "You pay online", p: "Payment is made online, in a few steps." },
+      { t: "You talk to your companion", p: "The companion is activated and you talk whenever you like, at your own pace." },
+      { t: "You have your notebook", p: "At the end you receive your notebook. You can stop here, continue with a refill, or move on to the paths with the psychologist." },
+    ] },
+    { tag: "With the psychologist", name: "I marinai del tempo", lead: "A path followed by a person, from first contact to the deposit of your archive.", steps: [
+      { t: "You contact us", p: "You write or call us and we answer ourselves." },
+      { t: "We propose a psychologist", p: "We introduce you to the psychologist who will follow you." },
+      { t: "First interview", p: "You meet the psychologist. The video recordings are made in the same meeting." },
+      { t: "We set up your companion", p: "We prepare your dedicated companion." },
+      { t: "The interviews continue", p: "The meetings go on and, between one and the next, you talk to your companion." },
+      { t: "Closing the corpus", p: "The psychologist writes the summary of what has emerged and you review it." },
+      { t: "Signature", p: "When the summary convinces you, you sign it." },
+      { t: "Deposit and paper copy", p: "The corpus is deposited on the server and we also keep a paper copy." },
+    ] },
+    { tag: "The broadest path", name: "I Capitani di lungo corso", lead: "The same steps as the marinai del tempo, with more hours of work.", steps: [
+      { t: "More material, kept with care", p: "Besides the narrative, we can keep the most complex multimedia material: recordings, film reels, photographs." },
+    ] },
   ],
   whyK: "Why it takes so long", whyT: "Time is not a cost, it is the method.",
   why1: "Thirty hours of interviews and thirty of gathering may seem a lot. They are what we need to know how you answer when someone interrupts you, what you never say, what you repeat. No one-hour summary can render a character, and an avatar without character is a voice actor, not a presence.",
@@ -73,14 +101,28 @@ const en: ComeContent = {
 const fr: ComeContent = {
   k: "Comment ça marche", titleA: "Une échelle de trois échelons, ", titleB: "avec les noms de la navigation.",
   stepsK: "Les trois échelons", stepsT: "Ce que vous obtenez, et à quel prix.",
-  tripK: "Le voyage", tripT: "De l'heure zéro à l'archive, en six étapes.",
-  tappe: [
-    { n: "1", t: "Vous commencez par le Diario", p: "Vous parlez au companion quand vous voulez. Aucun entretien, aucun psychologue, aucun engagement au-delà du premier pack. À la fin vous avez un cahier PDF de votre narration et, si vous le souhaitez, une voix qui répond uniquement avec ce que contient le journal." },
-    { n: "2", t: "Vous rencontrez le psychologue", p: "Si vous décidez de poursuivre, vous entrez dans le parcours certifié : 10 heures d'entretien avec un psychologue inscrit à l'Ordre, formé au protocole d'UltraRem, et 10 heures de collecte avec le companion entre deux rencontres." },
-    { n: "3", t: "Vous signez votre projet", p: "Le psychologue rédige la synthèse de ce qui est ressorti et la signe (art. 7). Vous la lisez, la corrigez, l'approuvez. C'est seulement alors que c'est votre identité, et non l'interprétation de quelqu'un." },
-    { n: "4", t: "Vous choisissez votre forme", p: "Votre voix est clonée (avec la technologie ElevenLabs, intégrée par QBT) et vous pouvez avoir un avatar simple. Dans le parcours complet, l'avatar est réalisé avec des prises de vue en studio, et la modélisation tridimensionnelle peut être ajoutée sur demande." },
-    { n: "5", t: "Vous décidez qui peut vous parler", p: "Vous établissez qui pourra dialoguer avec votre avatar et à quelles conditions. Ce que vous ne décidez pas n'arrive pas (art. 3). Dans tous les cas, durant les quatre-vingt-dix premiers jours après votre mort, l'avatar ne parle pas à vos proches (art. 20)." },
-    { n: "6", t: "Nous conservons", p: "La première année est comprise dans les parcours certifiés. À partir de la deuxième année, des frais de conservation couvrent la conservation sécurisée, la gouvernance des accès et un usage interactif raisonnable." },
+  tripK: "Le parcours", tripT: "Comment ça marche, étape par étape.",
+  flows: [
+    { tag: "En ligne, seul", name: "Diario di bordo", lead: "Vous faites tout depuis le site, du premier contact au paiement, sans avoir besoin de personne.", steps: [
+      { t: "Vous parlez à l'avatar", p: "Vous arrivez sur le site et parlez à l'avatar, qui vous explique comment fonctionne le Diario di bordo." },
+      { t: "Vous vous inscrivez", p: "Vous créez votre espace personnel depuis la page dédiée." },
+      { t: "Vous payez en ligne", p: "Le paiement se fait en ligne, en quelques étapes." },
+      { t: "Vous parlez à votre companion", p: "Le companion s'active et vous parlez quand vous voulez, à votre rythme." },
+      { t: "Vous avez votre cahier", p: "À la fin vous recevez votre cahier. Vous pouvez vous arrêter là, continuer avec une recharge ou passer aux parcours avec le psychologue." },
+    ] },
+    { tag: "Avec le psychologue", name: "I marinai del tempo", lead: "Un parcours suivi par une personne, du premier contact au dépôt de votre archive.", steps: [
+      { t: "Vous nous contactez", p: "Vous nous écrivez ou nous appelez et nous répondons nous-mêmes." },
+      { t: "Nous vous proposons un psychologue", p: "Nous vous présentons le psychologue qui vous suivra." },
+      { t: "Premier entretien", p: "Vous rencontrez le psychologue. Les prises de vue vidéo se font lors de la même rencontre." },
+      { t: "Nous configurons votre companion", p: "Nous préparons votre companion dédié." },
+      { t: "Les entretiens se poursuivent", p: "Les rencontres continuent et, entre l'une et l'autre, vous parlez à votre companion." },
+      { t: "Clôture du corpus", p: "Le psychologue rédige la synthèse de ce qui est ressorti et vous la relisez." },
+      { t: "Signature", p: "Quand la synthèse vous convient, vous la signez." },
+      { t: "Dépôt et copie papier", p: "Le corpus est déposé sur le serveur et nous en conservons aussi une copie papier." },
+    ] },
+    { tag: "Le parcours le plus large", name: "I Capitani di lungo corso", lead: "Les mêmes étapes que les marinai del tempo, avec plus d'heures de travail.", steps: [
+      { t: "Plus de matériel, conservé avec soin", p: "Outre le récit, nous pouvons conserver le matériel multimédia le plus complexe : enregistrements, pellicules, photographies." },
+    ] },
   ],
   whyK: "Pourquoi c'est si long", whyT: "Le temps n'est pas un coût, c'est la méthode.",
   why1: "Trente heures d'entretien et trente de collecte peuvent sembler beaucoup. Ce sont celles dont nous avons besoin pour savoir comment vous répondez quand on vous interrompt, ce que vous ne dites jamais, ce que vous répétez. Aucune synthèse d'une heure ne restitue un caractère, et un avatar sans caractère est un doubleur, pas une présence.",
@@ -102,14 +144,28 @@ const fr: ComeContent = {
 const de: ComeContent = {
   k: "So funktioniert es", titleA: "Eine Leiter mit drei Stufen, ", titleB: "mit den Namen der Seefahrt.",
   stepsK: "Die drei Stufen", stepsT: "Was du bekommst, und zu welchem Preis.",
-  tripK: "Die Reise", tripT: "Von der Stunde null bis zum Archiv, in sechs Etappen.",
-  tappe: [
-    { n: "1", t: "Du beginnst mit dem Diario", p: "Du sprichst mit dem Companion, wann du willst. Kein Interview, kein Psychologe, keine Verpflichtung über das erste Paket hinaus. Am Ende hast du ein PDF-Heft deiner Erzählung und, wenn du möchtest, eine Stimme, die nur mit dem antwortet, was das Tagebuch enthält." },
-    { n: "2", t: "Du triffst den Psychologen", p: "Wenn du dich zum Weitermachen entschließt, trittst du in den zertifizierten Weg ein: 10 Stunden Interview mit einem in der Berufskammer eingetragenen Psychologen, geschult im UltraRem-Protokoll, und 10 Stunden Sammlung mit dem Companion zwischen den Treffen." },
-    { n: "3", t: "Du unterzeichnest dein Projekt", p: "Der Psychologe verfasst die Zusammenfassung dessen, was sich gezeigt hat, und unterzeichnet sie (Art. 7). Du liest sie, korrigierst sie, genehmigst sie. Erst dann ist es deine Identität und nicht die Deutung eines anderen." },
-    { n: "4", t: "Du wählst deine Form", p: "Deine Stimme wird geklont (mit ElevenLabs-Technologie, von QBT integriert), und du kannst einen einfachen Avatar haben. Im kompletten Weg entsteht der Avatar mit Studioaufnahmen, und auf Wunsch kann eine dreidimensionale Ausarbeitung hinzukommen." },
-    { n: "5", t: "Du entscheidest, wer mit dir sprechen darf", p: "Du legst fest, wer mit deinem Avatar sprechen darf und unter welchen Bedingungen. Was du nicht entscheidest, geschieht nicht (Art. 3). In jedem Fall spricht der Avatar in den ersten neunzig Tagen nach deinem Tod nicht zu den Angehörigen (Art. 20)." },
-    { n: "6", t: "Wir bewahren auf", p: "Das erste Jahr ist in den zertifizierten Wegen inbegriffen. Ab dem zweiten Jahr gibt es eine Aufbewahrungsgebühr, die sichere Aufbewahrung, Zugriffssteuerung und eine angemessene interaktive Nutzung abdeckt." },
+  tripK: "Der Weg", tripT: "So funktioniert es, Schritt für Schritt.",
+  flows: [
+    { tag: "Online, allein", name: "Diario di bordo", lead: "Du erledigst alles auf der Website, vom ersten Kontakt bis zur Zahlung, ohne jemanden zu brauchen.", steps: [
+      { t: "Du sprichst mit dem Avatar", p: "Du kommst auf die Website und sprichst mit dem Avatar, der dir erklärt, wie das Diario di bordo funktioniert." },
+      { t: "Du registrierst dich", p: "Du legst deinen persönlichen Bereich auf der dafür vorgesehenen Seite an." },
+      { t: "Du zahlst online", p: "Die Zahlung erfolgt online, in wenigen Schritten." },
+      { t: "Du sprichst mit deinem Companion", p: "Der Companion wird aktiviert und du sprichst, wann du willst, in deinem Tempo." },
+      { t: "Du hast dein Heft", p: "Am Ende erhältst du dein Heft. Du kannst hier aufhören, mit einer Aufladung weitermachen oder zu den Wegen mit dem Psychologen wechseln." },
+    ] },
+    { tag: "Mit dem Psychologen", name: "I marinai del tempo", lead: "Ein Weg, der von einer Person begleitet wird, vom ersten Kontakt bis zur Hinterlegung deines Archivs.", steps: [
+      { t: "Du nimmst Kontakt auf", p: "Du schreibst oder rufst uns an, und wir antworten selbst." },
+      { t: "Wir schlagen dir einen Psychologen vor", p: "Wir stellen dir den Psychologen vor, der dich begleiten wird." },
+      { t: "Erstes Interview", p: "Du triffst den Psychologen. Die Videoaufnahmen entstehen im selben Treffen." },
+      { t: "Wir richten deinen Companion ein", p: "Wir bereiten deinen persönlichen Companion vor." },
+      { t: "Die Interviews gehen weiter", p: "Die Treffen gehen weiter, und zwischen zwei Treffen sprichst du mit deinem Companion." },
+      { t: "Abschluss des Korpus", p: "Der Psychologe schreibt die Zusammenfassung dessen, was sich gezeigt hat, und du prüfst sie." },
+      { t: "Unterschrift", p: "Wenn dich die Zusammenfassung überzeugt, unterschreibst du sie." },
+      { t: "Hinterlegung und Papierkopie", p: "Das Korpus wird auf dem Server hinterlegt, und wir bewahren auch eine Papierkopie auf." },
+    ] },
+    { tag: "Der umfassendste Weg", name: "I Capitani di lungo corso", lead: "Dieselben Schritte wie bei den marinai del tempo, mit mehr Arbeitsstunden.", steps: [
+      { t: "Mehr Material, sorgfältig aufbewahrt", p: "Neben der Erzählung können wir auch das aufwendigste Multimediamaterial aufbewahren: Aufnahmen, Filmrollen, Fotografien." },
+    ] },
   ],
   whyK: "Warum es so lange dauert", whyT: "Zeit ist kein Kostenfaktor, sie ist die Methode.",
   why1: "Dreißig Stunden Interview und dreißig Stunden Sammlung mögen viel erscheinen. Sie brauchen wir, um zu wissen, wie du antwortest, wenn dich jemand unterbricht, was du nie sagst, was du wiederholst. Keine einstündige Zusammenfassung kann einen Charakter wiedergeben, und ein Avatar ohne Charakter ist ein Synchronsprecher, keine Präsenz.",
