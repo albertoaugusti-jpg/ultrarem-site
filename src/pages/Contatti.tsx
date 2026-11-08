@@ -66,11 +66,11 @@ export default function Contatti() {
 
       <Sec k={t.wK} title={t.wT}>
         <Cols gap={20}>
-          <Card k={t.mail} t={CONTACT.email}>
+          <Card k={t.wK} t={t.mail}>
             <p style={{ margin: 0 }}>{t.mailX}</p>
             <a href={`mailto:${CONTACT.email}`} style={{ ...big, color: RED }}>{CONTACT.email}</a>
           </Card>
-          <Card k={t.phone} t={CONTACT.phone}>
+          <Card k={t.wK} t={t.phone}>
             <p style={{ margin: 0 }}>{t.phoneX}</p>
             <a href={`tel:${CONTACT.tel}`} style={{ ...big, color: RED }}>{CONTACT.phone}</a>
           </Card>
