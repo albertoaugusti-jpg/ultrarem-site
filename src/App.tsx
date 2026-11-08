@@ -10,6 +10,7 @@ import Storie from "@/pages/Storie";
 import Fondatori from "@/pages/Fondatori";
 import Contatti from "@/pages/Contatti";
 import Percorso from "@/pages/Percorso";
+import Officina from "@/pages/Officina";
 
 function Router() {
   return (
@@ -25,6 +26,7 @@ function Router() {
       <Route path="/fondatori" component={Fondatori} />
       <Route path="/incontra">{() => <Redirect to="/il-progetto" />}</Route>
       <Route path="/contatti" component={Contatti} />
+      <Route path="/officina-immagini" component={Officina} />
       <Route component={NotFound} />
     </Switch>
   );
