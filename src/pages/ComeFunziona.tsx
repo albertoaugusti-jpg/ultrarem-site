@@ -4,11 +4,18 @@ import { useHome } from "@/content/useHome";
 import { useLang } from "@/lib/i18n";
 import { come } from "@/content/come";
 
+// Immagini dei passi: stesso ordine dei passi in come.ts (i Capitani riusano le immagini dei Marinai).
+const IMG = [
+  ["d1-avatar", "d2-registrazione", "d3-pagamento", "d4-companion", "d5-quaderno"],
+  ["m1-contatto", "m2-proposta", "m3-intervista", "m4-companion-dedicato", "m5-tra-incontri", "m6-sintesi", "m7-firma", "m8-deposito"],
+  ["c1-archivio-multimediale"],
+];
+
 export default function ComeFunziona() {
   const { ladder } = useHome();
   const { lang } = useLang();
   const c = come[lang] ?? come.it;
-  const { tappe, faq } = c;
+  const { flows, faq } = c;
   return (
     <Page>
       <Hero k={c.k} title={<>{c.titleA}<em style={{ color: RED }}>{c.titleB}</em></>} lead={ladder.intro} />
@@ -38,14 +45,24 @@ export default function ComeFunziona() {
       </Sec>
 
       <Sec k={c.tripK} title={c.tripT} bg={PALE}>
-        <Cols gap={0}>
-          {tappe.map((t, i) => (
-            <div key={t.n} style={{ flex: "1 1 340px", padding: "22px 24px", borderTop: `2px solid ${INK}`, borderLeft: i % 2 ? `1px solid ${INK}` : "none", background: "#fff", display: "flex", gap: 18 }}>
-              <div style={{ fontFamily: BLACK, fontSize: 44, color: RED, lineHeight: 1 }}>{t.n}</div>
-              <div><div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 24, lineHeight: 1.1, marginBottom: 6 }}>{t.t}</div><p style={{ margin: 0, fontSize: 16 }}>{t.p}</p></div>
+        {flows.map((f, fi) => (
+          <div key={f.name} style={{ marginTop: fi ? 48 : 0 }}>
+            <div style={kicker(RED)}>{f.tag}</div>
+            <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(28px,3.4vw,40px)", lineHeight: 1.05, margin: "4px 0 6px" }}>{f.name}</div>
+            <p style={{ margin: "0 0 20px", maxWidth: 760, fontSize: 17 }}>{f.lead}</p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(260px, 100%), 1fr))", gap: 20 }}>
+              {f.steps.map((t, i) => (
+                <div key={t.t} style={{ background: "#fff", border: `2px solid ${INK}`, display: "flex", flexDirection: "column" }}>
+                  <Photo name={IMG[fi][i]} ar="16 / 10" />
+                  <div style={{ padding: "16px 20px 20px", display: "flex", gap: 14 }}>
+                    <div style={{ fontFamily: BLACK, fontSize: 36, color: RED, lineHeight: 1 }}>{i + 1}</div>
+                    <div><div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 22, lineHeight: 1.1, marginBottom: 6 }}>{t.t}</div><p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.5 }}>{t.p}</p></div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </Cols>
+          </div>
+        ))}
       </Sec>
 
       <Sec k={c.whyK} title={c.whyT}>
