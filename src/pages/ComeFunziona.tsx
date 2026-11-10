@@ -4,7 +4,7 @@ import { useHome } from "@/content/useHome";
 import { useLang } from "@/lib/i18n";
 import { come } from "@/content/come";
 
-// Immagini dei passi: stesso ordine dei passi in come.ts (i Capitani riusano le immagini dei Marinai).
+// Immagini dei passi: stesso ordine dei passi in come.ts (i Capitani mostrano prima i passi dei Marinai, poi il loro in più).
 const IMG = [
   ["d1-avatar", "d2-registrazione", "d3-pagamento", "d4-companion", "d5-quaderno"],
   ["m1-contatto", "m2-proposta", "m3-intervista", "m4-companion-dedicato", "m5-tra-incontri", "m6-sintesi", "m7-firma", "m8-deposito"],
@@ -51,9 +51,9 @@ export default function ComeFunziona() {
             <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(28px,3.4vw,40px)", lineHeight: 1.05, margin: "4px 0 6px" }}>{f.name}</div>
             <p style={{ margin: "0 0 20px", maxWidth: 760, fontSize: 17 }}>{f.lead}</p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(260px, 100%), 1fr))", gap: 20 }}>
-              {f.steps.map((t, i) => (
+              {(fi === 2 ? [...flows[1].steps, ...f.steps] : f.steps).map((t, i) => (
                 <div key={t.t} style={{ background: "#fff", border: `2px solid ${INK}`, display: "flex", flexDirection: "column" }}>
-                  <Photo name={IMG[fi][i]} ar="16 / 10" />
+                  <Photo name={(fi === 2 ? [...IMG[1], ...IMG[2]] : IMG[fi])[i]} ar="16 / 10" />
                   <div style={{ padding: "16px 20px 20px", display: "flex", gap: 14 }}>
                     <div style={{ fontFamily: BLACK, fontSize: 36, color: RED, lineHeight: 1 }}>{i + 1}</div>
                     <div><div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 22, lineHeight: 1.1, marginBottom: 6 }}>{t.t}</div><p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.5 }}>{t.p}</p></div>
