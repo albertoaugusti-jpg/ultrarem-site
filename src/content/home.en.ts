@@ -1,0 +1,77 @@
+import type { HomeContent } from "./home";
+
+export const en: HomeContent = {
+  cover: {
+    kicker: "Digital identity and memory",
+    what: "UltraRem builds your digital identity with you: your story, gathered with the guidance of a psychologist, written consent at every step and a declared custody.",
+    title: "Who I was, who I am and who I will be.",
+    lead: "Everyone's digital dimension will exist anyway. The question is who builds it, and whether the person has the right to do so.",
+  },
+  ladder: {
+    kicker: "The paths",
+    title: "A ladder of three steps, named after seafaring.",
+    intro: "The Genoese maritime tradition the project comes from gave the names. Each step leads to the next: what you have already paid is deducted from the price of the following one.",
+    steps: [
+      { tag: "Step 1 · open to everyone", name: "Diario di bordo", price: "€290", sub: "starter package", img: "nave-diario", lead: "Start telling your story with the companion, whenever you like and without a psychologist. At the end you have a notebook of your narrative and can decide whether to go on.", tone: "light",
+        items: ["10 hours of storytelling with the companion", "a notebook of your narrative as a PDF", "a voice clone that answers only with what the diary contains, while you are alive", "12 months of preservation, then renewal (€49 a year)"],
+        note: "No interview and no psychologist. It is a product distinct from UltraRem, and it helps you understand whether you want to go on." },
+      { tag: "Step 2 · certified path", name: "I marinai del tempo", price: "€3,800", sub: "the price of the Diario is deducted", img: "nave-marinai", lead: "A psychologist listens to you and signs the summary of your project; you get your cloned voice and a first avatar.", tone: "dark",
+        items: ["10 hours of interviews with the psychologist", "10 hours of gathering with the companion", "a summary of your project, signed by the psychologist", "your cloned voice and a simple avatar"],
+        note: "The first year of custody is included." },
+      { tag: "Step 3 · complete path", name: "I Capitani di lungo corso", price: "€9,800", sub: "what you paid for the Marinai is deducted", img: "nave-capitani", lead: "The longest path: thirty hours with the psychologist, an avatar made with studio filming and, if you wish, the three-dimensional form.", tone: "red",
+        items: ["30 hours of interviews with the psychologist", "30 hours of gathering with the companion", "the summary and the cloned voice", "an avatar made with studio filming", "three-dimensional rendering on request"],
+        note: "The first year of custody is included." },
+    ],
+    fee: "From the second year, in the two certified paths, there is a custody fee (about €150 for the Marinai, about €300 for the Captains, about €550 with the three-dimensional rendering). It includes secure preservation, access governance and reasonable interactive use; beyond that, the video avatar is paid by usage. Indicative amounts.",
+  },
+  research: {
+    kicker: "Research",
+    title: "The posthumous digital self, in Padua.",
+    cells: [
+      { k: "Outcome", v: "A three-year research project, starting 1 November 2027, on the topic \"The posthumous digital self: wellbeing, dignity and identity continuity in the construction of memorial avatars based on artificial intelligence\". Results will be added once the research is concluded." },
+      { k: "Who leads it", v: "University of Padua, FISPPA department. PhD in Human Rights, Society, and Multi-level Governance (curriculum Inclusion and Psychological Growth), with Prof. Ines Testoni as the reference professor. UltraRem funds one scholarship." },
+      { k: "Who owns the results", v: "They will be defined in the agreement with the University, pending signature." },
+    ],
+    note: "Research is kept separate from commercial activity: taking part in a study requires a separate consent and is always optional (art. 25).",
+  },
+  who: {
+    kicker: "Who is behind it",
+    title: "Behind UltraRem are people who have already built other things.",
+    intro: "A service that keeps a person's memory is also judged by those who build it. Alberto Augusti, Sole Director, and Bruno Legger, Head of Administration, work at the company every day. Other Founders, without an operational role, bring the experience of large information systems.",
+    founders: [
+      { ini: "AA", name: "Alberto Augusti", role: "Sole Director · operational", text: "Entrepreneur from Genoa, with a degree in International and Diplomatic Sciences and years of running businesses behind him. UltraRem is his idea, and he now leads the company as Sole Director, setting its direction and key choices.", col: "#c8102e" },
+      { ini: "BL", name: "Bruno Massimo Legger", role: "Head of Administration · operational", text: "Thirty years of business management across cosmetics, fashion and utilities (from Shiseido to AEM). At UltraRem he looks after administration and, together with Alberto, keeps the company going day by day.", col: "#3d7a6b" },
+    ],
+    science: [
+      { ini: "IT", name: "Prof. Ines Testoni", role: "University of Padua · the research", text: "She directs the master's in Death Studies & The End of Life, the first Italian university master's dedicated to the end of life. UltraRem has formalised its commitment to fund a three-year PhD on the posthumous digital self (starting November 2027), for which she is the reference professor.", col: "#111111" },
+      { ini: "MG", name: "Dr. Michele Galgani", role: "Psychologist and psychotherapist · the network", text: "He is building the team that will listen to you: a nationwide selection of twenty psychologists and psychotherapists registered with the professional Order, 48 hours of training on the interview protocol and supervision of the first cases.", col: "#3d7a6b" },
+    ],
+    method: {
+      k: "The method",
+      t: "A model, not a programme.",
+      p1: "Every day the machine gathers more than a cycle of interviews ever could. The psychologist gives meaning to that material, tells what is identity from what is noise and validates it with a signed record (art. 7). Neither of the two, alone, produces an authentic identity.",
+      p2: "The technology is by QBT, technology supplier. The value lies in the quality of the data and in the responsibility of custody.",
+    },
+    socrem: "A letter of intent is being defined with So.Crem Genova (Genoese Cremation Society) for a conference on digital continuity after death, training for operators, support for end-of-life doula courses and a university master's on bereavement.",
+  },
+  ui: {
+    talk: "Talk to the avatar",
+    avatarTitle: "Ask me what UltraRem is.",
+    avatarText: "In two minutes I explain what UltraRem is and answer your questions. I tell you straight away that I am an artificial intelligence, and you can stop me whenever you like.",
+    video: "Watch the video",
+    videoTitle: "Why we started.",
+    videoText: "A short film, for those who have a few minutes and no wish to read.",
+    caption: "Milan, 1983.",
+    ladderTitle: "Build your digital identity before someone else does.",
+    ladderBtn: "All the paths",
+    learn: "Discover",
+    whoBtn: "Meet the Founders",
+    ctaTitle: "Start with the Diario di bordo.",
+    ctaText: "€290 to tell your story with the companion and understand whether you want to go on. No interview and no rush.",
+    ctaA: "Discover the Diario di bordo",
+    ctaB: "Write to us",
+    ctaProject: "Discover the project",
+    ricBtn: "University and research",
+    whoText: "Who leads the company, the Founders and the scientific team with the University of Padua.",
+  },
+};

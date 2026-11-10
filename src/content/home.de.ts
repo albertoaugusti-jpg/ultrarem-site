@@ -1,0 +1,77 @@
+import type { HomeContent } from "./home";
+
+export const de: HomeContent = {
+  cover: {
+    kicker: "Digitale Identität und Erinnerung",
+    what: "UltraRem baut mit dir deine digitale Identität auf: deine Geschichte, gesammelt unter der Anleitung eines Psychologen, mit schriftlicher Einwilligung bei jedem Schritt und einer erklärten Aufbewahrung.",
+    title: "Wer ich war, wer ich bin und wer ich sein werde.",
+    lead: "Die digitale Dimension jedes Menschen wird ohnehin existieren. Die Frage ist, wer sie aufbaut und ob die Person selbst das Recht dazu hat.",
+  },
+  ladder: {
+    kicker: "Die Wege",
+    title: "Eine Leiter mit drei Stufen, mit den Namen der Seefahrt.",
+    intro: "Die genuesische Seefahrtstradition, aus der das Projekt stammt, hat die Namen geliefert. Jede Stufe führt zur nächsten: Was du bereits bezahlt hast, wird vom Preis der folgenden abgezogen.",
+    steps: [
+      { tag: "Stufe 1 · für alle offen", name: "Diario di bordo", price: "290 €", sub: "Einstiegspaket", img: "nave-diario", lead: "Beginne, dich mit dem Companion zu erzählen, wann du willst und ohne Psychologen. Am Ende hast du ein Heft deiner Erzählung und kannst entscheiden, ob du weitergehst.", tone: "light",
+        items: ["10 Stunden Erzählen mit dem Companion", "ein Heft deiner Erzählung als PDF", "ein Stimmklon, der nur mit dem antwortet, was das Tagebuch enthält, solange du lebst", "12 Monate Aufbewahrung, danach Verlängerung (49 € pro Jahr)"],
+        note: "Ohne Interview und ohne Psychologen. Es ist ein von UltraRem getrenntes Produkt und hilft dir zu erkennen, ob du weitergehen möchtest." },
+      { tag: "Stufe 2 · zertifizierter Weg", name: "I marinai del tempo", price: "3.800 €", sub: "der Preis des Diario wird abgezogen", img: "nave-marinai", lead: "Ein Psychologe hört dir zu und unterzeichnet die Zusammenfassung deines Projekts; du erhältst deine geklonte Stimme und einen ersten Avatar.", tone: "dark",
+        items: ["10 Stunden Interview mit dem Psychologen", "10 Stunden Sammlung mit dem Companion", "die Zusammenfassung deines Projekts, vom Psychologen unterzeichnet", "deine geklonte Stimme und ein einfacher Avatar"],
+        note: "Das erste Jahr der Aufbewahrung ist inbegriffen." },
+      { tag: "Stufe 3 · kompletter Weg", name: "I Capitani di lungo corso", price: "9.800 €", sub: "was du für die Marinai bezahlt hast, wird abgezogen", img: "nave-capitani", lead: "Der längste Weg: dreißig Stunden mit dem Psychologen, ein Avatar mit Studioaufnahmen und, wenn du möchtest, die dreidimensionale Form.", tone: "red",
+        items: ["30 Stunden Interview mit dem Psychologen", "30 Stunden Sammlung mit dem Companion", "die Zusammenfassung und die geklonte Stimme", "ein Avatar mit Studioaufnahmen", "dreidimensionale Ausarbeitung auf Wunsch"],
+        note: "Das erste Jahr der Aufbewahrung ist inbegriffen." },
+    ],
+    fee: "Ab dem zweiten Jahr fällt in den beiden zertifizierten Wegen eine Aufbewahrungsgebühr an (etwa 150 € für die Marinai, etwa 300 € für die Kapitäne, etwa 550 € mit der dreidimensionalen Ausarbeitung). Sie umfasst sichere Aufbewahrung, Zugriffssteuerung und eine angemessene interaktive Nutzung; darüber hinaus wird der Video-Avatar nach Verbrauch bezahlt. Richtwerte.",
+  },
+  research: {
+    kicker: "Forschung",
+    title: "Das digitale Selbst nach dem Tod, in Padua.",
+    cells: [
+      { k: "Ergebnis", v: "Ein dreijähriges Forschungsvorhaben ab dem 1. November 2027 zum Thema „Das postmortale digitale Selbst: Wohlbefinden, Würde und Identitätskontinuität beim Aufbau von auf künstlicher Intelligenz beruhenden Gedenk-Avataren“. Die Ergebnisse werden nach Abschluss der Forschung ergänzt." },
+      { k: "Wer sie leitet", v: "Universität Padua, Fachbereich FISPPA. Promotion in Human Rights, Society, and Multi-level Governance (Curriculum Inclusion and Psychological Growth), mit Prof. Ines Testoni als Bezugsprofessorin. UltraRem finanziert ein Stipendium." },
+      { k: "Wem die Ergebnisse gehören", v: "Sie werden in der Vereinbarung mit der Universität festgelegt, die noch zu unterzeichnen ist." },
+    ],
+    note: "Die Forschung wird von der kommerziellen Tätigkeit getrennt gehalten: Die Teilnahme an einer Studie erfordert eine gesonderte Einwilligung und ist immer freiwillig (Art. 25).",
+  },
+  who: {
+    kicker: "Wer dahintersteht",
+    title: "Hinter UltraRem stehen Menschen, die schon etwas anderes aufgebaut haben.",
+    intro: "Ein Dienst, der die Erinnerung eines Menschen aufbewahrt, wird auch an denen gemessen, die ihn bauen. Alberto Augusti, Geschäftsführer, und Bruno Legger, Leiter Verwaltung, arbeiten täglich für die Gesellschaft. Weitere Founder ohne operative Rolle bringen die Erfahrung großer Informationssysteme mit.",
+    founders: [
+      { ini: "AA", name: "Alberto Augusti", role: "Alleinvertretungsberechtigter Geschäftsführer · operativ", text: "Unternehmer aus Genua, Abschluss in Internationalen und Diplomatischen Wissenschaften, mit langjähriger Unternehmenserfahrung. Die Idee zu UltraRem stammt von ihm; heute führt er die Gesellschaft als Alleinvertretungsberechtigter Geschäftsführer und legt Richtung und Grundentscheidungen fest.", col: "#c8102e" },
+      { ini: "BL", name: "Bruno Massimo Legger", role: "Leiter Verwaltung · operativ", text: "Dreißig Jahre Unternehmensführung in Kosmetik, Mode und Versorgungsunternehmen (von Shiseido bis AEM). Bei UltraRem kümmert er sich um die Verwaltung und hält die Gesellschaft gemeinsam mit Alberto Tag für Tag am Laufen.", col: "#3d7a6b" },
+    ],
+    science: [
+      { ini: "IT", name: "Prof. Ines Testoni", role: "Universität Padua · die Forschung", text: "Sie leitet den Master in Death Studies & The End of Life, den ersten italienischen Universitätsmaster zum Lebensende. UltraRem hat sich förmlich verpflichtet, eine dreijährige Promotion zum postmortalen digitalen Selbst zu finanzieren (Beginn November 2027), für die sie die Bezugsprofessorin ist.", col: "#111111" },
+      { ini: "MG", name: "Dr. Michele Galgani", role: "Psychologe und Psychotherapeut · das Netzwerk", text: "Er baut das Team auf, das dir zuhören wird: eine landesweite Auswahl von zwanzig in der Berufskammer eingetragenen Psychologen und Psychotherapeuten, 48 Stunden Schulung zum Interviewprotokoll und Supervision der ersten Fälle.", col: "#3d7a6b" },
+    ],
+    method: {
+      k: "Die Methode",
+      t: "Ein Modell, kein Programm.",
+      p1: "Die Maschine sammelt jeden Tag mehr, als ein Interviewzyklus je könnte. Der Psychologe gibt diesem Material Sinn, trennt, was Identität ist, von dem, was Rauschen ist, und bestätigt es mit einem unterzeichneten Protokoll (Art. 7). Keiner von beiden allein erzeugt eine authentische Identität.",
+      p2: "Die Technologie stammt von QBT, dem Technologielieferanten. Der Wert liegt in der Qualität der Daten und in der Verantwortung der Aufbewahrung.",
+    },
+    socrem: "Mit So.Crem Genova (Genuesische Feuerbestattungsgesellschaft) wird eine Absichtserklärung ausgearbeitet für eine Tagung über digitale Kontinuität nach dem Tod, die Schulung von Fachkräften, die Unterstützung von Kursen für Sterbebegleiter (Doulas) und einen Universitätsmaster zur Trauer.",
+  },
+  ui: {
+    talk: "Mit dem Avatar sprechen",
+    avatarTitle: "Fragen Sie mich, was UltraRem ist.",
+    avatarText: "In zwei Minuten erkläre ich, was UltraRem ist, und beantworte Ihre Fragen. Ich sage gleich, dass ich eine künstliche Intelligenz bin, und Sie können mich jederzeit stoppen.",
+    video: "Das Video ansehen",
+    videoTitle: "Warum wir angefangen haben.",
+    videoText: "Ein kurzer Film für alle, die ein paar Minuten haben und keine Lust zu lesen.",
+    caption: "Mailand, 1983.",
+    ladderTitle: "Baue deine digitale Identität auf, bevor es jemand anderes tut.",
+    ladderBtn: "Alle Wege",
+    learn: "Entdecken",
+    whoBtn: "Die Founder kennenlernen",
+    ctaTitle: "Beginne mit dem Diario di bordo.",
+    ctaText: "290 €, um dich mit dem Companion zu erzählen und zu erkennen, ob du weitergehen möchtest. Ohne Interview und ohne Eile.",
+    ctaA: "Das Diario di bordo entdecken",
+    ctaB: "Schreib uns",
+    ctaProject: "Das Projekt entdecken",
+    ricBtn: "Universität und Forschung",
+    whoText: "Wer die Gesellschaft leitet, die Founder und das wissenschaftliche Team mit der Universität Padua.",
+  },
+};

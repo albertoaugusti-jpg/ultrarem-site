@@ -1,0 +1,77 @@
+import type { HomeContent } from "./home";
+
+export const fr: HomeContent = {
+  cover: {
+    kicker: "Identité numérique et mémoire",
+    what: "UltraRem construit avec vous votre identité numérique : votre histoire recueillie avec l'accompagnement d'un psychologue, le consentement écrit à chaque étape et une conservation déclarée.",
+    title: "Qui j'étais, qui je suis et qui je serai.",
+    lead: "La dimension numérique de chacun existera de toute façon. La question est de savoir qui la construit, et si la personne elle-même a le droit de le faire.",
+  },
+  ladder: {
+    kicker: "Les parcours",
+    title: "Une échelle de trois échelons, avec les noms de la navigation.",
+    intro: "La tradition maritime génoise dont le projet est issu a donné les noms. Chaque échelon mène au suivant : ce que vous avez déjà payé est déduit du prix du suivant.",
+    steps: [
+      { tag: "Échelon 1 · ouvert à tous", name: "Diario di bordo", price: "290 €", sub: "pack de départ", img: "nave-diario", lead: "Commencez à vous raconter avec le companion, quand vous voulez et sans psychologue. À la fin vous avez un cahier de votre narration et vous pouvez décider d'aller plus loin.", tone: "light",
+        items: ["10 heures de récit avec le companion", "un cahier de votre narration en PDF", "un clone vocal qui répond uniquement avec ce que contient le journal, tant que vous êtes en vie", "12 mois de conservation, puis renouvellement (49 € par an)"],
+        note: "Sans entretien et sans psychologue. C'est un produit distinct d'UltraRem, qui sert à comprendre si vous voulez aller plus loin." },
+      { tag: "Échelon 2 · parcours certifié", name: "I marinai del tempo", price: "3 800 €", sub: "le prix du Diario est déduit", img: "nave-marinai", lead: "Un psychologue vous écoute et signe la synthèse de votre projet ; vous avez votre voix clonée et un premier avatar.", tone: "dark",
+        items: ["10 heures d'entretien avec le psychologue", "10 heures de collecte avec le companion", "la synthèse de votre projet, signée par le psychologue", "votre voix clonée et un avatar simple"],
+        note: "La première année de conservation est comprise." },
+      { tag: "Échelon 3 · parcours complet", name: "I Capitani di lungo corso", price: "9 800 €", sub: "ce que vous avez payé pour les Marinai est déduit", img: "nave-capitani", lead: "Le parcours le plus long : trente heures avec le psychologue, un avatar réalisé avec des prises de vue en studio et, si vous le souhaitez, la forme tridimensionnelle.", tone: "red",
+        items: ["30 heures d'entretien avec le psychologue", "30 heures de collecte avec le companion", "la synthèse et la voix clonée", "un avatar réalisé avec des prises de vue en studio", "modélisation tridimensionnelle sur demande"],
+        note: "La première année de conservation est comprise." },
+    ],
+    fee: "À partir de la deuxième année, dans les deux parcours certifiés, des frais de conservation s'appliquent (environ 150 € pour les Marinai, environ 300 € pour les Capitaines, environ 550 € avec la modélisation tridimensionnelle). Ils comprennent la conservation sécurisée, la gouvernance des accès et un usage interactif raisonnable ; au-delà, l'avatar vidéo se paie à la consommation. Montants indicatifs.",
+  },
+  research: {
+    kicker: "Recherche",
+    title: "Le soi numérique posthume, à Padoue.",
+    cells: [
+      { k: "Résultat", v: "Une recherche de trois ans, à partir du 1er novembre 2027, sur le thème « Le soi numérique posthume : bien-être, dignité et continuité identitaire dans la construction d'avatars mémoriaux fondés sur l'intelligence artificielle ». Les résultats seront ajoutés une fois la recherche terminée." },
+      { k: "Qui la conduit", v: "Université de Padoue, département FISPPA. Doctorat en Human Rights, Society, and Multi-level Governance (parcours Inclusion and Psychological Growth), avec la Prof. Ines Testoni comme enseignante de référence. UltraRem finance une bourse." },
+      { k: "À qui appartiennent les résultats", v: "Ils seront définis dans la convention avec l'Université, en attente de signature." },
+    ],
+    note: "La recherche est tenue distincte de l'activité commerciale : participer à une étude requiert un consentement séparé et reste toujours facultatif (art. 25).",
+  },
+  who: {
+    kicker: "Qui est derrière",
+    title: "Derrière UltraRem, des personnes qui ont déjà construit autre chose.",
+    intro: "Un service qui conserve la mémoire d'une personne se juge aussi à ceux qui le construisent. Alberto Augusti, administrateur unique, et Bruno Legger, responsable administratif, travaillent chaque jour à la société. D'autres Founders, sans rôle opérationnel, apportent l'expérience des grands systèmes d'information.",
+    founders: [
+      { ini: "AA", name: "Alberto Augusti", role: "Administrateur unique · opérationnel", text: "Entrepreneur génois, diplômé en sciences internationales et diplomatiques, avec des années d'entreprises derrière lui. L'idée d'UltraRem est la sienne et il dirige aujourd'hui la société en tant qu'Administrateur unique, en fixant l'orientation et les choix de fond.", col: "#c8102e" },
+      { ini: "BL", name: "Bruno Massimo Legger", role: "Responsable administratif · opérationnel", text: "Trente ans de gestion d'entreprise entre cosmétique, mode et services publics (de Shiseido à AEM). Chez UltraRem il s'occupe de l'administration et, avec Alberto, fait tenir la société au jour le jour.", col: "#3d7a6b" },
+    ],
+    science: [
+      { ini: "IT", name: "Prof. Ines Testoni", role: "Université de Padoue · la recherche", text: "Elle dirige le master Death Studies & The End of Life, le premier master universitaire italien consacré à la fin de vie. UltraRem a formalisé son engagement à financer un doctorat de trois ans sur le soi numérique posthume (début en novembre 2027), dont elle est l'enseignante de référence.", col: "#111111" },
+      { ini: "MG", name: "Dr Michele Galgani", role: "Psychologue et psychothérapeute · le réseau", text: "Il constitue l'équipe qui vous écoutera : une sélection nationale de vingt psychologues et psychothérapeutes inscrits à l'Ordre, 48 heures de formation au protocole d'entretien et la supervision des premiers cas.", col: "#3d7a6b" },
+    ],
+    method: {
+      k: "La méthode",
+      t: "Un modèle, pas un programme.",
+      p1: "La machine recueille, chaque jour, bien plus qu'un cycle d'entretiens ne pourrait jamais le faire. Le psychologue donne du sens à cette matière, distingue ce qui est identité de ce qui est bruit et la valide par un procès-verbal signé (art. 7). Aucun des deux, seul, ne produit une identité authentique.",
+      p2: "La technologie est celle de QBT, fournisseur technologique. La valeur tient à la qualité de la donnée et à la responsabilité de la conservation.",
+    },
+    socrem: "Une lettre d'intention est en cours de définition avec So.Crem Genova (Société génoise de crémation) pour un colloque sur la continuité numérique après la mort, la formation des opérateurs, le soutien aux cours de doula de fin de vie et un master universitaire sur le deuil.",
+  },
+  ui: {
+    talk: "Parler à l'avatar",
+    avatarTitle: "Demandez-moi ce qu'est UltraRem.",
+    avatarText: "En deux minutes, je vous explique ce qu'est UltraRem et je réponds à vos questions. Je vous dis tout de suite que je suis une intelligence artificielle, et vous pouvez m'arrêter quand vous voulez.",
+    video: "Regarder la vidéo",
+    videoTitle: "Pourquoi nous avons commencé.",
+    videoText: "Un court film, pour ceux qui ont quelques minutes et pas envie de lire.",
+    caption: "Milan, 1983.",
+    ladderTitle: "Construisez votre identité numérique avant que quelqu'un d'autre ne le fasse.",
+    ladderBtn: "Tous les parcours",
+    learn: "Découvrir",
+    whoBtn: "Rencontrer les Founders",
+    ctaTitle: "Commencez par le Diario di bordo.",
+    ctaText: "290 € pour vous raconter avec le companion et comprendre si vous voulez aller plus loin. Sans entretien et sans précipitation.",
+    ctaA: "Découvrir le Diario di bordo",
+    ctaB: "Écrivez-nous",
+    ctaProject: "Découvrir le projet",
+    ricBtn: "Université et recherche",
+    whoText: "Ceux qui dirigent la société, les Founders et l'équipe scientifique avec l'Université de Padoue.",
+  },
+};
