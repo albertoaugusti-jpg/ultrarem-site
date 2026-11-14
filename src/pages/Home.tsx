@@ -95,7 +95,7 @@ export default function Home() {
 
       <Zone k={who.kicker} title={who.title} sub={ui.whoText} a={{ href: "/fondatori", label: ui.whoBtn }} b={{ href: "/ricerca", label: ui.ricBtn }} bg={PALE}>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
-          {[...who.founders, ...who.science].map(f => (
+          {[...who.founders, ...who.science].filter(f => !f.name.includes("Ines")).map(f => (
             <div key={f.name} title={f.name} style={{ width: 72, height: 72, borderRadius: "50%", overflow: "hidden", position: "relative", background: "#fff" }}>
               <img src={personaSrc(f.ini)} alt={f.name} style={{ position: "absolute", width: 72, height: 72, left: 0, top: 0, maxWidth: "none" }} />
             </div>
