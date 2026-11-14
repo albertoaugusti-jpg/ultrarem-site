@@ -14,7 +14,7 @@ export const it = {
     bookArrow: "Prenota Demo →",
   },
   footer: {
-    tagline: "Preserviamo ciò che sei, per chi ami, finché esiste il tempo.",
+    tagline: "La tua storia, raccontata da te, da ascoltare e interrogare.",
     navigate: "Naviga",
     contact: "Contatti",
     getInTouch: "Contattaci",
