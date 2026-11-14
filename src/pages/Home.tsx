@@ -83,8 +83,21 @@ export default function Home() {
             <Link key={s.name} href={`/percorsi/${SLUGS[i]}`} style={{ ...block, border: `2px solid ${s.tone === "red" ? RED : INK}`, background: s.tone === "red" ? RED : s.tone === "dark" ? INK : "#fff", color: s.tone === "light" ? INK : "#fff", padding: 24, display: "flex", flexDirection: "column", gap: 10 }}>
               <Photo name={s.img} ar="3 / 2" />
               <div style={kicker(s.tone === "light" ? GREY : "#fff")}>{s.tag}</div>
-              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1, minHeight: 62 }}>{s.name}</div>
-              <div style={{ fontFamily: NARROW, fontWeight: 700, fontSize: 15, letterSpacing: "0.04em", color: s.tone === "light" ? RED : "#fff" }}>{s.price}</div>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 16 }}>
+                <div style={{ flex: "1 1 160px", minWidth: 0 }}>
+                  <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1, minHeight: 62 }}>{s.name}</div>
+                  <div style={{ marginTop: 10, fontFamily: NARROW, fontWeight: 700, fontSize: 15, letterSpacing: "0.04em", color: s.tone === "light" ? RED : "#fff" }}>{s.price}</div>
+                </div>
+                <img
+                  src={`/img/rivista/${["guida-diario.png", "guida-marinai.png", "guida-capitani.png"][i]}`}
+                  alt=""
+                  aria-hidden="true"
+                  width={110}
+                  height={110}
+                  loading="lazy"
+                  style={{ display: "block", width: 110, height: 110, flex: "0 0 110px", objectFit: "contain", marginLeft: "auto" }}
+                />
+              </div>
               <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.55, flexGrow: 1 }}>{s.lead}</p>
               <span style={{ fontFamily: NARROW, fontWeight: 700, fontSize: 13, letterSpacing: "0.14em", textTransform: "uppercase" }}>{ui.learn} →</span>
             </Link>
