@@ -24,8 +24,8 @@ function Video({ src }: { src: string }) {
 const questions = [
   "Che cos'è UltraRem, in parole semplici?",
   "Chi è lo psicologo che mi ascolta, e che cosa fa esattamente?",
-  "Che cosa succede ai miei racconti quando non ci sono più?",
-  "Chi potrà parlare con il mio avatar, e chi no?",
+  "Come rileggo e approvo la mia autobiografia?",
+  "Che differenza c’è tra il Diario personale e i percorsi certificati?",
   "Quanto costa, e che cosa ottengo in ciascun percorso?",
   "Che differenza c'è tra ciò che ho detto io e ciò che il sistema elabora?",
 ];
@@ -37,23 +37,23 @@ const carta = [
   { a: "Art. 4", t: "Neutralità", d: "Operiamo senza prendere posizione su credi e orientamenti: la tua visione della vita e della morte è la tua." },
   { a: "Art. 7", t: "Il verbale firmato", d: "La sintesi del tuo progetto la firma lo psicologo che ti ha ascoltato: una persona con un nome, che risponde di ciò che scrive." },
   { a: "Art. 14", t: "Trasparenza sull'IA", d: "Chi parla con un avatar sa sempre che sta parlando con un sistema di intelligenza artificiale." },
-  { a: "Art. 15", t: "Testimonianza o elaborazione", d: "Ogni risposta è etichettata: Testimonianza se riporta ciò che la persona ha detto, Elaborazione se nasce dal sistema." },
+  { a: "Art. 15", t: "Testimonianza o elaborazione", d: "Il sistema attinge al racconto autorizzato, segnala le informazioni mancanti e dichiara quando collega o deduce. La voce sintetica è riconoscibile come tale." },
   { a: "Art. 17", t: "Libertà di non dialogare", d: "Nessun familiare è obbligato a parlare con l'avatar, e nessuno riceve inviti o messaggi non richiesti." },
   { a: "Art. 18", t: "Memoria condivisa", d: "Quando un ricordo riguarda altre persone, serve il loro consenso specifico." },
-  { a: "Art. 20", t: "Novanta giorni di silenzio", d: "Dopo la morte l'avatar non parla ai familiari prima di novanta giorni, per lasciare spazio al dolore." },
+  { a: "Art. 20", t: "Disponibile già in vita", d: "L’autobiografia certificata viene rilasciata già in vita. L’autore sceglie chi può consultarla e definisce le regole di accesso, revoca e sospensione." },
   { a: "Art. 25", t: "La ricerca resta separata", d: "Partecipare a uno studio richiede un consenso a parte ed è sempre facoltativo." },
-  { a: "Art. 26", t: "Percorsi per chi non può permetterseli", d: "Ogni anno, con criteri trasparenti, offriamo percorsi a chi non potrebbe permetterseli." },
+  { a: "Art. 26", t: "Percorsi per chi non può permetterseli", d: "Le condizioni di eventuali percorsi agevolati saranno comunicate quando definite." },
 ];
 
 export default function IlProgetto() {
   return (
     <Page>
-      <Hero k="Il Progetto" title={<>Chi ero, chi sono <em style={{ color: RED }}>e chi sarò.</em></>} lead="UltraRem non è un archivio e non è un gioco con l'intelligenza artificiale. È un modo serio, accompagnato da professionisti, di decidere mentre sei vivo e lucido che cosa di te debba restare, e a chi." />
+      <Hero k="Il Progetto" title={<>La tua storia, <em style={{ color: RED }}>raccontata da te.</em></>} lead="UltraRem raccoglie ricordi, esperienze e pensieri e li trasforma in un’autobiografia interattiva. Un racconto che costruisci e approvi, da consultare già oggi e affidare alle persone che scegli nei percorsi certificati." />
 
       <Sec id="avatar" k="Conversazione" title="Parla con l'avatar di Alberto.">
         <Prose>
-          <p>Alberto Augusti, fondatore di UltraRem, ha un avatar che ti accompagna dentro il progetto: ti spiega come funziona, che cosa facciamo e che cosa non faremo mai, e risponde a quello che gli chiedi, nell'ordine e con il ritmo che preferisci.</p>
-          <p>Prima di parlare ti diciamo che stai interagendo con un sistema di intelligenza artificiale (art. 14 della Carta dei Valori). Se in qualunque momento non vuoi più dialogare, ti basta smettere: nessuno ti scriverà per riprendere la conversazione e nessuno ti chiederà perché (art. 17).</p>
+          <p>L’avatar di Alberto Augusti, fondatore di UltraRem, presenta il progetto e risponde alle tue domande. È una dimostrazione dell’autobiografia interattiva nei percorsi certificati; il Diario personale ha invece una voce propria e nessun avatar.</p>
+          <p>Prima di parlare sai che stai interagendo con un sistema di intelligenza artificiale e che la voce è sintetica. Puoi interrompere quando vuoi, senza inviti o messaggi per riprendere la conversazione.</p>
         </Prose>
         <div style={{ margin: "26px 0" }}>
           {AVATAR_URL
@@ -71,62 +71,62 @@ export default function IlProgetto() {
 
       <Sec id="video" k="Racconto" title="Il video." bg={PALE}>
         <Prose>
-          <p>Un filmato breve, pensato per chi ha qualche minuto e nessuna voglia di leggere. Non spiega la tecnologia. Racconta quello che resta di noi quando smettiamo di parlare, e perché secondo noi merita di essere detto bene, mentre siamo ancora in tempo.</p>
+          <p>Un filmato breve sul piacere di raccontarsi e sulle storie che vale la pena mettere in ordine. Per chi ha qualche minuto e nessuna voglia di leggere: anche a bordo c’è posto per entrambi.</p>
         </Prose>
         <div style={{ margin: "26px 0 0" }}>
           {VIDEO_URL ? <Video src={VIDEO_URL} /> : <Slot img="cultura" text="Il video sarà online a breve" />}
         </div>
       </Sec>
 
-      <Sec k="Perché esiste" title="La tua dimensione digitale esisterà comunque.">
+      <Sec k="Perché esiste" title="Raccontarsi è già un viaggio.">
         <Cols gap={40}>
           <Prose>
-            <p>Ogni traccia che lasciamo online, ogni messaggio, ogni fotografia, ogni registrazione, concorre a formare una versione di noi. Nessuno la sta costruendo con cura. Viene composta da sistemi che deducono, non da persone che ascoltano, e il risultato somiglia a chi eravamo come una fotografia sfocata somiglia a un volto.</p>
-            <p>Se quella versione esisterà comunque, ci sembra giusto che a costruirla sia chi ne ha il diritto (la persona stessa), con il tempo e con l'aiuto di chi sa fare le domande. È da qui che parte UltraRem, e da questa premessa discendono tutte le scelte che trovi in queste pagine: i professionisti, i tempi lunghi, il verbale firmato, il consenso, la Carta.</p>
-            <p>Non promettiamo di far tornare nessuno. Promettiamo di custodire ciò che una persona ha scelto di lasciare, nel modo in cui l'ha scelto, e di non aggiungere niente che lei non abbia detto.</p>
+            <p>Le scelte, le persone incontrate, il lavoro, gli aneddoti che tornano a tavola: una vita è fatta di storie grandi e piccole. Raccontarle aiuta a ritrovarne il filo e a riconoscere ciò che conta per te.</p>
+            <p>UltraRem ti offre il tempo e gli strumenti per farlo. Nei percorsi certificati uno psicologo accompagna la narrazione e redige la sintesi; tu rileggi, correggi e approvi il racconto. L’autobiografia si apre poi alle domande.</p>
+            <p>Puoi cominciare dal Diario di bordo: uno spazio personale riservato ai maggiorenni, consultabile soltanto dal titolare. Nei percorsi certificati scegli anche le persone a cui affidare l’autobiografia.</p>
           </Prose>
           <div style={{ flex: "1 1 320px", maxWidth: 440 }}><Photo name="riempitivo" ar="4 / 5" pos="center" /></div>
         </Cols>
       </Sec>
 
-      <Sec k="Il metodo" title="Una macchina che raccoglie, una persona che dà senso." bg={PALE}>
+      <Sec k="Il metodo" title="Racconti, rileggi, approvi." bg={PALE}>
         <Cols gap={20}>
           <Card k="1" t="Raccogliere">
-            <p style={{ margin: 0 }}>Un companion digitale ti ascolta ogni volta che vuoi, di giorno o di notte, e raccoglie molto più di quanto un ciclo di interviste potrebbe mai fare: i dettagli, i ritorni, le cose che dici di sfuggita.</p>
+            <p style={{ margin: 0 }}>L’assistente digitale guida la raccolta dei tuoi ricordi. Nei percorsi certificati il companion affianca le interviste con lo psicologo; nel Diario personale raccogli senza il percorso professionale.</p>
           </Card>
           <Card k="2" t="Dare senso">
-            <p style={{ margin: 0 }}>Uno psicologo iscritto all'Albo ti intervista, legge ciò che è emerso, distingue ciò che è identità da ciò che è rumore e ti restituisce il quadro. La macchina non sa farlo, e per questo non la lasciamo sola.</p>
+            <p style={{ margin: 0 }}>Nei percorsi certificati lo psicologo conduce le interviste, ordina il materiale e redige una sintesi professionale. Tu la rileggi, correggi ciò che desideri e decidi quali racconti includere.</p>
           </Card>
           <Card k="3" t="Convalidare" dark>
-            <p style={{ margin: 0 }}>Lo psicologo firma un verbale che dice che cosa è stato raccolto e come va letto (art. 7). Solo ciò che passa da quella firma entra nel tuo archivio come tuo.</p>
+            <p style={{ margin: 0 }}>La persona approva l’autobiografia e il professionista valida il racconto. Alla conclusione il companion viene rimosso: resta l’autobiografia interattiva, con accessi regolati dalla volontà dell’autore.</p>
           </Card>
         </Cols>
-        <p style={{ margin: "22px 0 0", maxWidth: 760 }}>Nessuno dei due, da solo, produce un'identità autentica. La tecnologia è di QBT, nostro fornitore tecnologico; il valore sta nella qualità del dato e nella responsabilità della custodia, che sono nostre.</p>
+        <p style={{ margin: "22px 0 0", maxWidth: 760 }}>Il risultato dei percorsi certificati è un’autobiografia approvata da chi si racconta. La tecnologia è di QBT, nostro fornitore tecnologico; metodo, qualità del racconto e responsabilità della custodia fanno capo a UltraRem.</p>
       </Sec>
 
-      <Sec k="Il corpus" title="Che cosa mettiamo, davvero, in un'identità.">
+      <Sec k="Il corpus" title="La materia della tua autobiografia.">
         <Prose>
-          <p>Il nucleo di ogni progetto è un corpus, cioè un insieme ordinato di racconti, registrazioni della voce, lettere, riflessioni e risposte a domande che di solito nessuno fa. Non è una biografia: una biografia ordina i fatti, un corpus conserva il modo. Il modo in cui ragioni, quello che ti fa ridere, i valori che non hai mai scritto e che governano ogni tua scelta, le esitazioni, le cose che dici sempre.</p>
-          <p>Per questo la raccolta richiede tempo (decine di ore, nei percorsi più completi) e per questo non si improvvisa. Un avatar costruito in un pomeriggio dice quello che hai detto in un pomeriggio.</p>
+          <p>Il corpus è il materiale da cui prende forma l’autobiografia: racconti, registrazioni, ricordi, riflessioni e parole riviste dalla persona. Nei percorsi certificati il professionista lo ordina e lo restituisce all’autore per la sua approvazione.</p>
+          <p>Raccolta e consultazione sono momenti diversi. Prima aggiungi i tuoi racconti; poi puoi ritrovarli facendo domande, già oggi. Il Diario resta personale; l’autobiografia certificata può essere condivisa secondo la volontà dell’autore.</p>
         </Prose>
         <Quote by="Dall'approfondimento «Il corpus siamo noi»">Prima di essere memoria è corpo, prima di essere racconto è vita che respira.</Quote>
       </Sec>
 
-      <Sec k="Onestà" title="Testimonianza oppure elaborazione." dark>
+      <Sec k="Onestà" title="Fedeltà al racconto e trasparenza." dark>
         <Cols gap={40}>
           <Prose>
-            <p>Un avatar fa due cose molto diverse, e chi lo ascolta ha diritto di sapere quale delle due sta facendo in ogni momento. Può riportare ciò che la persona ha effettivamente detto, e allora la risposta porta l'etichetta <b>Testimonianza</b>. Può invece rielaborare, collegare, rispondere a una domanda che la persona non ha mai ricevuto, e allora porta l'etichetta <b>Elaborazione</b> (art. 15).</p>
-            <p>È una distinzione scomoda, perché toglie al sistema la possibilità di sembrare più fedele di quanto sia. Ma è il motivo per cui ti puoi fidare della prima e valutare con la giusta distanza la seconda.</p>
+            <p>L’autobiografia risponde attingendo ai contenuti approvati. Quando riporta ciò che è stato raccontato restituisce una <b>Testimonianza</b>; quando collega o deduce lo dichiara come <b>Elaborazione</b>, entro il materiale autorizzato. Se manca un’informazione, lo segnala.</p>
+            <p>Il Diario segue una regola contemplativa: restituisce racconti e idee ricevuti, senza proporre nuovi argomenti, creare una relazione o prolungare la consultazione. La sua voce è selezionabile e propria del Diario. Nei percorsi certificati la voce dell’avatar è dichiarata come sintetica.</p>
           </Prose>
           <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 12, justifyContent: "center" }}>
             <div style={{ border: "2px solid #ff3b52", padding: 16 }}><div style={kicker("#ff3b52")}>Testimonianza</div><div style={{ fontSize: 16, marginTop: 4 }}>Ciò che la persona ha detto, con le sue parole.</div></div>
-            <div style={{ border: "2px solid #aaa", padding: 16 }}><div style={kicker("#aaa")}>Elaborazione</div><div style={{ fontSize: 16, marginTop: 4 }}>Ciò che il sistema ricostruisce o collega.</div></div>
+            <div style={{ border: "2px solid #aaa", padding: 16 }}><div style={kicker("#aaa")}>Elaborazione</div><div style={{ fontSize: 16, marginTop: 4 }}>Collegamenti o deduzioni dichiarati, entro i contenuti autorizzati.</div></div>
           </div>
         </Cols>
       </Sec>
 
       <Sec k="La Carta dei Valori" title="Ciò che promettiamo, e che puoi pretendere." bg={PALE}>
-        <p style={{ margin: "0 0 24px", maxWidth: 760 }}>La Carta (versione 2, 30 ottobre 2026) è il documento a cui ci obblighiamo. Qui trovi gli articoli che incidono di più sul tuo rapporto con noi, in parole semplici.</p>
+        <p style={{ margin: "0 0 24px", maxWidth: 760 }}>I principi della Carta dei Valori guidano la raccolta, l’approvazione e la custodia del racconto. Qui trovi una sintesi aggiornata al progetto, in parole semplici.</p>
         <Cols gap={0}>
           {carta.map((c, i) => (
             <div key={c.a} style={{ flex: "1 1 320px", padding: "18px 22px", borderTop: `1px solid ${INK}`, borderLeft: i % 2 ? `1px solid ${INK}` : "none", display: "flex", flexDirection: "column", gap: 4, background: "#fff" }}>
@@ -138,10 +138,10 @@ export default function IlProgetto() {
         </Cols>
       </Sec>
 
-      <Sec k="Che cosa non siamo" title="Un confine che teniamo con cura.">
+      <Sec k="Le tutele" title="Il racconto resta nelle tue mani.">
         <Prose>
-          <p>Non siamo una banca di dati e non vendiamo profili. Non siamo una terapia, anche se lavoriamo con psicologi: l'intervista serve a costruire un progetto, non a curare. Non siamo una promessa di immortalità. E non siamo un sistema che parla ai tuoi cari senza che tu l'abbia deciso.</p>
-          <p>Sappiamo che chi si occupa di morte e di memoria ha il dovere di dire con chiarezza dove finisce. Per questo preferiamo scrivere ciò che non faremo, piuttosto che ciò che sapremmo fare.</p>
+          <p>Il percorso è autobiografico: gli incontri con lo psicologo servono a raccogliere e validare il racconto, non costituiscono una terapia. L’autore governa i contenuti e, nei percorsi certificati, sceglie chi può accedervi.</p>
+          <p>Consenso, rispetto delle altre persone e possibilità di revoca o sospensione guidano la custodia. Nei percorsi certificati il companion di raccolta viene rimosso alla conclusione; resta l’autobiografia che la persona ha approvato.</p>
         </Prose>
       </Sec>
 
