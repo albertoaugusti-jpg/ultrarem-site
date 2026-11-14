@@ -3,8 +3,9 @@ import type { HomeContent } from "./home";
 export const fr: HomeContent = {
   "cover": {
     "kicker": "L’autobiographie interactive",
-    "title": "Votre histoire, racontée par vous.",
-    "lead": "Une autobiographie à écouter et à interroger.",
+    "title": "Qui j’étais, qui je suis ",
+    "titleAccent": "et qui je serai.",
+    "lead": "Votre histoire, votre voix, votre regard sur le monde. Racontez-vous aujourd’hui, pour vous faire connaître et garder votre souvenir.",
     "what": "UltraRem recueille souvenirs, expériences et pensées pour en faire une autobiographie interactive. Un récit que vous construisez et approuvez, à consulter dès aujourd’hui et, dans les parcours certifiés, à confier aux personnes de votre choix."
   },
   "ladder": {

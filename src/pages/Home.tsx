@@ -51,7 +51,7 @@ export default function Home() {
           <div style={{ ...grid(420, 40), alignItems: "start" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
               <div style={kicker()}>{cover.kicker}</div>
-              <h1 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(40px,5.6vw,72px)", lineHeight: 1, letterSpacing: -2 }}>{cover.title}</h1>
+              <h1 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(40px,5.6vw,72px)", lineHeight: 1, letterSpacing: -2 }}>{cover.title}<span style={{ color: "#c4522a", fontStyle: "italic", fontWeight: 500 }}>{cover.titleAccent}</span></h1>
               <p style={{ margin: 0, fontStyle: "italic", fontSize: 22 }}>{cover.lead}</p>
               <p style={{ margin: 0, fontFamily: NARROW, fontWeight: 700, fontSize: 17, letterSpacing: "0.04em", borderLeft: `4px solid ${RED}`, paddingLeft: 14 }}>{cover.what}</p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 4 }}>

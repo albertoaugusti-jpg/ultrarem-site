@@ -1,8 +1,9 @@
 // Contenuti editoriali allineati al progetto V13 del 14 novembre 2026.
 export const cover = {
   "kicker": "L’autobiografia interattiva",
-  "title": "La tua storia, raccontata da te.",
-  "lead": "Un’autobiografia da ascoltare e interrogare.",
+  "title": "Chi ero, chi sono ",
+    "titleAccent": "e chi sarò.",
+  "lead": "La tua storia, la tua voce, il tuo modo di vedere il mondo. Raccontati oggi, per farti conoscere e ricordare.",
   "what": "UltraRem raccoglie ricordi, esperienze e pensieri e li trasforma in un’autobiografia interattiva. Un racconto che costruisci e approvi, da consultare già oggi e affidare alle persone che scegli nei percorsi certificati."
 };
 
