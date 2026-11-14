@@ -1,187 +1,576 @@
 import type { Lang } from "@/lib/i18n";
 
-// Testi della pagina Come funziona (le schede dei tre gradini stanno in home*.ts).
-export interface ComeContent {
-  k: string; titleA: string; titleB: string;
-  stepsK: string; stepsT: string;
-  tripK: string; tripT: string;
-  flows: { tag: string; name: string; lead: string; steps: { t: string; p: string }[] }[];
-  whyK: string; whyT: string; why1: string; why2: string;
-  faqK: string; faqT: string;
-  faq: { q: string; a: string }[];
-  ctaT: string; ctaX: string; ctaL: string;
-}
-
-const it: ComeContent = {
-  k: "Come funziona", titleA: "Una scala di tre gradini, ", titleB: "con i nomi della navigazione.",
-  stepsK: "I tre gradini", stepsT: "Che cosa ottieni, e a che prezzo.",
-  tripK: "Il percorso", tripT: "Come funziona, passo per passo.",
-  flows: [
-    { tag: "Online, da solo", name: "Diario di bordo", lead: "Fai tutto dal sito, dal primo contatto al pagamento, senza bisogno di nessuno.", steps: [
-      { t: "Parli con l'avatar", p: "Arrivi sul sito e parli con l'avatar, che ti spiega come funziona il Diario di bordo." },
-      { t: "Ti registri", p: "Crei il tuo spazio personale dalla pagina dedicata." },
-      { t: "Paghi online", p: "Il pagamento si fa online, in pochi passaggi." },
-      { t: "Parli con il tuo companion", p: "Il companion si attiva e parli quando vuoi, al tuo ritmo." },
-      { t: "Hai il tuo quaderno", p: "Alla fine ricevi il tuo quaderno. Puoi fermarti qui, continuare con una ricarica o passare ai percorsi con lo psicologo." },
-    ] },
-    { tag: "Con lo psicologo", name: "I marinai del tempo", lead: "Un percorso seguito da una persona, dal primo contatto al deposito del tuo archivio.", steps: [
-      { t: "Ci contatti", p: "Ci scrivi o ci telefoni e ti rispondiamo noi." },
-      { t: "Ti proponiamo uno psicologo", p: "Ti presentiamo lo psicologo che ti seguirà." },
-      { t: "Prima intervista", p: "Incontri lo psicologo. Nello stesso incontro si fanno le riprese video." },
-      { t: "Configuriamo il tuo companion", p: "Prepariamo il tuo companion dedicato." },
-      { t: "Le interviste proseguono", p: "Gli incontri continuano e, tra uno e l'altro, parli con il tuo companion." },
-      { t: "Chiusura del corpus", p: "Lo psicologo scrive la sintesi di ciò che è emerso e tu la rivedi." },
-      { t: "Firma", p: "Quando la sintesi ti convince, la firmi." },
-      { t: "Deposito e copia cartacea", p: "Il corpus viene depositato sul server e ne conserviamo anche una copia cartacea." },
-    ] },
-    { tag: "Il percorso più ampio", name: "I Capitani di lungo corso", lead: "Gli stessi passi dei marinai del tempo, con più ore di lavoro.", steps: [
-      { t: "Più materiale, conservato con cura", p: "Oltre al racconto, possiamo conservare il materiale multimediale più complesso: registrazioni, pellicole, fotografie." },
-    ] },
-  ],
-  whyK: "Perché dura tanto", whyT: "Il tempo non è un costo, è il metodo.",
-  why1: "Trenta ore di intervista e trenta di raccolta possono sembrare tante. Sono quelle che ci servono per sapere come rispondi quando qualcuno ti interrompe, che cosa non dici mai, che cosa ripeti. Nessuna sintesi di un'ora riesce a restituire un carattere, e un avatar che non ha il carattere è un doppiatore, non una presenza.",
-  why2: "Per questo ogni gradino conduce al successivo, e quanto hai già pagato viene scalato. Non vogliamo che tu decida tutto subito, vogliamo che tu possa fermarti dove ti senti a casa.",
-  faqK: "Domande", faqT: "Le cose che ci chiedono sempre.",
-  faq: [
-    { q: "Posso fermarmi dopo il Diario di bordo?", a: "Sì, ed è per questo che esiste. Il Diario è un prodotto distinto da UltraRem e serve a capire se vuoi andare avanti. Se prosegui, quanto hai pagato viene scalato dal prezzo del gradino successivo." },
-    { q: "Chi ascolta quello che racconto?", a: "Nel Diario, solo il companion. Nei percorsi certificati, anche lo psicologo che ti segue, che risponde di ciò che scrive e lo firma con il suo nome." },
-    { q: "Chi può parlare con il mio avatar?", a: "Soltanto chi decidi tu. Nessuno è obbligato a dialogare (art. 17), nessuno riceve inviti non richiesti, e non è prevista alcuna pubblicità (art. 2)." },
-    { q: "L'avatar può dire cose che non ho detto?", a: "Può elaborare, ma deve dirlo: ogni risposta è etichettata come Testimonianza (ciò che hai detto) o Elaborazione (ciò che il sistema ricostruisce), art. 15. E parla sempre dichiarandosi un sistema di intelligenza artificiale (art. 14)." },
-    { q: "Quando i miei cari potranno usarlo?", a: "Non prima di novanta giorni dalla tua morte (art. 20). Il dolore ha i suoi tempi e l'avatar non deve occuparli." },
-    { q: "E se un mio ricordo riguarda altre persone?", a: "Serve il loro consenso specifico (art. 18). Senza quello, il ricordo resta fuori." },
-    { q: "Quanto costa tenere tutto?", a: "Nel Diario, 49 € l'anno dopo i primi dodici mesi. Nei percorsi certificati c'è un canone di custodia dal secondo anno (importi indicativi nella tabella qui sopra)." },
-    { q: "Posso partecipare a una ricerca?", a: "Se vuoi, con un consenso separato e sempre facoltativo (art. 25). Non influisce in alcun modo sul tuo percorso." },
-  ],
-  ctaT: "Non sei sicuro di quale gradino?", ctaX: "Parti dal Diario di bordo: se basta, te lo diciamo noi. Per qualsiasi dubbio, scrivici.", ctaL: "Scrivici",
+export const come = {
+  "it": {
+    "k": "Come funziona",
+    "titleA": "Una scala di tre gradini, ",
+    "titleB": "con i nomi della navigazione.",
+    "stepsK": "I tre gradini",
+    "stepsT": "Che cosa ottieni, e a che prezzo.",
+    "tripK": "Il percorso",
+    "tripT": "Come funziona, passo per passo.",
+    "flows": [
+      {
+        "tag": "Online, da solo",
+        "name": "Diario di bordo",
+        "lead": "Il tuo diario personale, da scrivere parlando e da ritrovare facendo domande. Lo consulti soltanto tu, in chat o con una voce propria scelta da te.",
+        "steps": [
+          {
+            "t": "Scopri il Diario",
+            "p": "Leggi come funziona o chiedici informazioni. È un servizio personale riservato ai maggiorenni."
+          },
+          {
+            "t": "Il tuo spazio personale",
+            "p": "Un utente, un diario: soltanto tu puoi consultarlo."
+          },
+          {
+            "t": "La creazione",
+            "p": "290 € comprendono dieci ore di raccolta, quaderno PDF e dodici mesi di conservazione."
+          },
+          {
+            "t": "Raccogli i tuoi racconti",
+            "p": "L’assistente digitale guida la raccolta di ricordi, pensieri e idee, senza psicologo. Altre dieci ore costano 200 €."
+          },
+          {
+            "t": "Ritrovali facendo domande",
+            "p": "La consultazione è distinta: 20 €/mese per un’ora vocale mensile e chat con un limite di utilizzo ampio. Il Diario usa una voce propria scelta da te."
+          }
+        ]
+      },
+      {
+        "tag": "Con lo psicologo",
+        "name": "I marinai del tempo",
+        "lead": "La tua autobiografia, riletta e approvata da te, con la guida dello psicologo. La consulti attraverso un avatar semplice e la condividi con chi scegli.",
+        "steps": [
+          {
+            "t": "Ci contatti",
+            "p": "Parliamo della tua storia e del percorso che desideri."
+          },
+          {
+            "t": "Incontri lo psicologo",
+            "p": "Ti presentiamo il professionista che guida il racconto."
+          },
+          {
+            "t": "Interviste e riprese",
+            "p": "Nei Marinai: dieci ore con lo psicologo e riprese essenziali. Nei Capitani: trenta ore e riprese in studio."
+          },
+          {
+            "t": "Il companion di raccolta",
+            "p": "Nei Marinai sono previste dieci ore di raccolta con il companion; nei Capitani trenta, per aggiungere ricordi tra gli incontri."
+          },
+          {
+            "t": "Il racconto prende forma",
+            "p": "Interviste e racconti confluiscono nel materiale su cui lavora lo psicologo."
+          },
+          {
+            "t": "Rileggi la sintesi",
+            "p": "Lo psicologo redige la sintesi professionale e te la restituisce."
+          },
+          {
+            "t": "Correggi e approvi",
+            "p": "Decidi quali contenuti autorizzare e a chi dare accesso."
+          },
+          {
+            "t": "L’autobiografia interattiva",
+            "p": "Puoi consultarla già oggi. Il companion viene rimosso; l’avatar usa una voce dichiarata come sintetica."
+          }
+        ]
+      },
+      {
+        "tag": "Il percorso più ampio",
+        "name": "I Capitani di lungo corso",
+        "lead": "Un’autobiografia approvata da te, con più tempo per approfondire la tua storia, riprese in studio e avatar. Elaborazione tridimensionale su richiesta.",
+        "steps": [
+          {
+            "t": "Più tempo e riprese in studio",
+            "p": "Nei Capitani: trenta ore con lo psicologo, trenta di raccolta con il companion, sintesi professionale, riprese in studio e avatar. Elaborazione tridimensionale su richiesta."
+          }
+        ]
+      }
+    ],
+    "whyK": "Perché dura tanto",
+    "whyT": "Il tempo non è un costo, è il metodo.",
+    "why1": "Il tempo dà spazio ai ricordi, alle correzioni e ai dettagli che fanno tua una storia. Nei Marinai sono previste dieci ore con lo psicologo e dieci con il companion; nei Capitani trenta e trenta. Il risultato è il racconto che riconosci e approvi.",
+    "why2": "Tre modi di raccontarti, con i nomi della navigazione. Se passi dal Diario ai Marinai, vengono scalati i 290 € iniziali. Se passi dai Marinai ai Capitani, viene scalato il prezzo già pagato per i Marinai.",
+    "faqK": "Domande",
+    "faqT": "Le cose che ci chiedono sempre.",
+    "faq": [
+      {
+        "q": "Che cosa comprende la creazione del Diario a 290 €?",
+        "a": "I 290 € comprendono le prime dieci ore di raccolta, il quaderno PDF e dodici mesi di conservazione. La consultazione continuativa è separata: 20 €/mese."
+      },
+      {
+        "q": "Che differenza c’è tra raccolta e consultazione?",
+        "a": "La raccolta aggiunge racconti: le prime dieci ore sono incluse nella creazione, altre dieci costano 200 €. La consultazione permette di fare domande ai contenuti già raccolti: 20 €/mese per un’ora mensile di conversazione vocale e chat scritta con un limite di utilizzo ampio."
+      },
+      {
+        "q": "Chi può usare e consultare il Diario?",
+        "a": "Il servizio è riservato ai maggiorenni. Un utente, un diario: lo consulta soltanto il titolare, anche quando è stato regalato da qualcun altro."
+      },
+      {
+        "q": "Quale voce utilizza il Diario? C’è un avatar?",
+        "a": "Una voce propria del Diario, scelta dall’utente. Il Diario non prevede avatar né clonazione della voce del titolare."
+      },
+      {
+        "q": "Come risponde il Diario?",
+        "a": "Restituisce soltanto racconti, pensieri e idee ricevuti; se un’informazione manca, lo dichiara. Durante la consultazione non propone nuovi argomenti, non cerca di creare una relazione e non prolunga la conversazione."
+      },
+      {
+        "q": "Posso fermarmi al Diario o passare a un altro percorso?",
+        "a": "Sì, il Diario ha valore anche da solo. Dal Diario ai Marinai si scalano i 290 € iniziali; dai Marinai ai Capitani si scala il prezzo pagato per i Marinai. Abbonamenti e raccolte aggiuntive del Diario non rientrano nello sconto."
+      },
+      {
+        "q": "Che cosa rimane alla fine di un percorso certificato?",
+        "a": "Rimane l’autobiografia interattiva che hai riletto e approvato, con sintesi professionale e avatar. Il companion di raccolta viene rimosso. La voce sintetica viene dichiarata come tale."
+      },
+      {
+        "q": "Chi può consultare l’autobiografia certificata e quando?",
+        "a": "L’autobiografia è disponibile già in vita. Nei percorsi certificati l’autore sceglie le persone autorizzate e le regole di accesso, revoca e sospensione. Il Diario resta invece personale e consultabile soltanto dal titolare."
+      },
+      {
+        "q": "Quanto costa la conservazione dopo il primo anno?",
+        "a": "Per il Diario, i primi dodici mesi sono compresi nei 290 €; le condizioni successive di sola conservazione restano da definire. Nei percorsi certificati si applicano canoni annuali indicativi dal secondo anno, distinti dai 20 €/mese del Diario."
+      },
+      {
+        "q": "Come vengono trattati i contenuti mancanti e i racconti su altre persone?",
+        "a": "Il sistema segnala quando manca un’informazione e quando collega o deduce, entro i contenuti autorizzati. I racconti che coinvolgono altre persone richiedono attenzione al loro consenso e alla loro riservatezza."
+      },
+      {
+        "q": "Posso partecipare alla ricerca?",
+        "a": "La partecipazione richiede un consenso separato ed è sempre facoltativa. È distinta dall’acquisto e dall’utilizzo del servizio."
+      }
+    ],
+    "ctaT": "Non sei sicuro di quale gradino?",
+    "ctaX": "Parti dal Diario di bordo: se basta, te lo diciamo noi. Per qualsiasi dubbio, scrivici.",
+    "ctaL": "Scrivici"
+  },
+  "en": {
+    "k": "How it works",
+    "titleA": "A ladder of three steps, ",
+    "titleB": "named after seafaring.",
+    "stepsK": "The three steps",
+    "stepsT": "What you get, and at what price.",
+    "tripK": "The journey",
+    "tripT": "How it works, step by step.",
+    "flows": [
+      {
+        "tag": "Online, on your own",
+        "name": "Diario di bordo",
+        "lead": "Your personal diary, written by speaking and revisited through questions. Only you can consult it, through chat or a voice of its own that you choose.",
+        "steps": [
+          {
+            "t": "Discover the Diary",
+            "p": "Read how it works or ask us. This personal service is for adults only."
+          },
+          {
+            "t": "Your personal space",
+            "p": "One user, one diary: only you can consult it."
+          },
+          {
+            "t": "Creation",
+            "p": "€290 includes ten hours of gathering, a PDF notebook and twelve months of storage."
+          },
+          {
+            "t": "Gather your stories",
+            "p": "The digital assistant guides memories, thoughts and ideas without a psychologist. Ten more gathering hours cost €200."
+          },
+          {
+            "t": "Revisit them through questions",
+            "p": "Consultation is separate: €20/month for one voice hour each month and chat with a generous usage limit. You choose the Diary’s own voice."
+          }
+        ]
+      },
+      {
+        "tag": "With the psychologist",
+        "name": "I marinai del tempo",
+        "lead": "Your autobiography, reviewed and approved by you, with a psychologist’s guidance. Explore it through a simple avatar and share it with the people you choose.",
+        "steps": [
+          {
+            "t": "Contact us",
+            "p": "We discuss your story and the path you want."
+          },
+          {
+            "t": "Meet the psychologist",
+            "p": "We introduce the professional who will guide your story."
+          },
+          {
+            "t": "Interviews and filming",
+            "p": "The Marinai: ten hours with a psychologist and essential filming. The Capitani: thirty hours and studio filming."
+          },
+          {
+            "t": "The gathering companion",
+            "p": "The Marinai include ten hours of gathering with the companion; the Capitani include thirty, for further memories between meetings."
+          },
+          {
+            "t": "Your story takes shape",
+            "p": "Interviews and gathered stories become the psychologist’s working material."
+          },
+          {
+            "t": "Review the synthesis",
+            "p": "The psychologist prepares and returns the professional synthesis."
+          },
+          {
+            "t": "Correct and approve",
+            "p": "You authorise the content and decide who can access it."
+          },
+          {
+            "t": "Your interactive autobiography",
+            "p": "Explore it today. The companion is removed; the avatar’s voice is disclosed as synthetic."
+          }
+        ]
+      },
+      {
+        "tag": "The broadest path",
+        "name": "I Capitani di lungo corso",
+        "lead": "An autobiography you approve, with more time to explore your story, studio filming and an avatar. Three-dimensional rendering on request.",
+        "steps": [
+          {
+            "t": "More time and studio filming",
+            "p": "The Capitani include thirty hours with a psychologist, thirty of gathering with the companion, a professional synthesis, studio filming and an avatar. Three-dimensional rendering on request."
+          }
+        ]
+      }
+    ],
+    "whyK": "Why it takes so long",
+    "whyT": "Time is not a cost, it is the method.",
+    "why1": "Time makes room for memories, corrections and the details that make a story yours. The Marinai include ten hours with the psychologist and ten with the companion; the Capitani include thirty of each. The result is the narrative you recognise and approve.",
+    "why2": "Three ways to tell your story, with names inspired by seafaring. Moving from the Diario to the Marinai deducts the initial €290. Moving from the Marinai to the Capitani deducts the price already paid for the Marinai.",
+    "faqK": "Questions",
+    "faqT": "The things we are always asked.",
+    "faq": [
+      {
+        "q": "What does the €290 Diary creation include?",
+        "a": "€290 includes the first ten hours of gathering, a PDF notebook and twelve months of storage. Ongoing consultation is separate at €20/month."
+      },
+      {
+        "q": "How do gathering and consultation differ?",
+        "a": "Gathering adds stories: the first ten hours are included in creation; ten more cost €200. Consultation lets you question existing material: €20/month for one hour of voice conversation each month and written chat with a generous usage limit."
+      },
+      {
+        "q": "Who can use and consult the Diary?",
+        "a": "Adults only. One user, one diary: only its owner can consult it, including when someone else has given it as a gift."
+      },
+      {
+        "q": "Which voice does the Diary use? Is there an avatar?",
+        "a": "A voice of the Diary’s own, chosen by the user. The Diary has no avatar and does not clone its owner’s voice."
+      },
+      {
+        "q": "How does the Diary respond?",
+        "a": "It returns only stories, thoughts and ideas received and says when information is missing. During consultation it does not suggest new topics, seek a relationship or prolong the conversation."
+      },
+      {
+        "q": "Can I stay with the Diary or move to another path?",
+        "a": "Yes, the Diary has value on its own. Moving to the Marinai deducts the initial €290; moving from the Marinai to the Capitani deducts the price paid for the Marinai. Diary subscriptions and additional gathering are not included in the deduction."
+      },
+      {
+        "q": "What remains after a certified path?",
+        "a": "Your reviewed and approved interactive autobiography, with a professional synthesis and avatar. The gathering companion is removed. The synthetic voice is clearly disclosed."
+      },
+      {
+        "q": "Who can consult the certified autobiography, and when?",
+        "a": "It is available during the author’s lifetime. In certified paths the author chooses authorised people and rules for access, revocation and suspension. The Diary remains personal and accessible to its owner alone."
+      },
+      {
+        "q": "What does storage cost after the first year?",
+        "a": "For the Diary, twelve months are included in €290; storage-only terms after that remain to be defined. Certified paths have indicative annual fees from year two, separate from the Diary’s €20/month."
+      },
+      {
+        "q": "What about missing information and stories involving others?",
+        "a": "The system discloses missing information and when it connects or infers, within authorised content. Stories involving other people require attention to their consent and privacy."
+      },
+      {
+        "q": "Can I take part in research?",
+        "a": "Participation requires separate consent and is always optional, independent of purchasing and using the service."
+      }
+    ],
+    "ctaT": "Not sure which step?",
+    "ctaX": "Start with the Diario di bordo: if it is enough, we will tell you. For any doubt, write to us.",
+    "ctaL": "Write to us"
+  },
+  "fr": {
+    "k": "Comment ça marche",
+    "titleA": "Une échelle de trois échelons, ",
+    "titleB": "avec les noms de la navigation.",
+    "stepsK": "Les trois échelons",
+    "stepsT": "Ce que vous obtenez, et à quel prix.",
+    "tripK": "Le parcours",
+    "tripT": "Comment ça marche, étape par étape.",
+    "flows": [
+      {
+        "tag": "En ligne, seul",
+        "name": "Diario di bordo",
+        "lead": "Votre journal personnel, à écrire en parlant et à retrouver en posant des questions. Vous seul le consultez, par chat ou avec une voix propre que vous choisissez.",
+        "steps": [
+          {
+            "t": "Découvrez le Diario",
+            "p": "Lisez son fonctionnement ou contactez-nous. Ce service personnel est réservé aux majeurs."
+          },
+          {
+            "t": "Votre espace personnel",
+            "p": "Un utilisateur, un journal : vous seul le consultez."
+          },
+          {
+            "t": "La création",
+            "p": "290 € pour dix heures de collecte, un cahier PDF et douze mois de conservation."
+          },
+          {
+            "t": "Recueillez vos récits",
+            "p": "L’assistant numérique guide souvenirs, pensées et idées, sans psychologue. Dix heures supplémentaires coûtent 200 €."
+          },
+          {
+            "t": "Retrouvez-les par des questions",
+            "p": "Consultation séparée : 20 €/mois pour une heure vocale mensuelle et un chat à limite d’utilisation généreuse. Vous choisissez la voix propre du Diario."
+          }
+        ]
+      },
+      {
+        "tag": "Avec le psychologue",
+        "name": "I marinai del tempo",
+        "lead": "Votre autobiographie, relue et approuvée par vous, avec un psychologue. Consultez-la à travers un avatar simple et partagez-la avec les personnes de votre choix.",
+        "steps": [
+          {
+            "t": "Contactez-nous",
+            "p": "Nous parlons de votre histoire et du parcours souhaité."
+          },
+          {
+            "t": "Rencontrez le psychologue",
+            "p": "Nous vous présentons le professionnel qui guide votre récit."
+          },
+          {
+            "t": "Entretiens et prises de vue",
+            "p": "Les Marinai : dix heures avec le psychologue et prises de vue essentielles. Les Capitani : trente heures et prises de vue en studio."
+          },
+          {
+            "t": "Le companion de collecte",
+            "p": "Les Marinai comprennent dix heures de collecte avec le companion ; les Capitani, trente, pour ajouter des souvenirs entre les rencontres."
+          },
+          {
+            "t": "Votre récit prend forme",
+            "p": "Entretiens et récits recueillis deviennent la matière du travail du psychologue."
+          },
+          {
+            "t": "Relisez la synthèse",
+            "p": "Le psychologue rédige et vous restitue la synthèse professionnelle."
+          },
+          {
+            "t": "Corrigez et approuvez",
+            "p": "Vous autorisez les contenus et choisissez qui y accède."
+          },
+          {
+            "t": "Votre autobiographie interactive",
+            "p": "Consultez-la dès aujourd’hui. Le companion est retiré ; la voix de l’avatar est annoncée comme synthétique."
+          }
+        ]
+      },
+      {
+        "tag": "Le parcours le plus large",
+        "name": "I Capitani di lungo corso",
+        "lead": "Une autobiographie approuvée par vous, davantage de temps pour approfondir votre histoire, des prises de vue en studio et un avatar. Modélisation tridimensionnelle sur demande.",
+        "steps": [
+          {
+            "t": "Plus de temps et un studio",
+            "p": "Les Capitani comprennent trente heures avec le psychologue, trente de collecte avec le companion, synthèse professionnelle, prises de vue en studio et avatar. Modélisation tridimensionnelle sur demande."
+          }
+        ]
+      }
+    ],
+    "whyK": "Pourquoi c'est si long",
+    "whyT": "Le temps n'est pas un coût, c'est la méthode.",
+    "why1": "Le temps laisse place aux souvenirs, aux corrections et aux détails qui font votre histoire. Les Marinai comprennent dix heures avec le psychologue et dix avec le companion ; les Capitani, trente de chaque. Le résultat est le récit que vous reconnaissez et approuvez.",
+    "why2": "Trois façons de vous raconter, aux noms inspirés de la navigation. Du Diario aux Marinai, les 290 € initiaux sont déduits. Des Marinai aux Capitani, le prix déjà payé pour les Marinai est déduit.",
+    "faqK": "Questions",
+    "faqT": "Ce qu'on nous demande toujours.",
+    "faq": [
+      {
+        "q": "Que comprend la création du Diario à 290 € ?",
+        "a": "Les 290 € comprennent dix premières heures de collecte, un cahier PDF et douze mois de conservation. La consultation continue est séparée, à 20 €/mois."
+      },
+      {
+        "q": "Quelle différence entre collecte et consultation ?",
+        "a": "La collecte ajoute des récits : dix heures sont incluses dans la création ; dix de plus coûtent 200 €. La consultation interroge les éléments déjà recueillis : 20 €/mois pour une heure vocale mensuelle et un chat écrit avec une limite d’utilisation généreuse."
+      },
+      {
+        "q": "Qui peut utiliser et consulter le Diario ?",
+        "a": "Le service est réservé aux majeurs. Un utilisateur, un journal : seul le titulaire le consulte, même si quelqu’un d’autre le lui a offert."
+      },
+      {
+        "q": "Quelle voix utilise le Diario ? Y a-t-il un avatar ?",
+        "a": "Une voix propre du Diario, choisie par l’utilisateur. Aucun avatar ni clonage de la voix du titulaire."
+      },
+      {
+        "q": "Comment répond le Diario ?",
+        "a": "Il restitue seulement les récits, pensées et idées reçus et signale les informations manquantes. Pendant la consultation, il ne propose pas de nouveaux sujets, ne cherche pas à créer une relation ni à prolonger la conversation."
+      },
+      {
+        "q": "Puis-je rester au Diario ou changer de parcours ?",
+        "a": "Oui, le Diario a sa valeur propre. Vers les Marinai, les 290 € initiaux sont déduits ; des Marinai aux Capitani, le prix payé pour les Marinai est déduit. Abonnements et collectes supplémentaires du Diario ne sont pas déduits."
+      },
+      {
+        "q": "Que reste-t-il à la fin d’un parcours certifié ?",
+        "a": "Votre autobiographie interactive relue et approuvée, avec synthèse professionnelle et avatar. Le companion de collecte est retiré. La voix synthétique est annoncée comme telle."
+      },
+      {
+        "q": "Qui peut consulter l’autobiographie certifiée et quand ?",
+        "a": "Elle est disponible du vivant de l’auteur. Dans les parcours certifiés, l’auteur choisit les personnes autorisées et les règles d’accès, de révocation et de suspension. Le Diario reste personnel, accessible au seul titulaire."
+      },
+      {
+        "q": "Combien coûte la conservation après la première année ?",
+        "a": "Pour le Diario, douze mois sont inclus dans les 290 € ; les conditions de conservation seule ensuite restent à définir. Les parcours certifiés ont des frais annuels indicatifs dès la deuxième année, distincts des 20 €/mois du Diario."
+      },
+      {
+        "q": "Et les informations manquantes ou les récits concernant autrui ?",
+        "a": "Le système signale les informations manquantes et les liens ou déductions, dans les contenus autorisés. Les récits concernant autrui demandent le respect de son consentement et de sa vie privée."
+      },
+      {
+        "q": "Puis-je participer à la recherche ?",
+        "a": "La participation demande un consentement séparé et reste facultative, indépendante de l’achat et de l’utilisation du service."
+      }
+    ],
+    "ctaT": "Vous ne savez pas quel échelon choisir ?",
+    "ctaX": "Commencez par le Diario di bordo : s'il suffit, nous vous le dirons. Pour tout doute, écrivez-nous.",
+    "ctaL": "Écrivez-nous"
+  },
+  "de": {
+    "k": "So funktioniert es",
+    "titleA": "Eine Leiter mit drei Stufen, ",
+    "titleB": "mit den Namen der Seefahrt.",
+    "stepsK": "Die drei Stufen",
+    "stepsT": "Was du bekommst, und zu welchem Preis.",
+    "tripK": "Der Weg",
+    "tripT": "So funktioniert es, Schritt für Schritt.",
+    "flows": [
+      {
+        "tag": "Online, allein",
+        "name": "Diario di bordo",
+        "lead": "Dein persönliches Tagebuch: durch Sprechen schreiben und durch Fragen wiederentdecken. Nur du kannst es abfragen, per Chat oder mit einer eigenen, von dir gewählten Stimme.",
+        "steps": [
+          {
+            "t": "Entdecke das Diario",
+            "p": "Lies die Beschreibung oder frage uns. Dieser persönliche Dienst ist nur für Volljährige."
+          },
+          {
+            "t": "Dein persönlicher Bereich",
+            "p": "Ein Nutzer, ein Tagebuch: nur du kannst es abfragen."
+          },
+          {
+            "t": "Die Erstellung",
+            "p": "290 € umfassen zehn Stunden Sammlung, ein PDF-Heft und zwölf Monate Aufbewahrung."
+          },
+          {
+            "t": "Sammle deine Erzählungen",
+            "p": "Der digitale Assistent begleitet Erinnerungen, Gedanken und Ideen ohne Psychologen. Zehn weitere Stunden kosten 200 €."
+          },
+          {
+            "t": "Durch Fragen wiederentdecken",
+            "p": "Abfrage getrennt: 20 €/Monat für eine Sprachstunde monatlich und Chat mit großzügiger Nutzungsgrenze. Du wählst die eigene Stimme des Diario."
+          }
+        ]
+      },
+      {
+        "tag": "Mit dem Psychologen",
+        "name": "I marinai del tempo",
+        "lead": "Deine Autobiografie, von dir geprüft und freigegeben, mit psychologischer Begleitung. Du erkundest sie über einen einfachen Avatar und teilst sie mit ausgewählten Menschen.",
+        "steps": [
+          {
+            "t": "Nimm Kontakt auf",
+            "p": "Wir sprechen über deine Geschichte und den gewünschten Weg."
+          },
+          {
+            "t": "Lerne den Psychologen kennen",
+            "p": "Wir stellen dir den Fachmann vor, der deine Erzählung begleitet."
+          },
+          {
+            "t": "Interviews und Filmaufnahmen",
+            "p": "Die Marinai: zehn Stunden mit dem Psychologen und einfache Filmaufnahmen. Die Capitani: dreißig Stunden und Studioaufnahmen."
+          },
+          {
+            "t": "Der Sammlungs-Companion",
+            "p": "Die Marinai umfassen zehn Stunden Sammlung mit dem Companion, die Capitani dreißig, für weitere Erinnerungen zwischen den Treffen."
+          },
+          {
+            "t": "Deine Erzählung nimmt Form an",
+            "p": "Interviews und gesammelte Erzählungen bilden die Arbeitsgrundlage des Psychologen."
+          },
+          {
+            "t": "Prüfe die Zusammenfassung",
+            "p": "Der Psychologe erstellt und übergibt die professionelle Zusammenfassung."
+          },
+          {
+            "t": "Korrigiere und genehmige",
+            "p": "Du autorisierst Inhalte und entscheidest über den Zugang."
+          },
+          {
+            "t": "Deine interaktive Autobiografie",
+            "p": "Schon heute abfragbar. Der Companion wird entfernt; die Avatar-Stimme wird als synthetisch gekennzeichnet."
+          }
+        ]
+      },
+      {
+        "tag": "Der umfassendste Weg",
+        "name": "I Capitani di lungo corso",
+        "lead": "Eine von dir freigegebene Autobiografie, mit mehr Zeit für deine Geschichte, Studioaufnahmen und Avatar. Dreidimensionale Ausarbeitung auf Anfrage.",
+        "steps": [
+          {
+            "t": "Mehr Zeit und Studioaufnahmen",
+            "p": "Die Capitani umfassen dreißig Stunden mit dem Psychologen, dreißig Stunden Sammlung mit dem Companion, professionelle Zusammenfassung, Studioaufnahmen und Avatar. Dreidimensionale Ausarbeitung auf Anfrage."
+          }
+        ]
+      }
+    ],
+    "whyK": "Warum es so lange dauert",
+    "whyT": "Zeit ist kein Kostenfaktor, sie ist die Methode.",
+    "why1": "Zeit schafft Raum für Erinnerungen, Korrekturen und die Details deiner Geschichte. Die Marinai umfassen zehn Stunden mit dem Psychologen und zehn mit dem Companion; die Capitani dreißig von beidem. Das Ergebnis ist die Erzählung, die du wiedererkennst und freigibst.",
+    "why2": "Drei Wege, deine Geschichte zu erzählen, mit Namen aus der Seefahrt. Beim Wechsel vom Diario zu den Marinai werden die anfänglichen 290 € angerechnet. Von den Marinai zu den Capitani wird der für die Marinai gezahlte Preis angerechnet.",
+    "faqK": "Fragen",
+    "faqT": "Was wir immer wieder gefragt werden.",
+    "faq": [
+      {
+        "q": "Was umfasst die Erstellung des Diario für 290 €?",
+        "a": "Die 290 € umfassen die ersten zehn Stunden Sammlung, ein PDF-Heft und zwölf Monate Aufbewahrung. Laufende Abfrage ist getrennt und kostet 20 €/Monat."
+      },
+      {
+        "q": "Wie unterscheiden sich Sammlung und Abfrage?",
+        "a": "Sammlung fügt Erzählungen hinzu: zehn Stunden sind in der Erstellung enthalten, zehn weitere kosten 200 €. Abfrage stellt Fragen an vorhandene Inhalte: 20 €/Monat für eine Stunde Sprachgespräch monatlich und schriftlichen Chat mit großzügiger Nutzungsgrenze."
+      },
+      {
+        "q": "Wer darf das Diario nutzen und abfragen?",
+        "a": "Nur für Volljährige. Ein Nutzer, ein Tagebuch: Nur der Inhaber kann es abfragen, auch wenn es ein Geschenk ist."
+      },
+      {
+        "q": "Welche Stimme nutzt das Diario? Gibt es einen Avatar?",
+        "a": "Eine eigene, vom Nutzer gewählte Stimme des Diario. Es gibt keinen Avatar und keinen Klon der Stimme des Inhabers."
+      },
+      {
+        "q": "Wie antwortet das Diario?",
+        "a": "Es gibt nur erhaltene Erzählungen, Gedanken und Ideen wieder und nennt fehlende Informationen. Bei der Abfrage schlägt es keine neuen Themen vor, sucht keine Beziehung und verlängert das Gespräch nicht."
+      },
+      {
+        "q": "Kann ich beim Diario bleiben oder wechseln?",
+        "a": "Ja, das Diario hat einen eigenständigen Wert. Beim Wechsel zu den Marinai werden die anfänglichen 290 € angerechnet; von den Marinai zu den Capitani der für die Marinai gezahlte Preis. Diario-Abonnements und zusätzliche Sammlung werden nicht angerechnet."
+      },
+      {
+        "q": "Was bleibt nach einem zertifizierten Weg?",
+        "a": "Deine geprüfte und freigegebene interaktive Autobiografie mit professioneller Zusammenfassung und Avatar. Der Sammlungs-Companion wird entfernt. Die synthetische Stimme wird als solche gekennzeichnet."
+      },
+      {
+        "q": "Wer kann die zertifizierte Autobiografie wann abfragen?",
+        "a": "Sie ist schon zu Lebzeiten verfügbar. In zertifizierten Wegen bestimmt der Autor Berechtigte und Regeln für Zugang, Widerruf und Aussetzung. Das Diario bleibt persönlich und nur für den Inhaber zugänglich."
+      },
+      {
+        "q": "Was kostet die Aufbewahrung nach dem ersten Jahr?",
+        "a": "Beim Diario sind zwölf Monate in 290 € enthalten; reine Aufbewahrung danach ist noch zu regeln. Für zertifizierte Wege gelten jährliche Richtwerte ab dem zweiten Jahr, getrennt von den 20 €/Monat des Diario."
+      },
+      {
+        "q": "Was gilt bei fehlenden Informationen und Erzählungen über andere?",
+        "a": "Das System nennt fehlende Informationen sowie Verknüpfungen oder Schlussfolgerungen innerhalb erlaubter Inhalte. Erzählungen über andere erfordern Rücksicht auf deren Einwilligung und Privatsphäre."
+      },
+      {
+        "q": "Kann ich an der Forschung teilnehmen?",
+        "a": "Teilnahme erfordert gesonderte Einwilligung und ist freiwillig, unabhängig von Kauf und Nutzung des Dienstes."
+      }
+    ],
+    "ctaT": "Unsicher, welche Stufe?",
+    "ctaX": "Beginne mit dem Diario di bordo: Wenn es genügt, sagen wir es dir. Bei jedem Zweifel schreib uns.",
+    "ctaL": "Schreib uns"
+  }
 };
-
-const en: ComeContent = {
-  k: "How it works", titleA: "A ladder of three steps, ", titleB: "named after seafaring.",
-  stepsK: "The three steps", stepsT: "What you get, and at what price.",
-  tripK: "The journey", tripT: "How it works, step by step.",
-  flows: [
-    { tag: "Online, on your own", name: "Diario di bordo", lead: "You do everything on the site, from first contact to payment, without needing anyone.", steps: [
-      { t: "You talk to the avatar", p: "You arrive on the site and talk to the avatar, who explains how the Diario di bordo works." },
-      { t: "You register", p: "You create your personal space from the dedicated page." },
-      { t: "You pay online", p: "Payment is made online, in a few steps." },
-      { t: "You talk to your companion", p: "The companion is activated and you talk whenever you like, at your own pace." },
-      { t: "You have your notebook", p: "At the end you receive your notebook. You can stop here, continue with a refill, or move on to the paths with the psychologist." },
-    ] },
-    { tag: "With the psychologist", name: "I marinai del tempo", lead: "A path followed by a person, from first contact to the deposit of your archive.", steps: [
-      { t: "You contact us", p: "You write or call us and we answer ourselves." },
-      { t: "We propose a psychologist", p: "We introduce you to the psychologist who will follow you." },
-      { t: "First interview", p: "You meet the psychologist. The video recordings are made in the same meeting." },
-      { t: "We set up your companion", p: "We prepare your dedicated companion." },
-      { t: "The interviews continue", p: "The meetings go on and, between one and the next, you talk to your companion." },
-      { t: "Closing the corpus", p: "The psychologist writes the summary of what has emerged and you review it." },
-      { t: "Signature", p: "When the summary convinces you, you sign it." },
-      { t: "Deposit and paper copy", p: "The corpus is deposited on the server and we also keep a paper copy." },
-    ] },
-    { tag: "The broadest path", name: "I Capitani di lungo corso", lead: "The same steps as the marinai del tempo, with more hours of work.", steps: [
-      { t: "More material, kept with care", p: "Besides the narrative, we can keep the most complex multimedia material: recordings, film reels, photographs." },
-    ] },
-  ],
-  whyK: "Why it takes so long", whyT: "Time is not a cost, it is the method.",
-  why1: "Thirty hours of interviews and thirty of gathering may seem a lot. They are what we need to know how you answer when someone interrupts you, what you never say, what you repeat. No one-hour summary can render a character, and an avatar without character is a voice actor, not a presence.",
-  why2: "This is why each step leads to the next, and what you have already paid is deducted. We do not want you to decide everything at once; we want you to be able to stop where you feel at home.",
-  faqK: "Questions", faqT: "The things we are always asked.",
-  faq: [
-    { q: "Can I stop after the Diario di bordo?", a: "Yes, and that is why it exists. The Diario is a product distinct from UltraRem and helps you understand whether you want to go on. If you continue, what you have paid is deducted from the price of the next step." },
-    { q: "Who listens to what I tell?", a: "In the Diario, only the companion. In the certified paths, also the psychologist who follows you, who answers for what they write and signs it with their name." },
-    { q: "Who can talk to my avatar?", a: "Only the people you decide. Nobody is obliged to engage in dialogue (art. 17), nobody receives unsolicited invitations, and no advertising is allowed (art. 2)." },
-    { q: "Can the avatar say things I did not say?", a: "It can elaborate, but it must say so: every answer is labelled either Testimony (what you said) or Elaboration (what the system reconstructs), art. 15. And it always speaks by declaring itself an artificial intelligence system (art. 14)." },
-    { q: "When will my loved ones be able to use it?", a: "Not before ninety days after your death (art. 20). Grief has its own time and the avatar must not occupy it." },
-    { q: "What if one of my memories concerns other people?", a: "Their specific consent is needed (art. 18). Without it, the memory stays out." },
-    { q: "How much does it cost to keep everything?", a: "In the Diario, €49 a year after the first twelve months. In the certified paths there is a custody fee from the second year (indicative amounts in the table above)." },
-    { q: "Can I take part in research?", a: "If you wish, with a separate consent that is always optional (art. 25). It does not affect your path in any way." },
-  ],
-  ctaT: "Not sure which step?", ctaX: "Start with the Diario di bordo: if it is enough, we will tell you. For any doubt, write to us.", ctaL: "Write to us",
-};
-
-const fr: ComeContent = {
-  k: "Comment ça marche", titleA: "Une échelle de trois échelons, ", titleB: "avec les noms de la navigation.",
-  stepsK: "Les trois échelons", stepsT: "Ce que vous obtenez, et à quel prix.",
-  tripK: "Le parcours", tripT: "Comment ça marche, étape par étape.",
-  flows: [
-    { tag: "En ligne, seul", name: "Diario di bordo", lead: "Vous faites tout depuis le site, du premier contact au paiement, sans avoir besoin de personne.", steps: [
-      { t: "Vous parlez à l'avatar", p: "Vous arrivez sur le site et parlez à l'avatar, qui vous explique comment fonctionne le Diario di bordo." },
-      { t: "Vous vous inscrivez", p: "Vous créez votre espace personnel depuis la page dédiée." },
-      { t: "Vous payez en ligne", p: "Le paiement se fait en ligne, en quelques étapes." },
-      { t: "Vous parlez à votre companion", p: "Le companion s'active et vous parlez quand vous voulez, à votre rythme." },
-      { t: "Vous avez votre cahier", p: "À la fin vous recevez votre cahier. Vous pouvez vous arrêter là, continuer avec une recharge ou passer aux parcours avec le psychologue." },
-    ] },
-    { tag: "Avec le psychologue", name: "I marinai del tempo", lead: "Un parcours suivi par une personne, du premier contact au dépôt de votre archive.", steps: [
-      { t: "Vous nous contactez", p: "Vous nous écrivez ou nous appelez et nous répondons nous-mêmes." },
-      { t: "Nous vous proposons un psychologue", p: "Nous vous présentons le psychologue qui vous suivra." },
-      { t: "Premier entretien", p: "Vous rencontrez le psychologue. Les prises de vue vidéo se font lors de la même rencontre." },
-      { t: "Nous configurons votre companion", p: "Nous préparons votre companion dédié." },
-      { t: "Les entretiens se poursuivent", p: "Les rencontres continuent et, entre l'une et l'autre, vous parlez à votre companion." },
-      { t: "Clôture du corpus", p: "Le psychologue rédige la synthèse de ce qui est ressorti et vous la relisez." },
-      { t: "Signature", p: "Quand la synthèse vous convient, vous la signez." },
-      { t: "Dépôt et copie papier", p: "Le corpus est déposé sur le serveur et nous en conservons aussi une copie papier." },
-    ] },
-    { tag: "Le parcours le plus large", name: "I Capitani di lungo corso", lead: "Les mêmes étapes que les marinai del tempo, avec plus d'heures de travail.", steps: [
-      { t: "Plus de matériel, conservé avec soin", p: "Outre le récit, nous pouvons conserver le matériel multimédia le plus complexe : enregistrements, pellicules, photographies." },
-    ] },
-  ],
-  whyK: "Pourquoi c'est si long", whyT: "Le temps n'est pas un coût, c'est la méthode.",
-  why1: "Trente heures d'entretien et trente de collecte peuvent sembler beaucoup. Ce sont celles dont nous avons besoin pour savoir comment vous répondez quand on vous interrompt, ce que vous ne dites jamais, ce que vous répétez. Aucune synthèse d'une heure ne restitue un caractère, et un avatar sans caractère est un doubleur, pas une présence.",
-  why2: "C'est pourquoi chaque échelon mène au suivant, et ce que vous avez déjà payé est déduit. Nous ne voulons pas que vous décidiez tout tout de suite, nous voulons que vous puissiez vous arrêter là où vous vous sentez chez vous.",
-  faqK: "Questions", faqT: "Ce qu'on nous demande toujours.",
-  faq: [
-    { q: "Puis-je m'arrêter après le Diario di bordo ?", a: "Oui, et c'est pour cela qu'il existe. Le Diario est un produit distinct d'UltraRem qui sert à comprendre si vous voulez aller plus loin. Si vous poursuivez, ce que vous avez payé est déduit du prix de l'échelon suivant." },
-    { q: "Qui écoute ce que je raconte ?", a: "Dans le Diario, seulement le companion. Dans les parcours certifiés, aussi le psychologue qui vous suit, qui répond de ce qu'il écrit et le signe de son nom." },
-    { q: "Qui peut parler avec mon avatar ?", a: "Seulement les personnes que vous décidez. Personne n'est obligé de dialoguer (art. 17), personne ne reçoit d'invitations non sollicitées, et aucune publicité n'est prévue (art. 2)." },
-    { q: "L'avatar peut-il dire des choses que je n'ai pas dites ?", a: "Il peut élaborer, mais il doit le dire : chaque réponse est étiquetée Témoignage (ce que vous avez dit) ou Élaboration (ce que le système reconstruit), art. 15. Et il parle toujours en se déclarant système d'intelligence artificielle (art. 14)." },
-    { q: "Quand mes proches pourront-ils l'utiliser ?", a: "Pas avant quatre-vingt-dix jours après votre mort (art. 20). La douleur a son propre temps et l'avatar ne doit pas l'occuper." },
-    { q: "Et si un de mes souvenirs concerne d'autres personnes ?", a: "Leur consentement spécifique est nécessaire (art. 18). Sans lui, le souvenir reste de côté." },
-    { q: "Combien coûte la conservation ?", a: "Dans le Diario, 49 € par an après les douze premiers mois. Dans les parcours certifiés, des frais de conservation s'appliquent dès la deuxième année (montants indicatifs dans le tableau ci-dessus)." },
-    { q: "Puis-je participer à une recherche ?", a: "Si vous le souhaitez, avec un consentement séparé et toujours facultatif (art. 25). Cela n'influe en rien sur votre parcours." },
-  ],
-  ctaT: "Vous ne savez pas quel échelon choisir ?", ctaX: "Commencez par le Diario di bordo : s'il suffit, nous vous le dirons. Pour tout doute, écrivez-nous.", ctaL: "Écrivez-nous",
-};
-
-const de: ComeContent = {
-  k: "So funktioniert es", titleA: "Eine Leiter mit drei Stufen, ", titleB: "mit den Namen der Seefahrt.",
-  stepsK: "Die drei Stufen", stepsT: "Was du bekommst, und zu welchem Preis.",
-  tripK: "Der Weg", tripT: "So funktioniert es, Schritt für Schritt.",
-  flows: [
-    { tag: "Online, allein", name: "Diario di bordo", lead: "Du erledigst alles auf der Website, vom ersten Kontakt bis zur Zahlung, ohne jemanden zu brauchen.", steps: [
-      { t: "Du sprichst mit dem Avatar", p: "Du kommst auf die Website und sprichst mit dem Avatar, der dir erklärt, wie das Diario di bordo funktioniert." },
-      { t: "Du registrierst dich", p: "Du legst deinen persönlichen Bereich auf der dafür vorgesehenen Seite an." },
-      { t: "Du zahlst online", p: "Die Zahlung erfolgt online, in wenigen Schritten." },
-      { t: "Du sprichst mit deinem Companion", p: "Der Companion wird aktiviert und du sprichst, wann du willst, in deinem Tempo." },
-      { t: "Du hast dein Heft", p: "Am Ende erhältst du dein Heft. Du kannst hier aufhören, mit einer Aufladung weitermachen oder zu den Wegen mit dem Psychologen wechseln." },
-    ] },
-    { tag: "Mit dem Psychologen", name: "I marinai del tempo", lead: "Ein Weg, der von einer Person begleitet wird, vom ersten Kontakt bis zur Hinterlegung deines Archivs.", steps: [
-      { t: "Du nimmst Kontakt auf", p: "Du schreibst oder rufst uns an, und wir antworten selbst." },
-      { t: "Wir schlagen dir einen Psychologen vor", p: "Wir stellen dir den Psychologen vor, der dich begleiten wird." },
-      { t: "Erstes Interview", p: "Du triffst den Psychologen. Die Videoaufnahmen entstehen im selben Treffen." },
-      { t: "Wir richten deinen Companion ein", p: "Wir bereiten deinen persönlichen Companion vor." },
-      { t: "Die Interviews gehen weiter", p: "Die Treffen gehen weiter, und zwischen zwei Treffen sprichst du mit deinem Companion." },
-      { t: "Abschluss des Korpus", p: "Der Psychologe schreibt die Zusammenfassung dessen, was sich gezeigt hat, und du prüfst sie." },
-      { t: "Unterschrift", p: "Wenn dich die Zusammenfassung überzeugt, unterschreibst du sie." },
-      { t: "Hinterlegung und Papierkopie", p: "Das Korpus wird auf dem Server hinterlegt, und wir bewahren auch eine Papierkopie auf." },
-    ] },
-    { tag: "Der umfassendste Weg", name: "I Capitani di lungo corso", lead: "Dieselben Schritte wie bei den marinai del tempo, mit mehr Arbeitsstunden.", steps: [
-      { t: "Mehr Material, sorgfältig aufbewahrt", p: "Neben der Erzählung können wir auch das aufwendigste Multimediamaterial aufbewahren: Aufnahmen, Filmrollen, Fotografien." },
-    ] },
-  ],
-  whyK: "Warum es so lange dauert", whyT: "Zeit ist kein Kostenfaktor, sie ist die Methode.",
-  why1: "Dreißig Stunden Interview und dreißig Stunden Sammlung mögen viel erscheinen. Sie brauchen wir, um zu wissen, wie du antwortest, wenn dich jemand unterbricht, was du nie sagst, was du wiederholst. Keine einstündige Zusammenfassung kann einen Charakter wiedergeben, und ein Avatar ohne Charakter ist ein Synchronsprecher, keine Präsenz.",
-  why2: "Deshalb führt jede Stufe zur nächsten, und was du schon bezahlt hast, wird abgezogen. Wir wollen nicht, dass du alles sofort entscheidest; wir wollen, dass du dort haltmachen kannst, wo du dich zu Hause fühlst.",
-  faqK: "Fragen", faqT: "Was wir immer wieder gefragt werden.",
-  faq: [
-    { q: "Kann ich nach dem Diario di bordo aufhören?", a: "Ja, und genau dafür gibt es es. Das Diario ist ein von UltraRem getrenntes Produkt und hilft dir zu erkennen, ob du weitergehen möchtest. Wenn du weitermachst, wird das Bezahlte vom Preis der nächsten Stufe abgezogen." },
-    { q: "Wer hört zu, was ich erzähle?", a: "Im Diario nur der Companion. In den zertifizierten Wegen auch der Psychologe, der dich begleitet, der für das Geschriebene einsteht und es mit seinem Namen unterzeichnet." },
-    { q: "Wer kann mit meinem Avatar sprechen?", a: "Nur, wen du bestimmst. Niemand ist zum Dialog verpflichtet (Art. 17), niemand erhält ungebetene Einladungen, und Werbung ist nicht vorgesehen (Art. 2)." },
-    { q: "Kann der Avatar Dinge sagen, die ich nicht gesagt habe?", a: "Er kann ausarbeiten, muss es aber sagen: Jede Antwort ist als Zeugnis (was du gesagt hast) oder Ausarbeitung (was das System rekonstruiert) gekennzeichnet, Art. 15. Und er spricht immer mit der Angabe, ein System künstlicher Intelligenz zu sein (Art. 14)." },
-    { q: "Wann können meine Liebsten ihn nutzen?", a: "Nicht vor neunzig Tagen nach deinem Tod (Art. 20). Die Trauer hat ihre eigene Zeit, und der Avatar darf sie nicht besetzen." },
-    { q: "Und wenn eine meiner Erinnerungen andere Personen betrifft?", a: "Es braucht deren ausdrückliche Einwilligung (Art. 18). Ohne sie bleibt die Erinnerung draußen." },
-    { q: "Was kostet es, alles aufzubewahren?", a: "Im Diario 49 € pro Jahr nach den ersten zwölf Monaten. In den zertifizierten Wegen gibt es ab dem zweiten Jahr eine Aufbewahrungsgebühr (Richtwerte in der Tabelle oben)." },
-    { q: "Kann ich an einer Studie teilnehmen?", a: "Wenn du möchtest, mit einer gesonderten, stets freiwilligen Einwilligung (Art. 25). Sie hat keinerlei Einfluss auf deinen Weg." },
-  ],
-  ctaT: "Unsicher, welche Stufe?", ctaX: "Beginne mit dem Diario di bordo: Wenn es genügt, sagen wir es dir. Bei jedem Zweifel schreib uns.", ctaL: "Schreib uns",
-};
-
-export const come: Record<Lang, ComeContent> = { it, en, fr, de };
