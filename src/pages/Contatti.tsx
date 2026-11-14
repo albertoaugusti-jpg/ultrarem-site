@@ -18,7 +18,7 @@ const T = {
     mail: "Scrivici", mailX: "Ti rispondiamo noi, di persona.", phone: "Telefono", phoneX: "Chiamaci, rispondiamo noi.",
     sK: "Dove siamo", sT: "Due sedi.", legal: "Sede legale", ops: "Sede operativa", map: "Apri la mappa",
     cK: "La società", cT: "UltraRem S.r.l.", cX: "Start-up innovativa. Partita IVA e codice fiscale 14404030968, REA MI-2780427. PEC: ",
-    ctaT: "Preferisci cominciare subito?", ctaX: "Il Diario di bordo costa 290 € e si fa da casa, senza fretta.", ctaA: "Inizia dal Diario di bordo", ctaB: "Scrivici",
+    ctaT: "Preferisci cominciare subito?", ctaX: "Creazione del Diario: 290 € per dieci ore di raccolta, PDF e dodici mesi di conservazione. Consultazione separata: 20 €/mese. Altre dieci ore di raccolta: 200 €.", ctaA: "Inizia dal Diario di bordo", ctaB: "Scrivici",
   },
   en: {
     k: "Contact", a: "Write to us, ", b: "we reply in person.",
@@ -27,7 +27,7 @@ const T = {
     mail: "Write to us", mailX: "We reply ourselves, in person.", phone: "Phone", phoneX: "Call us, we answer ourselves.",
     sK: "Where we are", sT: "Two offices.", legal: "Registered office", ops: "Operating office", map: "Open the map",
     cK: "The company", cT: "UltraRem S.r.l.", cX: "Innovative start-up. VAT and tax code 14404030968, REA MI-2780427. PEC: ",
-    ctaT: "Would you rather start right away?", ctaX: "The Diario di bordo costs €290 and is done from home, with no rush.", ctaA: "Start with the Diario di bordo", ctaB: "Write to us",
+    ctaT: "Would you rather start right away?", ctaX: "Diary creation: €290 for ten gathering hours, a PDF and twelve months of storage. Separate consultation: €20/month. Ten more gathering hours: €200.", ctaA: "Start with the Diario di bordo", ctaB: "Write to us",
   },
   fr: {
     k: "Contact", a: "Écrivez-nous, ", b: "nous répondons nous-mêmes.",
@@ -36,7 +36,7 @@ const T = {
     mail: "Écrivez-nous", mailX: "Nous répondons nous-mêmes.", phone: "Téléphone", phoneX: "Appelez-nous, nous répondons nous-mêmes.",
     sK: "Où nous trouver", sT: "Deux sites.", legal: "Siège social", ops: "Siège opérationnel", map: "Ouvrir la carte",
     cK: "La société", cT: "UltraRem S.r.l.", cX: "Start-up innovante. TVA et code fiscal 14404030968, REA MI-2780427. PEC : ",
-    ctaT: "Vous préférez commencer tout de suite ?", ctaX: "Le Diario di bordo coûte 290 € et se fait de chez soi, sans hâte.", ctaA: "Commencer par le Diario di bordo", ctaB: "Écrivez-nous",
+    ctaT: "Vous préférez commencer tout de suite ?", ctaX: "Création du Diario : 290 € pour dix heures de collecte, PDF et douze mois de conservation. Consultation séparée : 20 €/mois. Dix heures supplémentaires : 200 €.", ctaA: "Commencer par le Diario di bordo", ctaB: "Écrivez-nous",
   },
   de: {
     k: "Kontakt", a: "Schreiben Sie uns, ", b: "wir antworten persönlich.",
@@ -45,7 +45,7 @@ const T = {
     mail: "Schreiben Sie uns", mailX: "Wir antworten selbst, persönlich.", phone: "Telefon", phoneX: "Rufen Sie uns an, wir nehmen selbst ab.",
     sK: "Wo wir sind", sT: "Zwei Standorte.", legal: "Sitz der Gesellschaft", ops: "Operativer Sitz", map: "Karte öffnen",
     cK: "Die Gesellschaft", cT: "UltraRem S.r.l.", cX: "Innovatives Start-up. USt-IdNr. und Steuernummer 14404030968, REA MI-2780427. PEC: ",
-    ctaT: "Lieber gleich beginnen?", ctaX: "Das Diario di bordo kostet 290 € und geht von zu Hause aus, ohne Eile.", ctaA: "Mit dem Diario di bordo beginnen", ctaB: "Schreiben Sie uns",
+    ctaT: "Lieber gleich beginnen?", ctaX: "Erstellung des Diario: 290 € für zehn Stunden Sammlung, PDF und zwölf Monate Aufbewahrung. Abfrage gesondert: 20 €/Monat. Weitere zehn Stunden Sammlung: 200 €.", ctaA: "Mit dem Diario di bordo beginnen", ctaB: "Schreiben Sie uns",
   },
 };
 
