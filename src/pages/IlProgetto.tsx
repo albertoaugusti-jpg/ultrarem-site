@@ -40,7 +40,7 @@ const carta = [
   { a: "Art. 15", t: "Testimonianza o elaborazione", d: "Il sistema attinge al racconto autorizzato, segnala le informazioni mancanti e dichiara quando collega o deduce. La voce sintetica è riconoscibile come tale." },
   { a: "Art. 17", t: "Libertà di non dialogare", d: "Nessun familiare è obbligato a parlare con l'avatar, e nessuno riceve inviti o messaggi non richiesti." },
   { a: "Art. 18", t: "Memoria condivisa", d: "Quando un ricordo riguarda altre persone, serve il loro consenso specifico." },
-  { a: "Art. 20", t: "Disponibile già in vita", d: "L’autobiografia certificata viene rilasciata già in vita. L’autore sceglie chi può consultarla e definisce le regole di accesso, revoca e sospensione." },
+  { a: "Accesso", t: "Disponibile già in vita", d: "L’autobiografia certificata viene rilasciata già in vita. L’autore sceglie chi può consultarla e definisce le regole di accesso, revoca e sospensione." },
   { a: "Art. 25", t: "La ricerca resta separata", d: "Partecipare a uno studio richiede un consenso a parte ed è sempre facoltativo." },
   { a: "Art. 26", t: "Percorsi per chi non può permetterseli", d: "Le condizioni di eventuali percorsi agevolati saranno comunicate quando definite." },
 ];
