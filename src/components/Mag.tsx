@@ -66,7 +66,7 @@ export function Navbar() {
   const logo = <Link href="/"><img src="/img/rivista/logo.png" alt="UltraRem, Your memory is you" style={{ height: 54, width: "auto", cursor: "pointer", display: "block" }} /></Link>;
   const item = (l: { href: string; label: string }) => (
     <Link key={l.href} href={l.href}>
-      <span style={{ ...ls, color: loc === l.href ? RED : INK, borderBottom: loc === l.href ? `2px solid ${RED}` : "2px solid transparent" }}>{l.label}</span>
+      <span style={{ ...ls, color: (loc.replace(/\/+$/, "") || "/") === l.href ? RED : INK, borderBottom: (loc.replace(/\/+$/, "") || "/") === l.href ? `2px solid ${RED}` : "2px solid transparent" }}>{l.label}</span>
     </Link>
   );
   return (

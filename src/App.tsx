@@ -10,6 +10,9 @@ import Storie from "@/pages/Storie";
 import Fondatori from "@/pages/Fondatori";
 import Contatti from "@/pages/Contatti";
 import Percorso from "@/pages/Percorso";
+import { pageHref } from "@/content/seo";
+import Seo from "@/components/Seo";
+import Guida from "@/pages/Guida";
 import Officina from "@/pages/Officina";
 
 function Router() {
@@ -22,6 +25,7 @@ function Router() {
       <Route path="/percorsi" component={ComeFunziona} />
       <Route path="/percorsi/:slug" component={Percorso} />
       <Route path="/ricerca" component={Ricerca} />
+      <Route path="/guide/:slug" component={Guida} />
       <Route path="/storie" component={Storie} />
       <Route path="/fondatori" component={Fondatori} />
       <Route path="/incontra">{() => <Redirect to="/il-progetto" />}</Route>
@@ -32,10 +36,11 @@ function Router() {
   );
 }
 
-function App() {
+function App({ ssrPath }: { ssrPath?: string }) {
   return (
     <LanguageProvider>
-      <WouterRouter>
+      <WouterRouter ssrPath={ssrPath} hrefs={pageHref}>
+        <Seo />
         <Router />
       </WouterRouter>
     </LanguageProvider>

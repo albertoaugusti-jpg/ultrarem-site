@@ -48,13 +48,11 @@ export default function Officina() {
 
   useEffect(() => {
     setD(load());
-    const m = document.createElement("meta"); m.name = "robots"; m.content = "noindex,nofollow";
-    document.head.appendChild(m);
-    return () => { document.head.removeChild(m); };
+
   }, []);
 
   const put = (id: string, patch: Partial<St>) => setD(prev => {
-    const n = { ...prev, [id]: { stato: "Da fare" as const, ...prev[id], ...patch } };
+    const n = { ...prev, [id]: { ...(prev[id] ?? { stato: "Da fare" as const }), ...patch } };
     if (!save(n)) setMsg("Memoria del browser piena: scarica le immagini già pronte e svuota qualche casella.");
     return n;
   });

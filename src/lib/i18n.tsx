@@ -17,14 +17,13 @@ interface LangCtx {
 const LangContext = createContext<LangCtx>({ lang: "it", setLang: () => {} });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>(() => {
+  const [lang, setLang] = useState<Lang>("it");
+  useEffect(() => {
     try {
       const stored = localStorage.getItem("ultrarem-lang") as Lang | null;
-      return stored && LANGS.includes(stored) ? stored : "it";
-    } catch {
-      return "it";
-    }
-  });
+      if (stored && LANGS.includes(stored)) setLang(stored);
+    } catch {}
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = lang;

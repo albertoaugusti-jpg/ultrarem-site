@@ -14,7 +14,7 @@ export const de: Dict = {
     bookArrow: "Demo buchen →",
   },
   footer: {
-    tagline: "Wir bewahren, wer Sie sind, für die, die Sie lieben, solange die Zeit es erlaubt.",
+    tagline: "Deine Geschichte, von dir erzählt, zum Zuhören und Nachfragen.",
     navigate: "Navigation",
     contact: "Kontakt",
     getInTouch: "Kontakt aufnehmen",

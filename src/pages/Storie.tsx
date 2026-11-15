@@ -1,9 +1,10 @@
+import { guides } from "@/content/guides";
 import { Link } from "wouter";
 import { Page, Hero, Sec, Prose, Cols, Card, Quote, CtaBand, Photo, Tbp, kicker, RED, INK, GREY, PALE, BODONI, NARROW } from "@/components/Mag";
 
 const dibattiti = [
   { q: "La memoria è un diritto?", a: "Chi pensa di sì ricorda che la nostra identità sta dentro il racconto che gli altri fanno di noi, e che averne cura (da vivi) è una forma di libertà. Chi pensa di no sostiene che il diritto di essere dimenticati vale quanto quello di essere ricordati, e che nessuno dovrebbe dover lasciare tracce." },
-  { q: "Si può rispettare un morto facendolo parlare?", a: "Per alcuni l'avatar è un modo per restare accanto a chi resta, per altri è una violazione del silenzio. Il punto su cui quasi tutti concordano è il consenso della persona prima, e il tempo di attesa dopo." },
+  { q: "Come si custodisce una storia con rispetto?", a: "L’autore sceglie che cosa raccontare, rilegge e approva l’autobiografia. Nei percorsi certificati decide anche a chi affidarla: la consultazione segue la sua volontà." },
   { q: "Chi decide che cosa lascio?", a: "Io, mentre sono vivo? I miei figli, dopo? Un'azienda? La domanda sposta il discorso dalla tecnologia ai diritti, ed è lì che va discusso." },
 ];
 
@@ -14,41 +15,49 @@ const lettere = [
 export default function Storie() {
   return (
     <Page>
-      <Hero k="Storie" title={<>Da leggere, da discutere, <em style={{ color: RED }}>da ricordare.</em></>} lead="UltraRem è anche un luogo dove si racconta. Qui trovi le storie delle persone, i dibattiti sul fine vita, i saggi sulla cultura della memoria e i profili di chi la studia." />
+      <Hero k="Storie" title={<>Da leggere, da discutere, <em style={{ color: RED }}>da ricordare.</em></>} lead="UltraRem è anche un luogo dove si racconta. Qui trovi i racconti dei nostri personaggi, le guide per cominciare a raccontarti e le riflessioni sulla cultura della memoria." />
 
       <Sec k="Come funziona" title="Ogni storia si legge. Alcune si possono anche ascoltare.">
         <Cols gap={40}>
           <Prose>
-            <p>Una storia nasce come un articolo: un testo scritto con la persona (o con la sua famiglia) e pubblicato solo con il suo consenso scritto (art. 18). Si legge, come si legge un racconto.</p>
-            <p>Se la persona lo ha deciso, in fondo alla pagina si apre uno spazio di dialogo con la sua testimonianza, dove puoi farle domande. Prima di parlare ti diciamo che stai interagendo con un'intelligenza artificiale (art. 14), e ogni risposta porta l'etichetta Testimonianza o Elaborazione (art. 15). Se non vuoi entrare, non entri: nessuno ti invita a farlo (art. 17).</p>
-            <p>Le storie che trovi in questa pagina, per ora, sono segnaposto: stiamo raccogliendo i consensi delle persone che le racconteranno, e non pubblichiamo nulla senza.</p>
+            <p>Una storia nasce dal racconto della persona, che rilegge il testo e ne approva la pubblicazione. I percorsi certificati permettono di condividere l’autobiografia secondo la volontà dell’autore; il Diario di bordo rimane invece personale.</p>
+            <p>Quando l’autore di un’autobiografia certificata lo sceglie, il racconto può aprirsi alle domande. L’interazione è dichiarata come artificiale, la voce come sintetica e i collegamenti o le deduzioni vengono segnalati. La consultazione resta facoltativa.</p>
+            <p>Steno, Nemo e Haddock sono personaggi di fantasia. I loro racconti accompagnano i tre percorsi UltraRem e invitano a riflettere sulle esperienze che danno forma a una vita. Le eventuali testimonianze dei clienti saranno pubblicate soltanto con la loro approvazione.</p>
           </Prose>
           <div style={{ flex: "1 1 300px", maxWidth: 420 }}><Photo name="storie-nonno" ar="4 / 3" pos="62% center" /></div>
         </Cols>
       </Sec>
 
-      <Sec k="Le storie" title="Chi si racconta, e chi ascolta." bg={PALE}>
+      <Sec k="I racconti di UltraRem" title="Steno, Nemo e Haddock." bg={PALE}>
         <Cols gap={20}>
-          {["A", "B", "C"].map((l, i) => (
-            <div key={l} style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 8 }}>
-              <Photo name={["quaderno", "faro", "bussola"][i]} ar="3 / 2" />
-              <div style={kicker()}>Storia · {["8", "6", "10"][i]} min di lettura</div>
-              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 24, lineHeight: 1.1 }}>[ Titolo di una storia vera ]</div>
-              <p style={{ margin: 0, fontSize: 16 }}>Uno spazio per un racconto di vita, scelto e autorizzato dalla persona. {i === 0 ? "Questa è la prima che pubblicheremo, con il testo e, se lei lo vorrà, il dialogo." : ""}</p>
-            </div>
-          ))}
+          {[
+            { name: "Steno e la Balena", img: "guida-diario.png", pdf: "/Steno_e_la_Balena.pdf", text: "Dal Diario di bordo di Steno: un racconto di mare per cominciare il viaggio.", path: "/percorsi/diario-di-bordo", label: "Il Diario di bordo" },
+            { name: "Nemo e il cuore della nave", img: "guida-marinai.png", pdf: "/Nemo_e_il_cuore_della_nave.pdf", text: "La storia di Nemo accompagna I marinai del tempo e il desiderio di raccontarsi.", path: "/percorsi/i-marinai-del-tempo", label: "I marinai del tempo" },
+            { name: "Haddock e la Tigre", img: "guida-capitani.png", pdf: "/Haddock_e_la_Tigre.pdf", text: "Haddock racconta ai nipoti una delle avventure della sua vita.", path: "/percorsi/i-capitani-di-lungo-corso", label: "I Capitani di lungo corso" },
+          ].map(story => <div key={story.name} style={{ flex: "1 1 280px" }}>
+            <img src={"/img/rivista/" + story.img} alt={story.name} width={110} height={110} loading="lazy" style={{ objectFit: "contain" }} />
+            <h3 style={{ fontFamily: BODONI, fontSize: 26 }}>{story.name}</h3>
+            <p>{story.text}</p>
+            <p><a href={story.pdf} style={{ color: RED }} download>Leggi il racconto · PDF</a></p>
+            <Link href={story.path}>Scopri {story.label}</Link>
+          </div>)}
         </Cols>
-        <div style={{ marginTop: 22, padding: "14px 18px", border: `1px dashed ${GREY}`, fontSize: 15, maxWidth: 780 }}>
-          <b>Vuoi che la tua storia, o quella di una persona cara, sia raccontata qui?</b> Scrivici: nessuna pubblicazione senza la sua approvazione scritta, e puoi ritirarla quando vuoi. <Link href="/contatti"><span style={{ color: RED, cursor: "pointer", fontWeight: 700 }}>Vai ai contatti</span></Link>
-        </div>
+      </Sec>
+
+      <Sec k="Le guide" title="Da dove cominciare a raccontarsi">
+        <Cols gap={24}>{guides.map(guide => <div key={guide.slug} style={{ flex: "1 1 280px" }}>
+          <h3 style={{ fontFamily: BODONI, fontSize: 25 }}><Link href={"/guide/" + guide.slug} style={{ color: INK }}>{guide.title}</Link></h3>
+          <p>{guide.description}</p>
+          <Link href={"/guide/" + guide.slug} style={{ color: RED }}>Leggi la guida →</Link>
+        </div>)}</Cols>
       </Sec>
 
       <Sec k="Cultura · approfondimento" title="Il corpus siamo noi.">
         <Prose max={720}>
-          <p>Il nome di questo progetto viene da una parola latina, <i>ultra</i>, e da un'altra che sta in fondo a ogni notte, <i>rem</i>: andare oltre il sonno, oltre il riposo, oltre quello che il corpo dà per scontato. Prima di essere memoria, ciò che di noi resta è corpo, fatto di gesti, di voce, di respiro, di un certo modo di inclinare la testa quando qualcuno dice una cosa che non ci convince.</p>
-          <p>La cultura occidentale ha provato a staccare l'anima dal corpo per trovare una forma di immortalità che non dipendesse dalla materia. Oggi la tecnologia ci offre l'inverso: tenere il corpo, o meglio le sue tracce, e farne un modo di restare. È una promessa antica con un vestito nuovo, e come tutte le promesse antiche va maneggiata con rispetto.</p>
-          <p>Il corpus, in questo senso, è ciò che di noi può essere raccolto senza tradirci: le parole, le pause, i silenzi, le cose che non diciamo mai. Un corpus è fedele quando lascia dentro anche ciò che non è presentabile, e per questo non può essere composto di tracce raccolte per caso.</p>
-          <p>Chi ci lascia un corpus vero ci lascia qualcosa di più di un ricordo: ci lascia la possibilità di continuare a conversare con lui, nel modo in cui lui ha scelto, e sapendo sempre quando stiamo ascoltando lui e quando stiamo ascoltando una macchina.</p>
+          <p>UltraRem richiama l’idea di andare oltre: raccontarsi, conoscersi e affidare ciò che si è capito della vita. Il corpus è la materia prima dell’autobiografia, fatta di parole, ricordi e scelte di chi la racconta.</p>
+          <p>Dalla voce alla pagina e dalla pagina alle domande: ogni strumento aggiunge un modo di ritrovare una storia. L’autobiografia interattiva mette al centro chi si racconta e il racconto che sceglie di approvare.</p>
+          <p>Nei percorsi certificati lo psicologo ordina i materiali, redige la sintesi e la restituisce alla persona. L’autore corregge e approva: è questa la storia che diventa consultabile.</p>
+          <p>Chi consulta incontra un racconto, con la sua storia e le sue ragioni. Quando una risposta non è nei contenuti autorizzati, il sistema lo dichiara. Il Diario personale restituisce soltanto racconti e idee ricevuti.</p>
         </Prose>
         <p style={{ marginTop: 18, fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>UltraRem · 5 min di lettura</p>
       </Sec>
@@ -66,23 +75,12 @@ export default function Storie() {
         </Cols>
       </Sec>
 
-      <Sec k="Profili" title="Chi studia la memoria, il lutto, la fine." bg={PALE}>
-        <Prose>
-          <p>Ogni scheda presenta uno studioso o una studiosa con le opere principali e le fonti, ed è scritta per far capire a chi non è del mestiere perché quel lavoro conta. Nessun avatar e nessuna intervista a nome di una persona senza il suo consenso scritto.</p>
-        </Prose>
-        <div style={{ marginTop: 22, display: "flex", flexWrap: "wrap", gap: 20 }}>
-          {["A", "B", "C", "D"].map((l, i) => (
-            <div key={l} style={{ flex: "1 1 200px", maxWidth: 240 }}>
-              <Tbp ini={l} ar="1 / 1" col={["#111", "#3d7a6b", "#c8102e", "#e8a820"][i]} label="Profilo in preparazione" />
-              <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 20, marginTop: 8 }}>[ Nome e cognome ]</div>
-              <div style={{ fontSize: 14, color: GREY }}>Campo di ricerca · Ateneo</div>
-            </div>
-          ))}
-        </div>
-        <p style={{ marginTop: 18, maxWidth: 700, fontSize: 15 }}>I profili che pubblicheremo per primi saranno quelli di chi lavora con noi, come la Prof.ssa Ines Testoni dell'Università di Padova, che trovi nella <Link href="/fondatori"><span style={{ color: RED, cursor: "pointer", fontWeight: 700 }}>pagina dei fondatori</span></Link>, e di chi ha accettato di essere intervistato.</p>
+      <Sec k="Ricerca" title="Studiare la memoria e il racconto di sé." bg={PALE}>
+        <Prose><p>Il progetto integra la ricerca sulla fedeltà del racconto, la sicurezza emotiva e le modalità di consultazione delle autobiografie. Nella pagina dedicata trovi il lavoro con l’Università di Padova e il ruolo della Prof.ssa Ines Testoni.</p>
+        <p><Link href="/ricerca" style={{ color: RED }}>Università e ricerca →</Link></p></Prose>
       </Sec>
 
-      <CtaBand title="Hai una storia, o una domanda?" text="Scrivici. Le storie nascono da persone che decidono di raccontarsi, e i dibattiti da chi ha qualcosa da dire." a={{ href: "/contatti", label: "Scrivici" }} b={{ href: "/incontra", label: "Parla con l'avatar" }} />
+      <CtaBand title="Hai una storia, o una domanda?" text="Scrivici. Le storie nascono da persone che decidono di raccontarsi, e i dibattiti da chi ha qualcosa da dire." a={{ href: "/contatti", label: "Scrivici" }} b={{ href: "/il-progetto#avatar", label: "Parla con l'avatar" }} />
     </Page>
   );
 }
