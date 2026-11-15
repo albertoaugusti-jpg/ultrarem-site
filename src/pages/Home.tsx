@@ -16,6 +16,7 @@ import {
   NARROW,
 } from "@/components/Mag";
 import { useHome, SLUGS } from "@/content/useHome";
+import { useLang } from "@/lib/i18n";
 
 const grid = (min: number, gap = 24): CSSProperties => ({
   display: "grid",
@@ -241,6 +242,13 @@ function Tile({
 
 export default function Home() {
   const { cover, ladder, who, ui } = useHome();
+  const { lang } = useLang();
+  const homeCopy = {
+    it: { intro: "Tre modi di raccontarti, con i nomi della navigazione.", cta: "Raccogli i tuoi ricordi, racconta la tua storia e ritrovala attraverso le tue domande." },
+    en: { intro: "Three ways to tell your story, inspired by navigation.", cta: "Gather your memories, tell your story and explore it through your questions." },
+    fr: { intro: "Trois façons de raconter votre histoire, inspirées de la navigation.", cta: "Rassemblez vos souvenirs, racontez votre histoire et retrouvez-la à travers vos questions." },
+    de: { intro: "Drei Wege, Ihre Geschichte zu erzählen, inspiriert von der Seefahrt.", cta: "Sammeln Sie Ihre Erinnerungen, erzählen Sie Ihre Geschichte und entdecken Sie sie durch Ihre Fragen wieder." },
+  }[lang];
 
   return (
     <Page>
@@ -416,7 +424,7 @@ export default function Home() {
             lineHeight: 1.6,
           }}
         >
-          {ladder.intro}
+          {homeCopy.intro}
         </p>
 
         <div style={grid(280, 20)}>
@@ -487,18 +495,7 @@ export default function Home() {
                       </h2>
                     </Link>
 
-                    <div
-                      style={{
-                        marginTop: 10,
-                        fontFamily: NARROW,
-                        fontWeight: 700,
-                        fontSize: 15,
-                        letterSpacing: "0.04em",
-                        color: isLight ? RED : "#fff",
-                      }}
-                    >
-                      {s.price}
-                    </div>
+
                   </div>
 
                   {guide && (
@@ -666,7 +663,7 @@ export default function Home() {
 
       <CtaBand
         title={ui.ctaTitle}
-        text={ui.ctaText}
+        text={homeCopy.cta}
         a={{
           href: "/percorsi/diario-di-bordo",
           label: ui.ctaA,
