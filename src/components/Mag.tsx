@@ -204,10 +204,10 @@ export function Quote({ children, by }: { children: ReactNode; by?: string }) {
   );
 }
 
-export function Photo({ name, ar, pos = "center" }: { name: string; ar: string; pos?: string }) {
+export function Photo({ name, ar, pos = "center", alt = "Immagine illustrativa" }: { name: string; ar: string; pos?: string; alt?: string }) {
   return (
     <div style={{ aspectRatio: ar, overflow: "hidden", border: `1px solid ${INK}`, boxSizing: "border-box" }}>
-      <img src={`/img/rivista/${name}.jpg`} alt="Immagine illustrativa" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: pos, display: "block" }} />
+      <img src={`/img/rivista/${name}.jpg`} alt={alt} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: pos, display: "block" }} />
     </div>
   );
 }
