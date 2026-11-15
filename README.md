@@ -125,3 +125,13 @@ Una volta collegato, ogni `git push` sul branch `main` farà ripartire automatic
 - [ ] Verificare i link "Privacy Policy" nel form di Prenota (attualmente puntano a `#`).
 - [ ] Eseguire `npm run build` senza errori prima di ogni deploy importante.
 - [ ] (Opzionale) Collegare un dominio personalizzato su Render.
+
+## SEO e pagine statiche
+
+`npm run build` compila il client, rende le pagine React in HTML durante la build e genera `dist/sitemap.xml`, `dist/robots.txt` e `dist/404.html`. Il bundle temporaneo `.prerender` viene eliminato. La pubblicazione resta statica, senza server aggiuntivo.
+
+I titoli e le descrizioni sono in `src/content/seo.ts`; le guide in `src/content/guides.ts` aggiungono automaticamente i propri metadati e le proprie URL alla sitemap. Le pagine indicizzabili devono essere registrate in questo elenco. Le pagine sconosciute e l’officina hanno `noindex`. Render deve servire i file statici senza la precedente riscrittura globale verso la home; `render.yaml` conserva soltanto i redirect delle vecchie URL.
+
+L’HTML iniziale è italiano. Il selettore conserva le lingue disponibili nell’interfaccia; non vengono dichiarati URL hreflang perché non ci sono ancora URL distinti per le traduzioni.
+
+Dopo il deploy: inviare `https://ultrarem.eu/sitemap.xml` in Google Search Console e controllare le URL di home, percorsi e guide. La generazione dei file non equivale a inviare la sitemap o a ottenere indicizzazione.

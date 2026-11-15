@@ -2,16 +2,16 @@ import { Page, Hero, Sec, Prose, Cols, Card, CtaBand, Tbp, kicker, RED, INK, PAL
 import { research, who } from "@/content/home";
 
 const domande = [
-  { t: "Il benessere", p: "Che effetto ha, su chi resta e su chi se ne va, l'idea che una parte di sé continui a esistere in forma interattiva? Aiuta ad affrontare la perdita, la rimanda, la complica?" },
-  { t: "La dignità", p: "Che cosa significa rispettare una persona morta quando è possibile far parlare una sua replica? Chi ha il diritto di decidere che cosa dirà, e chi di spegnerla?" },
-  { t: "La continuità identitaria", p: "Un avatar costruito con metodo (ore di interviste, un professionista che convalida) è più fedele di uno composto dalle tracce raccolte per caso? E in che senso?" },
+  { t: "Il benessere", p: "Quali effetti ha raccontarsi e consultare un’autobiografia interattiva? Come tutelare il benessere dell’autore e delle persone autorizzate ad ascoltarne la storia, nelle diverse fasi della vita?" },
+  { t: "La dignità", p: "Come garantire che il racconto resti fedele alla volontà di chi lo ha approvato? Come governare accesso, revoca e sospensione, anche quando l’autore non può più intervenire?" },
+  { t: "La continuità identitaria", p: "Come verificare la fedeltà dell’autobiografia alle interviste e ai contenuti approvati? Come rendere riconoscibili le testimonianze, i collegamenti e le informazioni mancanti?" },
 ];
 
 export default function Ricerca() {
   const t = who.science[0];
   return (
     <Page>
-      <Hero k="Ricerca" title={<>Il sé digitale <em style={{ color: RED }}>postumo.</em></>} lead="Prima di costruire a fondo qualcosa di così delicato, abbiamo voluto che un'università lo studiasse, con il rigore del metodo scientifico." />
+      <Hero k="Ricerca" title={<>Memoria, autobiografia e <em style={{ color: RED }}>responsabilità.</em></>} lead="Prima di costruire a fondo qualcosa di così delicato, abbiamo voluto che un'università lo studiasse, con il rigore del metodo scientifico." />
 
       <Sec k="La ricerca" title="Una ricerca triennale, all'Università di Padova.">
         <Cols gap={40}>
