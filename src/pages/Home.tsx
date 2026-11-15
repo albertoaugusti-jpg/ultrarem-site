@@ -250,6 +250,66 @@ export default function Home() {
     de: { intro: "Drei Wege, Ihre Geschichte zu erzählen, inspiriert von der Seefahrt.", cta: "Sammeln Sie Ihre Erinnerungen, erzählen Sie Ihre Geschichte und entdecken Sie sie durch Ihre Fragen wieder." },
   }[lang];
 
+  const chain = {
+    it: {
+      k: "Raccontarsi è antico",
+      t: "Da sempre una storia vive finché qualcuno la racconta.",
+      f: [
+        ["Il griot", "La memoria vive nella voce di chi la tramanda.", "Un giovane uomo sotto un albero, in un villaggio africano, al tramonto"],
+        ["Gli amanuensi", "Il racconto diventa pagina e attraversa i secoli.", "Un monaco amanuense scrive con la penna d'oca in un chiostro"],
+        ["Gutenberg", "La stampa moltiplica le parole e le porta a molti.", "Un tipografo solleva un foglio appena stampato accanto al torchio"],
+        ["UltraRem", "La storia che hai raccontato si apre alle domande.", "Una donna parla con un avatar sul portatile, contrassegnato come intelligenza artificiale"],
+      ],
+      p: [
+        "Di Kunta Kinte ci è arrivato il nome perché un griot lo ripeté per due secoli. Poi la pagina e la stampa hanno moltiplicato le parole, a costo di separarle dalla voce e dal volto di chi le aveva dette.",
+        "Oggi l'intelligenza artificiale permette di rimettere insieme ciò che i secoli avevano diviso: un racconto che fai tu, da vivo, con le tue parole, la tua voce e il tuo volto, e a cui chi verrà potrà fare domande.",
+      ],
+    },
+    en: {
+      k: "Telling a life is ancient",
+      t: "A story has always lived for as long as someone tells it.",
+      f: [
+        ["The griot", "Memory lives in the voice of those who hand it down.", "A young man under a tree in an African village at sunset"],
+        ["The scribes", "The story becomes a page and crosses the centuries.", "A monk writing with a quill in a cloister"],
+        ["Gutenberg", "Print multiplies words and carries them to many.", "A printer holding up a freshly printed sheet beside the press"],
+        ["UltraRem", "The story you told opens up to questions.", "A woman talking with an avatar on a laptop, marked as artificial intelligence"],
+      ],
+      p: [
+        "We know Kunta Kinte's name because a griot repeated it for two centuries. Then the page and the printing press multiplied words, at the cost of separating them from the voice and face of those who had spoken them.",
+        "Today artificial intelligence can put back together what the centuries had divided: a story you tell yourself, while you are alive, in your own words, voice and face, and that those who come after can ask questions of.",
+      ],
+    },
+    fr: {
+      k: "Se raconter est ancien",
+      t: "Une histoire vit depuis toujours tant que quelqu'un la raconte.",
+      f: [
+        ["Le griot", "La mémoire vit dans la voix de ceux qui la transmettent.", "Un jeune homme sous un arbre dans un village africain, au coucher du soleil"],
+        ["Les copistes", "Le récit devient page et traverse les siècles.", "Un moine copiste écrit à la plume dans un cloître"],
+        ["Gutenberg", "L'imprimerie multiplie les mots et les porte au plus grand nombre.", "Un imprimeur lève une feuille tout juste imprimée près de la presse"],
+        ["UltraRem", "L'histoire que vous avez racontée s'ouvre aux questions.", "Une femme parle avec un avatar sur un ordinateur portable, signalé comme intelligence artificielle"],
+      ],
+      p: [
+        "Le nom de Kunta Kinte nous est parvenu parce qu'un griot l'a répété pendant deux siècles. Puis la page et l'imprimerie ont multiplié les mots, au prix de les séparer de la voix et du visage de ceux qui les avaient prononcés.",
+        "Aujourd'hui, l'intelligence artificielle permet de réunir ce que les siècles avaient séparé : un récit que vous faites vous-même, de votre vivant, avec vos mots, votre voix et votre visage, et auquel ceux qui viendront pourront poser des questions.",
+      ],
+    },
+    de: {
+      k: "Erzählen ist uralt",
+      t: "Eine Geschichte lebt seit jeher, solange jemand sie erzählt.",
+      f: [
+        ["Der Griot", "Erinnerung lebt in der Stimme derer, die sie weitergeben.", "Ein junger Mann unter einem Baum in einem afrikanischen Dorf bei Sonnenuntergang"],
+        ["Die Kopisten", "Die Erzählung wird zur Seite und überdauert die Jahrhunderte.", "Ein Mönch schreibt mit der Feder in einem Kreuzgang"],
+        ["Gutenberg", "Der Buchdruck vervielfältigt die Worte und trägt sie zu vielen.", "Ein Drucker hält einen frisch gedruckten Bogen neben der Presse hoch"],
+        ["UltraRem", "Die Geschichte, die Sie erzählt haben, öffnet sich für Fragen.", "Eine Frau spricht mit einem Avatar auf dem Laptop, gekennzeichnet als künstliche Intelligenz"],
+      ],
+      p: [
+        "Der Name Kunta Kintes ist uns überliefert, weil ein Griot ihn zwei Jahrhunderte lang wiederholte. Dann haben Seite und Buchdruck die Worte vervielfältigt, um den Preis, sie von Stimme und Gesicht derer zu trennen, die sie gesprochen hatten.",
+        "Heute erlaubt es die künstliche Intelligenz, wieder zusammenzufügen, was die Jahrhunderte getrennt hatten: eine Erzählung, die Sie selbst zu Lebzeiten gestalten, mit Ihren Worten, Ihrer Stimme und Ihrem Gesicht, und der künftige Menschen Fragen stellen können.",
+      ],
+    },
+  }[lang];
+  const chainImg = ["premessa-griot", "premessa-amanuensi", "premessa-gutenberg", "premessa-ultrarem"];
+
   return (
     <Page>
       <section
@@ -378,6 +438,25 @@ export default function Home() {
           </div>
         </Wrap>
       </section>
+
+      <Sec k={chain.k} title={chain.t}>
+        <div style={grid(250, 20)}>
+          {chain.f.map(([name, text, alt], i) => (
+            <figure key={name} style={{ margin: 0, display: "flex", flexDirection: "column", gap: 12, minWidth: 0 }}>
+              <Photo name={chainImg[i]} ar="16 / 10" alt={alt} />
+              <figcaption>
+                <div style={kicker(i === 3 ? RED : INK)}>{name}</div>
+                <div style={{ fontSize: 17, lineHeight: 1.5, color: GREY }}>{text}</div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <div style={{ maxWidth: 700, marginTop: 36, display: "flex", flexDirection: "column", gap: 14, fontSize: 19, lineHeight: 1.65 }}>
+          {chain.p.map((x) => (
+            <p key={x} style={{ margin: 0 }}>{x}</p>
+          ))}
+        </div>
+      </Sec>
 
       <section
         style={{
