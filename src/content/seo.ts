@@ -17,7 +17,7 @@ export function getSeo(path: string) {
   const clean = path.replace(/\/+$/, "") || "/";
   const canonicalPath = aliases[clean] || clean;
   const page = seoPages[canonicalPath];
-  return { title: page?.title || "Pagina non disponibile | UltraRem", description: page?.description || "Esplora UltraRem e i percorsi per raccontare la tua storia.", canonical: ORIGIN + canonicalPath, index: Boolean(page) };
+  return { title: page?.title || "Pagina non disponibile | UltraRem", description: page?.description || "Esplora UltraRem e i percorsi per raccontare la tua storia.", canonical: ORIGIN + (canonicalPath === "/" ? "/" : canonicalPath + "/"), index: Boolean(page) };
 }
 export function structuredData(path: string) {
   const meta = getSeo(path);
@@ -26,4 +26,13 @@ export function structuredData(path: string) {
     { "@type": "WebSite", "@id": ORIGIN + "/#website", url: ORIGIN, name: "UltraRem", inLanguage: "it", publisher: { "@id": ORIGIN + "/#organization" } },
     { "@type": "WebPage", "@id": meta.canonical + "#webpage", url: meta.canonical, name: meta.title, description: meta.description, inLanguage: "it", isPartOf: { "@id": ORIGIN + "/#website" } }
   ] };
+}
+
+// Render serves directory index files at trailing-slash URLs, even when a legacy SPA fallback remains configured.
+export function pageHref(href: string) {
+  if (!href.startsWith("/") || href.startsWith("//")) return href;
+  const match = href.match(/^([^?#]*)(.*)$/)!;
+  const path = match[1].replace(/\/+$/, "") || "/";
+  const target = aliases[path] || path;
+  return seoPages[target] && target !== "/" ? target + "/" + match[2] : href;
 }

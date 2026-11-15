@@ -10,6 +10,7 @@ import Storie from "@/pages/Storie";
 import Fondatori from "@/pages/Fondatori";
 import Contatti from "@/pages/Contatti";
 import Percorso from "@/pages/Percorso";
+import { pageHref } from "@/content/seo";
 import Seo from "@/components/Seo";
 import Guida from "@/pages/Guida";
 import Officina from "@/pages/Officina";
@@ -38,7 +39,7 @@ function Router() {
 function App({ ssrPath }: { ssrPath?: string }) {
   return (
     <LanguageProvider>
-      <WouterRouter ssrPath={ssrPath}>
+      <WouterRouter ssrPath={ssrPath} hrefs={pageHref}>
         <Seo />
         <Router />
       </WouterRouter>

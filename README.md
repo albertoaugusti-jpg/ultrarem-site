@@ -135,3 +135,5 @@ I titoli e le descrizioni sono in `src/content/seo.ts`; le guide in `src/content
 L’HTML iniziale è italiano. Il selettore conserva le lingue disponibili nell’interfaccia; non vengono dichiarati URL hreflang perché non ci sono ancora URL distinti per le traduzioni.
 
 Dopo il deploy: inviare `https://ultrarem.eu/sitemap.xml` in Google Search Console e controllare le URL di home, percorsi e guide. La generazione dei file non equivale a inviare la sitemap o a ottenere indicizzazione.
+
+Le URL canoniche e i link generati da Wouter usano la barra finale: Render serve così il file `percorso/index.html` anche se una riscrittura SPA precedente è ancora attiva nel pannello. Verificare sempre l’HTML ricevuto via HTTP, oltre al risultato nel browser.
