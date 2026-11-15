@@ -1,29 +1,131 @@
 import type { CSSProperties, ReactNode } from "react";
 import { Link } from "wouter";
-import { Page, Photo, Sec, Wrap, CtaBand, personaSrc, kicker, btn, INK, GREY, PALE, BODONI, BLACK, NARROW } from "@/components/Mag";
+import {
+  Page,
+  Photo,
+  Sec,
+  Wrap,
+  CtaBand,
+  personaSrc,
+  kicker,
+  btn,
+  INK,
+  GREY,
+  PALE,
+  BODONI,
+  NARROW,
+} from "@/components/Mag";
 import { useHome, SLUGS } from "@/content/useHome";
 
-const grid = (min: number, gap = 24): CSSProperties => ({ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(min(${min}px, 100%), 1fr))`, gap });
-const block: CSSProperties = { display: "block", color: "inherit", textDecoration: "none" };
+const grid = (min: number, gap = 24): CSSProperties => ({
+  display: "grid",
+  gridTemplateColumns: `repeat(auto-fit, minmax(min(${min}px, 100%), 1fr))`,
+  gap,
+});
+
+const block: CSSProperties = {
+  display: "block",
+  color: "inherit",
+  textDecoration: "none",
+};
+
 const RED = "#c8102e";
 
 const GUIDES = [
-  { name: "Steno", image: "guida-diario.png" },
-  { name: "Nemo", image: "guida-marinai.png" },
-  { name: "Haddock", image: "guida-capitani.png" },
+  {
+    name: "Steno",
+    image: "guida-diario.png",
+    pdf: "/Steno_e_la_Balena.pdf",
+    title: "Steno e la Balena",
+  },
+  {
+    name: "Nemo",
+    image: "guida-marinai.png",
+    pdf: "/Nemo_e_il_cuore_della_nave.pdf",
+    title: "Nemo e il cuore della nave",
+  },
+  {
+    name: "Haddock",
+    image: "guida-capitani.png",
+    pdf: "/Haddock_e_la_Tigre.pdf",
+    title: "Haddock e la Tigre",
+  },
 ];
 
-// Ogni zona: titolo, sottotitolo, al massimo 2-3 righe di testo, una o due call to action.
-function Zone({ k, title, sub, text, a, b, bg, children }: { k: string; title: string; sub?: string; text?: string; a?: { href: string; label: string }; b?: { href: string; label: string }; bg?: string; children?: ReactNode }) {
+function Zone({
+  k,
+  title,
+  sub,
+  text,
+  a,
+  b,
+  bg,
+  children,
+}: {
+  k: string;
+  title: string;
+  sub?: string;
+  text?: string;
+  a?: { href: string; label: string };
+  b?: { href: string; label: string };
+  bg?: string;
+  children?: ReactNode;
+}) {
   return (
     <Sec k={k} title={title} bg={bg}>
-      {sub && <p style={{ margin: "0 0 12px", maxWidth: 760, fontStyle: "italic", fontSize: 21, lineHeight: 1.45 }}>{sub}</p>}
-      {text && <p style={{ margin: "0 0 20px", maxWidth: 720, fontSize: 17, lineHeight: 1.6 }}>{text}</p>}
+      {sub && (
+        <p
+          style={{
+            margin: "0 0 12px",
+            maxWidth: 760,
+            fontStyle: "italic",
+            fontSize: 21,
+            lineHeight: 1.45,
+          }}
+        >
+          {sub}
+        </p>
+      )}
+
+      {text && (
+        <p
+          style={{
+            margin: "0 0 20px",
+            maxWidth: 720,
+            fontSize: 17,
+            lineHeight: 1.6,
+          }}
+        >
+          {text}
+        </p>
+      )}
+
       {children}
+
       {(a || b) && (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 20 }}>
-          {a && <Link href={a.href}><span style={btn(INK, "#fff")}>{a.label}</span></Link>}
-          {b && <Link href={b.href}><span style={btn("transparent", INK, `2px solid ${INK}`)}>{b.label}</span></Link>}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 12,
+            marginTop: 20,
+          }}
+        >
+          {a && (
+            <Link href={a.href}>
+              <span style={btn(INK, "#fff")}>{a.label}</span>
+            </Link>
+          )}
+
+          {b && (
+            <Link href={b.href}>
+              <span
+                style={btn("transparent", INK, `2px solid ${INK}`)}
+              >
+                {b.label}
+              </span>
+            </Link>
+          )}
         </div>
       )}
     </Sec>
@@ -31,19 +133,108 @@ function Zone({ k, title, sub, text, a, b, bg, children }: { k: string; title: s
 }
 
 function Play() {
-  return <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: 76, height: 76, borderRadius: "50%", background: RED, border: "3px solid #fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-    <div style={{ marginLeft: 6, borderStyle: "solid", borderWidth: "13px 0 13px 22px", borderColor: "transparent transparent transparent #fff" }} />
-  </div>;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        transform: "translate(-50%,-50%)",
+        width: 76,
+        height: 76,
+        borderRadius: "50%",
+        background: RED,
+        border: "3px solid #fff",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          marginLeft: 6,
+          borderStyle: "solid",
+          borderWidth: "13px 0 13px 22px",
+          borderColor: "transparent transparent transparent #fff",
+        }}
+      />
+    </div>
+  );
 }
 
-function Tile({ href, img, k, title, text, label, solid }: { href: string; img: string; k: string; title: string; text: string; label: string; solid?: boolean }) {
+function Tile({
+  href,
+  img,
+  k,
+  title,
+  text,
+  label,
+  solid,
+}: {
+  href: string;
+  img: string;
+  k: string;
+  title: string;
+  text: string;
+  label: string;
+  solid?: boolean;
+}) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-      <Link href={href} style={{ ...block, position: "relative" }}><Photo name={img} ar="16 / 10" /><Play /></Link>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 14,
+      }}
+    >
+      <Link
+        href={href}
+        style={{ ...block, position: "relative" }}
+      >
+        <Photo name={img} ar="16 / 10" />
+        <Play />
+      </Link>
+
       <div style={kicker("#ff3b52")}>{k}</div>
-      <h2 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(28px,3.6vw,42px)", lineHeight: 1.05, letterSpacing: -1 }}>{title}</h2>
-      <p style={{ margin: 0, fontSize: 17, lineHeight: 1.55, opacity: 0.9, flexGrow: 1 }}>{text}</p>
-      <div><Link href={href}><span style={solid ? btn("#fff", INK) : btn("transparent", "#fff", "2px solid #fff")}>{label}</span></Link></div>
+
+      <h2
+        style={{
+          margin: 0,
+          fontFamily: BODONI,
+          fontWeight: 900,
+          fontSize: "clamp(28px,3.6vw,42px)",
+          lineHeight: 1.05,
+          letterSpacing: -1,
+        }}
+      >
+        {title}
+      </h2>
+
+      <p
+        style={{
+          margin: 0,
+          fontSize: 17,
+          lineHeight: 1.55,
+          opacity: 0.9,
+          flexGrow: 1,
+        }}
+      >
+        {text}
+      </p>
+
+      <div>
+        <Link href={href}>
+          <span
+            style={
+              solid
+                ? btn("#fff", INK)
+                : btn("transparent", "#fff", "2px solid #fff")
+            }
+          >
+            {label}
+          </span>
+        </Link>
+      </div>
     </div>
   );
 }
@@ -53,83 +244,438 @@ export default function Home() {
 
   return (
     <Page>
-      <section style={{ borderBottom: `3px solid ${INK}`, padding: "clamp(32px,5vw,56px) 0" }}>
+      <section
+        style={{
+          borderBottom: `3px solid ${INK}`,
+          padding: "clamp(32px,5vw,56px) 0",
+        }}
+      >
         <Wrap>
-          <div style={{ ...grid(420, 40), alignItems: "start" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+          <div
+            style={{
+              ...grid(420, 40),
+              alignItems: "start",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 18,
+              }}
+            >
               <div style={kicker()}>{cover.kicker}</div>
-              <h1 style={{ margin: 0, fontFamily: BODONI, fontWeight: 900, fontSize: "clamp(40px,5.6vw,72px)", lineHeight: 1, letterSpacing: -2 }}>{cover.title}<span style={{ color: "#c4522a", fontStyle: "italic", fontWeight: 500 }}>{cover.titleAccent}</span></h1>
-              <p style={{ margin: 0, fontStyle: "italic", fontSize: 22 }}>{cover.lead}</p>
-              <p style={{ margin: 0, fontFamily: NARROW, fontWeight: 700, fontSize: 17, letterSpacing: "0.04em", borderLeft: `4px solid ${RED}`, paddingLeft: 14 }}>{cover.what}</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 4 }}>
-                <Link href="/il-progetto"><span style={btn(INK, "#fff")}>{ui.ctaProject}</span></Link>
-                <Link href="/il-progetto#avatar"><span style={btn("transparent", INK, `2px solid ${INK}`)}>{ui.talk}</span></Link>
+
+              <h1
+                style={{
+                  margin: 0,
+                  fontFamily: BODONI,
+                  fontWeight: 900,
+                  fontSize: "clamp(40px,5.6vw,72px)",
+                  lineHeight: 1,
+                  letterSpacing: -2,
+                }}
+              >
+                {cover.title}
+                <span
+                  style={{
+                    color: "#c4522a",
+                    fontStyle: "italic",
+                    fontWeight: 500,
+                  }}
+                >
+                  {cover.titleAccent}
+                </span>
+              </h1>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontStyle: "italic",
+                  fontSize: 22,
+                }}
+              >
+                {cover.lead}
+              </p>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontFamily: NARROW,
+                  fontWeight: 700,
+                  fontSize: 17,
+                  letterSpacing: "0.04em",
+                  borderLeft: `4px solid ${RED}`,
+                  paddingLeft: 14,
+                }}
+              >
+                {cover.what}
+              </p>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 12,
+                  marginTop: 4,
+                }}
+              >
+                <Link href="/il-progetto">
+                  <span style={btn(INK, "#fff")}>
+                    {ui.ctaProject}
+                  </span>
+                </Link>
+
+                <Link href="/il-progetto#avatar">
+                  <span
+                    style={btn(
+                      "transparent",
+                      INK,
+                      `2px solid ${INK}`
+                    )}
+                  >
+                    {ui.talk}
+                  </span>
+                </Link>
               </div>
             </div>
-            <figure style={{ margin: 0, maxWidth: 440, width: "100%", justifySelf: "center" }}>
-              <Photo name="cover" ar="1035 / 1312" pos="center top" />
-              <figcaption style={{ marginTop: 8, fontFamily: NARROW, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: GREY }}>{ui.caption}</figcaption>
+
+            <figure
+              style={{
+                margin: 0,
+                maxWidth: 440,
+                width: "100%",
+                justifySelf: "center",
+              }}
+            >
+              <Photo
+                name="cover"
+                ar="1035 / 1312"
+                pos="center top"
+              />
+
+              <figcaption
+                style={{
+                  marginTop: 8,
+                  fontFamily: NARROW,
+                  fontSize: 12,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: GREY,
+                }}
+              >
+                {ui.caption}
+              </figcaption>
             </figure>
           </div>
         </Wrap>
       </section>
 
-      <section style={{ background: INK, color: "#fff", padding: "clamp(32px,5vw,56px) 0" }}>
+      <section
+        style={{
+          background: INK,
+          color: "#fff",
+          padding: "clamp(32px,5vw,56px) 0",
+        }}
+      >
         <Wrap>
-          <div style={{ ...grid(340, 40), alignItems: "stretch" }}>
-            <Tile href="/il-progetto#avatar" img="riempitivo2" k={ui.talk} title={ui.avatarTitle} text={ui.avatarText} label={ui.talk} solid />
-            <Tile href="/il-progetto#video" img="cultura" k={ui.video} title={ui.videoTitle} text={ui.videoText} label={ui.video} />
+          <div
+            style={{
+              ...grid(340, 40),
+              alignItems: "stretch",
+            }}
+          >
+            <Tile
+              href="/il-progetto#avatar"
+              img="riempitivo2"
+              k={ui.talk}
+              title={ui.avatarTitle}
+              text={ui.avatarText}
+              label={ui.talk}
+              solid
+            />
+
+            <Tile
+              href="/il-progetto#video"
+              img="cultura"
+              k={ui.video}
+              title={ui.videoTitle}
+              text={ui.videoText}
+              label={ui.video}
+            />
           </div>
         </Wrap>
       </section>
 
       <Sec k={ladder.kicker} title={ui.ladderTitle}>
-        <p style={{ margin: "0 0 24px", maxWidth: 780, fontSize: 17, lineHeight: 1.6 }}>{ladder.intro}</p>
+        <p
+          style={{
+            margin: "0 0 24px",
+            maxWidth: 780,
+            fontSize: 17,
+            lineHeight: 1.6,
+          }}
+        >
+          {ladder.intro}
+        </p>
+
         <div style={grid(280, 20)}>
-          {ladder.steps.map((s, i) => (
-            <Link key={s.name} href={`/percorsi/${SLUGS[i]}`} style={{ ...block, border: `2px solid ${s.tone === "red" ? RED : INK}`, background: s.tone === "red" ? RED : s.tone === "dark" ? INK : "#fff", color: s.tone === "light" ? INK : "#fff", padding: 24, display: "flex", flexDirection: "column", gap: 10 }}>
-              <Photo name={s.img} ar="3 / 2" />
-              <div style={kicker(s.tone === "light" ? GREY : "#fff")}>{s.tag}</div>
-              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 16 }}>
-                <div style={{ flex: "1 1 160px", minWidth: 0 }}>
-                  <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1, minHeight: 62 }}>{s.name}</div>
-                  <div style={{ marginTop: 10, fontFamily: NARROW, fontWeight: 700, fontSize: 15, letterSpacing: "0.04em", color: s.tone === "light" ? RED : "#fff" }}>{s.price}</div>
+          {ladder.steps.map((s, i) => {
+            const guide = GUIDES[i];
+            const href = `/percorsi/${SLUGS[i]}`;
+            const isLight = s.tone === "light";
+            const foreground = isLight ? INK : "#fff";
+
+            return (
+              <article
+                key={s.name}
+                style={{
+                  border: `2px solid ${
+                    s.tone === "red" ? RED : INK
+                  }`,
+                  background:
+                    s.tone === "red"
+                      ? RED
+                      : s.tone === "dark"
+                        ? INK
+                        : "#fff",
+                  color: foreground,
+                  padding: 24,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 10,
+                }}
+              >
+                <Link
+                  href={href}
+                  style={block}
+                  aria-label={`Scopri ${s.name}`}
+                >
+                  <Photo name={s.img} ar="3 / 2" />
+                </Link>
+
+                <div style={kicker(isLight ? GREY : "#fff")}>
+                  {s.tag}
                 </div>
-                {GUIDES[i] && (
-                  <figure style={{ margin: 0, marginLeft: "auto", flex: "0 0 110px", width: 110, textAlign: "center" }}>
-                    <img
-                      src={`/img/rivista/${GUIDES[i].image}`}
-                      alt={GUIDES[i].name}
-                      width={110}
-                      height={110}
-                      loading="lazy"
-                      style={{ display: "block", width: 110, height: 110, objectFit: "contain" }}
-                    />
-                    <figcaption style={{ marginTop: 8, fontFamily: NARROW, fontWeight: 700, fontSize: 18, letterSpacing: "0.08em", color: s.tone === "light" ? RED : "#fff" }}>
-                      {GUIDES[i].name}
-                    </figcaption>
-                  </figure>
-                )}
-              </div>
-              <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.55, flexGrow: 1 }}>{s.lead}</p>
-              <span style={{ fontFamily: NARROW, fontWeight: 700, fontSize: 13, letterSpacing: "0.14em", textTransform: "uppercase" }}>{ui.learn} →</span>
-            </Link>
-          ))}
+
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    alignItems: "center",
+                    gap: 16,
+                  }}
+                >
+                  <div
+                    style={{
+                      flex: "1 1 160px",
+                      minWidth: 0,
+                    }}
+                  >
+                    <Link href={href} style={block}>
+                      <h2
+                        style={{
+                          margin: 0,
+                          fontFamily: BODONI,
+                          fontWeight: 900,
+                          fontSize: 28,
+                          lineHeight: 1.1,
+                          minHeight: 62,
+                        }}
+                      >
+                        {s.name}
+                      </h2>
+                    </Link>
+
+                    <div
+                      style={{
+                        marginTop: 10,
+                        fontFamily: NARROW,
+                        fontWeight: 700,
+                        fontSize: 15,
+                        letterSpacing: "0.04em",
+                        color: isLight ? RED : "#fff",
+                      }}
+                    >
+                      {s.price}
+                    </div>
+                  </div>
+
+                  {guide && (
+                    <figure
+                      style={{
+                        margin: 0,
+                        marginLeft: "auto",
+                        flex: "0 0 120px",
+                        width: 120,
+                        textAlign: "center",
+                      }}
+                    >
+                      <a
+                        href={guide.pdf}
+                        download
+                        aria-label={`Scarica ${guide.title}, PDF`}
+                        style={{
+                          ...block,
+                          borderRadius: 8,
+                        }}
+                      >
+                        <img
+                          src={`/img/rivista/${guide.image}`}
+                          alt={`Ritratto di ${guide.name}`}
+                          width={110}
+                          height={110}
+                          loading="lazy"
+                          style={{
+                            display: "block",
+                            width: 110,
+                            height: 110,
+                            margin: "0 auto",
+                            objectFit: "contain",
+                          }}
+                        />
+
+                        <figcaption
+                          style={{
+                            marginTop: 8,
+                            fontFamily: NARROW,
+                            fontWeight: 700,
+                            fontSize: 18,
+                            letterSpacing: "0.08em",
+                            color: isLight ? RED : "#fff",
+                          }}
+                        >
+                          {guide.name}
+                        </figcaption>
+
+                        <span
+                          style={{
+                            display: "inline-block",
+                            marginTop: 9,
+                            padding: "7px 8px",
+                            border: `1px solid ${foreground}`,
+                            borderRadius: 3,
+                            fontFamily: NARROW,
+                            fontWeight: 700,
+                            fontSize: 13,
+                            lineHeight: 1.3,
+                            letterSpacing: "0.01em",
+                          }}
+                        >
+                          Leggi la mia storia ↓
+                        </span>
+                      </a>
+                    </figure>
+                  )}
+                </div>
+
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 15.5,
+                    lineHeight: 1.55,
+                    flexGrow: 1,
+                  }}
+                >
+                  {s.lead}
+                </p>
+
+                <Link
+                  href={href}
+                  style={{
+                    ...block,
+                    alignSelf: "flex-start",
+                    marginTop: 4,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: NARROW,
+                      fontWeight: 700,
+                      fontSize: 13,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      textDecoration: "underline",
+                      textUnderlineOffset: 4,
+                    }}
+                  >
+                    {ui.learn} →
+                  </span>
+                </Link>
+              </article>
+            );
+          })}
         </div>
-        <div style={{ marginTop: 24 }}><Link href="/come-funziona"><span style={btn(INK, "#fff")}>{ui.ladderBtn}</span></Link></div>
+
+        <div style={{ marginTop: 24 }}>
+          <Link href="/come-funziona">
+            <span style={btn(INK, "#fff")}>
+              {ui.ladderBtn}
+            </span>
+          </Link>
+        </div>
       </Sec>
 
-      <Zone k={who.kicker} title={who.title} sub={ui.whoText} a={{ href: "/fondatori", label: ui.whoBtn }} b={{ href: "/ricerca", label: ui.ricBtn }} bg={PALE}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
-          {[...who.founders, ...who.science].filter(f => !f.name.includes("Ines")).map(f => (
-            <div key={f.name} title={f.name} style={{ width: 72, height: 72, borderRadius: "50%", overflow: "hidden", position: "relative", background: "#fff" }}>
-              <img src={personaSrc(f.ini)} alt={f.name} style={{ position: "absolute", width: 72, height: 72, left: 0, top: 0, maxWidth: "none" }} />
-            </div>
-          ))}
+      <Zone
+        k={who.kicker}
+        title={who.title}
+        sub={ui.whoText}
+        a={{ href: "/fondatori", label: ui.whoBtn }}
+        b={{ href: "/ricerca", label: ui.ricBtn }}
+        bg={PALE}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 12,
+            alignItems: "center",
+          }}
+        >
+          {[...who.founders, ...who.science]
+            .filter((f) => !f.name.includes("Ines"))
+            .map((f) => (
+              <div
+                key={f.name}
+                title={f.name}
+                style={{
+                  width: 72,
+                  height: 72,
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  position: "relative",
+                  background: "#fff",
+                }}
+              >
+                <img
+                  src={personaSrc(f.ini)}
+                  alt={f.name}
+                  style={{
+                    position: "absolute",
+                    width: 72,
+                    height: 72,
+                    left: 0,
+                    top: 0,
+                    maxWidth: "none",
+                  }}
+                />
+              </div>
+            ))}
         </div>
       </Zone>
 
-      <CtaBand title={ui.ctaTitle} text={ui.ctaText} a={{ href: "/percorsi/diario-di-bordo", label: ui.ctaA }} b={{ href: "/contatti", label: ui.ctaB }} />
+      <CtaBand
+        title={ui.ctaTitle}
+        text={ui.ctaText}
+        a={{
+          href: "/percorsi/diario-di-bordo",
+          label: ui.ctaA,
+        }}
+        b={{
+          href: "/contatti",
+          label: ui.ctaB,
+        }}
+      />
     </Page>
   );
 }
