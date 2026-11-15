@@ -7,6 +7,12 @@ const grid = (min: number, gap = 24): CSSProperties => ({ display: "grid", gridT
 const block: CSSProperties = { display: "block", color: "inherit", textDecoration: "none" };
 const RED = "#c8102e";
 
+const GUIDES = [
+  { name: "Steno", image: "guida-diario.png" },
+  { name: "Nemo", image: "guida-marinai.png" },
+  { name: "Haddock", image: "guida-capitani.png" },
+];
+
 // Ogni zona: titolo, sottotitolo, al massimo 2-3 righe di testo, una o due call to action.
 function Zone({ k, title, sub, text, a, b, bg, children }: { k: string; title: string; sub?: string; text?: string; a?: { href: string; label: string }; b?: { href: string; label: string }; bg?: string; children?: ReactNode }) {
   return (
@@ -44,6 +50,7 @@ function Tile({ href, img, k, title, text, label, solid }: { href: string; img: 
 
 export default function Home() {
   const { cover, ladder, who, ui } = useHome();
+
   return (
     <Page>
       <section style={{ borderBottom: `3px solid ${INK}`, padding: "clamp(32px,5vw,56px) 0" }}>
@@ -88,15 +95,21 @@ export default function Home() {
                   <div style={{ fontFamily: BODONI, fontWeight: 900, fontSize: 28, lineHeight: 1.1, minHeight: 62 }}>{s.name}</div>
                   <div style={{ marginTop: 10, fontFamily: NARROW, fontWeight: 700, fontSize: 15, letterSpacing: "0.04em", color: s.tone === "light" ? RED : "#fff" }}>{s.price}</div>
                 </div>
-                <img
-                  src={`/img/rivista/${["guida-diario.png", "guida-marinai.png", "guida-capitani.png"][i]}`}
-                  alt=""
-                  aria-hidden="true"
-                  width={110}
-                  height={110}
-                  loading="lazy"
-                  style={{ display: "block", width: 110, height: 110, flex: "0 0 110px", objectFit: "contain", marginLeft: "auto" }}
-                />
+                {GUIDES[i] && (
+                  <figure style={{ margin: 0, marginLeft: "auto", flex: "0 0 110px", width: 110, textAlign: "center" }}>
+                    <img
+                      src={`/img/rivista/${GUIDES[i].image}`}
+                      alt={GUIDES[i].name}
+                      width={110}
+                      height={110}
+                      loading="lazy"
+                      style={{ display: "block", width: 110, height: 110, objectFit: "contain" }}
+                    />
+                    <figcaption style={{ marginTop: 8, fontFamily: NARROW, fontWeight: 700, fontSize: 18, letterSpacing: "0.08em", color: s.tone === "light" ? RED : "#fff" }}>
+                      {GUIDES[i].name}
+                    </figcaption>
+                  </figure>
+                )}
               </div>
               <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.55, flexGrow: 1 }}>{s.lead}</p>
               <span style={{ fontFamily: NARROW, fontWeight: 700, fontSize: 13, letterSpacing: "0.14em", textTransform: "uppercase" }}>{ui.learn} →</span>
